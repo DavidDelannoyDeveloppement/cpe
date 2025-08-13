@@ -9,16 +9,18 @@
   <title>Contrat de Performance Énergétique (CPE)</title>
   <!-- <link rel="icon" type="image/png" sizes="32x32" href="./images/lettre-transparent.png"> -->
   
-  
+  <!-- Import Police -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   
+  <!-- CSS principal -->
+  <link rel="preload" href="./styles/style.css" as="style">
   <link rel="stylesheet" href="./styles/style.css">
-  <script src="./js/script.js"></script>
+
   
 </head>
-<body>
+<body class="page_home">
 
 
   <!-- Lien d'évitement (accessibilité) -->
@@ -27,302 +29,311 @@
 
   <!-- ======= HEADER ======= -->
   <header class="site-header" role="banner">
-  <div class="header-inner">
-    <a class="brand" href="/" aria-label="Accueil - Site CPE">
-      <span class="brand-logo" role="img" aria-label="Logo CPE"></span>
-    </a>
-    <h1 class="brand-title">Comprendre et réussir votre <br>Contrat de Performance Énergétique (CPE)</h1>
-    <div class="cta-buttons">
-      <a href="/simulation" class="btn btn-primary">Simuler mes gains</a>
-      <a href="/contact" class="btn btn-secondary">Contacter un expert</a>
-    </div>
-  </div>
-</header>
-
-
-<!-- ===== Menu déroulant, déplacé depuis la hero ===== -->
-<div class="side-wrapper" role="navigation" aria-label="Menu rapide">
-  <div class="menu-trigger" tabindex="0" aria-haspopup="true" aria-expanded="false">
-    <img src="./static/images/icones/menu-icone.svg" class="menu-icone" alt="menu-icone">
-  </div>
-  <nav class="side-menu" aria-label="Menu latéral">
-    <ul>
-      <li><a href="index.html"><b>Accueil</b></a></li>
-      <li><a href="/cpe">Définition du CPE</a></li>
-      <li><a href="/fonctionnement">Fonctionnement du CPE</a></li>
-      <li><a href="/typologies">Typologies de CPE</a></li>
-      <li><a href="/avantages">Avantages et limites</a></li>
-      <li><a href="/réglementation">Réglementation</a></li>
-      <li><a href="/etapes">Étapes, durée, contrôle</a></li>
-      <li><a href="/chiffres">Chiffres clés</a></li>
-      <li><a href="/financement">Financement</a></li>
-      <li><a href="/recommandations">Recommandations</a></li>
-      <li><a href="/actualites">Actualités</a></li>
-      <li><a href="/glossaire">Glossaire</a></li>
-    </ul>
-  </nav>
-</div>
-
-
-<!-- Contenu principal Hero -->
-<section class="hero-section">
-  <div class="hero-content">
-      <h2>Une ressource complète et indépendante pour tout savoir sur le CPE :<br> principes, cadre légal, outils, financement et retours d’expérience concrets.</h2>
-      <p>
-      Dans un contexte où la <b>performance énergétique</b> est au cœur des enjeux climatiques, économiques et réglementaires, le Contrat de Performance Énergétique (CPE) s’impose comme un <b>levier stratégique.</b> Trop souvent perçu comme complexe ou réservé aux grandes organisations, le CPE est en réalité un <b>outil accessible et efficace,</b>  à condition d’en comprendre les mécanismes et de s’entourer des bons partenaires.
-      </p>
-      <p>
-      Ce site a été conçu comme une <b>plateforme pédagogique</b>  pour rendre le CPE intelligible, opérationnel et concret. Il est destiné aux collectivités, bailleurs sociaux, établissements de santé, entreprises du tertiaire, industriels et tout acteur public ou privé engagé dans une trajectoire de <b>maîtrise des consommations énergétiques.</b>
-      </p>
-      <p class="objectif">
-      🎯 Objectif : vous aider à passer à l’action, en toute confiance.
-      </p>
-  </div>
-</section>
-
-
-<!-- Section Pourquoi ce site -->
-<section class="section-why">
-  <div class="container">
-      <h2>Pourquoi ce site&nbsp;?</h2>
-      <p>
-      Nous avons identifié un besoin croissant d’informations fiables, synthétiques et neutres sur le CPE.
-      L’ambition de ce site est donc double&nbsp;:
-      </p>
-      <ul>
-      <li>
-          <strong>Informer en profondeur</strong>, de manière accessible, sur tous les aspects du CPE
-          (définition, fonctionnement, cadre juridique, financement, etc.).
-      </li>
-      <li>
-          <strong>Aider les décideurs à passer à l’action</strong>, en les outillant pour structurer et
-          sécuriser leur projet énergétique.
-      </li>
-      </ul>
-      <p>
-      Ce site s’appuie sur l’expertise de terrain de professionnels du secteur de l’efficacité énergétique
-      et fait le lien avec notre société spécialisée dans les projets CPE, qui intervient en ingénierie,
-      AMO ou en tant que prestataire.
-      </p>
+    <div class="header-inner">
+      <a class="brand" href="/" aria-label="Accueil - Site CPE">
+        <span class="brand-logo" role="img" aria-label="Logo CPE"></span>
+      </a>
+      <h1 class="brand-title">Comprendre et réussir votre <br>Contrat de Performance Énergétique (CPE)</h1>
       <div class="cta-buttons">
-      <a href="/simulateur" class="btn btn-secondary">Faire ma simulation</a>
+        <a href="/simulation" class="btn btn-primary">Simuler mes gains</a>
+        <a href="/contact" class="btn btn-secondary">Contacter un expert</a>
       </div>
-  </div>
-</section>
+    </div>
+  </header>
 
 
-<!-- Section A qui s'adresse -->
-<section class="audience-section">
-  <div class="container">
-      <h2>À qui s’adresse ce site&nbsp;?</h2>
-      <ul class="audience-list">
-      <li>✅ Élus et techniciens territoriaux porteurs de projets sur le patrimoine bâti communal ou intercommunal</li>
-      <li>✅ Responsables immobiliers du secteur tertiaire ou industriel</li>
-      <li>✅ Directions achats ou services généraux en charge des contrats d’exploitation énergétique</li>
-      <li>✅ AMO et bureaux d’études en recherche de ressources et d’outils</li>
-      <li>✅ Étudiants, consultants ou formateurs en énergie ou bâtiment</li>
+  <!-- ===== Menu déroulant, juste après le header ===== -->
+  <div class="side-wrapper" role="navigation" aria-label="Menu rapide">
+    <div class="menu-trigger" role="button" tabindex="0" aria-controls="sideMenu" aria-expanded="false" aria-label="Ouvrir le menu">
+      <img src="./images/icones/menu-icone.svg" class="menu-icone" alt="" aria-hidden="true">
+    </div>
+
+    <nav class="side-menu" id="sideMenu" aria-label="Menu latéral">
+      <ul>
+        <li><a href="./index.html" class="is-active"><b>Accueil</b></a></li>
+        <li><a href="./cpe.html">Définition du CPE</a></li>
+        <li><a href="./fonctionnement.html">Fonctionnement du CPE</a></li>
+        <li><a href="./typologies.html">Typologies de CPE</a></li>
+        <li><a href="./avantages.html">Avantages et limites</a></li>
+        <li><a href="./reglementation.html">Réglementation</a></li>
+        <li><a href="./etapes.html">Étapes, durée, contrôle</a></li>
+        <li><a href="./chiffres.html">Chiffres clés</a></li>
+        <li><a href="./financement.html">Financement</a></li>
+        <li><a href="./recommandations.html">Recommandations</a></li>
+        <li><a href="./actualites.html">Actualités</a></li>
+        <li><a href="./glossaire.html">Glossaire</a></li>
       </ul>
+    </nav>
   </div>
-</section>
 
 
-<!-- Section Vignettes Sommaire -->
+
+  <!-- Contenu principal Hero -->
+  <section class="hero-section">
+    <div class="hero-content">
+        <h2>Une ressource complète et indépendante pour tout savoir sur le CPE :<br> principes, cadre légal, outils, financement et retours d’expérience concrets.</h2>
+        <p>
+        Dans un contexte où la <b>performance énergétique</b> est au cœur des enjeux climatiques, économiques et réglementaires, le Contrat de Performance Énergétique (CPE) s’impose comme un <b>levier stratégique.</b> Trop souvent perçu comme complexe ou réservé aux grandes organisations, le CPE est en réalité un <b>outil accessible et efficace,</b>  à condition d’en comprendre les mécanismes et de s’entourer des bons partenaires.
+        </p>
+        <p>
+        Ce site a été conçu comme une <b>plateforme pédagogique</b>  pour rendre le CPE intelligible, opérationnel et concret. Il est destiné aux collectivités, bailleurs sociaux, établissements de santé, entreprises du tertiaire, industriels et tout acteur public ou privé engagé dans une trajectoire de <b>maîtrise des consommations énergétiques.</b>
+        </p>
+        <p class="objectif">
+        🎯 Objectif : vous aider à passer à l’action, en toute confiance.
+        </p>
+    </div>
+  </section>
+
+
+  <!-- Section Pourquoi ce site -->
+  <section class="section-why">
+    <div class="container">
+        <h2>Pourquoi ce site&nbsp;?</h2>
+        <p>
+        Nous avons identifié un besoin croissant d’informations fiables, synthétiques et neutres sur le CPE.
+        L’ambition de ce site est donc double&nbsp;:
+        </p>
+        <ul>
+        <li>
+            <strong>Informer en profondeur</strong>, de manière accessible, sur tous les aspects du CPE
+            (définition, fonctionnement, cadre juridique, financement, etc.).
+        </li>
+        <li>
+            <strong>Aider les décideurs à passer à l’action</strong>, en les outillant pour structurer et
+            sécuriser leur projet énergétique.
+        </li>
+        </ul>
+        <p>
+        Ce site s’appuie sur l’expertise de terrain de professionnels du secteur de l’efficacité énergétique
+        et fait le lien avec notre société spécialisée dans les projets CPE, qui intervient en ingénierie,
+        AMO ou en tant que prestataire.
+        </p>
+        <div class="cta-buttons">
+        <a href="/simulateur" class="btn btn-secondary">Faire ma simulation</a>
+        </div>
+    </div>
+  </section>
+
+
+  <!-- Section A qui s'adresse -->
+  <section class="audience-section">
+    <div class="container">
+        <h2>À qui s’adresse ce site&nbsp;?</h2>
+        <ul class="audience-list">
+        <li>✅ Élus et techniciens territoriaux porteurs de projets sur le patrimoine bâti communal ou intercommunal</li>
+        <li>✅ Responsables immobiliers du secteur tertiaire ou industriel</li>
+        <li>✅ Directions achats ou services généraux en charge des contrats d’exploitation énergétique</li>
+        <li>✅ AMO et bureaux d’études en recherche de ressources et d’outils</li>
+        <li>✅ Étudiants, consultants ou formateurs en énergie ou bâtiment</li>
+        </ul>
+    </div>
+  </section>
+
+
+  <!-- Section Vignettes Sommaire -->
 <section class="vignettes-section">
-<h2>Ce que vous trouverez ici</h2>
-  <div class="vignettes-grid">
-      <!-- Carte -->
-      <div class="card">
+  <h2>Ce que vous trouverez ici</h2>
+
+  <div class="vignettes-grid" data-debug="1">
+    <div class="card" data-w="2" data-h="2" data-palette="palette-light">
       <div class="card-inner">
-          <div class="card-front">
+        <div class="card-front">
           <div class="icon">🏠</div>
           <h3>Accueil</h3>
-          </div>
-          <div class="card-back">
+        </div>
+        <div class="card-back">
           <p>Page d’entrée pour comprendre notre mission et naviguer facilement.</p>
           <a href="index.html" class="btn btn-primary">Découvrir</a>
-          </div>
+        </div>
       </div>
-      </div>
-      
-      <div class="card">
+    </div>
+
+    <div class="card" data-w="3" data-h="1" data-palette="palette-dark">
       <div class="card-inner">
-          <div class="card-front">
+        <div class="card-front">
           <div class="icon">📜</div>
           <h3>Définition du CPE</h3>
-          </div>
-          <div class="card-back">
+        </div>
+        <div class="card-back">
           <p>Comprendre ce qu’est un Contrat de Performance Énergétique et ses enjeux.</p>
           <a href="/cpe" class="btn btn-secondary">Découvrir</a>
-          </div>
+        </div>
       </div>
-      </div>
+    </div>
 
-      <div class="card">
+    <div class="card" data-w="2" data-h="2" data-palette="palette-light">
       <div class="card-inner">
-          <div class="card-front">
+        <div class="card-front">
           <div class="icon">⚙️</div>
           <h3>Fonctionnement du CPE</h3>
-          </div>
-          <div class="card-back">
+        </div>
+        <div class="card-back">
           <p>Découvrez les étapes et mécanismes clés d’un CPE réussi.</p>
           <a href="/fonctionnement" class="btn btn-primary">Découvrir</a>
-          </div>
+        </div>
       </div>
-      </div>
+    </div>
 
-      <div class="card">
+    <div class="card" data-w="3" data-h="1" data-palette="palette-accent">
       <div class="card-inner">
-          <div class="card-front">
+        <div class="card-front">
           <div class="icon">🗂️</div>
           <h3>Typologies de CPE</h3>
-          </div>
-          <div class="card-back">
+        </div>
+        <div class="card-back">
           <p>Les différents formats de CPE selon vos objectifs et votre secteur.</p>
           <a href="/typologies" class="btn btn-secondary">Découvrir</a>
-          </div>
+        </div>
       </div>
-      </div>
+    </div>
 
-      <div class="card">
+    <div class="card" data-w="1" data-h="2" data-palette="palette-dark">
       <div class="card-inner">
-          <div class="card-front">
+        <div class="card-front">
           <div class="icon">⚖️</div>
           <h3>Avantages et limites</h3>
-          </div>
-          <div class="card-back">
+        </div>
+        <div class="card-back">
           <p>Les bénéfices d’un CPE et les points à anticiper.</p>
           <a href="/avantages" class="btn btn-primary">Découvrir</a>
-          </div>
+        </div>
       </div>
-      </div>
+    </div>
 
-      <div class="card">
+    <div class="card" data-w="3" data-h="1" data-palette="palette-dark">
       <div class="card-inner">
-          <div class="card-front">
+        <div class="card-front">
           <div class="icon">📑</div>
           <h3>Réglementation</h3>
-          </div>
-          <div class="card-back">
+        </div>
+        <div class="card-back">
           <p>Les obligations légales et réglementaires liées au CPE.</p>
           <a href="/réglementation" class="btn btn-secondary">Découvrir</a>
-          </div>
+        </div>
       </div>
-      </div>
+    </div>
 
-      <div class="card">
+    <div class="card" data-w="2" data-h="2" data-palette="palette-light">
       <div class="card-inner">
-          <div class="card-front">
+        <div class="card-front">
           <div class="icon">⏱️</div>
           <h3>Étapes, durée, contrôle</h3>
-          </div>
-          <div class="card-back">
+        </div>
+        <div class="card-back">
           <p>Les phases d’un CPE, sa durée et les méthodes de suivi.</p>
           <a href="/etapes" class="btn btn-primary">Découvrir</a>
-          </div>
+        </div>
       </div>
-      </div>
+    </div>
 
-      <div class="card">
+    <div class="card" data-w="1" data-h="2" data-palette="palette-dark">
       <div class="card-inner">
-          <div class="card-front">
+        <div class="card-front">
           <div class="icon">📊</div>
           <h3>Chiffres clés</h3>
-          </div>
-          <div class="card-back">
+        </div>
+        <div class="card-back">
           <p>Données et indicateurs pour mesurer l’efficacité énergétique.</p>
           <a href="/chiffres" class="btn btn-secondary">Découvrir</a>
-          </div>
+        </div>
       </div>
-      </div>
+    </div>
 
-      <div class="card">
+    <div class="card" data-w="3" data-h="1" data-palette="palette-accent">
       <div class="card-inner">
-          <div class="card-front">
+        <div class="card-front">
           <div class="icon">💰</div>
           <h3>Financement</h3>
-          </div>
-          <div class="card-back">
+        </div>
+        <div class="card-back">
           <p>Les solutions pour financer un projet CPE.</p>
           <a href="/financement" class="btn btn-primary">Découvrir</a>
-          </div>
+        </div>
       </div>
-      </div>
+    </div>
 
-      <div class="card">
+    <div class="card" data-w="4" data-h="1" data-palette="palette-dark">
       <div class="card-inner">
-          <div class="card-front">
+        <div class="card-front">
           <div class="icon">💡</div>
           <h3>Astuces et recommandations</h3>
-          </div>
-          <div class="card-back">
+        </div>
+        <div class="card-back">
           <p>Conseils pratiques pour sécuriser et optimiser votre projet.</p>
           <a href="/astuces" class="btn btn-secondary">Découvrir</a>
-          </div>
+        </div>
       </div>
-      </div>
+    </div>
 
-      <div class="card">
+    <div class="card" data-w="2" data-h="3" data-palette="palette-accent">
       <div class="card-inner">
-          <div class="card-front">
+        <div class="card-front">
           <div class="icon">📰</div>
           <h3>Actualités</h3>
-          </div>
-          <div class="card-back">
+        </div>
+        <div class="card-back">
           <p>Les dernières infos et tendances sur les CPE.</p>
           <a href="/actualites" class="btn btn-primary">Découvrir</a>
-          </div>
+        </div>
       </div>
-      </div>
+    </div>
 
-      <div class="card">
+    <div class="card" data-w="2" data-h="1" data-palette="palette-light">
       <div class="card-inner">
-          <div class="card-front">
+        <div class="card-front">
           <div class="icon">📚</div>
           <h3>Glossaire</h3>
-          </div>
-          <div class="card-back">
+        </div>
+        <div class="card-back">
           <p>Définitions des termes techniques autour du CPE.</p>
           <a href="/glossaire" class="btn btn-secondary">Découvrir</a>
-          </div>
+        </div>
       </div>
-  </div>
-</section>
-
-
-<!-- Section Expert -->
-<section class="expert-section">
-  <div class="container">
-      <h2>Vous souhaitez aller plus loin&nbsp;?</h2>
-      <div class="expert-content">
-      <div class="expert-text">
-          <p>
-          Notre société accompagne depuis plusieurs années les porteurs de projet sur tous les volets du CPE :
-          audit, conception, AMO, mise en œuvre, suivi des performances.
-          </p>
-      <p>
-          Nous mettons à votre disposition une approche pragmatique, sur-mesure, adaptée aux réalités de votre organisation.
-          </p>
-          <p class="highlight">
-          👉 Contactez-nous pour une analyse gratuite de votre situation.
-          </p>
-          <a href="/contact" class="btn btn-primary">Contacter notre expert</a>
-      </div>
-      <div class="expert-image">
-          <img src="./static/images/expert-portrait.png" alt="Photo de notre expert CPE">
-      </div>
-      </div>
-  </div>
-</section>
-
-<section class="actus-section" id="actus">
-  <h2>Actualités</h2>
-  <div class="actus-marquee" aria-live="polite" id="actus-content">
-    <div class="marquee-track">
-        <a href="{{ it.href }}" class="actu-item">{{ it.title }}</a>
-      <a href="/actualites" class="actu-item">→ Voir toutes les actus</a>
     </div>
   </div>
 </section>
+
+
+
+
+
+  <!-- Section Expert -->
+  <section class="expert-section">
+    <div class="container">
+        <h2>Vous souhaitez aller plus loin&nbsp;?</h2>
+        <div class="expert-content">
+        <div class="expert-text">
+            <p>
+            Notre société accompagne depuis plusieurs années les porteurs de projet sur tous les volets du CPE :
+            audit, conception, AMO, mise en œuvre, suivi des performances.
+            </p>
+        <p>
+            Nous mettons à votre disposition une approche pragmatique, sur-mesure, adaptée aux réalités de votre organisation.
+            </p>
+            <p class="highlight">
+            👉 Contactez-nous pour une analyse gratuite de votre situation.
+            </p>
+            <a href="/contact" class="btn btn-primary">Contacter notre expert</a>
+        </div>
+        <div class="expert-image">
+            <img src="./images/expert-portrait.png" alt="Photo de notre expert CPE">
+        </div>
+        </div>
+    </div>
+  </section>
+
+  <section class="actus-section" id="actus">
+    <h2>Actualités</h2>
+    <div class="actus-marquee" aria-live="polite" id="actus-content">
+      <div class="marquee-track">
+          <a href="{{ it.href }}" class="actu-item">{{ it.title }}</a>
+        <a href="/actualites" class="actu-item">→ Voir toutes les actus</a>
+      </div>
+    </div>
+  </section>
+
+  <script src="./js/script.js" defer></script>
+  <script src="./js/news.js" defer></script>
 
 </body>
 </html>

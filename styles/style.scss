@@ -1,11 +1,19 @@
-@use "../styles/utils/variables" as *;
-@use "../styles/utils/mixins" as *;
-@use "../styles/pages/main" as *;
-@use "../styles/components/header" as *;
-@use "../styles/components/section_hero" as *;
-@use "../styles/components/section_why" as *;
-@use "../styles/components/section_audience" as *;
-@use "../styles/components/vignettes" as *;
-@use "../styles/components/section_expert" as *;
-@use "../styles/components/actus_home" as *;
+// utils
+@use "utils/variables" as *;
+@use "utils/mixins" as *;
+
+// pages
+@use "pages/main" as *;
+@use "pages/actualites" as *;
+
+// components
+@use "components/header" as *;
+@use "components/side_menu" as *;
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 

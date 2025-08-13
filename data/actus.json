@@ -1,0 +1,26 @@
+[
+  {
+    "id": "2025-08-13-lancement-simulateur",
+    "title": "Lancement du simulateur CPE",
+    "date": "2025-08-13",
+    "summary": "Notre simulateur estime les économies après travaux en quelques étapes.",
+    "image": "./static/images/actus/simulateur.jpg",
+    "tags": ["simulateur", "produit"]
+  },
+  {
+    "id": "2025-08-05-retour-experience-itm",
+    "title": "Retour d’expérience ITM",
+    "date": "2025-08-05",
+    "summary": "Pilotage des consommations et premiers résultats sur 3 sites.",
+    "image": "./static/images/actus/retour-itm.jpg",
+    "tags": ["retour", "tertiaire"]
+  },
+  {
+    "id": "2025-07-28-subventions-2025",
+    "title": "Subventions : ce qui change en 2025",
+    "date": "2025-07-28",
+    "summary": "Points clés pour les CPE : aides mobilisables et critères.",
+    "image": "./static/images/actus/subventions.jpg",
+    "tags": ["financement", "réglementaire"]
+  }
+]

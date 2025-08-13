@@ -1,19 +1,15 @@
-// ========================
-// === IMPORT VARIABLES ===
-// ========================
 @use '../utils/variables' as *;
+@use '../utils/mixins' as *;
 
+/* Composants utilisés uniquement sur la home */
+@use '../components/section_hero';
+@use '../components/section_why';
+@use '../components/section_audience';
+@use '../components/vignettes';
+@use '../components/section_expert';
+@use '../components/actus_home';
 
-// ====================
-// === RESET GLOBAL ===
-// ====================
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
+body.page_home {
   font-family: $poppins;
   color: #031837;
   background-color: $creme;
@@ -23,16 +19,6 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
 
-  img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-  }
-  
-  a {
-    text-decoration: none;
-    color: inherit;
-  }
+  img { max-width: 100%; height: auto; display: block; }
+  a { text-decoration: none; color: inherit; }
 }
-
-

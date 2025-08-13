@@ -150,35 +150,64 @@ document.addEventListener("DOMContentLoaded", () => {
   /* ==================================================
      =======   Calcul et placement Vignettes    =======
      ================================================== */
-(function () {
-  const grid = document.querySelector('.vignettes-section .vignettes-grid');
-  if (!grid) return;
+(function(){
+  function clamp(n,min,max){return Math.max(min,Math.min(n,max));}
+  function run(){
+    const grid=document.querySelector(".vignettes-section .vignettes-grid"); if(!grid) return;
+    const cards=[...grid.querySelectorAll(".card")]; if(!cards.length) return;
 
-  function layoutGrid() {
-    const cards = grid.querySelectorAll('.card');
-    const n = cards.length || 1;
+    function ensurePalettes(){
+      const paletteCycle=["palette-light","palette-dark","palette-accent"];
+      cards.forEach((el,i)=>{
+        const has=Array.from(el.classList).some(c=>/^palette-/.test(c));
+        if(!has){
+          const p=el.dataset.palette||paletteCycle[i%paletteCycle.length];
+          el.classList.add(p);
+        }
+      });
+    }
 
-    // colonnes stables (évite les items qui s'étalent) : 3 à 6 selon largeur
-    let cols = 4;
-    const w = grid.clientWidth || window.innerWidth;
-    if (w < 560) cols = 2;
-    else if (w < 820) cols = 3;
-    else if (w > 1000) cols = 5;
-    if (w > 1280) cols = 6;
+    function applyLayout(){
+      const cs=getComputedStyle(grid);
+      const width=grid.clientWidth||window.innerWidth;
+      let cols=parseInt(cs.getPropertyValue("--cols"))||10;
+      let tile=parseFloat(cs.getPropertyValue("--tile"))||120;
 
-    grid.style.setProperty('--cols', cols);
-    grid.style.gridTemplateColumns = `repeat(${cols}, minmax(0, 1fr))`;
+      if(width>1100){cols=10; tile=120;}
+      else if(width>900){cols=8; tile=115;}
+      else if(width>720){cols=7; tile=110;}
+      else {cols=6; tile=102;}
 
-    const styles = getComputedStyle(grid);
-    const gap = parseFloat(styles.getPropertyValue('--gap')) || 8;
-    const tileSize = (grid.clientWidth - (cols - 1) * gap) / cols;
-    grid.style.setProperty('--tile-size', tileSize + 'px');
+      grid.style.setProperty("--cols",cols);
+      grid.style.setProperty("--tile",tile+"px");
+      grid.style.gridTemplateColumns=`repeat(${cols}, minmax(0,1fr))`;
+
+      cards.forEach((el,i)=>{
+        let w=parseInt(el.dataset.w||2,10);
+        let h=parseInt(el.dataset.h||2,10);
+        w=clamp(w,1,Math.min(4,cols));
+        h=clamp(h,1,4);
+        el.style.gridColumn=`span ${w}`;
+        el.style.gridRow=`span ${h}`;
+
+        const areaScale=Math.sqrt(w*h);
+        const fz=clamp(tile*0.25*areaScale/3,12,22);
+        el.style.fontSize=fz+"px";
+      });
+    }
+
+    function init(){
+      ensurePalettes();
+      applyLayout();
+    }
+
+    let raf; const req=()=>{cancelAnimationFrame(raf); raf=requestAnimationFrame(applyLayout);};
+    const ro=new ResizeObserver(req); ro.observe(grid);
+    window.addEventListener("resize",req,{passive:true});
+    if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",init,{once:true});}else{init();}
   }
-
-  const ro = new ResizeObserver(layoutGrid);
-  ro.observe(grid);
-
-  window.addEventListener('load', layoutGrid, { once: true });
-  window.addEventListener('resize', layoutGrid);
-  layoutGrid();
+  run();
 })();
+
+
+

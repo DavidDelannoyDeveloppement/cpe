@@ -1,3 +1,114 @@
-body {
-    background-color: rgb(255, 0, 0);
+@use '../utils/variables' as *;
+@use '../utils/mixins' as *;
+
+
+/* Scope page */
+body.page-actus {
+    font-family: $poppins;
+    color: #031837;
+    background-color: $creme;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: hidden;
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { text-decoration: none; color: inherit; }
+    
+  .actualites-section {
+    padding: 2.5rem 1rem;
+    background: $creme;
+
+    h2 {
+      margin: 0 0 1.25rem;
+      color: $bleu;
+      font-family: $font-titles;
+      font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+      text-align: center;
+    }
+
+    .actu-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .actu-card {
+      background: #fff;
+      border-radius: .6rem;
+      box-shadow: 0 6px 16px rgba(0,0,0,.08);
+      overflow: hidden;
+      display: grid;
+      grid-template-rows: auto 1fr;
+      transition: transform .15s ease, box-shadow .15s ease;
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 22px rgba(0,0,0,.12);
+      }
+    }
+
+    .actu-media {
+      background: #f7f7f7;
+
+      img {
+        display: block;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+      }
+    }
+
+    .actu-body {
+      padding: 1rem 1rem 1.1rem;
+    }
+
+    .actu-title {
+      margin: 0 0 .35rem;
+      color: $bleu;
+      font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+      line-height: 1.25;
+    }
+
+    .actu-meta {
+      margin: 0 0 .6rem;
+      color: $gris-600;
+      font-size: .95rem;
+      opacity: .9;
+
+      .tag {
+        display: inline-block;
+        margin-left: .5rem;
+        padding: .12rem .45rem;
+        border-radius: .4rem;
+        background: rgba($orange-cta, .14);
+        color: $orange-cta;
+        font-size: .8rem;
+        line-height: 1;
+        vertical-align: baseline;
+      }
+    }
+
+    .actu-summary {
+      margin: 0;
+      color: $bleu;
+      opacity: .9;
+      font-size: clamp(.98rem, 1.6vw, 1.05rem);
+      line-height: 1.45;
+    }
+
+    /* ====== Responsive (≤ 768px) ====== */
+    @media (max-width: 768px) {
+      padding: 1.6rem .8rem;
+
+      .actu-list { gap: .8rem; }
+      .actu-title { font-size: clamp(1rem, 4vw, 1.15rem); }
+      .actu-summary { font-size: clamp(.95rem, 3.6vw, 1rem); }
+    }
+  }
+
 }
