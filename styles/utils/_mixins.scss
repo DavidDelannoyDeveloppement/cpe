@@ -1,0 +1,25 @@
+@use "sass:color";
+
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin flex-center-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+// Couleur et effet des boutons : 
+@mixin gradient-btn($bg, $txt, $l: 10%, $border: 25%, $hover: -8%) {
+  background-image: linear-gradient(-180deg, color.adjust($bg, $lightness: $l) 0%, $bg 100%);
+  border: 1px solid color.adjust($bg, $lightness: $border);
+  color: $txt;
+
+  &:hover {
+    background-color: color.adjust($bg, $lightness: $hover);
+  }
+}

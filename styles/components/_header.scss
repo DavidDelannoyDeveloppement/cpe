@@ -1,0 +1,319 @@
+// ========================
+// === HEADER GLOBAL ======
+// ========================
+@use "sass:color";
+@use "../utils/variables" as *;
+@use "../utils/mixins" as *;
+
+// Lien d'évitement (accessibilité)
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px; height: 1px; overflow: hidden;
+
+  &:focus {
+    position: fixed;
+    left: 1rem; top: 1rem;
+    width: auto; height: auto;
+    padding: .5rem .75rem;
+    background: #000; color: #fff;
+    z-index: 2000;
+    border-radius: .25rem;
+  }
+}
+
+
+/* Par défaut (mobile d’abord) : PAS sticky */
+.site-header {
+  position: static;
+  top: auto;
+  z-index: 1100;
+  background: rgba(26, 46, 77, 0.75);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  backdrop-filter: saturate(1.2) blur(4px);
+  box-shadow: 0px 5px 8px $bleu;
+}
+
+/* Structure interne */
+.site-header .header-inner {
+  width: 100%;
+  margin: 0 auto;
+  padding: .75rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.site-header .header-inner .brand-title {
+  color: $creme;
+  font-family: $font-titles;
+  font-size: clamp(1.40rem, 3.2vw, 2.40rem);
+  text-align: center;
+  line-height: 1.18;
+  max-width: 48ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  flex: 1 1 280px;
+}
+
+.site-header .header-inner .brand {
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  flex: 0 1 auto;
+}
+
+/* Logo avec mask + nettoyage texte/pseudo-éléments */
+.site-header .header-inner .brand .brand-logo {
+  display: inline-block;
+  height: clamp(40px, 8vw, 90px);
+  aspect-ratio: 833 / 301;
+  background-color: $vert2;
+  -webkit-mask: url('../images/logo_cpe/logo_cpe_blanc.png') no-repeat center / contain;
+          mask: url('../images/logo_cpe/logo_cpe_blanc.png') no-repeat center / contain;
+
+  /* Empêche tout texte/pseudo résiduel d’apparaître */
+  font-size: 0;       /* cache un éventuel texte */
+  color: transparent; /* évite toute prise de couleur */
+  line-height: 0;     /* supprime la hauteur de ligne */
+}
+.site-header .header-inner .brand .brand-logo::before,
+.site-header .header-inner .brand .brand-logo::after {
+  content: none !important; /* coupe net tout content injecté */
+}
+
+/* Fallback si mask indisponible */
+@supports not (mask: url()) {
+  .site-header .header-inner .brand .brand-logo {
+    width: clamp(120px, 30vw, 270px);
+    background: url('../images/logo_cpe/logo_cpe_blanc.png') no-repeat center / contain;
+    background-color: transparent;
+  }
+}
+
+.site-header .header-inner .cta-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(0.80rem, 1.60vw, 1.20rem);
+  flex-wrap: wrap;
+  flex: 0 1 auto;
+}
+
+.site-header .header-inner .cta-buttons .btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  max-width: 100%;
+  min-inline-size: max-content;
+  flex: 0 0 auto;
+
+  padding: clamp(0.60rem, 1.20vw, 0.75rem) clamp(0.90rem, 1.95vw, 1.20rem);
+  font-size: clamp(1.00rem, 1.6vw, 1.20rem);
+  line-height: 1.15;
+
+  border-radius: 4px;
+  border-bottom-right-radius: 1rem;
+  border-top-left-radius: 1rem;
+  font-weight: bold;
+  text-decoration: none;
+  border: none;
+  transition: transform 0.15s ease-in-out;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 0.10rem;
+    border-radius: 100%;
+    display: block;
+  }
+
+  &::before {
+    top: 0.40rem;
+    background-image: linear-gradient(270deg, rgba(255,255,255,0) 0%, #ffffff 20%, #ffffff 80%, rgba(255,255,255,0) 100%);
+    opacity: 0.5;
+  }
+
+  &::after {
+    bottom: 0.50rem;
+    background-image: linear-gradient(270deg, rgba(255,255,255,0) 0%, #ffffff 20%, #ffffff 80%, rgba(255,255,255,0) 100%);
+    filter: blur(1px);
+    opacity: 0.05;
+  }
+
+  &:hover { transform: translateY(3px) scale(0.98); }
+
+  &.btn-primary   { @include gradient-btn($color-cta-bg, $color-cta-text); }
+  &.btn-secondary { @include gradient-btn($color-accent, $color-bg, 15%, 25%, -8%); }
+}
+
+/* Sticky seulement en desktop */
+@media (min-width: 993px) {
+  .site-header {
+    position: sticky;
+    top: 0;
+  }
+}
+
+/* Responsive header (≤ 992px) */
+@media (max-width: 992px) {
+  .site-header .header-inner {
+    padding: .6rem .8rem;
+    justify-content: center;
+    gap: .8rem;
+  }
+
+  .site-header .header-inner .brand {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .site-header .header-inner .brand-title {
+    text-align: center;
+    font-size: clamp(1.20rem, 4.2vw, 2.10rem);
+    flex: 1 1 auto;
+  }
+
+  .site-header .header-inner .cta-buttons {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .site-header .header-inner .cta-buttons .btn {
+    width: auto;
+  }
+}
+
+// ========================
+// === SIDE MENU (global)
+// ========================
+.side-wrapper {
+  position: fixed;
+  top: 180px;
+  left: 20px;
+  width: 60px;
+  z-index: 1000;
+  box-shadow: 3px 3px 5px $bleu;
+  border-radius: 0.3rem;
+  border-bottom-right-radius: 1rem;
+  border-top-left-radius: 1rem;
+}
+
+.menu-trigger {
+  background-color: rgba(26, 46, 77, 1);
+  color: $saumon;
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: bold;
+  padding: 0.1rem 0;
+  cursor: pointer;
+  border-radius: 0.3rem;
+  border-bottom-right-radius: 1rem;
+  border-top-left-radius: 1rem;
+
+  .menu-icone {
+    padding: 0.25rem;
+    filter: invert(72%) sepia(73%) saturate(5296%) hue-rotate(347deg) brightness(98%) contrast(95%);
+  }
+}
+
+.side-menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 120px;
+  background-color: rgba(26, 46, 77, 1);
+  transition: width 0.1s ease, opacity 0.1s ease;
+  opacity: 0;
+  pointer-events: none;
+  border-radius: 0.3rem;
+  border-bottom-right-radius: 1rem;
+  border-top-left-radius: 1rem;
+
+  ul {
+    list-style: none;
+    padding: 0.5rem 0.5rem;
+    display: flex;
+    flex-direction: column;
+
+    li a {
+      display: block;
+      padding: 0.6rem 1rem;
+      font-weight: 400;
+      line-height: 1.2;
+      color: $creme;
+      font-size: 1rem;
+
+      &:hover { color: $orange-cta; }
+      &.is-active { text-decoration: none; color: $vert1;}
+    }
+  }
+}
+
+.side-wrapper:hover .side-menu,
+.side-wrapper.open .side-menu {
+  width: 240px;
+  opacity: 1;
+  pointer-events: all;
+  border-top-right-radius: 0.7rem;
+  border-bottom-right-radius: 0.7rem;
+}
+
+@media (max-width: 1024px) {
+  .side-wrapper {
+    position: static;
+    top: auto; left: auto;
+    width: 100%;
+    z-index: auto;
+    background-color: $bleu;
+    margin: 0;
+    box-shadow: none;
+  }
+
+  .menu-trigger { display: none; }
+
+  .side-menu {
+    position: static;
+    width: 100%;
+    opacity: 1;
+    pointer-events: auto;
+    background-color: $bleu;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0;
+    padding: 0.5rem 1rem;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    transition: none;
+    z-index: 1;
+  }
+
+  .side-menu ul {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem 1rem;
+    margin: 0; padding: 0;
+  }
+
+  .side-wrapper:hover .side-menu,
+  .side-wrapper.open .side-menu {
+    width: 100%;
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+

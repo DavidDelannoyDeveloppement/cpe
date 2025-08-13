@@ -1,0 +1,131 @@
+@use "sass:color";
+@use '../utils/variables' as *;
+@use '../utils/mixins' as *;
+
+.vignettes-section {
+  --content-boost: 1.25;
+  position: relative;
+  isolation: isolate;
+  padding: 1.2rem .8rem;
+  text-align: center;
+  background: url('../images/photo-accueil_v1.png') center/cover no-repeat;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(26, 46, 77, 0.75);
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  * { position: relative; z-index: 1; }
+
+  h2 {
+    font-size: clamp(1.8rem, 2.5vw, 2.4rem);
+    margin-bottom: 1rem;
+    color: $creme;
+  }
+
+  .vignettes-grid {
+    --gap: .26rem;
+    display: grid;
+    grid-template-columns: repeat(var(--cols, 4), minmax(0, 1fr));
+    gap: var(--gap);
+    width: min(1100px, 92vw);
+    margin-inline: auto;
+    place-content: center;
+    align-content: start;
+  }
+
+  /* ✨ Reset agressif pour tuer les anciens spans/mosaïques */
+  .vignettes-grid > .card {
+    grid-column: auto !important;
+    grid-row: auto !important;
+  }
+
+  .card {
+    /* scale du contenu basé sur la taille calculée du carreau */
+    font-size: calc(var(--tile-size, 160px) * 0.11 * var(--content-boost, 1));
+    aspect-ratio: 1 / 1;
+    perspective: 1000px;
+    position: relative;
+    display: block;
+
+    /* alternance de couleurs simple et stable */
+    --front-bg: #{$gris-200};
+    --front-fg: #{$bleu};
+    --back-bg:  #{$gris-400};
+    --back-fg:  #{$creme};
+
+    &:nth-child(even) {
+      --front-bg: #{$gris-400}; --front-fg: #{$creme};
+      --back-bg:  #{$gris-200}; --back-fg:  #{$bleu};
+    }
+
+    .card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform .6s ease;
+      transform-style: preserve-3d;
+    }
+    &:hover .card-inner { transform: rotateY(180deg) scale(1.02); }
+
+    .card-front,
+    .card-back {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: .6em;
+      border-radius: .35em;
+      border-bottom-right-radius: .9em;
+      border-top-left-radius: .9em;
+      backface-visibility: hidden;
+      box-shadow: 1px 2px 5px rgba(0,0,0,.15);
+      transition: box-shadow .2s ease;
+    }
+    &:hover .card-front,
+    &:hover .card-back { box-shadow: 2px 3px 8px rgba(0,0,0,.2); }
+
+    .card-front { background: var(--front-bg); color: var(--front-fg); }
+    .card-back  { background: var(--back-bg);  color: var(--back-fg); transform: rotateY(180deg); }
+
+    .card-front .icon { font-size: 1.9em; margin-bottom: .45em; }
+    .card-front h3    { font-size: 1em; text-align: center; }
+    .card-front .icon img { width: 6.6em; height: auto; display: block; }
+
+    .card-back p { font-size: .86em; margin-bottom: .9em; text-align: center; }
+    .card-back .btn {
+      position: relative;
+      padding: .55em .95em;
+      font-size: .9em;
+      border-radius: .36em;
+      border-bottom-right-radius: .9em;
+      border-top-left-radius: .9em;
+      font-weight: 700;
+      text-decoration: none;
+      border: none;
+      transition: all .12s ease-in-out;
+      &::before, &::after {
+        content: ""; position: absolute; left: 50%; transform: translateX(-50%);
+        width: 78%; height: .06em; border-radius: 100%; display: block;
+      }
+      &::before { top: .32em; background-image: linear-gradient(270deg, rgba(255,255,255,0) 0%, #fff 20%, #fff 80%, rgba(255,255,255,0) 100%); opacity: .45; }
+      &::after  { bottom: .38em; background-image: linear-gradient(270deg, rgba(255,255,255,0) 0%, #fff 20%, #fff 80%, rgba(255,255,255,0) 100%); filter: blur(1px); opacity: .05; }
+      &:hover { transform: translateY(2px) scale(.985); }
+      &.btn-primary   { @include gradient-btn($color-cta-bg, $color-cta-text); }
+      &.btn-secondary { @include gradient-btn($color-accent, $color-bg, 15%, 25%, -8%); }
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .vignettes-grid { width: min(1000px, 94vw); }
+  }
+  @media (max-width: 768px) {
+    .vignettes-grid { grid-template-columns: repeat(var(--cols, 2), 1fr); }
+  }
+}

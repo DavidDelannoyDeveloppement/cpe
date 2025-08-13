@@ -1,0 +1,112 @@
+// ========================
+// === IMPORT VARIABLES ===
+// ========================
+@use "sass:color";
+@use '../utils/variables' as *;
+
+
+// ==========================
+// ======= ACTUALITÉS =======
+// ==========================
+.actus-section {
+  // height: auto;
+  background: linear-gradient(to right, $bleu 0%, color.adjust($bleu, $lightness: 12%) 100%);
+  padding: 4rem 3rem 6rem;
+  text-align: center;
+
+  h2 {
+    font-size: 2.6rem;
+    color: $creme;
+    margin-bottom: 2rem;
+  }
+
+  .actus-marquee {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    border-top: 3px solid $vert1;
+    border-bottom: 3px solid $vert1;
+    background: white;
+    padding: 1rem 0;
+
+    // === Pause on hover ===
+    &:hover .marquee-track {
+      animation-play-state: paused;
+    }
+  }
+  
+  .marquee-track {
+    display: flex;
+    padding: 1rem 0;
+    gap: 4rem;
+    animation: scroll-left 30s linear infinite;
+    width: fit-content;
+    will-change: transform;
+  }
+
+  .actu-item {
+    white-space: nowrap;
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: $bleu;
+    flex-shrink: 0;
+    padding: 0 0.8rem;
+    text-decoration: none;
+    position: relative;
+    transition: color 0.3s ease;
+
+    &::after {
+      content: " ";
+      margin-left: 1.5rem;
+      color: $vert1;
+      font-weight: bold;
+    }
+
+    &:last-child::after {
+      content: "";
+    }
+
+    &:hover {
+      color: $vert1;
+      text-decoration: underline;
+    }
+  }
+
+  // === MEDIA QUERY intégrée ===
+  @media screen and (max-width: 1024px) {
+    padding: 2rem 1rem 3rem;
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .actus-marquee {
+      padding: 0.5rem 0;
+      border-top-width: 1px;
+      border-bottom-width: 1px;
+    }
+
+    .marquee-track {
+      gap: 2rem;
+      padding: 0.5rem 0;
+    }
+
+    .actu-item {
+      font-size: 1.1rem;
+      padding: 0 0.5rem;
+      white-space: nowrap;
+
+      &::after {
+        margin-left: 1rem;
+      }
+    }
+  }
+}
+
+// Animation défilement vers la gauche
+@keyframes scroll-left {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}

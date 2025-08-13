@@ -1,0 +1,68 @@
+// ========================
+// === SIDE MENU (global)
+// ========================
+@use "sass:color";
+@use '../utils/variables' as *;
+@use '../utils/mixins' as *;
+
+
+.hero-section { 
+  position: relative;
+  display: flex;
+  // min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  color: $color-bg;
+  background: url('../images/photo-accueil_v3.png') center/cover no-repeat;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(26, 46, 77, 0.75);
+    z-index: 1;
+  }
+
+  // ===== Hero Content =====
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    width: min(1400px, 92vw);
+    padding: clamp(1.5rem, 3vw, 3rem);
+    padding-top: clamp(0.5rem, 1vw, 1.5rem);
+    text-align: center;
+
+    h2 {
+      font-size: clamp(1.58rem, 2.90vw, 2.11rem);
+      line-height: 1.45;
+      margin-top: clamp(1rem, 2vw, 1.6rem);
+      margin-bottom: clamp(1rem, 2vw, 1.6rem);
+      color: $vert3; 
+      font-weight: 600;
+    }
+
+    p {
+      font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+      line-height: 1.9;
+      margin-bottom: clamp(0.7rem, 1.2vw, 1rem);
+      color: rgba($color-bg, 0.9);
+    }
+    
+    .objectif {
+      font-size: clamp(1.44rem, 2.40vw, 1.80rem); 
+      font-weight: 500;
+    }
+  }
+
+  // ===== Responsive =====
+  @media screen and (max-width: 1024px) {
+    & {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .hero-content { margin-left: 0; padding: 1.5rem; }
+  }
+}
+

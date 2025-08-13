@@ -1,0 +1,72 @@
+// ========================
+// === PALETTE COULEURS ===
+// ========================
+
+// Primaires (inchangées)
+$bleu: #031837; // bleu profond FiTT (titres/texte fort)
+$vert1: #00a250; // vert principal
+$vert2: #3fab35; // vert secondaire
+$vert3: #5bb887; // vert tertiaire
+$rouge: #ff0000;
+$blanc_pied: #fffff2;
+
+// Secondaires (existantes)
+$creme: #fffffa; // fond clair
+$saumon: #f6ab78;
+$violet: #be097f;
+
+// >>> AJOUTS MODERNES (en cohérence avec ta palette) <<<
+// Accent CTA (orange moderne, accessible sur fond sombre)
+$orange-cta: #F36F21;
+
+// Bleu d’accent/hover (liens, pictos, focus)
+$bleu-accent: #2F80ED;
+$bleu-pastel: #6C7A99;
+
+// Nuances de gris (UI, borders, textes secondaires)
+$gris-100: #F2F4F7;
+$gris-200: #E5E7EB;
+$gris-300: #D0D5DD;
+$gris-400: #9EA4AE;
+$gris-500: #6B7280;
+$gris-700: #374151;
+
+// ========================
+// === ALIAS SÉMANTIQUES ===
+// ========================
+// (Change ici et tout le thème suit)
+$color-bg: $creme;  // fond global
+$color-surface: #ffffff; // cartes/blocs
+$color-text: $bleu;        // texte principal
+$color-text-muted: $gris-700; // texte secondaire
+$color-border: $gris-300; // bordures légères
+$color-primary: $bleu; // éléments primaires
+$color-accent: $bleu-accent; // liens/hover
+$color-success: $vert1; // états positifs
+$color-danger: $rouge; // erreurs/alertes
+$color-cta-bg: $orange-cta; // fond bouton CTA
+$color-cta-text: #ffffff; // texte bouton CTA
+
+// ========================
+// ====== TYPOGRAPHIE =====
+// ========================
+$poppins: 'Poppins', sans-serif; // existant (titres ok)
+$inter: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
+
+// Alias conseillés
+$font-titles: $poppins; // Titres/menus
+$font-body: $inter; // Paragraphes/labels (lisibilité top)
+$font-ui: $inter; // Boutons, badges, formulaires
+
+// ========================
+// ===== DESIGN TOKENS ====
+// ========================
+$radius-sm: 8px;
+$radius-md: 14px;
+$radius-lg: 20px;
+
+$shadow-sm: 0 1px 3px rgba(3, 24, 55, 0.08);
+$shadow-md: 0 8px 24px rgba(3, 24, 55, 0.10);
+
+$transition-fast: 120ms ease;
+$transition-base: 220ms ease;
