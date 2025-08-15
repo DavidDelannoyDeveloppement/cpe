@@ -1,0 +1,10 @@
+@use "../utils/variables" as *;
+@use "../utils/mixins" as *;
+
+.btn { @include mixins.btn-base(); }
+.btn-primary   { @include mixins.btn-variant($color-cta-bg, $color-cta-text, 10%, 25%, -8%); }
+.btn-secondary { @include mixins.btn-variant($color-accent,  $color-bg,      15%, 25%, -8%); }
+
+/* Si tu veux les classes sémantiques aussi : */
+.btn.btn--simulateur { @include mixins.btn-variant($color-cta-bg, $color-cta-text, 10%, 25%, -8%); }
+.btn.btn--expert     { @include mixins.btn-variant($color-accent,  $color-bg,      15%, 25%, -8%); }

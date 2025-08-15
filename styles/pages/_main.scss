@@ -8,11 +8,13 @@
 @use '../components/vignettes';
 @use '../components/section_expert';
 @use '../components/actus_home';
+@use "../components/separation-section";
 
 body.page_home {
   font-family: $poppins;
   color: #031837;
-  background-color: $creme;
+  // background-color: $creme;
+  background: $backgroud-bleu-rouge;
   line-height: 1.6;
   display: flex;
   flex-direction: column;

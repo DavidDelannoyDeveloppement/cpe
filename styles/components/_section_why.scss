@@ -3,10 +3,10 @@
 @use '../utils/mixins' as *;
 
 .section-why {
-  background-color: $creme;
+  // background-color: $creme;
   padding: clamp(2rem, 5vw, 4rem) 1rem;
   color: $bleu;
-  text-align: left;
+  text-align: justify;
 
   .container { width: min(1100px, 92vw); margin: 0 auto; }
 

@@ -2,18 +2,25 @@
 @use '../utils/variables' as *;
 @use '../utils/mixins' as *;
 
+
+.vignettes-section { --cards-scale: 1.1; }          /* 1 = 100% */
+.vignettes-grid   { --gap: .28rem; gap: calc(var(--gap) * var(--cards-scale)); }
+
+
 .vignettes-section {
   position: relative;
   isolation: isolate;
   padding: 1.2rem .8rem;
   text-align: center;
   background: url('../images/photo-accueil_v1.png') center/cover no-repeat;
+
   &::before { content: ''; position: absolute; inset: 0; background: rgba(26,46,77,.75); z-index: 0; pointer-events: none; }
   * { position: relative; z-index: 1; }
-  h2 { font-size: clamp(1.8rem, 2.5vw, 2.4rem); margin-bottom: 1rem; color: $creme; }
+  h2 { font-size: clamp(1.8rem, 2.5vw, 1.4rem); margin-bottom: 1rem; color: $creme; } /* (légère baisse du max pour éviter l’écrasement) */
 
+  /* === Desktop (inchangé dans l’esprit) === */
   .vignettes-grid {
-    --gap: .28rem;
+    --gap: .3rem;
     --cols: 10;
     --tile: 120px;
     display: grid;
@@ -24,7 +31,7 @@
     width: min(1100px, 92vw);
     margin-inline: auto;
     align-content: start;
-    place-content: center;
+    justify-content: center; /* remplace place-content: center pour éviter le doublon avec align-content */
   }
 
   .card {
@@ -39,6 +46,8 @@
 
     .card-inner { position: relative; width: 100%; height: 100%; transition: transform .6s ease; transform-style: preserve-3d; }
     &:hover .card-inner { transform: rotateY(180deg) scale(1.02); }
+    /* Flip au tap (activé par le JS) */
+    &.is-flipped .card-inner { transform: rotateY(180deg); }
 
     .card-front,
     .card-back {
@@ -49,6 +58,7 @@
       backface-visibility: hidden;
       box-shadow: 1px 2px 5px rgba(0,0,0,.15);
       transition: box-shadow .2s ease;
+      overflow: hidden;
     }
     &:hover .card-front, &:hover .card-back { box-shadow: 2px 3px 8px rgba(0,0,0,.2); }
 
@@ -69,15 +79,60 @@
       &::after  { bottom: .38em; background-image: linear-gradient(270deg, rgba(255,255,255,0) 0%, #fff 20%, #fff 80%, rgba(255,255,255,0) 100%); filter: blur(1px); opacity: .05; }
       &:hover { transform: translateY(2px) scale(.985); }
       &.btn-primary   { @include gradient-btn($color-cta-bg, $color-cta-text); }
-      &.btn-secondary { @include gradient-btn($color-accent, $color-bg, 15%, 25%, -8%); }
+      &.btn-secondary { @include gradient-btn($color-accent,  $color-bg, 15%, 25%, -8%); }
+      &.btn-tertiary  { @include gradient-btn($vert2,       $color-bg, 15%, 25%, -8%); }
     }
   }
 
-  .card.palette-light { --front-bg: #{$gris-300}; --front-fg: #{$bleu}; --back-bg: #{$gris-100}; --back-fg: #{$bleu}; }
-  .card.palette-dark  { --front-bg: #{$gris-500}; --front-fg: #{$creme}; --back-bg: #{$gris-300}; --back-fg: #{$bleu}; }
+  .card.palette-light { --front-bg: #{$gris-200}; --front-fg: #{$bleu}; --back-bg: #{$gris-400}; --back-fg: #{$creme}; }
+  .card.palette-dark  { --front-bg: #{$bleu-fond}; --front-fg: #{$creme}; --back-bg: #{$bleu-pastel}; --back-fg: #{$creme}; }
   .card.palette-accent{ --front-bg: #{$vert2}; --front-fg: #{$creme}; --back-bg: #{color.scale($vert3,$lightness:-8%)}; --back-fg: #{$creme}; }
-
-  @media (max-width: 1024px) { .vignettes-grid { --cols: 8; --tile: 110px; } }
-  @media (max-width:  820px) { .vignettes-grid { --cols: 7; --tile: 105px; } }
-  @media (max-width:  640px) { .vignettes-grid { --cols: 6; --tile: 100px; } }
 }
+
+/* === Mobile/Tablet (<= 980px) — un seul bloc, taille & couleurs === */
+@media (max-width:980px){
+  .vignettes-section { --cards-scale: 1; }
+  .vignettes-section .vignettes-grid{
+    --card: calc(140px * var(--cards-scale));
+    grid-template-columns: repeat(auto-fill, var(--card));
+    grid-auto-rows: var(--card);
+    justify-content: center;
+    gap: .28rem;
+    width: min(1000px, 96vw);
+    margin-inline: auto;
+  }
+  .vignettes-section .card{
+    font-size: 12px;
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    height: auto;
+    grid-column: auto;
+    grid-row: auto;
+    border-radius: 0;
+  }
+  .vignettes-section .card .card-inner{ height: 100%; }
+  .vignettes-section .card-front,
+  .vignettes-section .card-back{
+    border-radius: 12px;
+    border-top-left-radius: 22px;
+    border-bottom-right-radius: 22px;
+    overflow: hidden;
+  }
+  .vignettes-section .card-front .icon img{ max-width: 80%; height: auto; }
+  .vignettes-section .card-back p {
+    line-height: 1.4;
+    max-height: calc(1.4em * 3);
+    overflow: hidden;
+  }
+
+  .vignettes-section .card.mp-light {
+    --front-bg: #{$gris-200}; --front-fg: #{$bleu}; --back-bg: #{$gris-400}; --back-fg: #{$creme};
+  }
+  .vignettes-section .card.mp-dark {
+    --front-bg: #{$bleu-fond}; --front-fg: #{$creme}; --back-bg: #{$bleu-pastel}; --back-fg: #{$creme};
+  }
+  .vignettes-section .card.mp-accent {
+    --front-bg: #{$vert2}; --front-fg: #{$creme}; --back-bg: #{color.scale($vert3,$lightness:-8%)}; --back-fg: #{$creme};
+  }
+}
+

@@ -5,10 +5,12 @@
 // pages
 @use "pages/main" as *;
 @use "pages/actualites" as *;
+@use "pages/definition" as *;
 
 // components
 @use "components/header" as *;
 @use "components/side_menu" as *;
+// @use "separation-section" as *;
 
 
 * {
