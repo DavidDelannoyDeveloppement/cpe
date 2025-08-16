@@ -163,6 +163,14 @@ main {
         grid-template-columns: repeat(3, minmax(0,1fr)); 
         gap: .8rem; 
         margin-top: .8rem; 
+
+        @media (max-width: 1024px) {
+        grid-template-columns: repeat(2, 1fr);
+        }
+
+        @media (max-width: 600px) {
+        grid-template-columns: 1fr;
+        }
     
     }
     .info-card { 
@@ -274,96 +282,113 @@ main {
             padding: 0;
             display: grid;
             gap: 1.2rem;
+        }
+
+        .principe-list > li {
+            margin: 0;
+            padding-bottom: 2rem;
+
+
+            .flip-grid { 
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(260px, 500px));
+                justify-content: center;   /* centre le “bloc” de colonnes */
+                gap: .9rem;
+                margin-top: .8rem;
             }
 
-            .principe-list > li {
-                margin: 0;
-                padding-bottom: 2rem;
+            .flip-card { perspective: 1000px; }
+            .flip-inner { position: relative; transform-style: preserve-3d; transition: transform .45s ease; }
+            .flip-card:hover .flip-inner { transform: rotateY(180deg); }
+            .flip-face { 
+                background: #fff; 
+                border: 1px solid rgba(26,46,77,.08); 
+                border-radius: 0.4rem; 
+                border-bottom-right-radius: 1rem;
+                border-top-left-radius: 1rem; 
+                box-shadow: 1px 1px 3px $bleu;
+                padding: 1.2rem; 
+                min-height: 110px; 
+                display: grid; 
+                place-items: center; 
+                text-align: center; 
+                backface-visibility: hidden; 
+                font-weight: bold;
+            }
+            .flip-face.back { 
+                position: absolute; 
+                inset: 0; 
+                transform: rotateY(180deg);
+                font-weight: 200;
+            }
+        }    
 
 
-                .flip-grid { 
-                    display: grid;
-                    grid-template-columns: repeat(auto-fit, minmax(260px, 500px));
-                    justify-content: center;   /* centre le “bloc” de colonnes */
-                    gap: .9rem;
-                    margin-top: .8rem;
-                }
+        .principe-list > li > h4 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: nowrap;
+            gap: .75rem;
+            margin: 0 0 .5rem;
+            padding: 0;
+            font-size: clamp(1.2rem, 2vw, 1.4rem);
+            line-height: 1.35;
+            color: $bleu;
+        }
 
-                .flip-card { perspective: 1000px; }
-                .flip-inner { position: relative; transform-style: preserve-3d; transition: transform .45s ease; }
-                .flip-card:hover .flip-inner { transform: rotateY(180deg); }
-                .flip-face { 
-                    background: #fff; 
-                    border: 1px solid rgba(26,46,77,.08); 
-                    border-radius: 0.4rem; 
-                    border-bottom-right-radius: 1rem;
-                    border-top-left-radius: 1rem; 
-                    box-shadow: 1px 1px 3px $bleu;
-                    padding: 1.2rem; 
-                    min-height: 110px; 
-                    display: grid; 
-                    place-items: center; 
-                    text-align: center; 
-                    backface-visibility: hidden; 
-                    font-weight: bold;
-                }
-                .flip-face.back { 
-                    position: absolute; 
-                    inset: 0; 
-                    transform: rotateY(180deg);
-                    font-weight: 200;
-                }
-            }    
+        /* Numéro mis en avant (1, 2, 3...) */
+        .principe-list > li > h4::before {
+            content: counter(principe);
+            counter-increment: principe;
+            /* Fix "rond" qui s’écrase */
+            flex: 0 0 auto;          // <-- empêche le shrink
+            aspect-ratio: 1 / 1;     // <-- garantit le cercle
+            width: 2.2rem;
+            min-width: 2.2rem;       // <-- taille minimale
+            height: auto;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: $bleu-accent;
+            color: $color-bg;
+            font-weight: 800;
+            font-size: 1rem;
+            }
 
 
+
+        .principe-list > li > ul {
+            margin: .35rem 0 0 3.2rem;
+            padding: 0;
+            list-style: disc;
+            }
+
+        .principe-list > li > ul li {
+            margin: .35rem 0;
+            font-size: clamp(1.02rem, 1.6vw, 1.12rem);
+            line-height: 1.6;
+            }
+
+        @media (max-width: 700px) {
             .principe-list > li > h4 {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                gap: .75rem;
-                margin: 0 0 .5rem;
-                padding: 0;
-                font-size: clamp(1.2rem, 2vw, 1.4rem);
-                line-height: 1.35;
-                color: $bleu;
+                flex-direction: column;
+                gap: .45rem;
+                justify-content: flex-start;
+                text-align: center;
             }
-
-            /* Numéro mis en avant (1, 2, 3...) */
             .principe-list > li > h4::before {
-                content: counter(principe);
-                counter-increment: principe;
-                width: 2.2rem;
-                height: 2.2rem;
-                border-radius: 50%;
-                display: inline-flex;
-                align-items: center;
-                justify-content: center;
-                background: $bleu-accent;
-                color: $color-bg;
-                font-weight: 800;
-                font-size: 1rem;
-                }
-
-
-
+                width: clamp(1.8rem, 6vw, 2rem);
+                min-width: clamp(1.8rem, 6vw, 2rem);
+                font-size: .95rem;
+                margin-bottom: .1rem;
+            }
             .principe-list > li > ul {
-                margin: .35rem 0 0 3.2rem;
-                padding: 0;
-                list-style: disc;
-                }
-
-            .principe-list > li > ul li {
-                margin: .35rem 0;
-                font-size: clamp(1.02rem, 1.6vw, 1.12rem);
-                line-height: 1.6;
-                }
-
-            @media (max-width: 700px) {
-                .principe-list { gap: 1rem; }
-                .principe-list > li > h4 { padding-left: 2.6rem; }
-                .principe-list > li > h4::before { width: 2rem; height: 2rem; font-size: .95rem; }
-                .principe-list > li > ul { margin-left: 2.6rem; }
-                }
+                margin-left: 0;
+                padding-left: 0.2rem
+            }
+        }
 
     }
 }

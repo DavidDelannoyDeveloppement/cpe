@@ -996,6 +996,16 @@ main {
   gap: 0.8rem;
   margin-top: 0.8rem;
 }
+@media (max-width: 1024px) {
+  .definition .container-definition .info-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  .definition .container-definition .info-grid {
+    grid-template-columns: 1fr;
+  }
+}
 .definition .container-definition .info-card {
   background: #fff;
   border: 1px solid rgba(26, 46, 77, 0.08);
@@ -1133,6 +1143,7 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-wrap: nowrap;
   gap: 0.75rem;
   margin: 0 0 0.5rem;
   padding: 0;
@@ -1143,8 +1154,12 @@ main {
 .principe .container-principe .principe-list > li > h4::before {
   content: counter(principe);
   counter-increment: principe;
+  /* Fix "rond" qui s’écrase */
+  flex: 0 0 auto;
+  aspect-ratio: 1/1;
   width: 2.2rem;
-  height: 2.2rem;
+  min-width: 2.2rem;
+  height: auto;
   border-radius: 50%;
   display: inline-flex;
   align-items: center;
@@ -1165,19 +1180,21 @@ main {
   line-height: 1.6;
 }
 @media (max-width: 700px) {
-  .principe .container-principe .principe-list {
-    gap: 1rem;
-  }
   .principe .container-principe .principe-list > li > h4 {
-    padding-left: 2.6rem;
+    flex-direction: column;
+    gap: 0.45rem;
+    justify-content: flex-start;
+    text-align: center;
   }
   .principe .container-principe .principe-list > li > h4::before {
-    width: 2rem;
-    height: 2rem;
+    width: clamp(1.8rem, 6vw, 2rem);
+    min-width: clamp(1.8rem, 6vw, 2rem);
     font-size: 0.95rem;
+    margin-bottom: 0.1rem;
   }
   .principe .container-principe .principe-list > li > ul {
-    margin-left: 2.6rem;
+    margin-left: 0;
+    padding-left: 0.2rem;
   }
 }
 
