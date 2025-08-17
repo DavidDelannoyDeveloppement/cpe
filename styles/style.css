@@ -863,7 +863,6 @@ body.page-definition .cta-buttons {
   display: flex;
   justify-content: center;
   gap: clamp(0.8rem, 1.6vw, 1.2rem);
-  margin-top: clamp(1.2rem, 2.4vw, 2rem);
 }
 body.page-definition .cta-buttons .btn {
   position: relative;
@@ -975,7 +974,9 @@ main {
 .intro .intro-content .intro-image img {
   width: 100%;
   max-width: 350px;
-  border-radius: 12px;
+  border-radius: 0.4rem;
+  border-bottom-right-radius: 1rem;
+  border-top-left-radius: 1rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   display: block;
   margin: 0 auto;
@@ -1032,6 +1033,31 @@ main {
 .definition .container-definition .info-card small {
   color: #00a250;
 }
+@media (max-width: 990px) {
+  .definition .container-definition .info-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .definition .container-definition .flip-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .definition .container-definition .tiles {
+    grid-template-columns: 1fr 1fr;
+  }
+  .definition .container-definition .goals {
+    grid-template-columns: 1fr 1fr;
+  }
+  .definition .container-definition .row {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+@media (max-width: 560px) {
+  .definition .container-definition .info-grid, .definition .container-definition .flip-grid, .definition .container-definition .tiles, .definition .container-definition .goals {
+    grid-template-columns: 1fr;
+  }
+  .definition .container-definition .btn {
+    width: 100%;
+  }
+}
 
 .cadre {
   padding: clamp(2rem, 5vw, 4rem) 1rem;
@@ -1051,6 +1077,7 @@ main {
   max-width: 900px;
   margin: 0 auto;
   text-align: left;
+  margin-bottom: clamp(1.02rem, 2.04vw, 1.7rem);
 }
 .cadre .container-cadre .cadre-list li {
   background: rgba(3, 24, 55, 0.05);
@@ -1126,7 +1153,7 @@ main {
   border-top-left-radius: 1rem;
   box-shadow: 1px 1px 3px #031837;
   padding: 1.2rem;
-  min-height: 110px;
+  min-height: clamp(70px, 10vw, 90px);
   display: grid;
   place-items: center;
   text-align: center;
@@ -1170,9 +1197,10 @@ main {
   font-size: 1rem;
 }
 .principe .container-principe .principe-list > li > ul {
-  margin: 0.35rem 0 0 3.2rem;
+  margin: 0.35rem auto 0;
   padding: 0;
-  list-style: disc;
+  list-style: disc inside;
+  text-align: center;
 }
 .principe .container-principe .principe-list > li > ul li {
   margin: 0.35rem 0;
@@ -1194,35 +1222,368 @@ main {
   }
   .principe .container-principe .principe-list > li > ul {
     margin-left: 0;
-    padding-left: 0.2rem;
   }
 }
 
+.domaines {
+  padding: clamp(2rem, 5vw, 4rem) 1rem;
+  color: #031837;
+  text-align: center;
+  /* ===== Mobile / tablette (≤ 990px) : paires texte | image, portrait, sans anim ===== */
+  /* ===========================
+      Liste “Pertinent lorsque…”
+      =========================== */
+}
+.domaines .domaines-content {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+  /* === Colonne gauche : texte + tuiles === */
+  /* === Colonne droite : images 2×2, même comportement === */
+  /* === Colonne image unique (si utilisée ailleurs) === */
+}
 @media (max-width: 990px) {
-  .info-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-  .flip-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-  .tiles {
-    grid-template-columns: 1fr 1fr;
-  }
-  .goals {
-    grid-template-columns: 1fr 1fr;
-  }
-  .row {
-    grid-template-columns: 1fr 1fr 1fr;
+  .domaines .domaines-content {
+    grid-template-columns: 1fr;
+    text-align: center;
   }
 }
-@media (max-width: 560px) {
-  .info-grid, .flip-grid, .tiles, .goals {
+.domaines .domaines-content .domaines-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem 0;
+  height: 100%;
+  font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+  line-height: 1.7;
+  /* Grille 2×2 centrée */
+  /* Tuile texte */
+}
+.domaines .domaines-content .domaines-text .tiles {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.2rem;
+  width: 65%;
+  margin: 0 auto;
+  border-radius: 0.4rem;
+  border-bottom-right-radius: 1rem;
+  border-top-left-radius: 1rem;
+}
+@media (max-width: 990px) {
+  .domaines .domaines-content .domaines-text .tiles {
+    width: 100%;
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+    justify-items: center; /* centre les cartes */
+  }
+}
+.domaines .domaines-content .domaines-text .tile {
+  aspect-ratio: 2/3;
+  display: grid;
+  place-content: center;
+  overflow: hidden;
+  background-color: #fffffa;
+  border: 1px solid rgba(26, 46, 77, 0.45);
+  padding: 1.1rem;
+  text-align: center;
+  text-decoration: none;
+  color: #00a250;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, border-color 0.12s ease;
+  /* coins personnalisés par position (1..4) */
+  /* Hover local et hover “lié” via JS */
+}
+.domaines .domaines-content .domaines-text .tile:nth-child(1) {
+  border-top-left-radius: 1rem;
+}
+.domaines .domaines-content .domaines-text .tile:nth-child(2) {
+  border-top-right-radius: 0.4rem;
+}
+.domaines .domaines-content .domaines-text .tile:nth-child(3) {
+  border-bottom-left-radius: 0.4rem;
+}
+.domaines .domaines-content .domaines-text .tile:nth-child(4) {
+  border-bottom-right-radius: 1rem;
+}
+.domaines .domaines-content .domaines-text .tile:hover, .domaines .domaines-content .domaines-text .tile.is-linked-hover {
+  transform: translateY(-12px);
+  box-shadow: 0 14px 30px rgba(26, 46, 77, 0.12);
+  border-color: rgba(39, 193, 152, 0.5);
+}
+.domaines .domaines-content .domaines-text .tile span {
+  font-size: 1.6rem;
+  line-height: 1;
+}
+.domaines .domaines-content .domaines-text .tile em {
+  display: block;
+  margin-top: 0.335rem;
+  font-style: normal;
+  color: #031837;
+}
+@media (max-width: 990px) {
+  .domaines .domaines-content .domaines-text .tile {
+    /* cartes plus petites et centrées */
+    width: clamp(220px, 82vw, 320px);
+    aspect-ratio: 3/2; /* moins haut en mobile */
+    margin: 0 auto;
+    padding: 0; /* le flip gère son propre padding */
+    cursor: pointer; /* interactif en mobile */
+    perspective: 1000px; /* préparation flip */
+  }
+}
+.domaines .domaines-content .domaines-media .tiles {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.2rem;
+  width: 65%;
+  margin: 0 auto;
+}
+@media (max-width: 990px) {
+  .domaines .domaines-content .domaines-media .tiles {
+    width: 100%;
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+  }
+}
+.domaines .domaines-content .domaines-media .tile {
+  aspect-ratio: 2/3;
+  display: grid;
+  place-content: center;
+  overflow: hidden;
+  border: 1px solid rgba(26, 46, 77, 0.45);
+  padding: 0; /* pas de padding autour de l’image */
+  background: transparent;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, border-color 0.12s ease;
+  cursor: pointer;
+  /* mêmes coins que la colonne texte */
+}
+.domaines .domaines-content .domaines-media .tile:nth-child(1) {
+  border-top-left-radius: 1rem;
+}
+.domaines .domaines-content .domaines-media .tile:nth-child(2) {
+  border-top-right-radius: 0.4rem;
+}
+.domaines .domaines-content .domaines-media .tile:nth-child(3) {
+  border-bottom-left-radius: 0.4rem;
+}
+.domaines .domaines-content .domaines-media .tile:nth-child(4) {
+  border-bottom-right-radius: 1rem;
+}
+.domaines .domaines-content .domaines-media .tile:hover, .domaines .domaines-content .domaines-media .tile.is-linked-hover {
+  transform: translateY(-12px);
+  box-shadow: 0 14px 30px rgba(26, 46, 77, 0.12);
+  border-color: rgba(39, 193, 152, 0.5);
+}
+.domaines .domaines-content .domaines-media .tile img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  -o-object-fit: cover;
+     object-fit: cover; /* remplit la tuile sans déformer */
+  -o-object-position: center;
+     object-position: center;
+}
+.domaines .domaines-content .domaines-img img {
+  width: 100%;
+  max-width: 350px;
+  border-radius: 0.4rem;
+  border-bottom-right-radius: 1rem;
+  border-top-left-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  display: block;
+  margin: 0 auto;
+}
+@media (max-width: 990px) {
+  .domaines {
+    /* Grille mobile générée par le JS, à l’intérieur de chaque .domaines-content */
+    /* Une paire = 2 colonnes (tuile texte | tuile image) */
+    /* Taille commune des vignettes en format portrait */
+    /* --- Vignette TEXTE (même look que desktop) --- */
+    /* typo interne du bloc texte existant */
+    /* --- Vignette IMAGE (bordure/arrondis + image qui remplit) --- */
+    /* Centrage du contenu des tuiles texte */
+  }
+  .domaines .domaines-mobile {
+    display: grid;
+    gap: 1rem;
+  }
+  .domaines .domaines-mobile .pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    align-items: stretch;
+  }
+  .domaines .domaines-mobile .pair .tile {
+    width: 100%;
+    aspect-ratio: 2/3;
+    margin: 0;
+    transform: none;
+    transition: none;
+    box-shadow: none;
+  }
+  .domaines .domaines-mobile .pair .tile.tile-text {
+    background-color: #E5E7EB;
+    border: 1px solid rgba(26, 46, 77, 0.45);
+    color: #00a250;
+    padding: 1.1rem;
+    text-align: center;
+    border-radius: 0.4rem;
+    border-bottom-right-radius: 1rem;
+    border-top-left-radius: 1rem;
+  }
+  .domaines .domaines-mobile .pair .tile.tile-text > .tile-text span {
+    font-size: 1.6rem;
+    line-height: 1;
+  }
+  .domaines .domaines-mobile .pair .tile.tile-text > .tile-text em {
+    display: block;
+    margin-top: 0.335rem;
+    font-style: normal;
+    color: #031837;
+  }
+  .domaines .domaines-mobile .pair .tile.tile-text > .tile-text small {
+    display: block;
+    margin-top: 0.15rem;
+  }
+  .domaines .domaines-mobile .pair .tile.tile-image {
+    overflow: hidden;
+    border: 1px solid rgba(26, 46, 77, 0.45);
+    border-radius: 0.4rem;
+    border-bottom-right-radius: 1rem;
+    border-top-left-radius: 1rem;
+    padding: 0;
+  }
+  .domaines .domaines-mobile .pair .tile.tile-image img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    -o-object-fit: cover;
+       object-fit: cover;
+    -o-object-position: center;
+       object-position: center;
+  }
+  .domaines .domaines-mobile .pair .tile.tile-text {
+    display: grid;
+    place-items: center;
+  }
+  .domaines .domaines-mobile .pair .tile.tile-text > .tile-text {
+    text-align: center;
+    margin-top: -3rem;
+  }
+}
+.domaines .domaines-list {
+  list-style: none;
+  margin: 2rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.8rem;
+  margin-bottom: clamp(1.02rem, 2.04vw, 1.7rem);
+}
+.domaines .domaines-list > h4 {
+  margin: 0;
+  text-align: center;
+  font-size: clamp(1.2rem, 2vw, 1.4rem);
+  line-height: 1.35;
+  color: #031837;
+}
+.domaines .domaines-list > ul {
+  margin: 0.35rem auto 0;
+  padding: 0;
+  max-width: 75ch;
+  text-align: center;
+  list-style: disc inside;
+}
+.domaines .domaines-list > ul li {
+  margin: 0.35rem 0;
+  font-size: clamp(1.02rem, 1.6vw, 1.12rem);
+  line-height: 1.6;
+}
+@media (max-width: 990px) {
+  .domaines .domaines-list > ul {
+    max-width: 68ch;
+  }
+}
+
+.objectifs {
+  padding: clamp(2rem, 5vw, 4rem) 1rem clamp(2rem, 5vw, 4rem) 1rem;
+  color: #031837;
+  text-align: justify;
+}
+.objectifs .objectifs-content {
+  width: min(1100px, 92vw);
+  margin: 0 auto;
+  /* Si tu mets une icône/emoji au début, tu peux l'entourer d'un span.ico */
+  /* Mise en valeur des morceaux en <strong> dans le texte */
+}
+.objectifs .objectifs-content .goals {
+  list-style: none;
+  margin: 0.8rem 0 1rem;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+@media (max-width: 1024px) {
+  .objectifs .objectifs-content .goals {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  .objectifs .objectifs-content .goals {
     grid-template-columns: 1fr;
   }
-  .btn {
-    width: 100%;
-  }
 }
+.objectifs .objectifs-content .goals li {
+  background: rgba(243, 111, 33, 0.06);
+  border: 1px solid rgba(243, 111, 33, 0.25);
+  border-left: 4px solid #F36F21;
+  border-radius: 0.4rem;
+  border-bottom-right-radius: 1rem;
+  border-top-left-radius: 1rem;
+  padding: 0.9rem;
+  text-align: center;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+.objectifs .objectifs-content .goals li:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 10px rgba(3, 24, 55, 0.18);
+}
+.objectifs .objectifs-content .goals li .ico {
+  font-size: 1.35rem;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+.objectifs .objectifs-content .goals li strong {
+  color: #031837; /* même teinte que info-card */
+  font-weight: 700;
+}
+.objectifs .objectifs-content .goals--secondary li {
+  background: rgba(47, 128, 237, 0.06);
+  border: 1px solid rgba(47, 128, 237, 0.25);
+  border-left: 4px solid #2F80ED;
+}
+.objectifs .objectifs-content .goals--secondary li:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 10px rgba(3, 24, 55, 0.18);
+}
+.objectifs .objectifs-content .goals--secondary li strong {
+  color: #2F80ED;
+}
+.objectifs .h4-goals {
+  text-align: center;
+  color: #F36F21;
+  font-size: 1.5rem;
+  margin-top: 2rem;
+}
+.objectifs .h4-gaols-secondary {
+  text-align: center;
+  color: #2F80ED;
+  font-size: 1.5rem;
+  margin-top: 2rem;
+}
+
 .skip-link {
   position: absolute;
   left: -9999px;

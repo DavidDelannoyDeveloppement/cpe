@@ -263,7 +263,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-
+// ===========================
 // Personnalisation du wrapper
 document.addEventListener('DOMContentLoaded', () => {
   const wrapper = document.querySelector('.side-wrapper');
@@ -326,7 +326,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-
+// ===========================
 // Effet transition entre sections
 document.addEventListener('DOMContentLoaded', () => {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -342,3 +342,159 @@ document.addEventListener('DOMContentLoaded', () => {
   }, 3000); // toutes les 3s
 });
 
+
+
+// ===========================
+//tile survol page definition
+(() => {
+  const BREAKPOINT = 990;
+  const mq = window.matchMedia(`(max-width:${BREAKPOINT}px)`);
+  const HANDLERS = Symbol('handlers');
+  const stateByContainer = new WeakMap(); // par .domaines-content
+
+  document.addEventListener('DOMContentLoaded', refreshAll);
+  mq.addEventListener?.('change', refreshAll);
+
+  function refreshAll() {
+    document.querySelectorAll('.domaines-content').forEach(container => {
+      const labelsWrap = container.querySelector('.tiles--labels'); // grille texte
+      const imagesWrap = container.querySelector('.tiles--images'); // grille images
+      if (!labelsWrap || !imagesWrap) return;
+
+      // init état une seule fois (on mémorise les emplacements d’origine)
+      if (!stateByContainer.has(container)) {
+        const remember = node => ({ node, parent: node.parentNode, next: node.nextSibling });
+        const labels = Array.from(labelsWrap.querySelectorAll('.tile'));
+        const images = Array.from(imagesWrap.querySelectorAll('.tile'));
+        if (!labels.length || labels.length !== images.length) return;
+
+        stateByContainer.set(container, {
+          labelsWrap, imagesWrap,
+          slotsLabels: labels.map(remember),
+          slotsImages: images.map(remember),
+          mobileGrid: null
+        });
+      }
+
+      const s = stateByContainer.get(container);
+      if (mq.matches) {
+        // ===== MOBILE =====
+        toMobile(container, s);
+        // sécurité : pas de “liage” en mobile
+        teardownLinkedDesktop(container);
+      } else {
+        // ===== DESKTOP =====
+        fromMobileIfAny(s);
+        setupLinkedDesktop(container); // <-- rebranche TOUJOURS après restauration
+      }
+    });
+  }
+
+  /* ------------------- MOBILE ------------------- */
+  function toMobile(container, s) {
+    if (s.mobileGrid) return; // déjà actif
+
+    const grid = document.createElement('div');
+    grid.className = 'domaines-mobile';
+    container.appendChild(grid);
+    s.mobileGrid = grid;
+
+    // masque les grilles d’origine
+    s.labelsWrap.style.display = 'none';
+    s.imagesWrap.style.display = 'none';
+
+    // pairage par data-key si présent, sinon par index
+    const labels = s.slotsLabels.map(x => x.node);
+    const images = s.slotsImages.map(x => x.node);
+    const mapImgByKey = new Map(images.map(el => [el.dataset.key, el]));
+
+    labels.forEach((label, i) => {
+      const pair = document.createElement('div');
+      pair.className = 'pair';
+
+      const key = label.dataset.key;
+      const img = key ? mapImgByKey.get(key) : images[i];
+
+      // classes modif sur l’élément .tile (pas l’enfant interne)
+      label.classList.add('tile-text');
+      if (img) img.classList.add('tile-image');
+
+      pair.appendChild(label);
+      if (img) pair.appendChild(img);
+      grid.appendChild(pair);
+    });
+  }
+
+  /* ------------------- RESTAURE (quand on repasse desktop) ------------------- */
+  function fromMobileIfAny(s) {
+    if (!s.mobileGrid) return;
+
+    // réinsère chaque tuile à sa place d’origine (ordre conservé)
+    s.slotsLabels.forEach(({ node, parent, next }) => parent.insertBefore(node, next));
+    s.slotsImages.forEach(({ node, parent, next }) => parent.insertBefore(node, next));
+
+    // nettoie classes ajoutées en mobile
+    s.slotsLabels.forEach(({ node }) => node.classList.remove('tile-text', 'is-linked-hover'));
+    s.slotsImages.forEach(({ node }) => node.classList.remove('tile-image', 'is-linked-hover'));
+
+    // supprime la grille mobile et ré-affiche les grilles d’origine
+    s.mobileGrid.remove();
+    s.mobileGrid = null;
+    s.labelsWrap.style.display = '';
+    s.imagesWrap.style.display = '';
+  }
+
+  /* ------------------- DESKTOP : survol lié ------------------- */
+  function setupLinkedDesktop(container) {
+    const labels = Array.from(container.querySelectorAll('.tiles--labels .tile'));
+    const images = Array.from(container.querySelectorAll('.tiles--images .tile'));
+    if (!labels.length || labels.length !== images.length) return;
+
+    // nettoie d’éventuels anciens handlers
+    teardownLinkedDesktop(container);
+
+    // lier par data-key si possible
+    const mapImgByKey = new Map(images.map(el => [el.dataset.key, el]));
+    labels.forEach((label, i) => {
+      const twin = label.dataset.key ? mapImgByKey.get(label.dataset.key) : images[i];
+      if (!twin) return;
+      bindPair(label, twin);
+    });
+  }
+
+  function bindPair(a, b) {
+    teardownOne(a);
+    teardownOne(b);
+
+    const enterA = () => b.classList.add('is-linked-hover');
+    const leaveA = () => b.classList.remove('is-linked-hover');
+    const enterB = () => a.classList.add('is-linked-hover');
+    const leaveB = () => a.classList.remove('is-linked-hover');
+
+    add(a, 'mouseenter', enterA);
+    add(a, 'mouseleave', leaveA);
+    add(a, 'focusin',    enterA);
+    add(a, 'focusout',   leaveA);
+
+    add(b, 'mouseenter', enterB);
+    add(b, 'mouseleave', leaveB);
+    add(b, 'focusin',    enterB);
+    add(b, 'focusout',   leaveB);
+  }
+
+  function teardownLinkedDesktop(container) {
+    container.querySelectorAll('.tile').forEach(teardownOne);
+  }
+
+  function add(target, ev, fn) {
+    target.addEventListener(ev, fn);
+    (target[HANDLERS] ||= []).push({ ev, fn });
+  }
+  function teardownOne(target) {
+    const hs = target[HANDLERS];
+    if (!hs) return;
+    hs.forEach(({ ev, fn }) => target.removeEventListener(ev, fn));
+    target[HANDLERS] = [];
+    target.classList.remove('is-linked-hover');
+  }
+})();

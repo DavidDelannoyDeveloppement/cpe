@@ -36,7 +36,6 @@ body.page-definition {
         display: flex;
         justify-content: center;
         gap: clamp(0.8rem, 1.6vw, 1.2rem);
-        margin-top: clamp(1.2rem, 2.4vw, 2rem);
 
         .btn {
         position: relative;
@@ -137,7 +136,9 @@ main {
             img {
             width: 100%;
             max-width: 350px;
-            border-radius: 12px;
+            border-radius: 0.4rem; 
+            border-bottom-right-radius: 1rem;
+            border-top-left-radius: 1rem;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
             display: block;
             margin: 0 auto;
@@ -158,52 +159,63 @@ main {
         margin: 0 auto;
         
 
-    .info-grid { 
-        display: grid; 
-        grid-template-columns: repeat(3, minmax(0,1fr)); 
-        gap: .8rem; 
-        margin-top: .8rem; 
+        .info-grid { 
+            display: grid; 
+            grid-template-columns: repeat(3, minmax(0,1fr)); 
+            gap: .8rem; 
+            margin-top: .8rem; 
 
-        @media (max-width: 1024px) {
-        grid-template-columns: repeat(2, 1fr);
-        }
+            @media (max-width: 1024px) {
+            grid-template-columns: repeat(2, 1fr);
+            }
 
-        @media (max-width: 600px) {
-        grid-template-columns: 1fr;
+            @media (max-width: 600px) {
+            grid-template-columns: 1fr;
+            }
+        
         }
-    
-    }
-    .info-card { 
-        background: #fff; 
-        border: 1px solid rgba(26,46,77,.08); 
-        border-radius: 0.4rem; 
-        border-bottom-right-radius: 1rem;
-        border-top-left-radius: 1rem;
-        padding: .9rem; 
-        text-align: center; 
-        transition: transform .12s ease, 
-        box-shadow .12s ease; 
-    }
-    
-    .info-card:hover { 
-        transform: translateY(-6px); 
-        box-shadow: 0 14px 30px rgba(26,46,77,.12); 
-    }
-    
-    .info-card .ico { 
-        font-size: 1.35rem; 
-        display: block; 
-        margin-bottom: .25rem; 
-    }
-    
-    .info-card strong { 
-        display: block; 
-        color: $bleu; 
-    }
-    
-    .info-card small { 
-        color: $vert1; 
-    }
+        .info-card { 
+            background: #fff; 
+            border: 1px solid rgba(26,46,77,.08); 
+            border-radius: 0.4rem; 
+            border-bottom-right-radius: 1rem;
+            border-top-left-radius: 1rem;
+            padding: .9rem; 
+            text-align: center; 
+            transition: transform .12s ease, 
+            box-shadow .12s ease; 
+        }
+        
+        .info-card:hover { 
+            transform: translateY(-6px); 
+            box-shadow: 0 14px 30px rgba(26,46,77,.12); 
+        }
+        
+        .info-card .ico { 
+            font-size: 1.35rem; 
+            display: block; 
+            margin-bottom: .25rem; 
+        }
+        
+        .info-card strong { 
+            display: block; 
+            color: $bleu; 
+        }
+        
+        .info-card small { 
+            color: $vert1; 
+        }
+        @media (max-width: 990px) {
+        .info-grid { grid-template-columns: 1fr 1fr; }
+        .flip-grid { grid-template-columns: 1fr 1fr; }
+        .tiles { grid-template-columns: 1fr 1fr; }
+        .goals { grid-template-columns: 1fr 1fr; }
+        .row { grid-template-columns: 1fr 1fr 1fr; }
+        }
+        @media (max-width: 560px) {
+        .info-grid, .flip-grid, .tiles, .goals { grid-template-columns: 1fr; }
+        .btn { width: 100%; }
+        }
     }
 }
 
@@ -229,6 +241,8 @@ main {
             max-width: 900px;
             margin: 0 auto;
             text-align: left;
+            margin-bottom: clamp(1.02rem, 2.04vw, 1.7rem);
+
 
             li {
             background: rgba($bleu, 0.05);
@@ -308,7 +322,7 @@ main {
                 border-top-left-radius: 1rem; 
                 box-shadow: 1px 1px 3px $bleu;
                 padding: 1.2rem; 
-                min-height: 110px; 
+                min-height: clamp(70px, 10vw, 90px);
                 display: grid; 
                 place-items: center; 
                 text-align: center; 
@@ -360,9 +374,10 @@ main {
 
 
         .principe-list > li > ul {
-            margin: .35rem 0 0 3.2rem;
+            margin: .35rem auto 0;
             padding: 0;
-            list-style: disc;
+            list-style: disc inside;
+            text-align: center;
             }
 
         .principe-list > li > ul li {
@@ -386,32 +401,378 @@ main {
             }
             .principe-list > li > ul {
                 margin-left: 0;
-                padding-left: 0.2rem
+            }
+        }
+    }
+}
+
+
+.domaines {
+    // background-color: $creme;
+    padding: clamp(2rem, 5vw, 4rem) 1rem;
+    color: $bleu;
+    text-align: center;
+
+    .domaines-content {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0;
+        align-items: center;
+        max-width: 1100px;
+        margin: 0 auto;
+
+        @media (max-width: 990px) {
+        grid-template-columns: 1fr;
+        text-align: center;
+        }
+
+        /* === Colonne gauche : texte + tuiles === */
+        .domaines-text {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 1rem 0;
+        height: 100%;
+        font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+        line-height: 1.7;
+
+            /* Grille 2×2 centrée */
+            .tiles {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: .2rem;
+                width: 65%;
+                margin: 0 auto;
+                border-radius: .4rem;
+                border-bottom-right-radius: 1rem;
+                border-top-left-radius: 1rem;
+
+                @media (max-width: 990px) {
+                width: 100%;
+                grid-template-columns: 1fr;
+                gap: .6rem;
+                justify-items: center; /* centre les cartes */
+                }
+            }
+
+            /* Tuile texte */
+            .tile {
+                aspect-ratio: 2 / 3;
+                display: grid;
+                place-content: center;
+                overflow: hidden;
+                background-color: $creme;
+                border: 1px solid rgba(26, 46, 77, 0.45);
+                padding: 1.1rem;
+                text-align: center;
+                text-decoration: none;
+                color: $vert1;
+                transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+
+                /* coins personnalisés par position (1..4) */
+                &:nth-child(1) { border-top-left-radius: 1rem; }
+                &:nth-child(2) { border-top-right-radius: .4rem; }
+                &:nth-child(3) { border-bottom-left-radius: .4rem; }
+                &:nth-child(4) { border-bottom-right-radius: 1rem; }
+
+                /* Hover local et hover “lié” via JS */
+                &:hover,
+                &.is-linked-hover {
+                transform: translateY(-12px);
+                box-shadow: 0 14px 30px rgba(26,46,77,.12);
+                border-color: rgba(39,193,152,.5);
+                }
+
+                span { font-size: 1.6rem; line-height: 1; }
+                em   { display: block; margin-top: .335rem; font-style: normal; color: $bleu; }
+
+                @media (max-width: 990px) {
+                /* cartes plus petites et centrées */
+                width: clamp(220px, 82vw, 320px);
+                aspect-ratio: 3 / 2; /* moins haut en mobile */
+                margin: 0 auto;
+                padding: 0;          /* le flip gère son propre padding */
+                cursor: pointer;     /* interactif en mobile */
+                perspective: 1000px; /* préparation flip */
+                }
             }
         }
 
+        /* === Colonne droite : images 2×2, même comportement === */
+        .domaines-media {
+            .tiles {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: .2rem;
+                width: 65%;
+                margin: 0 auto;
+
+                @media (max-width: 990px) {
+                width: 100%;
+                grid-template-columns: 1fr;
+                gap: .6rem;
+                }
+            }
+
+            .tile {
+                aspect-ratio: 2 / 3;
+                display: grid;
+                place-content: center;
+                overflow: hidden;
+                border: 1px solid rgba(26, 46, 77, 0.45);
+                padding: 0;                     /* pas de padding autour de l’image */
+                background: transparent;
+                transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+                cursor: pointer;
+
+                /* mêmes coins que la colonne texte */
+                &:nth-child(1) { border-top-left-radius: 1rem; }
+                &:nth-child(2) { border-top-right-radius: .4rem; }
+                &:nth-child(3) { border-bottom-left-radius: .4rem; }
+                &:nth-child(4) { border-bottom-right-radius: 1rem; }
+
+                &:hover,
+                &.is-linked-hover {
+                transform: translateY(-12px);
+                box-shadow: 0 14px 30px rgba(26,46,77,.12);
+                border-color: rgba(39,193,152,.5);
+                }
+
+                img {
+                width: 100%;
+                height: 100%;
+                display: block;
+                object-fit: cover;            /* remplit la tuile sans déformer */
+                object-position: center;
+                }
+            }
+        }
+
+        /* === Colonne image unique (si utilisée ailleurs) === */
+        .domaines-img img {
+        width: 100%;
+        max-width: 350px;
+        border-radius: .4rem;
+        border-bottom-right-radius: 1rem;
+        border-top-left-radius: 1rem;
+        box-shadow: 0 4px 12px rgba(0,0,0,.2);
+        display: block;
+        margin: 0 auto;
+        }
+    }
+
+
+    /* ===== Mobile / tablette (≤ 990px) : paires texte | image, portrait, sans anim ===== */
+    @media (max-width: 990px) {
+        /* Grille mobile générée par le JS, à l’intérieur de chaque .domaines-content */
+        .domaines-mobile {
+            display: grid;
+            gap: 1rem;
+        }
+
+        /* Une paire = 2 colonnes (tuile texte | tuile image) */
+        .domaines-mobile .pair {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: .75rem;
+            align-items: stretch;
+        }
+
+        /* Taille commune des vignettes en format portrait */
+        .domaines-mobile .pair .tile {
+            width: 100%;
+            aspect-ratio: 2 / 3;
+            margin: 0;
+            transform: none;
+            transition: none;
+            box-shadow: none;
+        }
+
+        /* --- Vignette TEXTE (même look que desktop) --- */
+        .domaines-mobile .pair .tile.tile-text {
+            background-color: $gris-200;
+            border: 1px solid rgba(26, 46, 77, 0.45);
+            color: $vert1;
+            padding: 1.1rem;
+            text-align: center;
+
+            border-radius: .4rem;
+            border-bottom-right-radius: 1rem;
+            border-top-left-radius: 1rem;
+        }
+
+        /* typo interne du bloc texte existant */
+        .domaines-mobile .pair .tile.tile-text > .tile-text span { 
+            font-size: 1.6rem; line-height: 1; 
+        }
+        .domaines-mobile .pair .tile.tile-text > .tile-text em { 
+            display: block; margin-top: .335rem; font-style: normal; color: $bleu; 
+        }
+        .domaines-mobile .pair .tile.tile-text > .tile-text small { 
+            display: block; margin-top: .15rem; 
+        }
+
+        /* --- Vignette IMAGE (bordure/arrondis + image qui remplit) --- */
+        .domaines-mobile .pair .tile.tile-image {
+            overflow: hidden;
+            border: 1px solid rgba(26, 46, 77, 0.45);
+            border-radius: .4rem;
+            border-bottom-right-radius: 1rem;
+            border-top-left-radius: 1rem;
+            padding: 0;
+        }
+        .domaines-mobile .pair .tile.tile-image img {
+            width: 100%; height: 100%;
+            display: block;
+            object-fit: cover; object-position: center;
+        }
+        /* Centrage du contenu des tuiles texte */
+        .domaines-mobile .pair .tile.tile-text {
+        display: grid;          
+        place-items: center;    
+        }
+
+        .domaines-mobile .pair .tile.tile-text > .tile-text {
+        text-align: center; 
+        margin-top:-3rem;
+        }
+    }
+
+
+    /* ===========================
+        Liste “Pertinent lorsque…”
+        =========================== */
+    .domaines-list {
+        list-style: none;
+        margin: 2rem 0 0;
+        padding: 0;
+        display: grid;
+        gap: .8rem;
+        margin-bottom: clamp(1.02rem, 2.04vw, 1.7rem);
+    }
+
+    .domaines-list > h4 {
+        margin: 0;
+        text-align: center;
+        font-size: clamp(1.2rem, 2vw, 1.4rem);
+        line-height: 1.35;
+        color: $bleu;
+    }
+
+    .domaines-list > ul {
+        margin: .35rem auto 0;
+        padding: 0;
+        max-width: 75ch;
+        text-align: center;
+        list-style: disc inside;
+    }
+
+    .domaines-list > ul li {
+        margin: .35rem 0;
+        font-size: clamp(1.02rem, 1.6vw, 1.12rem);
+        line-height: 1.6;
+    }
+
+    @media (max-width: 990px) {
+        .domaines-list > ul { max-width: 68ch; }
     }
 }
 
 
 
+.objectifs {
+    padding: clamp(2rem, 5vw, 4rem) 1rem calc(clamp(2rem, 5vw, 4rem)) 1rem;
+    color: $bleu;
+    text-align: justify;
 
 
+    .objectifs-content {
+        width: min(1100px, 92vw); 
+        margin: 0 auto;
+        
+        
+        .goals {
+            list-style: none;
+            margin: .8rem 0 1rem;
+            padding: 0;
+            
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: .8rem;
+
+            @media (max-width: 1024px) {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            @media (max-width: 600px) {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .goals li {
+        background: rgba($orange-cta, .06);
+        border: 1px solid rgba($orange-cta, .25);
+        border-left: 4px solid $orange-cta;
+        border-radius: .4rem;
+        border-bottom-right-radius: 1rem;
+        border-top-left-radius: 1rem;
+        padding: .9rem;
+        text-align: center;
+        transition: transform .12s ease, box-shadow .12s ease;
+        }
+
+        .goals li:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 10px 10px rgba($bleu, .18);
+        }
+
+        /* Si tu mets une icône/emoji au début, tu peux l'entourer d'un span.ico */
+        .goals li .ico {
+        font-size: 1.35rem;
+        display: block;
+        margin-bottom: .25rem;
+        }
+
+        /* Mise en valeur des morceaux en <strong> dans le texte */
+        .goals li strong {
+        color: $bleu;         /* même teinte que info-card */
+        font-weight: 700;
+        }
+
+        .goals--secondary li {
+        background: rgba($bleu-accent, .06);
+        border: 1px solid rgba($bleu-accent, .25);
+        border-left: 4px solid $bleu-accent;
+        }
+        .goals--secondary li:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 10px 10px rgba($bleu, .18);
+        }
+        .goals--secondary li strong { 
+            color: $bleu-accent;
+        }
 
 
+    }
+
+    .h4-goals {
+            text-align: center;
+            color: $orange-cta;
+            font-size: 1.5rem;
+            margin-top: 2rem;
+        }
+
+    .h4-gaols-secondary {
+            text-align: center;
+            color: $bleu-accent;
+            font-size: 1.5rem;
+            margin-top: 2rem;
+        }
 
 
-
-
-
-@media (max-width: 990px) {
-  .info-grid { grid-template-columns: 1fr 1fr; }
-  .flip-grid { grid-template-columns: 1fr 1fr; }
-  .tiles { grid-template-columns: 1fr 1fr; }
-  .goals { grid-template-columns: 1fr 1fr; }
-  .row { grid-template-columns: 1fr 1fr 1fr; }
 }
-@media (max-width: 560px) {
-  .info-grid, .flip-grid, .tiles, .goals { grid-template-columns: 1fr; }
-  .btn { width: 100%; }
-}
+
+
+
+
+
+
