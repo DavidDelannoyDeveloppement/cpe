@@ -10,7 +10,8 @@
 // components
 @use "components/header" as *;
 @use "components/side_menu" as *;
-// @use "separation-section" as *;
+@use "components/footer" as *;
+@use "components/separation-section" as *;
 
 
 * {

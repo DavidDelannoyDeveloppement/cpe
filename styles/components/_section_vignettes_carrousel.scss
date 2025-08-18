@@ -1,0 +1,179 @@
+@use '../utils/variables' as *;
+@use '../utils/mixins' as *;
+
+.vignettes-carousel {
+  --edge-offset: clamp(2rem, (100vw - 1200px)/2 + 1rem, 12vw);
+  --front-fs: clamp(1rem, 1.4vw, 1.15rem);
+  --back-fs: clamp(.95rem, 1.2vw, 1.05rem);
+  --cta-fs: clamp(.95rem, 1.1vw, 1.05rem);
+  /* icônes emoji/texte */
+  --icon-fs: clamp(1.7rem, 3.57vw, 2.72rem);
+  /* gradient uniquement sur la face avant */
+  --front-grad-angle: 135deg;
+
+  /* hauteur de section (ne change pas la hauteur des cartes) */
+  --section-pad-y: clamp(2.4rem, 6vw, 6rem);
+  padding: var(--section-pad-y) .8rem;
+
+  .vc-title {
+    margin: 0 0 clamp(.6rem, 1.6vw, 1rem);
+    font-size: clamp(1.8rem, 2.5vw, 2.4rem);
+    font-weight: 700;
+    color: $creme;
+    padding-bottom: 3rem; /* pour remonter visuellement sous gros padding section */
+  }
+
+  .vc-inner { position: relative; max-width: 1200px; margin: 0 auto; isolation: isolate; }
+  .vc-viewport { overflow: hidden; position: relative; }
+
+  .vc-track {
+    --gap: .6rem;
+    --item-w: clamp(180px, 26vw, 260px);
+    display: flex;
+    gap: var(--gap);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    will-change: transform;
+    transform: translateX(0);
+  }
+
+  /* === Variantes figées (évite les couleurs qui "glissent") === */
+  .vc-item { flex: 0 0 var(--item-w); perspective: 1000px; }
+
+  .vc-item.vc-a {
+    --front-bg: color-mix(in oklab, #{$bleu-accent} 20%, #{$creme});
+    --front-fg: #{$bleu};
+    --front-fw: 600;
+    --back-bg: #{$creme};
+    --back-fg: #{$bleu};
+  }
+
+  .vc-item.vc-b {
+    --front-bg: color-mix(in oklab, #{$vert1} 30%, #{$creme});
+    --front-fg: #{$bleu};
+    --front-fw: 600;
+    --back-bg: #{$creme};
+    --back-fg: #{$bleu};
+  }
+
+  .vc-card {
+    display: block;
+    position: relative;
+    min-height: clamp(120px, 18vw, 160px);
+    transform-style: preserve-3d;
+    transition: transform .6s ease;
+    outline: 0;
+    cursor: default; /* seule la CTA est cliquable */
+  }
+
+  .vc-face {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    padding: .9rem 1rem;
+    text-align: center;
+    border: 1px solid rgba(26,46,77,.08);
+    border-radius: .4rem;
+    border-bottom-right-radius: 1rem;
+    border-top-left-radius: 1rem;
+    box-shadow: 0 2px 6px rgba(26,46,77,.08);
+    backface-visibility: hidden;
+  }
+
+  /* === Face avant : gradient uniquement en background === */
+  .vc-front {
+    background: var(--front-bg, #fff); /* fallback */
+    background-image: linear-gradient(
+      var(--front-grad-angle),
+      color-mix(in oklab, var(--front-bg) 96%, #fff) 0%,
+      var(--front-bg) 70%,
+      color-mix(in oklab, var(--front-bg) 90%, #000) 100%
+    );
+    color: var(--front-fg, #{$bleu});
+    display: grid;
+    gap: .45rem;
+    place-items: center;
+    padding-top: .2rem;
+  }
+  .vc-label { font-weight: var(--front-fw, 700); font-size: var(--front-fs); line-height: 1.15; }
+
+  /* Icône emoji/texte */
+  .vc-front .vc-icon {
+    font-size: var(--icon-fs);
+    line-height: 1;
+    display: inline-block;
+    width: auto; height: auto;
+    background: none; -webkit-mask: none; mask: none;
+  }
+
+  /* === Face arrière (couleur pleine, pas de gradient) === */
+  .vc-back {
+    background: var(--back-bg, #fff);
+    color: var(--back-fg, #{$bleu});
+    transform: rotateY(180deg);
+    gap: .25rem; /* espace entre texte et lien pour éviter la collision */
+  }
+  .vc-back, .vc-back * { font-size: var(--back-fs); }
+  .vc-back p { margin: 0 0 .35rem 0; font-weight: 200; }
+
+  /* Flip */
+  .vc-card:hover,
+  .vc-card:focus,
+  .vc-card:focus-visible { transform: rotateY(180deg); }
+
+  /* CTA (seul lien cliquable) */
+  .vc-cta {
+    display: inline-block;
+    font-weight: 600;
+    color: $orange-cta;
+    font-size: var(--cta-fs);
+    text-decoration: none;
+  }
+  .vc-cta:hover { color: $vert1; }
+
+  /* Boutons (par défaut : centrés verticalement dans .vc-inner) */
+  .vc-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 42px; height: 42px; border-radius: 999px;
+    border: 1px solid rgba(26,46,77,.12);
+    background: color-mix(in oklab, $creme 70%, #fff 30%);
+    box-shadow: 0 2px 8px rgba(26,46,77,.15);
+    display: grid; place-items: center;
+    cursor: pointer; z-index: 2;
+    transition: transform .15s ease, box-shadow .15s ease, opacity .15s ease;
+  }
+  .vc-btn[disabled] { opacity: .35; pointer-events: none; }
+  .vc-btn:hover { transform: translateY(calc(-50% - 1px)); box-shadow: 0 6px 14px rgba(26,46,77,.22); }
+  .vc-prev { left: .2rem; } .vc-next { right: .2rem; }
+  .vc-ico { font-size: 1.6rem; line-height: 1; color: $orange-cta; }
+
+  /* Desktop : écarter les boutons vers l'extérieur */
+  @media (min-width: 1025px) {
+    .vc-prev { left: calc(var(--edge-offset) * -0.5); }
+    .vc-next { right: calc(var(--edge-offset) * -0.5); }
+  }
+
+  /* Mobile : boutons réellement centrés sur le carrousel (dockés dans .vc-viewport via JS) */
+  @media (max-width: 640px) {
+    .vc-btn { width: 36px; height: 36px; }
+    .vc-ico { font-size: 1.4rem; }
+    .vc-viewport .vc-btn { top: 50%; transform: translateY(-50%); }
+
+    /* 👉 Ajustements de taille pour le verso et la CTA */
+    & {
+      --back-fs: clamp(.76rem, 3vw, .88rem); /* plus petit qu'avant pour mobile */
+      --cta-fs:  clamp(.76rem, 3vw, .88rem);
+    }
+  }
+
+  @media (max-width: 380px) {
+    & {
+      --back-fs: clamp(.72rem, 3.4vw, .84rem);
+      --cta-fs:  clamp(.72rem, 3.4vw, .84rem);
+    }
+  }
+}

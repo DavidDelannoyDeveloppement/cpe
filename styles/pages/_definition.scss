@@ -110,7 +110,7 @@ main {
     color: $bleu;
     text-align: justify;
 
-    .intro-content {
+    .intro-container {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 2rem;
@@ -154,7 +154,7 @@ main {
     color: $bleu;
     text-align: justify;
     
-    .container-definition {
+    .definition-container {
         width: min(1100px, 92vw); 
         margin: 0 auto;
         
@@ -227,7 +227,7 @@ main {
     color: $bleu;
     text-align: justify;
     
-    .container-cadre {
+    .cadre-container {
         width: min(1100px, 92vw); 
         margin: 0 auto;
         
@@ -283,7 +283,7 @@ main {
     text-align: justify;
 
 
-    .container-principe {
+    .principe-container {
         width: min(1100px, 92vw); 
         margin: 0 auto;
 
@@ -413,7 +413,7 @@ main {
     color: $bleu;
     text-align: center;
 
-    .domaines-content {
+    .domaines-container {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 0;
@@ -637,6 +637,17 @@ main {
         margin-top:-3rem;
         }
     }
+    @media (max-width: 260px) {
+        .domaines-mobile .pair {
+            grid-template-columns: 1fr;
+            grid-template-areas:
+            "text"
+            "image";
+            gap: .6rem; /* petit air entre les deux */
+        }
+        .domaines-mobile .pair .tile.tile-text  { grid-area: text; }
+        .domaines-mobile .pair .tile.tile-image { grid-area: image; }
+    }
 
 
     /* ===========================
@@ -686,7 +697,7 @@ main {
     text-align: justify;
 
 
-    .objectifs-content {
+    .objectifs-container {
         width: min(1100px, 92vw); 
         margin: 0 auto;
         
@@ -756,14 +767,14 @@ main {
 
     .h4-goals {
             text-align: center;
-            color: $orange-cta;
+            color: $bleu;
             font-size: 1.5rem;
             margin-top: 2rem;
         }
 
     .h4-gaols-secondary {
             text-align: center;
-            color: $bleu-accent;
+            color: $bleu;
             font-size: 1.5rem;
             margin-top: 2rem;
         }
@@ -773,6 +784,96 @@ main {
 
 
 
+.comparatif {
+    padding: clamp(2rem, 5vw, 4rem) 1rem calc(clamp(2rem, 5vw, 4rem) / 2) 1rem;
+    color: $bleu;
+    text-align: center;
+
+    
+    .comparatif-container {
+        width: min(1100px, 92vw); 
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+
+
+        .colonne {
+            
 
 
 
+
+            
+            .col-cpe {
+                background-color: $vert1;
+            }
+            
+            
+            
+            .col-classic {
+                background-color: red;
+            }
+        }
+        
+        #objectif {
+            background-color: $bleu-pastel;
+
+
+        }
+
+        h3 { text-align: center; margin-bottom: clamp(1rem, 3vw, 1.6rem); }
+
+
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.expert-section {
+    padding: clamp(2rem, 5vw, 4rem) 1rem;
+    color: $bleu;
+    text-align: justify;
+
+
+    .expert-content {
+        width: min(1100px, 92vw); 
+        margin: 0 auto;
+
+        .expert-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 1rem 0;
+            height: 100%;
+            font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+            line-height: 1.7;
+
+            p { margin-bottom: 1rem; }
+            .highlight { font-weight: bold; margin-top: 1.5rem; }
+
+            .h3-resume {color: $vert1;}
+
+            @media (max-width: 768px) {
+            align-items: center;
+            }
+        // .expert-image {
+        //     ...
+        // }
+        }
+    }
+
+}

@@ -94,7 +94,9 @@
     img {
       width: 100%;
       max-width: 350px;
-      border-radius: 12px;
+      border-radius: 0.4rem; 
+      border-bottom-right-radius: 1rem;
+      border-top-left-radius: 1rem;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
       display: block;
       margin: 0 auto;

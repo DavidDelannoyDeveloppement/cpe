@@ -147,8 +147,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-/* ==================================================
-    =======   Calcul et placement Vignettes    =======
+/* ===================================================
+    ========   Vignettes Retournement Card    ========
     ================================================== */
 (function(){
   function clamp(n,min,max){return Math.max(min,Math.min(n,max));}
@@ -262,6 +262,163 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+/* ===================================================
+    ========   Section Vignettes Carrousel    ========
+    ================================================== */
+(function () {
+  const roots = document.querySelectorAll('.vignettes-carousel .vc-inner');
+  if (!roots.length) return;
+
+  roots.forEach((root) => {
+    const viewport = root.querySelector('.vc-viewport');
+    const track = root.querySelector('.vc-track');
+    const prevBtn = root.querySelector('.vc-prev');
+    const nextBtn = root.querySelector('.vc-next');
+    if (!viewport || !track || !prevBtn || !nextBtn) return;
+
+    // === 1) Figer les variantes A/B une fois (évite les couleurs qui "glissent") ===
+    (function assignVariantsOnce() {
+      const items = track.querySelectorAll('.vc-item');
+      items.forEach((el, i) => {
+        if (!el.classList.contains('vc-a') && !el.classList.contains('vc-b')) {
+          el.classList.add(i % 2 === 0 ? 'vc-a' : 'vc-b'); // index 0 => A, 1 => B, etc.
+        }
+      });
+    })();
+
+    // === 2) En mobile, ancrer les boutons *dans* .vc-viewport pour un centrage vertical exact ===
+    const originalPrevNextSiblings = {
+      prevNextRef: viewport,                    // point de référence
+      before: viewport,                         // prev doit être AVANT viewport
+      after: viewport.nextSibling               // next doit être APRÈS viewport
+    };
+
+    function dockButtonsIntoViewport() {
+      // déplacer les boutons à l'intérieur du viewport
+      if (prevBtn.parentElement !== viewport) viewport.appendChild(prevBtn);
+      if (nextBtn.parentElement !== viewport) viewport.appendChild(nextBtn);
+    }
+
+    function undockButtonsToOriginal() {
+      // remettre les boutons à leur place d'origine (prev avant viewport, next après)
+      if (prevBtn.parentElement !== root) root.insertBefore(prevBtn, originalPrevNextSiblings.before);
+      if (nextBtn.parentElement !== root) {
+        if (originalPrevNextSiblings.after && originalPrevNextSiblings.after.parentNode === root) {
+          root.insertBefore(nextBtn, originalPrevNextSiblings.after);
+        } else {
+          // si after a changé/disparu, on le remet juste après le viewport
+          if (viewport.nextSibling) root.insertBefore(nextBtn, viewport.nextSibling);
+          else root.appendChild(nextBtn);
+        }
+      }
+    }
+
+    const isMobile = () => window.matchMedia('(max-width: 640px)').matches;
+
+    function updateButtonDocking() {
+      if (isMobile()) dockButtonsIntoViewport();
+      else undockButtonsToOriginal();
+    }
+
+    // === 3) Carrousel défilement continu ===
+    let offset = 0, gapPx = 0, running = true, rafId = null, lastT = 0;
+    const speed = Math.max(10, Number(root.getAttribute('data-speed')) || 40);
+
+    const getGap = () => parseFloat(getComputedStyle(track).gap || '0') || 0;
+
+    const totalWidth = () => {
+      const items = [...track.children];
+      const widths = items.map(el => el.getBoundingClientRect().width);
+      return widths.reduce((a, b) => a + b, 0) + Math.max(0, items.length - 1) * gapPx;
+    };
+
+    const ensureUsable = () => {
+      gapPx = getGap();
+      const usable = totalWidth() > viewport.getBoundingClientRect().width + 20;
+      prevBtn.disabled = !usable;
+      nextBtn.disabled = !usable;
+      if (!usable) { stop(); offset = 0; track.style.transform = 'translateX(0)'; } else { start(); }
+    };
+
+    const stepForward = (px) => {
+      offset += px;
+      let first = track.firstElementChild;
+      while (first) {
+        const w = first.getBoundingClientRect().width + gapPx;
+        if (offset >= w) { offset -= w; track.appendChild(first); first = track.firstElementChild; }
+        else break;
+      }
+      track.style.transform = `translateX(${-offset}px)`;
+    };
+
+    const stepBackward = (px) => {
+      offset -= px;
+      while (offset < 0) {
+        const last = track.lastElementChild;
+        const w = last.getBoundingClientRect().width + gapPx;
+        track.prepend(last); offset += w;
+      }
+      track.style.transform = `translateX(${-offset}px)`;
+    };
+
+    const tick = (t) => {
+      if (!lastT) lastT = t;
+      const dt = Math.min(0.05, (t - lastT) / 1000);
+      lastT = t;
+      if (running) stepForward(speed * dt);
+      rafId = requestAnimationFrame(tick);
+    };
+
+    const start = () => { if (rafId) return; running = true; lastT = 0; rafId = requestAnimationFrame(tick); };
+    const stop  = () => { running = false; if (rafId) { cancelAnimationFrame(rafId); rafId = null; } };
+
+    const perClick = Math.max(1, Number(root.getAttribute('data-step')) || 1);
+    const getItemW = () => {
+      const first = track.querySelector('.vc-item');
+      return first ? first.getBoundingClientRect().width + gapPx : 240 + gapPx;
+    };
+    const nudge = (dir) => {
+      const delta = getItemW() * perClick;
+      stop(); if (dir > 0) stepForward(delta); else stepBackward(delta); start();
+    };
+
+    root.addEventListener('mouseenter', stop);
+    root.addEventListener('mouseleave', start);
+    root.addEventListener('focusin', stop);
+    root.addEventListener('focusout', () => { if (!root.contains(document.activeElement)) start(); });
+
+    nextBtn.addEventListener('click', () => nudge(1));
+    prevBtn.addEventListener('click', () => nudge(-1));
+
+    // Mobile : tap pour focus/flip sans bloquer la CTA
+    const isTouch = window.matchMedia('(hover: none)').matches || 'ontouchstart' in window;
+    if (isTouch) {
+      root.querySelectorAll('.vc-card').forEach((card) => {
+        card.addEventListener('touchstart', (e) => {
+          const target = e.target;
+          if (target && !(target.closest && target.closest('.vc-cta'))) {
+            card.focus({ preventScroll: true });
+          }
+        }, { passive: true });
+      });
+    }
+
+    window.addEventListener('resize', () => {
+      updateButtonDocking();
+      const prevLeft = offset;
+      gapPx = getGap();
+      ensureUsable();
+      offset = prevLeft;
+      track.style.transform = `translateX(${-offset}px)`;
+    }, { passive: true });
+
+    // init
+    updateButtonDocking();
+    ensureUsable();
+  });
+})();
+
+
 
 // ===========================
 // Personnalisation du wrapper
@@ -345,7 +502,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 // ===========================
-//tile survol page definition
+//tile survol page definition/domaines
 (() => {
   const BREAKPOINT = 990;
   const mq = window.matchMedia(`(max-width:${BREAKPOINT}px)`);
@@ -356,7 +513,7 @@ document.addEventListener('DOMContentLoaded', () => {
   mq.addEventListener?.('change', refreshAll);
 
   function refreshAll() {
-    document.querySelectorAll('.domaines-content').forEach(container => {
+    document.querySelectorAll('.domaines-container').forEach(container => {
       const labelsWrap = container.querySelector('.tiles--labels'); // grille texte
       const imagesWrap = container.querySelector('.tiles--images'); // grille images
       if (!labelsWrap || !imagesWrap) return;
@@ -391,19 +548,21 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ------------------- MOBILE ------------------- */
+  // REMPLACE ta fonction toMobile par celle-ci
   function toMobile(container, s) {
     if (s.mobileGrid) return; // déjà actif
 
+    // conteneur mobile
     const grid = document.createElement('div');
     grid.className = 'domaines-mobile';
     container.appendChild(grid);
     s.mobileGrid = grid;
 
-    // masque les grilles d’origine
+    // on cache les grilles d’origine
     s.labelsWrap.style.display = 'none';
     s.imagesWrap.style.display = 'none';
 
-    // pairage par data-key si présent, sinon par index
+    // pairage par data-key si présent, sinon index
     const labels = s.slotsLabels.map(x => x.node);
     const images = s.slotsImages.map(x => x.node);
     const mapImgByKey = new Map(images.map(el => [el.dataset.key, el]));
@@ -415,15 +574,24 @@ document.addEventListener('DOMContentLoaded', () => {
       const key = label.dataset.key;
       const img = key ? mapImgByKey.get(key) : images[i];
 
-      // classes modif sur l’élément .tile (pas l’enfant interne)
+      // classes de style SUR .tile
       label.classList.add('tile-text');
       if (img) img.classList.add('tile-image');
 
-      pair.appendChild(label);
-      if (img) pair.appendChild(img);
+      // ➜ ALTERNE : lignes impaires = [texte | image], lignes paires = [image | texte]
+      const isOddRow = i % 2 === 1; // 0-based : 0,1,2,3...
+      if (isOddRow) {
+        if (img) pair.appendChild(img);
+        pair.appendChild(label);
+      } else {
+        pair.appendChild(label);
+        if (img) pair.appendChild(img);
+      }
+
       grid.appendChild(pair);
     });
   }
+
 
   /* ------------------- RESTAURE (quand on repasse desktop) ------------------- */
   function fromMobileIfAny(s) {
@@ -498,3 +666,4 @@ document.addEventListener('DOMContentLoaded', () => {
     target.classList.remove('is-linked-hover');
   }
 })();
+
