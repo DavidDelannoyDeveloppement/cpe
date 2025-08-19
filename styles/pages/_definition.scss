@@ -785,45 +785,145 @@ main {
 
 
 .comparatif {
-    padding: clamp(2rem, 5vw, 4rem) 1rem calc(clamp(2rem, 5vw, 4rem) / 2) 1rem;
-    color: $bleu;
-    text-align: center;
+  padding: clamp(2rem, 5vw, 4rem) 1rem calc(clamp(2rem, 5vw, 4rem) / 2) 1rem;
+  color: $bleu;
+  text-align: center;
 
-    
-    .comparatif-container {
-        width: min(1100px, 92vw); 
-        margin: 0 auto;
+  .comparatif-container {
+    width: min(1200px, 92vw);
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: .8rem;
+
+    .colonne {
+      flex: 1 1 0;
+      display: flex;
+      flex-direction: column;
+      padding: 1rem 3rem;
+      border-radius: .4rem;
+      border-bottom-right-radius: 1rem;
+      border-top-left-radius: 1rem;
+
+      .h4-colonne {
         display: flex;
+        align-items: center;
         justify-content: center;
+        text-align: center;
+        height: clamp(3rem, 6vw, 4.2rem);
+        line-height: 1.25;
+        background-color: $creme;
+        margin: 0 0 1rem 0;
+        padding: 0.3rem 1rem;
+        overflow-wrap: anywhere;
+        color: $bleu;
+        border-radius: .4rem;
+        border-bottom-right-radius: 1rem;
+        border-top-left-radius: 1rem;
+        box-shadow: 2px 2px 3px $gris-500;
+        font-size: 1.2rem;
+      }
 
+      .col-list {
+        list-style: none;
+        margin: 0 auto;
+        padding: 0;
+        max-width: 60ch;
 
-        .colonne {
-            
-
-
-
-
-            
-            .col-cpe {
-                background-color: $vert1;
-            }
-            
-            
-            
-            .col-classic {
-                background-color: red;
-            }
+        li {
+          background-color: $creme;
+          margin: .5rem 0;
+          padding: .5rem .75rem;
+          border-radius: .6rem;
+          box-shadow: 2px 2px 3px $gris-500;
         }
-        
-        #objectif {
-            background-color: $bleu-pastel;
+      }
+    }
 
+    #objectif {
+      background: linear-gradient(135deg, $bleu-accent, rgba(0, 12, 122, 0.9));
+      color: $bleu;
+      box-shadow: 2px 4px 6px $gris-400;
+      border-left: 5px solid rgba($bleu,0.8);
+    }
 
+    #col-cpe {
+      background: linear-gradient(135deg, rgba(0, 230, 0, 0.9), $vert2);
+      box-shadow: 5px 10px 16px $gris-400;
+      color: rgb(0, 83, 0);
+      border-left: 5px solid rgba(0, 58, 0, .8);
+      transition: transform .35s ease, box-shadow .35s ease;
+      will-change: transform;
+
+      &:hover {
+        transform: translateY(-6px) scale(1.04);
+        box-shadow: 8px 14px 20px rgba($bleu, .6);
+      }
+    }
+
+    #col-classic {
+      background: linear-gradient(135deg, rgba(255, 0, 0, 0.5), rgba(168, 0, 0, .5));
+      color: rgb(143, 0, 0);
+      box-shadow: 2px 4px 6px $gris-400;
+      border-left: 5px solid rgba(58, 0, 0, 0.8);
+    }
+  }
+
+  /* ===== Responsive ===== */
+    @media (max-width: 820px) {
+        .comparatif-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            justify-items: stretch;
+            gap: 1rem;
+            padding: 0 .25rem;
         }
 
-        h3 { text-align: center; margin-bottom: clamp(1rem, 3vw, 1.6rem); }
+        .comparatif-container .colonne {
+            width: 100%;
+            min-width: 0;      // évite les effets de shrink
+            margin: 0;
+            padding: 1rem 1.25rem;
+            box-sizing: border-box;
+        }
 
+        /* 🔒 Verrou de lisibilité : entre 36ch et 60ch
+            - 36ch ≈ largeur mini confortable
+            - 60ch ≈ largeur max pour ne pas faire des lignes trop longues
+            - 100% pour s'adapter à l'écran quand c'est plus large
+        */
+        .comparatif-container .colonne .col-list {
+            inline-size: clamp(36ch, 100%, 60ch);
+            margin-inline: auto;
+            text-wrap: balance;
+            hyphens: auto;
+            -webkit-hyphens: auto;
+            overflow-wrap: break-word;
+        }
 
+        /* h4 : hauteur auto en mobile */
+        .comparatif-container .colonne .h4-colonne {
+            height: auto;
+            min-height: clamp(2.6rem, 7vw, 3.2rem);
+            font-size: clamp(1.05rem, 3.5vw, 1.2rem);
+        }
+
+        /* Pas d’animation “jump” sur mobile */
+        #col-cpe:hover {
+            transform: none;
+            box-shadow: 5px 10px 16px $gris-400;
+        }
+    }
+        /* 🧯 Secours très petits écrans (<360px) : 
+        on préfère un petit scroll horizontal plutôt que des li illisibles */
+    @media (max-width: 360px) {
+        .comparatif-container .colonne {
+            overflow-x: auto;
+        }
+        .comparatif-container .colonne .col-list {
+            min-inline-size: 36ch;
+        }
     }
 }
 

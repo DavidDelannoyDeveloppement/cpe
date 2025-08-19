@@ -70,6 +70,7 @@
 
   <!-- Contenu principal Hero -->
   <section class="hero-section">
+    <img src="./images/photo-accueil_hero.webp" alt="photo-accueil-hero" class="hero-bg" aria-hidden="true">
     <div class="hero-content">
         <h2>Une ressource complète et indépendante pour tout savoir sur le CPE :<br> principes, cadre légal, outils, financement et retours d’expérience concrets.</h2>
         <p>
@@ -494,9 +495,16 @@
     </div>
   </section>
 
-  <footer>
-    <a href="#">Mentions légales</a> 
-    <a href="#">CGU</a> 
+  <footer class="site-footer" role="contentinfo" aria-label="Pied de page">
+    <div class="footer-inner">
+      <a href="./index.html" class="brand" aria-label="Retour à l’accueil">
+        <span class="brand-logo" aria-hidden="true"></span>
+      </a>
+      <nav class="legal" aria-label="Liens légaux">
+        <a href="./cgu.html">CGU</a>
+        <a href="./mentions-legales.html">Mentions légales</a>
+      </nav>
+    </div>
   </footer>
 
   <script src="./js/script.js" defer></script>

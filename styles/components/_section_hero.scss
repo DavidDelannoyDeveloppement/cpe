@@ -13,7 +13,16 @@
   align-items: center;
   justify-content: center;
   color: $color-bg;
-  background: url('../../images/photo-accueil_hero.webp') center/cover no-repeat;
+  // background: url('../../images/photo-accueil_hero.webp') center/cover no-repeat;
+
+    .hero-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+  }
   
   &::before {
     content: '';
