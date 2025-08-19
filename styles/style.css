@@ -1171,17 +1171,15 @@ body.page-definition .cta-buttons .btn.btn-secondary:hover {
     justify-content: center;
   }
 }
-
-main {
+body.page-definition main {
   background: linear-gradient(135deg, rgba(39, 193, 152, 0.18), rgba(255, 122, 89, 0.18));
 }
-
-.intro {
+body.page-definition main .intro {
   padding: clamp(2rem, 5vw, 4rem) 1rem;
   color: #031837;
   text-align: justify;
 }
-.intro .intro-container {
+body.page-definition main .intro .intro-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
@@ -1190,12 +1188,12 @@ main {
   margin: 0 auto;
 }
 @media (max-width: 768px) {
-  .intro .intro-container {
+  body.page-definition main .intro .intro-container {
     grid-template-columns: 1fr;
     text-align: center;
   }
 }
-.intro .intro-container .intro-text {
+body.page-definition main .intro .intro-container .intro-text {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -1204,7 +1202,7 @@ main {
   font-size: clamp(1.05rem, 1.6vw, 1.2rem);
   line-height: 1.7;
 }
-.intro .intro-container .intro-image img {
+body.page-definition main .intro .intro-container .intro-image img {
   width: 100%;
   max-width: 350px;
   border-radius: 0.4rem;
@@ -1214,33 +1212,32 @@ main {
   display: block;
   margin: 0 auto;
 }
-
-.definition {
+body.page-definition main .definition {
   padding: clamp(2rem, 5vw, 4rem) 1rem;
   color: #031837;
   text-align: justify;
 }
-.definition .definition-container {
+body.page-definition main .definition .definition-container {
   width: min(1100px, 92vw);
   margin: 0 auto;
 }
-.definition .definition-container .info-grid {
+body.page-definition main .definition .definition-container .info-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0.8rem;
   margin-top: 0.8rem;
 }
 @media (max-width: 1024px) {
-  .definition .definition-container .info-grid {
+  body.page-definition main .definition .definition-container .info-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 @media (max-width: 600px) {
-  .definition .definition-container .info-grid {
+  body.page-definition main .definition .definition-container .info-grid {
     grid-template-columns: 1fr;
   }
 }
-.definition .definition-container .info-card {
+body.page-definition main .definition .definition-container .info-card {
   background: #fff;
   border: 1px solid rgba(26, 46, 77, 0.08);
   border-radius: 0.4rem;
@@ -1250,61 +1247,60 @@ main {
   text-align: center;
   transition: transform 0.12s ease, box-shadow 0.12s ease;
 }
-.definition .definition-container .info-card:hover {
+body.page-definition main .definition .definition-container .info-card:hover {
   transform: translateY(-6px);
   box-shadow: 0 14px 30px rgba(26, 46, 77, 0.12);
 }
-.definition .definition-container .info-card .ico {
+body.page-definition main .definition .definition-container .info-card .ico {
   font-size: 1.35rem;
   display: block;
   margin-bottom: 0.25rem;
 }
-.definition .definition-container .info-card strong {
+body.page-definition main .definition .definition-container .info-card strong {
   display: block;
   color: #031837;
 }
-.definition .definition-container .info-card small {
+body.page-definition main .definition .definition-container .info-card small {
   color: #00a250;
 }
 @media (max-width: 990px) {
-  .definition .definition-container .info-grid {
+  body.page-definition main .definition .definition-container .info-grid {
     grid-template-columns: 1fr 1fr;
   }
-  .definition .definition-container .flip-grid {
+  body.page-definition main .definition .definition-container .flip-grid {
     grid-template-columns: 1fr 1fr;
   }
-  .definition .definition-container .tiles {
+  body.page-definition main .definition .definition-container .tiles {
     grid-template-columns: 1fr 1fr;
   }
-  .definition .definition-container .goals {
+  body.page-definition main .definition .definition-container .goals {
     grid-template-columns: 1fr 1fr;
   }
-  .definition .definition-container .row {
+  body.page-definition main .definition .definition-container .row {
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
 @media (max-width: 560px) {
-  .definition .definition-container .info-grid, .definition .definition-container .flip-grid, .definition .definition-container .tiles, .definition .definition-container .goals {
+  body.page-definition main .definition .definition-container .info-grid, body.page-definition main .definition .definition-container .flip-grid, body.page-definition main .definition .definition-container .tiles, body.page-definition main .definition .definition-container .goals {
     grid-template-columns: 1fr;
   }
-  .definition .definition-container .btn {
+  body.page-definition main .definition .definition-container .btn {
     width: 100%;
   }
 }
-
-.cadre {
+body.page-definition main .cadre {
   padding: clamp(2rem, 5vw, 4rem) 1rem;
   color: #031837;
   text-align: justify;
 }
-.cadre .cadre-container {
+body.page-definition main .cadre .cadre-container {
   width: min(1100px, 92vw);
   margin: 0 auto;
 }
-.cadre .cadre-container blockquote {
+body.page-definition main .cadre .cadre-container blockquote {
   font-style: italic;
 }
-.cadre .cadre-container .cadre-list {
+body.page-definition main .cadre .cadre-container .cadre-list {
   list-style: none;
   padding: 0;
   max-width: 900px;
@@ -1312,7 +1308,7 @@ main {
   text-align: left;
   margin-bottom: clamp(1.02rem, 2.04vw, 1.7rem);
 }
-.cadre .cadre-container .cadre-list li {
+body.page-definition main .cadre .cadre-container .cadre-list li {
   background: rgba(3, 24, 55, 0.05);
   border-left: 4px solid #031837;
   padding: 1rem;
@@ -1327,28 +1323,27 @@ main {
   gap: 0.5rem;
   transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
 }
-.cadre .cadre-container .cadre-list li:hover {
+body.page-definition main .cadre .cadre-container .cadre-list li:hover {
   background: rgba(3, 24, 55, 0.1);
   transform: translateX(5px);
   box-shadow: 0 4px 10px rgba(3, 24, 55, 0.15);
 }
 @media screen and (max-width: 768px) {
-  .cadre .cadre-container .audience-list li {
+  body.page-definition main .cadre .cadre-container .audience-list li {
     font-size: 1rem;
   }
 }
-
-.principe {
+body.page-definition main .principe {
   padding: clamp(2rem, 5vw, 4rem) 1rem;
   color: #031837;
   text-align: justify;
 }
-.principe .principe-container {
+body.page-definition main .principe .principe-container {
   width: min(1100px, 92vw);
   margin: 0 auto;
   /* Numéro mis en avant (1, 2, 3...) */
 }
-.principe .principe-container .principe-list {
+body.page-definition main .principe .principe-container .principe-list {
   counter-reset: principe;
   list-style: none;
   margin: 2rem 0 0;
@@ -1356,29 +1351,29 @@ main {
   display: grid;
   gap: 1.2rem;
 }
-.principe .principe-container .principe-list > li {
+body.page-definition main .principe .principe-container .principe-list > li {
   margin: 0;
   padding-bottom: 2rem;
 }
-.principe .principe-container .principe-list > li .flip-grid {
+body.page-definition main .principe .principe-container .principe-list > li .flip-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 500px));
   justify-content: center; /* centre le “bloc” de colonnes */
   gap: 0.9rem;
   margin-top: 0.8rem;
 }
-.principe .principe-container .principe-list > li .flip-card {
+body.page-definition main .principe .principe-container .principe-list > li .flip-card {
   perspective: 1000px;
 }
-.principe .principe-container .principe-list > li .flip-inner {
+body.page-definition main .principe .principe-container .principe-list > li .flip-inner {
   position: relative;
   transform-style: preserve-3d;
   transition: transform 0.45s ease;
 }
-.principe .principe-container .principe-list > li .flip-card:hover .flip-inner {
+body.page-definition main .principe .principe-container .principe-list > li .flip-card:hover .flip-inner {
   transform: rotateY(180deg);
 }
-.principe .principe-container .principe-list > li .flip-face {
+body.page-definition main .principe .principe-container .principe-list > li .flip-face {
   background: #fff;
   border: 1px solid rgba(26, 46, 77, 0.08);
   border-radius: 0.4rem;
@@ -1393,13 +1388,13 @@ main {
   backface-visibility: hidden;
   font-weight: bold;
 }
-.principe .principe-container .principe-list > li .flip-face.back {
+body.page-definition main .principe .principe-container .principe-list > li .flip-face.back {
   position: absolute;
   inset: 0;
   transform: rotateY(180deg);
   font-weight: 200;
 }
-.principe .principe-container .principe-list > li > h4 {
+body.page-definition main .principe .principe-container .principe-list > li > h4 {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1411,7 +1406,7 @@ main {
   line-height: 1.35;
   color: #031837;
 }
-.principe .principe-container .principe-list > li > h4::before {
+body.page-definition main .principe .principe-container .principe-list > li > h4::before {
   content: counter(principe);
   counter-increment: principe;
   /* Fix "rond" qui s’écrase */
@@ -1429,36 +1424,35 @@ main {
   font-weight: 800;
   font-size: 1rem;
 }
-.principe .principe-container .principe-list > li > ul {
+body.page-definition main .principe .principe-container .principe-list > li > ul {
   margin: 0.35rem auto 0;
   padding: 0;
   list-style: disc inside;
   text-align: center;
 }
-.principe .principe-container .principe-list > li > ul li {
+body.page-definition main .principe .principe-container .principe-list > li > ul li {
   margin: 0.35rem 0;
   font-size: clamp(1.02rem, 1.6vw, 1.12rem);
   line-height: 1.6;
 }
 @media (max-width: 700px) {
-  .principe .principe-container .principe-list > li > h4 {
+  body.page-definition main .principe .principe-container .principe-list > li > h4 {
     flex-direction: column;
     gap: 0.45rem;
     justify-content: flex-start;
     text-align: center;
   }
-  .principe .principe-container .principe-list > li > h4::before {
+  body.page-definition main .principe .principe-container .principe-list > li > h4::before {
     width: clamp(1.8rem, 6vw, 2rem);
     min-width: clamp(1.8rem, 6vw, 2rem);
     font-size: 0.95rem;
     margin-bottom: 0.1rem;
   }
-  .principe .principe-container .principe-list > li > ul {
+  body.page-definition main .principe .principe-container .principe-list > li > ul {
     margin-left: 0;
   }
 }
-
-.domaines {
+body.page-definition main .domaines {
   padding: clamp(2rem, 5vw, 4rem) 1rem;
   color: #031837;
   text-align: center;
@@ -1467,7 +1461,7 @@ main {
       Liste “Pertinent lorsque…”
       =========================== */
 }
-.domaines .domaines-container {
+body.page-definition main .domaines .domaines-container {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0;
@@ -1479,12 +1473,12 @@ main {
   /* === Colonne image unique (si utilisée ailleurs) === */
 }
 @media (max-width: 990px) {
-  .domaines .domaines-container {
+  body.page-definition main .domaines .domaines-container {
     grid-template-columns: 1fr;
     text-align: center;
   }
 }
-.domaines .domaines-container .domaines-text {
+body.page-definition main .domaines .domaines-container .domaines-text {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -1495,7 +1489,7 @@ main {
   /* Grille 2×2 centrée */
   /* Tuile texte */
 }
-.domaines .domaines-container .domaines-text .tiles {
+body.page-definition main .domaines .domaines-container .domaines-text .tiles {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.2rem;
@@ -1506,14 +1500,14 @@ main {
   border-top-left-radius: 1rem;
 }
 @media (max-width: 990px) {
-  .domaines .domaines-container .domaines-text .tiles {
+  body.page-definition main .domaines .domaines-container .domaines-text .tiles {
     width: 100%;
     grid-template-columns: 1fr;
     gap: 0.6rem;
     justify-items: center; /* centre les cartes */
   }
 }
-.domaines .domaines-container .domaines-text .tile {
+body.page-definition main .domaines .domaines-container .domaines-text .tile {
   aspect-ratio: 2/3;
   display: grid;
   place-content: center;
@@ -1528,35 +1522,35 @@ main {
   /* coins personnalisés par position (1..4) */
   /* Hover local et hover “lié” via JS */
 }
-.domaines .domaines-container .domaines-text .tile:nth-child(1) {
+body.page-definition main .domaines .domaines-container .domaines-text .tile:nth-child(1) {
   border-top-left-radius: 1rem;
 }
-.domaines .domaines-container .domaines-text .tile:nth-child(2) {
+body.page-definition main .domaines .domaines-container .domaines-text .tile:nth-child(2) {
   border-top-right-radius: 0.4rem;
 }
-.domaines .domaines-container .domaines-text .tile:nth-child(3) {
+body.page-definition main .domaines .domaines-container .domaines-text .tile:nth-child(3) {
   border-bottom-left-radius: 0.4rem;
 }
-.domaines .domaines-container .domaines-text .tile:nth-child(4) {
+body.page-definition main .domaines .domaines-container .domaines-text .tile:nth-child(4) {
   border-bottom-right-radius: 1rem;
 }
-.domaines .domaines-container .domaines-text .tile:hover, .domaines .domaines-container .domaines-text .tile.is-linked-hover {
+body.page-definition main .domaines .domaines-container .domaines-text .tile:hover, body.page-definition main .domaines .domaines-container .domaines-text .tile.is-linked-hover {
   transform: translateY(-12px);
   box-shadow: 0 14px 30px rgba(26, 46, 77, 0.12);
   border-color: rgba(39, 193, 152, 0.5);
 }
-.domaines .domaines-container .domaines-text .tile span {
+body.page-definition main .domaines .domaines-container .domaines-text .tile span {
   font-size: 1.6rem;
   line-height: 1;
 }
-.domaines .domaines-container .domaines-text .tile em {
+body.page-definition main .domaines .domaines-container .domaines-text .tile em {
   display: block;
   margin-top: 0.335rem;
   font-style: normal;
   color: #031837;
 }
 @media (max-width: 990px) {
-  .domaines .domaines-container .domaines-text .tile {
+  body.page-definition main .domaines .domaines-container .domaines-text .tile {
     /* cartes plus petites et centrées */
     width: clamp(220px, 82vw, 320px);
     aspect-ratio: 3/2; /* moins haut en mobile */
@@ -1566,7 +1560,7 @@ main {
     perspective: 1000px; /* préparation flip */
   }
 }
-.domaines .domaines-container .domaines-media .tiles {
+body.page-definition main .domaines .domaines-container .domaines-media .tiles {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.2rem;
@@ -1574,13 +1568,13 @@ main {
   margin: 0 auto;
 }
 @media (max-width: 990px) {
-  .domaines .domaines-container .domaines-media .tiles {
+  body.page-definition main .domaines .domaines-container .domaines-media .tiles {
     width: 100%;
     grid-template-columns: 1fr;
     gap: 0.6rem;
   }
 }
-.domaines .domaines-container .domaines-media .tile {
+body.page-definition main .domaines .domaines-container .domaines-media .tile {
   aspect-ratio: 2/3;
   display: grid;
   place-content: center;
@@ -1592,24 +1586,24 @@ main {
   cursor: pointer;
   /* mêmes coins que la colonne texte */
 }
-.domaines .domaines-container .domaines-media .tile:nth-child(1) {
+body.page-definition main .domaines .domaines-container .domaines-media .tile:nth-child(1) {
   border-top-left-radius: 1rem;
 }
-.domaines .domaines-container .domaines-media .tile:nth-child(2) {
+body.page-definition main .domaines .domaines-container .domaines-media .tile:nth-child(2) {
   border-top-right-radius: 0.4rem;
 }
-.domaines .domaines-container .domaines-media .tile:nth-child(3) {
+body.page-definition main .domaines .domaines-container .domaines-media .tile:nth-child(3) {
   border-bottom-left-radius: 0.4rem;
 }
-.domaines .domaines-container .domaines-media .tile:nth-child(4) {
+body.page-definition main .domaines .domaines-container .domaines-media .tile:nth-child(4) {
   border-bottom-right-radius: 1rem;
 }
-.domaines .domaines-container .domaines-media .tile:hover, .domaines .domaines-container .domaines-media .tile.is-linked-hover {
+body.page-definition main .domaines .domaines-container .domaines-media .tile:hover, body.page-definition main .domaines .domaines-container .domaines-media .tile.is-linked-hover {
   transform: translateY(-12px);
   box-shadow: 0 14px 30px rgba(26, 46, 77, 0.12);
   border-color: rgba(39, 193, 152, 0.5);
 }
-.domaines .domaines-container .domaines-media .tile img {
+body.page-definition main .domaines .domaines-container .domaines-media .tile img {
   width: 100%;
   height: 100%;
   display: block;
@@ -1618,7 +1612,7 @@ main {
   -o-object-position: center;
      object-position: center;
 }
-.domaines .domaines-container .domaines-img img {
+body.page-definition main .domaines .domaines-container .domaines-img img {
   width: 100%;
   max-width: 350px;
   border-radius: 0.4rem;
@@ -1629,7 +1623,7 @@ main {
   margin: 0 auto;
 }
 @media (max-width: 990px) {
-  .domaines {
+  body.page-definition main .domaines {
     /* Grille mobile générée par le JS, à l’intérieur de chaque .domaines-content */
     /* Une paire = 2 colonnes (tuile texte | tuile image) */
     /* Taille commune des vignettes en format portrait */
@@ -1638,17 +1632,17 @@ main {
     /* --- Vignette IMAGE (bordure/arrondis + image qui remplit) --- */
     /* Centrage du contenu des tuiles texte */
   }
-  .domaines .domaines-mobile {
+  body.page-definition main .domaines .domaines-mobile {
     display: grid;
     gap: 1rem;
   }
-  .domaines .domaines-mobile .pair {
+  body.page-definition main .domaines .domaines-mobile .pair {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 0.75rem;
     align-items: stretch;
   }
-  .domaines .domaines-mobile .pair .tile {
+  body.page-definition main .domaines .domaines-mobile .pair .tile {
     width: 100%;
     aspect-ratio: 2/3;
     margin: 0;
@@ -1656,7 +1650,7 @@ main {
     transition: none;
     box-shadow: none;
   }
-  .domaines .domaines-mobile .pair .tile.tile-text {
+  body.page-definition main .domaines .domaines-mobile .pair .tile.tile-text {
     background-color: #E5E7EB;
     border: 1px solid rgba(26, 46, 77, 0.45);
     color: #00a250;
@@ -1666,21 +1660,21 @@ main {
     border-bottom-right-radius: 1rem;
     border-top-left-radius: 1rem;
   }
-  .domaines .domaines-mobile .pair .tile.tile-text > .tile-text span {
+  body.page-definition main .domaines .domaines-mobile .pair .tile.tile-text > .tile-text span {
     font-size: 1.6rem;
     line-height: 1;
   }
-  .domaines .domaines-mobile .pair .tile.tile-text > .tile-text em {
+  body.page-definition main .domaines .domaines-mobile .pair .tile.tile-text > .tile-text em {
     display: block;
     margin-top: 0.335rem;
     font-style: normal;
     color: #031837;
   }
-  .domaines .domaines-mobile .pair .tile.tile-text > .tile-text small {
+  body.page-definition main .domaines .domaines-mobile .pair .tile.tile-text > .tile-text small {
     display: block;
     margin-top: 0.15rem;
   }
-  .domaines .domaines-mobile .pair .tile.tile-image {
+  body.page-definition main .domaines .domaines-mobile .pair .tile.tile-image {
     overflow: hidden;
     border: 1px solid rgba(26, 46, 77, 0.45);
     border-radius: 0.4rem;
@@ -1688,7 +1682,7 @@ main {
     border-top-left-radius: 1rem;
     padding: 0;
   }
-  .domaines .domaines-mobile .pair .tile.tile-image img {
+  body.page-definition main .domaines .domaines-mobile .pair .tile.tile-image img {
     width: 100%;
     height: 100%;
     display: block;
@@ -1697,29 +1691,29 @@ main {
     -o-object-position: center;
        object-position: center;
   }
-  .domaines .domaines-mobile .pair .tile.tile-text {
+  body.page-definition main .domaines .domaines-mobile .pair .tile.tile-text {
     display: grid;
     place-items: center;
   }
-  .domaines .domaines-mobile .pair .tile.tile-text > .tile-text {
+  body.page-definition main .domaines .domaines-mobile .pair .tile.tile-text > .tile-text {
     text-align: center;
     margin-top: -3rem;
   }
 }
 @media (max-width: 260px) {
-  .domaines .domaines-mobile .pair {
+  body.page-definition main .domaines .domaines-mobile .pair {
     grid-template-columns: 1fr;
     grid-template-areas: "text" "image";
     gap: 0.6rem; /* petit air entre les deux */
   }
-  .domaines .domaines-mobile .pair .tile.tile-text {
+  body.page-definition main .domaines .domaines-mobile .pair .tile.tile-text {
     grid-area: text;
   }
-  .domaines .domaines-mobile .pair .tile.tile-image {
+  body.page-definition main .domaines .domaines-mobile .pair .tile.tile-image {
     grid-area: image;
   }
 }
-.domaines .domaines-list {
+body.page-definition main .domaines .domaines-list {
   list-style: none;
   margin: 2rem 0 0;
   padding: 0;
@@ -1727,43 +1721,42 @@ main {
   gap: 0.8rem;
   margin-bottom: clamp(1.02rem, 2.04vw, 1.7rem);
 }
-.domaines .domaines-list > h4 {
+body.page-definition main .domaines .domaines-list > h4 {
   margin: 0;
   text-align: center;
   font-size: clamp(1.2rem, 2vw, 1.4rem);
   line-height: 1.35;
   color: #031837;
 }
-.domaines .domaines-list > ul {
+body.page-definition main .domaines .domaines-list > ul {
   margin: 0.35rem auto 0;
   padding: 0;
   max-width: 75ch;
   text-align: center;
   list-style: disc inside;
 }
-.domaines .domaines-list > ul li {
+body.page-definition main .domaines .domaines-list > ul li {
   margin: 0.35rem 0;
   font-size: clamp(1.02rem, 1.6vw, 1.12rem);
   line-height: 1.6;
 }
 @media (max-width: 990px) {
-  .domaines .domaines-list > ul {
+  body.page-definition main .domaines .domaines-list > ul {
     max-width: 68ch;
   }
 }
-
-.objectifs {
+body.page-definition main .objectifs {
   padding: clamp(2rem, 5vw, 4rem) 1rem clamp(2rem, 5vw, 4rem) 1rem;
   color: #031837;
   text-align: justify;
 }
-.objectifs .objectifs-container {
+body.page-definition main .objectifs .objectifs-container {
   width: min(1100px, 92vw);
   margin: 0 auto;
   /* Si tu mets une icône/emoji au début, tu peux l'entourer d'un span.ico */
   /* Mise en valeur des morceaux en <strong> dans le texte */
 }
-.objectifs .objectifs-container .goals {
+body.page-definition main .objectifs .objectifs-container .goals {
   list-style: none;
   margin: 0.8rem 0 1rem;
   padding: 0;
@@ -1772,16 +1765,16 @@ main {
   gap: 0.8rem;
 }
 @media (max-width: 1024px) {
-  .objectifs .objectifs-container .goals {
+  body.page-definition main .objectifs .objectifs-container .goals {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 @media (max-width: 600px) {
-  .objectifs .objectifs-container .goals {
+  body.page-definition main .objectifs .objectifs-container .goals {
     grid-template-columns: 1fr;
   }
 }
-.objectifs .objectifs-container .goals li {
+body.page-definition main .objectifs .objectifs-container .goals li {
   background: rgba(243, 111, 33, 0.06);
   border: 1px solid rgba(243, 111, 33, 0.25);
   border-left: 4px solid #F36F21;
@@ -1792,75 +1785,127 @@ main {
   text-align: center;
   transition: transform 0.12s ease, box-shadow 0.12s ease;
 }
-.objectifs .objectifs-container .goals li:hover {
+body.page-definition main .objectifs .objectifs-container .goals li:hover {
   transform: translateY(-6px);
   box-shadow: 0 10px 10px rgba(3, 24, 55, 0.18);
 }
-.objectifs .objectifs-container .goals li .ico {
+body.page-definition main .objectifs .objectifs-container .goals li .ico {
   font-size: 1.35rem;
   display: block;
   margin-bottom: 0.25rem;
 }
-.objectifs .objectifs-container .goals li strong {
+body.page-definition main .objectifs .objectifs-container .goals li strong {
   color: #031837; /* même teinte que info-card */
   font-weight: 700;
 }
-.objectifs .objectifs-container .goals--secondary li {
+body.page-definition main .objectifs .objectifs-container .goals--secondary li {
   background: rgba(47, 128, 237, 0.06);
   border: 1px solid rgba(47, 128, 237, 0.25);
   border-left: 4px solid #2F80ED;
 }
-.objectifs .objectifs-container .goals--secondary li:hover {
+body.page-definition main .objectifs .objectifs-container .goals--secondary li:hover {
   transform: translateY(-6px);
   box-shadow: 0 10px 10px rgba(3, 24, 55, 0.18);
 }
-.objectifs .objectifs-container .goals--secondary li strong {
+body.page-definition main .objectifs .objectifs-container .goals--secondary li strong {
   color: #2F80ED;
 }
-.objectifs .h4-goals {
+body.page-definition main .objectifs .h4-goals {
   text-align: center;
   color: #031837;
   font-size: 1.5rem;
   margin-top: 2rem;
 }
-.objectifs .h4-gaols-secondary {
+body.page-definition main .objectifs .h4-gaols-secondary {
   text-align: center;
   color: #031837;
   font-size: 1.5rem;
   margin-top: 2rem;
 }
-
-.comparatif {
+body.page-definition main .comparatif {
   padding: clamp(2rem, 5vw, 4rem) 1rem calc(clamp(2rem, 5vw, 4rem) / 2) 1rem;
   color: #031837;
   text-align: center;
-  /* ===== Responsive ===== */
-  /* 🧯 Secours très petits écrans (<360px) : 
-  on préfère un petit scroll horizontal plutôt que des li illisibles */
+  /* tilt + reflet */
 }
-.comparatif .comparatif-container {
+body.page-definition main .comparatif .comparatif-container {
   width: min(1200px, 92vw);
   margin: 0 auto;
   display: flex;
   justify-content: center;
   align-items: stretch;
   gap: 0.8rem;
+  flex-wrap: wrap;
+  /* ===== Couleurs pastel-néon ===== */
 }
-.comparatif .comparatif-container .colonne {
-  flex: 1 1 0;
+body.page-definition main .comparatif .comparatif-container .colonne {
   display: flex;
   flex-direction: column;
+  flex: 0 0 390px;
+  width: 390px;
+  max-width: 390px;
+  min-width: 320px;
   padding: 1rem 3rem;
   border-radius: 0.4rem;
   border-bottom-right-radius: 1rem;
   border-top-left-radius: 1rem;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  -webkit-backdrop-filter: saturate(1.02);
+          backdrop-filter: saturate(1.02);
+  transition: transform 0.12s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.12s ease, filter 0.12s ease;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.18), 0 2px 6px rgba(0, 0, 0, 0.12);
+  /* film + vignettage (la couleur se fait par colonne) */
+  background-blend-mode: screen, multiply;
+  background-image: repeating-linear-gradient(120deg, rgba(255, 255, 255, 0.08) 0 2px, rgba(255, 255, 255, 0) 2px 8px), radial-gradient(120% 120% at 100% 100%, rgba(0, 0, 0, 0.16), transparent 60%);
 }
-.comparatif .comparatif-container .colonne .h4-colonne {
+body.page-definition main .comparatif .comparatif-container .colonne::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.14), inset 0 0 0 2px rgba(255, 255, 255, 0.06), inset 0 0 38px rgba(0, 0, 0, 0.22);
+  pointer-events: none;
+  z-index: 1;
+}
+body.page-definition main .comparatif .comparatif-container .colonne::after {
+  content: "";
+  position: absolute;
+  inset: -35% -20%;
+  transform: rotate(-18deg) translateX(-130%);
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.55) 50%, rgba(255, 255, 255, 0) 100%);
+  mix-blend-mode: screen;
+  opacity: 0.9;
+  pointer-events: none;
+  z-index: 1;
+}
+body.page-definition main .comparatif .comparatif-container .colonne:hover {
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.22), 0 4px 10px rgba(0, 0, 0, 0.16);
+  filter: saturate(1.05);
+}
+body.page-definition main .comparatif .comparatif-container .colonne:hover::after {
+  animation: sheen 800ms ease;
+}
+@keyframes sheen {
+  0% {
+    transform: rotate(-18deg) translateX(-130%);
+    opacity: 0;
+  }
+  12% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: rotate(-18deg) translateX(130%);
+    opacity: 0;
+  }
+}
+body.page-definition main .comparatif .comparatif-container .h4-colonne {
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  height: clamp(3rem, 6vw, 4.2rem);
   line-height: 1.25;
   background-color: #fffffa;
   margin: 0 0 1rem 0;
@@ -1870,107 +1915,114 @@ main {
   border-radius: 0.4rem;
   border-bottom-right-radius: 1rem;
   border-top-left-radius: 1rem;
-  box-shadow: 2px 2px 3px #6B7280;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.6) inset, 2px 2px 3px #6B7280;
   font-size: 1.2rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-word;
+  -webkit-hyphens: auto;
+          hyphens: auto;
+  height: 4.2rem;
+  position: relative;
+  z-index: 2;
 }
-.comparatif .comparatif-container .colonne .col-list {
+body.page-definition main .comparatif .comparatif-container .col-list {
   list-style: none;
-  margin: 0 auto;
+  margin: 0;
   padding: 0;
-  max-width: 60ch;
+  position: relative;
+  z-index: 2;
 }
-.comparatif .comparatif-container .colonne .col-list li {
+body.page-definition main .comparatif .comparatif-container .col-list li {
   background-color: #fffffa;
   margin: 0.5rem 0;
   padding: 0.5rem 0.75rem;
   border-radius: 0.6rem;
-  box-shadow: 2px 2px 3px #6B7280;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.65) inset, 2px 2px 3px #6B7280;
+  border: 1px solid rgba(3, 24, 55, 0.08);
+  width: 100%;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  -webkit-hyphens: auto;
+          hyphens: auto;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
 }
-.comparatif .comparatif-container #objectif {
-  background: linear-gradient(135deg, #2F80ED, rgba(0, 12, 122, 0.9));
+body.page-definition main .comparatif .comparatif-container .col-list li:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.75) inset, 4px 6px 10px rgba(0, 0, 0, 0.12);
+}
+body.page-definition main .comparatif .comparatif-container #objectif {
+  background-color: hsl(210, 100%, 88%); /* fallback */
+  background-blend-mode: normal, screen, multiply;
+  background-image: linear-gradient(135deg, hsl(213, 90%, 92%) 0%, hsl(208, 90%, 66%) 52%, hsl(200, 100%, 80%) 100%), repeating-linear-gradient(120deg, rgba(255, 255, 255, 0.08) 0 2px, rgba(255, 255, 255, 0) 2px 8px), radial-gradient(120% 120% at 100% 100%, rgba(0, 0, 0, 0.12), transparent 60%);
   color: #031837;
-  box-shadow: 2px 4px 6px #9EA4AE;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.18), 0 2px 6px rgba(0, 0, 0, 0.12);
   border-left: 5px solid rgba(3, 24, 55, 0.8);
+  border-bottom: 5px solid rgba(3, 24, 55, 0.5);
 }
-.comparatif .comparatif-container #col-cpe {
-  background: linear-gradient(135deg, rgba(0, 230, 0, 0.9), #3fab35);
-  box-shadow: 5px 10px 16px #9EA4AE;
+body.page-definition main .comparatif .comparatif-container #col-cpe {
+  background-color: hsl(151, 85%, 62%); /* fallback */
+  background-blend-mode: normal, screen, multiply;
+  background-image: linear-gradient(135deg, hsl(152, 80%, 92%) 0%, hsl(151, 85%, 62%) 52%, hsl(149, 95%, 74%) 100%), repeating-linear-gradient(120deg, rgba(255, 255, 255, 0.08) 0 2px, rgba(255, 255, 255, 0) 2px 8px), radial-gradient(120% 120% at 100% 100%, rgba(0, 0, 0, 0.12), transparent 60%);
+  box-shadow: 0 14px 26px rgba(0, 0, 0, 0.22), 0 4px 10px rgba(0, 0, 0, 0.16);
   color: rgb(0, 83, 0);
   border-left: 5px solid rgba(0, 58, 0, 0.8);
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
-  will-change: transform;
+  border-bottom: 5px solid rgba(0, 58, 0, 0.6);
+  transform: translateZ(0);
 }
-.comparatif .comparatif-container #col-cpe:hover {
-  transform: translateY(-6px) scale(1.04);
-  box-shadow: 8px 14px 20px rgba(3, 24, 55, 0.6);
+body.page-definition main .comparatif .comparatif-container #col-cpe:hover {
+  transform: translateY(-4px) scale(1.035);
+  transition: transform 0.1s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.1s ease;
+  box-shadow: 0 18px 30px rgba(0, 0, 0, 0.26), 0 6px 12px rgba(0, 0, 0, 0.18);
 }
-.comparatif .comparatif-container #col-classic {
-  background: linear-gradient(135deg, rgba(255, 0, 0, 0.5), rgba(168, 0, 0, 0.5));
+body.page-definition main .comparatif .comparatif-container #col-classic {
+  background-color: hsl(2, 85%, 60%); /* fallback */
+  background-blend-mode: normal, screen, multiply;
+  background-image: linear-gradient(135deg, hsl(355, 88%, 92%) 0%, hsl(2, 85%, 60%) 52%, hsl(8, 95%, 74%) 100%), repeating-linear-gradient(120deg, rgba(255, 255, 255, 0.08) 0 2px, rgba(255, 255, 255, 0) 2px 8px), radial-gradient(120% 120% at 100% 100%, rgba(0, 0, 0, 0.12), transparent 60%);
   color: rgb(143, 0, 0);
-  box-shadow: 2px 4px 6px #9EA4AE;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.18), 0 2px 6px rgba(0, 0, 0, 0.12);
   border-left: 5px solid rgba(58, 0, 0, 0.8);
+  border-bottom: 5px solid rgba(58, 0, 0, 0.6);
 }
-@media (max-width: 820px) {
-  .comparatif {
-    /* 🔒 Verrou de lisibilité : entre 36ch et 60ch
-        - 36ch ≈ largeur mini confortable
-        - 60ch ≈ largeur max pour ne pas faire des lignes trop longues
-        - 100% pour s'adapter à l'écran quand c'est plus large
-    */
-    /* h4 : hauteur auto en mobile */
-    /* Pas d’animation “jump” sur mobile */
+body.page-definition main .comparatif .comparatif .comparatif-container .colonne {
+  --rx: 0deg;
+  --ry: 0deg;
+  --mx: 50%;
+  --my: 50%;
+  transform: perspective(800px) rotateX(var(--rx)) rotateY(var(--ry));
+}
+body.page-definition main .comparatif .comparatif .comparatif-container .colonne:hover::after {
+  animation: none;
+}
+body.page-definition main .comparatif .comparatif .comparatif-container .colonne::after {
+  background: radial-gradient(320px 140px at var(--mx) var(--my), rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0) 60%), linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.55) 50%, rgba(255, 255, 255, 0) 100%);
+}
+body.page-definition main .comparatif .comparatif .comparatif-container #col-cpe:hover {
+  transform: translateY(-4px) scale(1.035) rotateX(var(--rx)) rotateY(var(--ry));
+}
+@media (max-width: 390px) {
+  body.page-definition main .comparatif .comparatif-container {
+    gap: 0.6rem;
   }
-  .comparatif .comparatif-container {
-    display: grid;
-    grid-template-columns: 1fr;
-    justify-items: stretch;
-    gap: 1rem;
-    padding: 0 0.25rem;
-  }
-  .comparatif .comparatif-container .colonne {
-    width: 100%;
+  body.page-definition main .comparatif .comparatif-container .colonne {
+    flex: 0 1 auto;
+    width: auto;
+    max-width: clamp(260px, 92vw, 320px);
     min-width: 0;
-    margin: 0;
-    padding: 1rem 1.25rem;
+    padding: 1rem 1rem;
     box-sizing: border-box;
   }
-  .comparatif .comparatif-container .colonne .col-list {
-    inline-size: clamp(36ch, 100%, 60ch);
-    margin-inline: auto;
-    text-wrap: balance;
-    hyphens: auto;
-    -webkit-hyphens: auto;
-    overflow-wrap: break-word;
-  }
-  .comparatif .comparatif-container .colonne .h4-colonne {
-    height: auto;
-    min-height: clamp(2.6rem, 7vw, 3.2rem);
-    font-size: clamp(1.05rem, 3.5vw, 1.2rem);
-  }
-  .comparatif #col-cpe:hover {
-    transform: none;
-    box-shadow: 5px 10px 16px #9EA4AE;
-  }
 }
-@media (max-width: 360px) {
-  .comparatif .comparatif-container .colonne {
-    overflow-x: auto;
-  }
-  .comparatif .comparatif-container .colonne .col-list {
-    min-inline-size: 36ch;
-  }
-}
-
-.expert-section {
+body.page-definition main .expert-section {
   padding: clamp(2rem, 5vw, 4rem) 1rem;
   color: #031837;
   text-align: justify;
 }
-.expert-section .expert-content {
+body.page-definition main .expert-section .expert-content {
   width: min(1100px, 92vw);
   margin: 0 auto;
 }
-.expert-section .expert-content .expert-text {
+body.page-definition main .expert-section .expert-content .expert-text {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -1979,20 +2031,315 @@ main {
   font-size: clamp(1.05rem, 1.6vw, 1.2rem);
   line-height: 1.7;
 }
-.expert-section .expert-content .expert-text p {
+body.page-definition main .expert-section .expert-content .expert-text p {
   margin-bottom: 1rem;
 }
-.expert-section .expert-content .expert-text .highlight {
+body.page-definition main .expert-section .expert-content .expert-text .highlight {
   font-weight: bold;
   margin-top: 1.5rem;
 }
-.expert-section .expert-content .expert-text .h3-resume {
+body.page-definition main .expert-section .expert-content .expert-text .h3-resume {
   color: #00a250;
 }
 @media (max-width: 768px) {
-  .expert-section .expert-content .expert-text {
+  body.page-definition main .expert-section .expert-content .expert-text {
     align-items: center;
   }
+}
+
+/* Scope page */
+body.page-fonctionnement {
+  font-family: "Poppins", sans-serif;
+  color: #031837;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+body.page-fonctionnement img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+body.page-fonctionnement a {
+  text-decoration: none;
+  color: inherit;
+}
+body.page-fonctionnement h2 {
+  font-family: "Poppins", sans-serif;
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  color: #00a250;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+body.page-fonctionnement p {
+  font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+  line-height: 1.8;
+  margin-bottom: 1.2rem;
+}
+body.page-fonctionnement .cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: clamp(0.8rem, 1.6vw, 1.2rem);
+}
+body.page-fonctionnement .cta-buttons .btn {
+  position: relative;
+  padding: clamp(0.8rem, 1.6vw, 1rem) clamp(1.2rem, 2.6vw, 1.6rem);
+  font-size: clamp(1rem, 1.6vw, 1.1rem);
+  border-radius: 4px;
+  border-bottom-right-radius: 1rem;
+  border-top-left-radius: 1rem;
+  font-weight: bold;
+  text-decoration: none;
+  border: none;
+  transition: all 0.15s ease-in-out;
+}
+body.page-fonctionnement .cta-buttons .btn::before, body.page-fonctionnement .cta-buttons .btn::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 2rem);
+  height: 0.1rem;
+  border-radius: 100%;
+}
+body.page-fonctionnement .cta-buttons .btn::before {
+  top: 0.4rem;
+  background-image: linear-gradient(270deg, rgba(255, 255, 255, 0) 0%, #ffffff 20%, #ffffff 80%, rgba(255, 255, 255, 0) 100%);
+  opacity: 0.5;
+}
+body.page-fonctionnement .cta-buttons .btn::after {
+  bottom: 0.5rem;
+  background-image: linear-gradient(270deg, rgba(255, 255, 255, 0) 0%, #ffffff 20%, #ffffff 80%, rgba(255, 255, 255, 0) 100%);
+  filter: blur(1px);
+  opacity: 0.05;
+}
+body.page-fonctionnement .cta-buttons .btn:hover {
+  transform: translateY(3px) scale(0.98);
+}
+body.page-fonctionnement .cta-buttons .btn.btn-primary {
+  background-image: linear-gradient(-180deg, rgb(245.6153846154, 142.3846153846, 81.3846153846) 0%, #F36F21 100%);
+  border: 1px solid rgb(249.5384615385, 189.4615384615, 153.9615384615);
+  color: #ffffff;
+}
+body.page-fonctionnement .cta-buttons .btn.btn-primary:hover {
+  background-color: rgb(223.1384615385, 90.4615384615, 12.0615384615);
+}
+body.page-fonctionnement .cta-buttons .btn.btn-secondary {
+  background-image: linear-gradient(-180deg, rgb(117.407079646, 170.9889380531, 243.092920354) 0%, #2F80ED 100%);
+  border: 1px solid rgb(164.3451327434, 199.6482300885, 247.1548672566);
+  color: #fffffa;
+}
+body.page-fonctionnement .cta-buttons .btn.btn-secondary:hover {
+  background-color: rgb(19.3699115044, 106.5345132743, 223.8300884956);
+}
+@media screen and (max-width: 768px) {
+  body.page-fonctionnement .cta-buttons {
+    text-align: center;
+  }
+  body.page-fonctionnement .cta-buttons .container {
+    width: 100%;
+  }
+  body.page-fonctionnement .cta-buttons ul {
+    padding-left: 0;
+  }
+  body.page-fonctionnement .cta-buttons ul li {
+    padding-left: 0;
+  }
+  body.page-fonctionnement .cta-buttons ul li::before {
+    position: relative;
+    display: inline-block;
+    margin-right: 0.4rem;
+  }
+  body.page-fonctionnement .cta-buttons .cta-buttons {
+    justify-content: center;
+  }
+}
+body.page-fonctionnement main {
+  background: linear-gradient(135deg, rgba(39, 193, 152, 0.18), rgba(255, 122, 89, 0.18));
+}
+body.page-fonctionnement main .intro {
+  padding: clamp(2rem, 5vw, 4rem) 1rem;
+  color: #031837;
+  text-align: justify;
+}
+body.page-fonctionnement main .intro .intro-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+@media (max-width: 768px) {
+  body.page-fonctionnement main .intro .intro-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+}
+body.page-fonctionnement main .intro .intro-container .intro-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem 0;
+  height: 100%;
+  font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+  line-height: 1.7;
+}
+body.page-fonctionnement main .intro .intro-container .intro-image img {
+  width: 100%;
+  max-width: 350px;
+  border-radius: 0.4rem;
+  border-bottom-right-radius: 1rem;
+  border-top-left-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  display: block;
+  margin: 0 auto;
+}
+body.page-fonctionnement main .etapes {
+  padding: clamp(2rem, 5vw, 2rem) 1rem;
+  color: #031837;
+  text-align: justify;
+}
+body.page-fonctionnement main .etapes .etapes-container {
+  width: min(1100px, 92vw);
+  margin: 0 auto;
+  /* Numéro mis en avant (1, 2, 3...) */
+}
+body.page-fonctionnement main .etapes .etapes-container h3 {
+  font-size: 1.5rem;
+  color: #F36F21;
+  text-align: center;
+}
+body.page-fonctionnement main .etapes .etapes-container .etapes-list {
+  counter-reset: principe;
+  list-style: none;
+  margin: 2rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 1.2rem;
+}
+body.page-fonctionnement main .etapes .etapes-container .etapes-list > li {
+  margin: 0;
+  padding-bottom: 2rem;
+}
+body.page-fonctionnement main .etapes .etapes-container .etapes-list > li h5 {
+  text-align: center;
+  font-size: clamp(1.1rem, 2vw, 1.2rem);
+  color: #3fab35;
+}
+body.page-fonctionnement main .etapes .etapes-container .etapes-list > li p {
+  text-align: center;
+  font-size: clamp(1.1rem, 2vw, 1.2rem);
+  color: #031837;
+}
+body.page-fonctionnement main .etapes .etapes-container li:last-child {
+  padding-bottom: 0;
+}
+body.page-fonctionnement main .etapes .etapes-container .etapes-list > li > h4 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  gap: 0.75rem;
+  margin: 0 0 0.5rem;
+  padding: 0;
+  font-size: clamp(1.2rem, 2vw, 1.4rem);
+  line-height: 1.35;
+  color: #031837;
+}
+body.page-fonctionnement main .etapes .etapes-container .etapes-list > li > h4::before {
+  content: counter(principe);
+  counter-increment: principe;
+  /* Fix "rond" qui s’écrase */
+  flex: 0 0 auto;
+  aspect-ratio: 1/1;
+  width: 2.2rem;
+  min-width: 2.2rem;
+  height: auto;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #2F80ED;
+  color: #fffffa;
+  font-weight: 800;
+  font-size: 1rem;
+}
+body.page-fonctionnement main .etapes .etapes-container .etapes-list > li > ul {
+  margin: 0.35rem auto 0;
+  padding: 0;
+  list-style: disc inside;
+  text-align: center;
+}
+body.page-fonctionnement main .etapes .etapes-container .etapes-list > li > ul li {
+  margin: 0.35rem 0;
+  font-size: clamp(1.02rem, 1.6vw, 1.12rem);
+  line-height: 1.6;
+}
+@media (max-width: 700px) {
+  body.page-fonctionnement main .etapes .etapes-container .etapes-list > li > h4 {
+    flex-direction: column;
+    gap: 0.45rem;
+    justify-content: flex-start;
+    text-align: center;
+  }
+  body.page-fonctionnement main .etapes .etapes-container .etapes-list > li > h4::before {
+    width: clamp(1.8rem, 6vw, 2rem);
+    min-width: clamp(1.8rem, 6vw, 2rem);
+    font-size: 0.95rem;
+    margin-bottom: 0.1rem;
+  }
+  body.page-fonctionnement main .etapes .etapes-container .etapes-list > li > ul {
+    margin-left: 0;
+  }
+}
+body.page-fonctionnement main .ipmvp {
+  padding: clamp(2rem, 5vw, 4rem) 1rem;
+  color: #031837;
+  text-align: justify;
+}
+body.page-fonctionnement main .ipmvp .ipmvp-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+@media (max-width: 768px) {
+  body.page-fonctionnement main .ipmvp .ipmvp-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+}
+body.page-fonctionnement main .ipmvp .ipmvp-container .ipmvp-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem 0;
+  height: 100%;
+  font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+  line-height: 1.7;
+}
+body.page-fonctionnement main .ipmvp .ipmvp-container .ipmvp-text .ipmvp-p {
+  margin-bottom: 0;
+}
+body.page-fonctionnement main .ipmvp .ipmvp-container .ipmvp-text .ipmvp-ul {
+  margin-left: 2rem;
+  margin-bottom: 2rem;
+}
+body.page-fonctionnement main .ipmvp .ipmvp-container .ipmvp-image img {
+  width: 130%;
+  max-width: 440px;
+  border-radius: 0.4rem;
+  border-bottom-right-radius: 1rem;
+  border-top-left-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  display: block;
+  margin: 0 auto;
 }
 
 .skip-link {
@@ -2524,8 +2871,7 @@ main {
   background: rgb(26, 46, 77);
   color: #fffffa;
   padding: clamp(14px, 2vw, 24px) clamp(16px, 4vw, 48px);
-  border-top: 1px solid rgba(0, 0, 0, 0.06);
-  box-shadow: 0 -5px 8px #031837;
+  box-shadow: 0 -2px 3px rgba(0, 0, 0, 0.9);
 }
 
 .site-footer .footer-inner {

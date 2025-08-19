@@ -667,3 +667,57 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 })();
 
+
+
+
+// ===========================
+// Personnalisation du comparatif
+(()=> {
+  const els = document.querySelectorAll('.comparatif .comparatif-container .colonne');
+  const tilt = 9;
+  let raf = null;
+
+  function baseTransform(el, hovered){
+    if (hovered && el.id === 'col-cpe') return 'translateY(-4px) scale(1.035) ';
+    return '';
+  }
+
+  function apply(el, x, y, hovered){
+    const r = el.getBoundingClientRect();
+    const px = (x / r.width - .5) * 2;
+    const py = (y / r.height - .5) * 2;
+    const rx = (-py * tilt).toFixed(2);
+    const ry = ( px * tilt).toFixed(2);
+    el.style.transform = `perspective(800px) ${baseTransform(el, hovered)}rotateX(${rx}deg) rotateY(${ry}deg)`;
+    el.style.setProperty('--mx', x + 'px');
+    el.style.setProperty('--my', y + 'px');
+  }
+
+  function reset(el){
+    el.style.transform = `perspective(800px) ${baseTransform(el, false)}`;
+    el.style.setProperty('--mx', '50%');
+    el.style.setProperty('--my', '50%');
+  }
+
+  els.forEach(el => {
+    reset(el);
+
+    el.addEventListener('pointermove', e => {
+      const r = el.getBoundingClientRect();
+      const x = e.clientX - r.left;
+      const y = e.clientY - r.top;
+      if (raf) cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => apply(el, x, y, true));
+    });
+
+    el.addEventListener('pointerleave', () => {
+      if (raf) cancelAnimationFrame(raf);
+      reset(el);
+    });
+
+    el.addEventListener('pointerdown', e => {
+      const r = el.getBoundingClientRect();
+      apply(el, e.clientX - r.left, e.clientY - r.top, true);
+    });
+  });
+})();
