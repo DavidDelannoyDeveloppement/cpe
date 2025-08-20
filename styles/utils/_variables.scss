@@ -34,8 +34,42 @@ $gris-600: #4B5563;
 $gris-700: #374151;
 
 // Background-color 
-$background-bleu-rouge : linear-gradient(135deg, rgba(39,193,152,.18), rgba(255,122,89,.18));
+$background-bleu-rouge : linear-gradient(135deg, rgba(39,193,152,.20), rgba(255,122,89,.30));
 $background-bleu-vert1 : linear-gradient(135deg, $bleu, $vert1);
+
+
+// === Palette complémentaire (CPE / rôles, etc.) ===
+
+// Bleu clair (mairie)
+$bleu-clair:        #3498db;
+$bleu-clair-gradient: linear-gradient(165deg, rgba(33, 179, 223, 0.28), rgba(52,152,219,0.06));
+$bleu-clair-border: $bleu;
+
+// Vert foncé (prestataire)
+$vert-fonce:        rgb(0, 71, 30);
+$vert-gradient:     linear-gradient(165deg, rgba(46,204,113,0.24), rgba(46,204,113,0.06));
+$vert-border:       $vert-fonce;
+
+// Jaune doré (AMO)
+$jaune-dore:        rgb(187, 150, 0);
+$jaune-gradient:    linear-gradient(165deg, rgba(241,196,15,0.26), rgba(241,196,15,0.06));
+$jaune-border:      $jaune-dore;
+
+// Orange brûlé (financeur)
+$orange-brule:      rgb(207, 66, 0);
+$orange-gradient:   linear-gradient(165deg, rgba(230,126,34,0.26), rgba(230,126,34,0.06));
+$orange-border:     $orange-brule;
+
+// Violet profond (usagers)
+$violet-profond:    rgb(124, 0, 114);
+$violet-gradient:   linear-gradient(165deg, rgba(155,89,182,0.26), rgba(155,89,182,0.06));
+$violet-border:     $violet-profond;
+
+// Rouge vif (énergie, mise en avant)
+$rouge-vif:        #e63946;
+$rouge-vif-gradient: linear-gradient(165deg, rgba(230,57,70,0.26), rgba(230,57,70,0.06));
+$rouge-vif-border: $rouge-vif;
+
 
 
 // ========================
@@ -77,3 +111,4 @@ $shadow-md: 0 8px 24px rgba(3, 24, 55, 0.10);
 
 $transition-fast: 120ms ease;
 $transition-base: 220ms ease;
+

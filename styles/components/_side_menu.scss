@@ -21,11 +21,9 @@
 
 
 
-
-
-
-
-
+// ===========================
+// =====  FONCTION TEST  =====
+// ===========================
 
 // Petite tête flottante dans le wrapper
   .mascot-inline {
@@ -90,19 +88,9 @@
   }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+// ===============================
+// =====  FIN FONCTION TEST  =====
+// ===============================
 
 
 
@@ -211,6 +199,34 @@
 .side-menu a.is-active:not([href$="index.html"]):focus {
   color: $bleu-accent;
 }
+
+@media (max-width: 1024px) {
+  /* Base mobile : tout en crème par défaut */
+  .side-menu ul li a {
+    color: $creme;
+  }
+  .side-menu ul li a:hover {
+    color: $orange-cta;
+  }
+
+  /* Lien actif (mobile réel) — bleu uniquement si .is-active, sauf Accueil */
+  .side-menu ul li a.is-active:not([href$="index.html"]) {
+    color: $bleu-accent !important;
+    font-weight: 700;
+  }
+  .side-menu ul li a.is-active:not([href$="index.html"]):hover,
+  .side-menu ul li a.is-active:not([href$="index.html"]):focus {
+    color: $bleu-accent !important;
+  }
+
+  /* Si un aria-current sauvage traîne sans .is-active, on le neutralise */
+  .side-menu ul li a[aria-current]:not(.is-active):not([href$="index.html"]) {
+    color: $creme !important;
+    font-weight: 400;
+  }
+}
+
+
 
 /* --------- MOBILE / TABLETTE --------- */
 @media (max-width: 1024px) {

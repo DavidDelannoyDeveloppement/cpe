@@ -173,7 +173,7 @@ body.page-definition {
                 
                 }
                 .info-card { 
-                    background: #fff; 
+                    // background: #fff; 
                     border: 1px solid rgba(26,46,77,.08); 
                     border-radius: 0.4rem; 
                     border-bottom-right-radius: 1rem;
@@ -203,6 +203,20 @@ body.page-definition {
                 .info-card small { 
                     color: $vert1; 
                 }
+
+                #info-card-jaune {
+                    border-left: 4px solid $jaune-border ;
+                    background: $jaune-gradient;
+                }
+                #info-card-orange {
+                    border-left: 4px solid $orange-border ;
+                    background: $orange-gradient;
+                }
+                #info-card-violet {
+                    border-left: 4px solid $violet-border ;
+                    background: $violet-gradient;
+                }
+
                 @media (max-width: 990px) {
                 .info-grid { grid-template-columns: 1fr 1fr; }
                 .flip-grid { grid-template-columns: 1fr 1fr; }
@@ -242,8 +256,8 @@ body.page-definition {
 
 
                     li {
-                    background: rgba($bleu, 0.05);
-                    border-left: 4px solid $bleu;
+                    background: $vert-gradient;
+                    border-left: 4px solid $vert-border;
                     padding: 1rem;
                     margin-bottom: 1rem;
                     border-radius: 0.4rem; 
@@ -259,7 +273,7 @@ body.page-definition {
                                 box-shadow 0.25s ease;
 
                     &:hover {
-                        background: rgba($bleu, 0.1);
+                        background: $vert-gradient;
                         transform: translateX(5px);
                         box-shadow: 0 4px 10px rgba($bleu, 0.15);
                     }
@@ -716,9 +730,9 @@ body.page-definition {
                 }
 
                 .goals li {
-                background: rgba($orange-cta, .06);
-                border: 1px solid rgba($orange-cta, .25);
-                border-left: 4px solid $orange-cta;
+                background: $orange-gradient;
+                // border: 1px solid rgba($orange-cta, .25);
+                border-left: 4px solid $orange-border;
                 border-radius: .4rem;
                 border-bottom-right-radius: 1rem;
                 border-top-left-radius: 1rem;
@@ -746,9 +760,9 @@ body.page-definition {
                 }
 
                 .goals--secondary li {
-                background: rgba($bleu-accent, .06);
-                border: 1px solid rgba($bleu-accent, .25);
-                border-left: 4px solid $bleu-accent;
+                background: $bleu-clair-gradient;
+                // border: 1px solid $bleu-clair-border;
+                border-left: 4px solid $bleu-clair-border;
                 }
                 .goals--secondary li:hover {
                 transform: translateY(-6px);
@@ -780,7 +794,7 @@ body.page-definition {
 
 
         .comparatif {
-            padding: clamp(2rem, 5vw, 4rem) 1rem calc(clamp(2rem, 5vw, 4rem) / 2) 1rem;
+            padding: clamp(2rem, 5vw, 4rem) 1rem;
             color: $bleu;
             text-align: center;
 
@@ -927,20 +941,27 @@ body.page-definition {
                 }
 
                 #col-classic {
-                background-color: hsl(2 85% 60%); /* fallback */
+                /* fallback uni */
+                background-color: rgba($rouge-vif, 0.20);
+
+                /* calques recolorés en rouge vif */
                 background-blend-mode: normal, screen, multiply;
                 background-image:
-                    linear-gradient(135deg,
-                    hsl(355 88% 92%) 0%,
-                    hsl(2 85% 60%) 52%,
-                    hsl(8 95% 74%) 100%
+                    linear-gradient(
+                    135deg,
+                    rgba($rouge-vif, 0.16) 0%,
+                    rgba($rouge-vif, 0.55) 52%,
+                    rgba($rouge-vif, 0.30) 100%
                     ),
                     repeating-linear-gradient(120deg, rgba(255,255,255,.08) 0 2px, rgba(255,255,255,0) 2px 8px),
                     radial-gradient(120% 120% at 100% 100%, rgba(0,0,0,.12), transparent 60%);
-                color: rgb(143, 0, 0);
+
+                color: $rouge-vif;
                 box-shadow: 0 10px 22px rgba(0,0,0,.18), 0 2px 6px rgba(0,0,0,.12);
-                border-left: 5px solid rgba(58, 0, 0, 0.8);
-                border-bottom: 5px solid rgba(58, 0, 0, 0.6);
+
+                /* bordures accordées */
+                border-left: 5px solid rgba($rouge-vif, 0.85);
+                border-bottom: 5px solid rgba($rouge-vif, 0.60);
                 }
             }
 

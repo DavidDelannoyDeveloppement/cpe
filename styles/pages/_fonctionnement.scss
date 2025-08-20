@@ -181,8 +181,6 @@ body.page-fonctionnement {
 
                     p {
                         text-align: center;
-                        font-size: clamp(1.1rem, 2vw, 1.2rem);
-                        color: $bleu;
                     }
                 }
 
@@ -227,7 +225,7 @@ body.page-fonctionnement {
 
 
                 .etapes-list > li > ul {
-                    margin: .35rem auto 0;
+                    margin: .35rem auto 0.6rem;
                     padding: 0;
                     list-style: disc inside;
                     text-align: center;
@@ -308,16 +306,261 @@ body.page-fonctionnement {
                     display: block;
                     margin: 0 auto;
                     }
+
+                    @media (max-width: 400px) {
+                        img {
+                            width: 100%;
+                        } 
+                    }
+                }
+            }
+        }
+
+
+        .roles {
+            padding: clamp(2rem, 5vw, 2rem) 1rem;
+            margin-bottom: 2rem;
+            color: $bleu;
+            text-align: justify;
+
+            .roles-container {
+                width: min(1300px, 92vw); 
+                margin: 0 auto;
+
+
+                .roles-grid {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+                    gap: 1.5rem;
+                }
+
+                .role-card {
+                    position: relative;
+                    overflow: hidden;
+                    padding: 1.6rem 1.2rem;
+                    border-radius: .4rem;
+                    box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+                    background: $creme;
+                    transition: transform .25s ease, box-shadow .25s ease, background .25s ease;
+
+                    // Coins alternés (fantaisie subtile)
+                    &:nth-child(odd) {
+                    border-top-left-radius: 1rem;
+                    border-bottom-right-radius: 1rem;
+                    }
+                    &:nth-child(even) {
+                    border-top-left-radius: 1rem;
+                    border-bottom-right-radius: 1rem;
+                    }
+
+                    // Décor dégradé doux
+                    &::before {
+                    content: "";
+                    position: absolute;
+                    inset: -30%;
+                    transform: rotate(18deg);
+                    opacity: .25;
+                    pointer-events: none;
+                    // Valeur par défaut, remplacée par les variantes
+                    background: linear-gradient(135deg, rgba(26,46,77,0.10), rgba(26,46,77,0.02));
+                    }
+
+                    &:hover {
+                    transform: translateY(-6px);
+                    box-shadow: 0 12px 24px rgba(0,0,0,0.18);
+                    }
+
+                    .role-icon {
+                    width: 68px;
+                    height: 68px;
+                    margin-bottom: .9rem;
+                    display: inline-block;
+
+                    // Icône atténuée (gris) par défaut
+                    filter: grayscale(1) brightness(.82) contrast(1);
+                    mix-blend-mode: normal;
+                    transition: filter .25s ease, transform .25s ease;
+                    }
+
+                    &:hover .role-icon {
+                    // Reprend la couleur native (SVG idéal)
+                    filter: none;
+                    transform: translateY(-2px);
+                    }
+
+                    h3 {
+                    font-size: clamp(1.12rem, 2vw, 1.28rem);
+                    margin-bottom: .55rem;
+                    color: $bleu;
+                    font-weight: 700;
+                    }
+
+                    p {
+                    font-size: clamp(.96rem, 1.6vw, 1.06rem);
+                    line-height: 1.45;
+                    color: $bleu;
+                    opacity: .95;
+                    }
+                }
+
+                // Variantes par rôle — couleurs et dégradés (charte-friendly)
+                .mairie {
+                    background: $bleu-clair-gradient;
+                    border-left: 4px solid $bleu-clair-border;
+                }
+
+                .prestataire {
+                    background: $vert-gradient;
+                    border-left: 4px solid $vert-border;
+                }
+
+                .amo {
+                    background: $jaune-gradient;
+                    border-left: 4px solid $jaune-border;
+                }
+
+                .financeur {
+                    background: $orange-gradient;
+                    border-left: 4px solid $orange-border;
+                }
+
+                .usagers {
+                    background: $violet-gradient;
+                    border-left: 4px solid $violet-border;
+                }
+
+                    /* =========================
+                    Responsive petits écrans
+                    ========================= */
+                @media (max-width: 520px) {
+                    .role-card {
+                        padding: 1.2rem .9rem;
+
+                        .role-icon {
+                            width: clamp(52px, 12vw, 64px);
+                            height: clamp(52px, 12vw, 64px);
+                            /* Sur mobile : blanc + brillance par défaut */
+                            filter:
+                                brightness(1.12) saturate(0) contrast(105%)
+                                drop-shadow(0 0 4px rgba(255,255,255,.60))
+                                drop-shadow(0 2px 4px rgba(0,0,0,.15));
+                            transform: translateY(-2px);
+                        }
+                    }
+
+                    /* Sur mobile : pas d'effet hover (carte et icône restent stables) */
+                    .role-card:hover {
+                        transform: none;
+                        box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+                    }
+                    .role-card:hover .role-icon {
+                        filter:
+                        brightness(1.12) saturate(0) contrast(105%)
+                        drop-shadow(0 0 4px rgba(255,255,255,.60))
+                        drop-shadow(0 2px 4px rgba(0,0,0,.15));
+                        transform: translateY(-2px);
+                    }
+                }
+
+                /* Sécurité tactile : si l’appareil ne supporte pas hover,
+                on applique le même comportement quel que soit le viewport */
+                @media (hover: none) {
+                    .roles .role-card:hover {
+                        transform: none;
+                        box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+                    }
+                    .roles .role-card .role-icon {
+                        filter:
+                        brightness(1.12) saturate(0) contrast(105%)
+                        drop-shadow(0 0 4px rgba(255,255,255,.60))
+                        drop-shadow(0 2px 4px rgba(0,0,0,.15));
+                        transform: translateY(-2px);
+                    }
+                    .roles .role-card:hover .role-icon {
+                        filter:
+                        brightness(1.12) saturate(0) contrast(105%)
+                        drop-shadow(0 0 4px rgba(255,255,255,.60))
+                        drop-shadow(0 2px 4px rgba(0,0,0,.15));
+                        transform: translateY(-2px);
+                    }
                 }
             }
         }
 
 
 
+        .pourquoi {
+            padding: clamp(2rem, 5vw, 2rem) 1rem;
+            color: $bleu;
+            text-align: justify;
+            
+            .pourquoi-container {
+                width: min(1100px, 92vw); 
+                margin: 0 auto;
+                
+                .pourquoi-list {
+                    list-style: none;
+                    padding: 0;
+                    max-width: 900px;
+                    margin: 0 auto;
+                    text-align: left;
+                    margin-bottom: clamp(1.02rem, 2.04vw, 1.7rem);
 
 
+                    li {
+                        background: $jaune-gradient;
+                        border-left: 4px solid $jaune-border;
+                        padding: 1rem;
+                        margin-bottom: 1rem;
+                        border-radius: 0.4rem; 
+                        border-bottom-right-radius: 1rem;
+                        border-top-left-radius: 1rem;
+                        font-size: clamp(1rem, 1.4vw, 1.1rem);
+                        line-height: 1.5;
+                        display: flex;
+                        align-items: center;
+                        gap: 0.5rem;
+                        transition: background 0.25s ease, 
+                                    transform 0.25s ease, 
+                                    box-shadow 0.25s ease;
 
+                        &:hover {
+                            background: $jaune-gradient;
+                            transform: translateX(5px);
+                            box-shadow: 0 4px 10px rgba($bleu, 0.15);
+                        }
+                    }
+                }
+                @media screen and (max-width: 768px) {
+                    .audience-list li {
+                        font-size: 1rem;
+                    }
+                }
+            }
 
+            .action {
+                width: 100%;
+                display: block;
+                padding: clamp(2rem, 5vw, 3rem) 1rem;
+                padding-top: clamp(0.8rem, 2vw, 1.2rem);
+                text-align: center;
+                color: $bleu;
+                box-sizing: border-box;
+
+                .cta-inner {
+                    width: min(1100px, 92vw);
+                    margin: 0 auto;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: .8rem;
+                }
+
+                .h2-action {   
+                    color: $violet;
+                }
+            }
+        }
 
 
 
