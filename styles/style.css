@@ -893,7 +893,7 @@
   width: -moz-fit-content;
   width: fit-content;
   will-change: transform;
-  animation: scroll-left 30s linear infinite;
+  animation: scroll-left 20s linear infinite;
 }
 .actus-section .actu-item {
   position: relative;
@@ -991,7 +991,7 @@
   pointer-events: none;
 }
 .actus-section .actus-marquee::before {
-  left: var(--label-shift);
+  left: 1.5rem;
   width: var(--label-w);
   color: #e63946;
   background: #fffffa;
@@ -1002,7 +1002,7 @@
   border-top-left-radius: 1rem;
   border-bottom-right-radius: 1rem;
   z-index: 3; /* au-dessus du masque */
-  padding: 0.7rem 0.8rem; /* un peu plus costaud */
+  padding: 0.7rem 0.2rem; /* un peu plus costaud */
   font-size: clamp(0.85rem, 1.6vw, 1rem);
 }
 .actus-section .marquee-track {
@@ -1015,7 +1015,7 @@
 }
 @media (max-width: 1024px) {
   .actus-section .actus-marquee {
-    --label-w: clamp(110px, 28vw, 160px);
+    --label-w: clamp(74px, 28vw, 160px);
     --label-shift: clamp(12px, 6vw, 1cm);
     padding: 1.35rem 0;
     padding-left: calc(var(--label-w) + var(--label-shift) + 0.8rem);
@@ -1034,6 +1034,12 @@
   }
 }
 
+/* Rétrécir la boîte "NEWS" uniquement en mobile */
+@media (max-width: 1024px) {
+  .actus-section .actus-marquee {
+    --label-w: 40px;
+  }
+}
 /* Défilement existant conservé */
 @keyframes scroll-left {
   0% {
@@ -2701,7 +2707,8 @@ body.page-fonctionnement main .pourquoi .action {
   box-sizing: border-box;
 }
 body.page-fonctionnement main .pourquoi .action .cta-inner {
-  width: min(1100px, 92vw);
+  max-width: 1100px;
+  width: 100%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -2711,6 +2718,89 @@ body.page-fonctionnement main .pourquoi .action .cta-inner {
 body.page-fonctionnement main .pourquoi .action .cta-inner .h3-action {
   color: #be097f;
   font-size: 2rem;
+}
+@media (max-width: 720px) {
+  body.page-fonctionnement main .pourquoi .action .cta-inner > .btn,
+  body.page-fonctionnement main .pourquoi .action .cta-inner > * > .btn,
+  body.page-fonctionnement main .pourquoi .action .cta-inner > * > * > .btn {
+    display: block;
+    box-sizing: border-box;
+    flex: 1 1 100%;
+    width: 100%;
+    max-inline-size: 92vw;
+    min-inline-size: 12rem;
+    margin: 0 auto;
+    white-space: nowrap;
+    overflow-wrap: normal;
+    word-break: keep-all;
+    line-height: 1.2;
+    min-height: 44px;
+    text-align: center;
+    padding-inline: clamp(14px, 3.5vw, 18px);
+  }
+  body.page-fonctionnement main .pourquoi .action .cta-inner > *:has(> .btn) {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center;
+    gap: 0.8rem;
+    flex-wrap: nowrap !important;
+    width: 100%;
+  }
+  body.page-fonctionnement main .pourquoi .action .cta-inner > .btn + .btn,
+  body.page-fonctionnement main .pourquoi .action .cta-inner > * > .btn + .btn,
+  body.page-fonctionnement main .pourquoi .action .cta-inner > * > * > .btn + .btn {
+    margin-top: 0.8rem;
+  }
+}
+body.page-fonctionnement main .exemple {
+  padding: clamp(2rem, 5vw, 4rem) 1rem;
+  color: #031837;
+  text-align: justify;
+}
+body.page-fonctionnement main .exemple .exemple-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+@media (max-width: 768px) {
+  body.page-fonctionnement main .exemple .exemple-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+}
+body.page-fonctionnement main .exemple .exemple-container .exemple-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 1rem 0;
+  height: 100%;
+  font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+  line-height: 1.7;
+}
+body.page-fonctionnement main .exemple .exemple-container .exemple-text .exemple-p {
+  margin-bottom: 0;
+}
+body.page-fonctionnement main .exemple .exemple-container .exemple-text .exemple-ul {
+  margin-left: 2rem;
+  line-height: 2.5rem;
+}
+body.page-fonctionnement main .exemple .exemple-container .exemple-image img {
+  width: 80%;
+  max-width: 340px;
+  border-radius: 0.4rem;
+  border-bottom-right-radius: 1rem;
+  border-top-left-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  display: block;
+  margin: 0 auto;
+}
+@media (max-width: 400px) {
+  body.page-fonctionnement main .exemple .exemple-container .exemple-image img {
+    width: 100%;
+  }
 }
 
 .skip-link {
@@ -2842,6 +2932,40 @@ body.page-fonctionnement main .pourquoi .action .cta-inner .h3-action {
     flex: 1 1 auto;
   }
 }
+/* ============================================
+   CTA HEADER — Surcharge locale des .btn SEULEMENT
+   (sans modifier les conteneurs du header)
+   ============================================ */
+.site-header .header-inner .cta-buttons .btn {
+  /* Laisse le component gérer le style, on adapte juste la largeur */
+  display: block; /* évite les bizarreries inline */
+  box-sizing: border-box;
+  inline-size: clamp(12rem, 72vw, 18rem); /* plus large que la version précédente */
+  max-inline-size: 92vw; /* ne colle pas aux bords en mobile */
+  min-inline-size: 12rem;
+  /* Empêche le wrap tant qu'on a de la place */
+  white-space: nowrap;
+  overflow-wrap: normal;
+  word-break: keep-all;
+  /* Confort */
+  line-height: 1.2;
+  min-height: 44px;
+  text-align: center;
+  padding-inline: clamp(14px, 3.5vw, 18px);
+}
+
+/* Très petits écrans : OK pour un wrap propre si nécessaire */
+@media (max-width: 520px) {
+  .site-header .header-inner .cta-buttons .btn {
+    inline-size: clamp(11rem, 88vw, 16rem);
+    white-space: normal; /* autorise le retour à la ligne SEULEMENT ici */
+    overflow-wrap: anywhere; /* coupe proprement si mot long */
+    word-break: normal;
+    -webkit-hyphens: auto;
+            hyphens: auto;
+    font-size: clamp(1rem, 3.8vw, 1.05rem);
+  }
+}
 .side-wrapper {
   position: fixed;
   top: 180px;
@@ -2914,28 +3038,17 @@ body.page-fonctionnement main .pourquoi .action .cta-inner .h3-action {
     right: 8px;
   }
 }
-/* Mascotte visible par défaut */
-.side-wrapper .mascot-inline {
-  opacity: 1;
-  transform: scale(1);
-  transition: opacity 0.15s ease, transform 0.15s ease;
-  pointer-events: none;
-}
-
-/* Disparition quand le menu s’ouvre au hover (desktop uniquement) */
 @media (hover: hover) {
   .side-wrapper:hover .mascot-inline {
     opacity: 0;
     transform: scale(0.96);
   }
 }
-/* Disparition quand aria-expanded=true (ou data-menu-open=1) */
 .side-wrapper .mascot-inline.is-hidden {
   opacity: 0;
   transform: scale(0.96);
 }
 
-/* Si ton navigateur supporte :has(), ça couvre le cas sans JS supplémentaire */
 @supports (selector(:has(*))) {
   .side-wrapper:has(.menu-trigger[aria-expanded=true]) .mascot-inline {
     opacity: 0;
@@ -3014,7 +3127,6 @@ body.page-fonctionnement main .pourquoi .action .cta-inner .h3-action {
   font-weight: 600;
 }
 
-/* Ouverture : hover, clic (classe .open), ou focus clavier */
 .side-wrapper:hover .side-menu,
 .side-wrapper.open .side-menu,
 .side-wrapper:focus-within .side-menu {
@@ -3025,7 +3137,6 @@ body.page-fonctionnement main .pourquoi .action .cta-inner .h3-action {
   border-bottom-right-radius: 0.7rem;
 }
 
-/* --------- RÈGLES D’ÉTAT / COULEURS --------- */
 .side-menu a[href$="index.html"] {
   color: #00a250;
   font-weight: 600;
@@ -3036,7 +3147,6 @@ body.page-fonctionnement main .pourquoi .action .cta-inner .h3-action {
   color: #00a250;
 }
 
-/* Page en cours : bleu accent si .is-active, sauf Accueil */
 .side-menu a.is-active:not([href$="index.html"]) {
   color: #2F80ED;
 }
@@ -3047,46 +3157,28 @@ body.page-fonctionnement main .pourquoi .action .cta-inner .h3-action {
 }
 
 @media (max-width: 1024px) {
-  /* Base mobile : tout en crème par défaut */
-  .side-menu ul li a {
-    color: #fffffa;
+  body:not(.page_home) .side-wrapper {
+    display: none !important;
   }
-  .side-menu ul li a:hover {
-    color: #F36F21;
-  }
-  /* Lien actif (mobile réel) — bleu uniquement si .is-active, sauf Accueil */
-  .side-menu ul li a.is-active:not([href$="index.html"]) {
-    color: #2F80ED !important;
-    font-weight: 700;
-  }
-  .side-menu ul li a.is-active:not([href$="index.html"]):hover,
-  .side-menu ul li a.is-active:not([href$="index.html"]):focus {
-    color: #2F80ED !important;
-  }
-  /* Si un aria-current sauvage traîne sans .is-active, on le neutralise */
-  .side-menu ul li a[aria-current]:not(.is-active):not([href$="index.html"]) {
-    color: #fffffa !important;
-    font-weight: 400;
-  }
-}
-/* --------- MOBILE / TABLETTE --------- */
-@media (max-width: 1024px) {
-  .side-wrapper {
+  body.page_home .side-wrapper {
+    display: block !important;
     position: static;
     top: auto;
     left: auto;
     width: 100%;
     z-index: auto;
-    background-color: transparent;
+    background: transparent;
     margin: 0;
     box-shadow: none;
     border-radius: 0;
   }
-  .menu-trigger {
+  body.page_home .menu-trigger {
     display: none;
   }
-  .side-menu {
+  body.page_home .side-menu {
     position: relative;
+    top: auto;
+    left: auto;
     width: 100%;
     opacity: 1;
     pointer-events: auto;
@@ -3097,13 +3189,13 @@ body.page-fonctionnement main .pourquoi .action .cta-inner .h3-action {
     border-radius: 0;
     padding: 0.75rem 1rem;
     transition: none;
-    z-index: 1;
+    z-index: auto;
     overflow: hidden;
     background-color: #00a250;
     background-size: cover;
     background-position: center;
   }
-  .side-menu::before {
+  body.page_home .side-menu::before {
     content: "";
     position: absolute;
     inset: 0;
@@ -3111,7 +3203,7 @@ body.page-fonctionnement main .pourquoi .action .cta-inner .h3-action {
     z-index: 0;
     pointer-events: none;
   }
-  .side-menu ul {
+  body.page_home .side-menu ul {
     position: relative;
     z-index: 1;
     display: grid;
@@ -3125,11 +3217,11 @@ body.page-fonctionnement main .pourquoi .action .cta-inner .h3-action {
     max-width: 1100px;
     text-align: center;
   }
-  .side-menu ul li {
+  body.page_home .side-menu ul li {
     width: 100%;
     position: relative;
   }
-  .side-menu ul li a {
+  body.page_home .side-menu ul li a {
     display: inline-block;
     padding: 0.7rem 1rem;
     width: 100%;
@@ -3151,39 +3243,21 @@ body.page-fonctionnement main .pourquoi .action .cta-inner .h3-action {
     transition: transform 0.15s ease, background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
   }
   @supports ((-webkit-backdrop-filter: blur(6px)) or (backdrop-filter: blur(6px))) {
-    .side-menu ul li a {
+    body.page_home .side-menu ul li a {
       background-color: rgba(255, 255, 255, 0.08);
       border: 1px solid rgba(255, 255, 255, 0.22);
       -webkit-backdrop-filter: saturate(160%) blur(6px);
       backdrop-filter: saturate(160%) blur(6px);
     }
   }
-  .side-menu ul li a:hover {
-    transform: translateY(-1px);
-    background-color: rgba(255, 255, 255, 0.16);
-    border-color: rgba(255, 255, 255, 0.32);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
-  }
-  .side-menu ul li a:focus-visible {
-    outline: 2px dashed rgba(243, 111, 33, 0.65);
-    outline-offset: 3px;
+  body.page_home .side-wrapper:hover .side-menu {
+    width: 100% !important;
+    opacity: 1 !important;
   }
   .side-menu a.is-active:not([href$="index.html"]) {
     border-color: rgba(47, 128, 237, 0.6);
     box-shadow: 0 0 0 1px rgba(47, 128, 237, 0.35) inset, 0 6px 18px rgba(0, 0, 0, 0.2);
   }
-  /* Accueil : saumon uniquement en responsive */
-  .side-menu a[href$="index.html"] {
-    color: #f6ab78;
-    border-color: rgba(255, 255, 255, 0.32);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
-    font-weight: 400 !important;
-  }
-  .side-menu a[href$="index.html"]:hover,
-  .side-menu a[href$="index.html"]:focus {
-    color: #f6ab78;
-  }
-  /* Neutralise l’élargissement au hover en responsive */
   .side-wrapper:hover .side-menu,
   .side-wrapper.open .side-menu,
   .side-wrapper:focus-within .side-menu {
@@ -3192,26 +3266,6 @@ body.page-fonctionnement main .pourquoi .action .cta-inner .h3-action {
     pointer-events: all;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
-  }
-}
-/* Force la couleur bleue pour la page en cours (mobile / hover éteint) */
-@media (max-width: 1024px) {
-  .side-menu ul li a.is-active:not([href$="index.html"]),
-  .side-menu ul li a[aria-current]:not([href$="index.html"]),
-  .side-menu ul li a[aria-current=page]:not([href$="index.html"]) {
-    color: #2F80ED !important;
-    font-weight: 700;
-    border-color: rgba(47, 128, 237, 0.6);
-    box-shadow: 0 0 0 1px rgba(47, 128, 237, 0.35) inset, 0 6px 18px rgba(0, 0, 0, 0.2);
-  }
-}
-/* Sécurité pour tous les appareils sans hover (peu importe la largeur) */
-@media (hover: none) {
-  .side-menu a.is-active:not([href$="index.html"]),
-  .side-menu a[aria-current]:not([href$="index.html"]),
-  .side-menu a[aria-current=page]:not([href$="index.html"]) {
-    color: #2F80ED !important;
-    font-weight: 700;
   }
 }
 .site-footer {
@@ -3294,6 +3348,98 @@ body.page-fonctionnement main .pourquoi .action .cta-inner .h3-action {
     margin-top: 0.5rem;
   }
 }
+.next-cta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(0.8rem, 1.6vw, 1.2rem);
+  flex-wrap: nowrap;
+  margin: 1rem auto clamp(1.5rem, 6vw, 3rem);
+  /* Cas 1 bouton : largeur au contenu mais garde un plancher (copié de .cta-buttons) */
+  /* ===== Breakpoints identiques ===== */
+}
+.next-cta .btn {
+  position: relative;
+  padding: clamp(0.8rem, 1.6vw, 1rem) clamp(1.2rem, 2.6vw, 1.6rem);
+  font-size: 1.1875rem;
+  line-height: 1;
+  border-radius: 4px;
+  border-bottom-right-radius: 1rem;
+  border-top-left-radius: 1rem;
+  font-weight: bold;
+  text-decoration: none;
+  border: none;
+  transition: all 0.15s ease-in-out;
+  flex: 0 0 15rem;
+  inline-size: 15rem;
+  text-align: center;
+  white-space: nowrap;
+}
+.next-cta .btn::before, .next-cta .btn::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 2rem);
+  height: 0.1rem;
+  border-radius: 100%;
+}
+.next-cta .btn::before {
+  top: 0.4rem;
+  background-image: linear-gradient(270deg, rgba(255, 255, 255, 0) 0%, #ffffff 20%, #ffffff 80%, rgba(255, 255, 255, 0) 100%);
+  opacity: 0.5;
+}
+.next-cta .btn::after {
+  bottom: 0.5rem;
+  background-image: linear-gradient(270deg, rgba(255, 255, 255, 0) 0%, #ffffff 20%, #ffffff 80%, rgba(255, 255, 255, 0) 100%);
+  filter: blur(1px);
+  opacity: 0.05;
+}
+.next-cta .btn:hover {
+  transform: translateY(3px) scale(0.98);
+}
+.next-cta .btn.btn-next {
+  background-image: linear-gradient(-180deg, rgb(0, 213, 105.1851851852) 0%, #00a250 100%);
+  border: 1px solid rgb(34.5, 255, 143.3888888889);
+  color: #fffffa;
+}
+.next-cta .btn.btn-next:hover {
+  background-color: rgb(0, 121.2, 59.8518518519);
+}
+.next-cta > .btn:only-child,
+.next-cta > .btn-next:only-child {
+  flex: 0 1 auto;
+  inline-size: auto;
+  min-inline-size: 15rem;
+  max-inline-size: 100%;
+  text-align: center;
+  white-space: nowrap;
+}
+@media (max-width: 900px) {
+  .next-cta .btn {
+    flex-basis: 13rem;
+    inline-size: 13rem;
+    font-size: 1.0625rem;
+  }
+  .next-cta > .btn:only-child,
+  .next-cta > .btn-next:only-child {
+    min-inline-size: 13rem;
+  }
+}
+@media (max-width: 520px) {
+  .next-cta .btn {
+    flex-basis: 11rem;
+    inline-size: 11rem;
+    font-size: 1rem;
+  }
+  .next-cta > .btn:only-child,
+  .next-cta > .btn-next:only-child {
+    min-inline-size: 11rem;
+    max-inline-size: 92vw;
+  }
+}
+
 * {
   margin: 0;
   padding: 0;

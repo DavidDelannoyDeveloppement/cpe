@@ -93,7 +93,7 @@
     padding: .35rem 0;
     width: fit-content;
     will-change: transform;
-    animation: scroll-left 30s linear infinite;
+    animation: scroll-left 20s linear infinite;
   }
 
   .actu-item {
@@ -194,7 +194,7 @@
 
     /* Cartouche ACTUS — rouge de la charte, déplacé vers le centre */
     &::before {
-      left: var(--label-shift);
+      left: 1.5rem;
       width: var(--label-w);
       color: $rouge-vif;
       // background: linear-gradient(180deg, color.adjust($rouge, $lightness: 6%), $rouge);
@@ -206,7 +206,7 @@
       border-top-left-radius: 1rem;
       border-bottom-right-radius: 1rem;
       z-index: 3;            /* au-dessus du masque */
-      padding: .7rem .8rem;  /* un peu plus costaud */
+      padding: .7rem .2rem;  /* un peu plus costaud */
       font-size: clamp(.85rem, 1.6vw, 1rem);
     }
   }
@@ -224,7 +224,7 @@
   /* Responsive : on garde l’effet sans sur-gonfler sur mobile */
   @media (max-width: 1024px) {
     .actus-marquee {
-      --label-w: clamp(110px, 28vw, 160px);
+      --label-w: clamp(74px, 28vw, 160px);
       --label-shift: clamp(12px, 6vw, 1cm);
 
       padding: 1.35rem 0;
@@ -242,6 +242,11 @@
   }
 }
 
+/* Rétrécir la boîte "NEWS" uniquement en mobile */
+@media (max-width: 1024px) {
+  .actus-section .actus-marquee { --label-w: 40px; } // ajuste la valeur à ton goût
+}
+
 
 /* Défilement existant conservé */
 @keyframes scroll-left {
@@ -255,3 +260,6 @@
   70%  { box-shadow: 0 0 0 10px rgba($creme,0); opacity: .85; }
   100% { box-shadow: 0 0 0 0 rgba($creme,0); opacity: 1; }
 }
+
+
+

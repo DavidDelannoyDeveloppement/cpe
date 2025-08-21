@@ -122,3 +122,41 @@
     flex: 1 1 auto;
   }
 }
+
+/* ============================================
+   CTA HEADER — Surcharge locale des .btn SEULEMENT
+   (sans modifier les conteneurs du header)
+   ============================================ */
+
+.site-header .header-inner .cta-buttons .btn {
+  /* Laisse le component gérer le style, on adapte juste la largeur */
+  display: block;                 /* évite les bizarreries inline */
+  box-sizing: border-box;
+  inline-size: clamp(12rem, 72vw, 18rem);  /* plus large que la version précédente */
+  max-inline-size: 92vw;                     /* ne colle pas aux bords en mobile */
+  min-inline-size: 12rem;
+
+  /* Empêche le wrap tant qu'on a de la place */
+  white-space: nowrap;
+  overflow-wrap: normal;
+  word-break: keep-all;
+
+  /* Confort */
+  line-height: 1.2;
+  min-height: 44px;
+  text-align: center;
+  padding-inline: clamp(14px, 3.5vw, 18px);
+}
+
+/* Très petits écrans : OK pour un wrap propre si nécessaire */
+@media (max-width: 520px) {
+  .site-header .header-inner .cta-buttons .btn {
+    inline-size: clamp(11rem, 88vw, 16rem);
+    white-space: normal;          /* autorise le retour à la ligne SEULEMENT ici */
+    overflow-wrap: anywhere;      /* coupe proprement si mot long */
+    word-break: normal;
+    hyphens: auto;
+    font-size: clamp(1rem, 3.8vw, 1.05rem);
+  }
+}
+

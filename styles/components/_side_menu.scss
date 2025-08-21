@@ -1,6 +1,3 @@
-// ========================
-// === SIDE MENU (global)
-// ========================
 @use "sass:color";
 @use "../utils/variables" as *;
 @use "../utils/mixins" as *;
@@ -18,14 +15,6 @@
   background: transparent;
   font-family: inherit;
 
-
-
-
-// ===========================
-// =====  FONCTION TEST  =====
-// ===========================
-
-// Petite tête flottante dans le wrapper
   .mascot-inline {
     position: absolute;
     top: 14px;
@@ -43,7 +32,6 @@
     pointer-events: none;
     z-index: 5;
   }
-
   .mascot-inline .eye {
     width: 12px;
     height: 12px;
@@ -53,7 +41,6 @@
     overflow: hidden;
     box-shadow: inset 0 0 0 1px rgba(0,0,0,.06);
   }
-
   .mascot-inline .pupil {
     position: absolute;
     width: 5px;
@@ -66,67 +53,33 @@
     transition: transform 70ms linear;
     will-change: transform;
   }
-
   .mascot-inline .mouth {
     position: absolute;
     left: 50%;
-    bottom: 6px;                // un poil plus haut
+    bottom: 6px;
     transform: translateX(-50%);
-    width: 12px;                // plus petite
-    height: 7px;                // plus fine
-    border: 0;                  // on enlève les côtés
-    border-bottom: 2px solid #fff;  // arc de sourire ouvert
-    border-radius: 0 0 12px 12px;   // jolie courbure
+    width: 12px;
+    height: 7px;
+    border: 0;
+    border-bottom: 2px solid #fff;
+    border-radius: 0 0 12px 12px;
     background: transparent;
     opacity: .95;
     pointer-events: none;
   }
 }
 
-  @media (max-width: 1024px) {
-    .side-wrapper .mascot-inline { top: 6px; right: 8px; }
-  }
+@media (max-width: 1024px) {
+  .side-wrapper .mascot-inline { top: 6px; right: 8px; }
+}
 
-
-    /* Mascotte visible par défaut */
-  .side-wrapper .mascot-inline {
-    opacity: 1;
-    transform: scale(1);
-    transition: opacity .15s ease, transform .15s ease;
-    pointer-events: none;
-  }
-
-  /* Disparition quand le menu s’ouvre au hover (desktop uniquement) */
-  @media (hover: hover) {
-    .side-wrapper:hover .mascot-inline { 
-      opacity: 0; 
-      transform: scale(.96);
-    }
-  }
-
-  /* Disparition quand aria-expanded=true (ou data-menu-open=1) */
-  .side-wrapper .mascot-inline.is-hidden { 
-    opacity: 0; 
-    transform: scale(.96);
-  }
-
-  /* Si ton navigateur supporte :has(), ça couvre le cas sans JS supplémentaire */
-  @supports(selector(:has(*))) {
-    .side-wrapper:has(.menu-trigger[aria-expanded="true"]) .mascot-inline {
-      opacity: 0;
-      transform: scale(.96);
-    }
-  }
-
-
-
-// ===============================
-// =====  FIN FONCTION TEST  =====
-// ===============================
-
-
-
-
+@media (hover: hover) {
+  .side-wrapper:hover .mascot-inline { opacity: 0; transform: scale(.96); }
+}
+.side-wrapper .mascot-inline.is-hidden { opacity: 0; transform: scale(.96); }
+@supports(selector(:has(*))) {
+  .side-wrapper:has(.menu-trigger[aria-expanded="true"]) .mascot-inline { opacity: 0; transform: scale(.96); }
+}
 
 .menu-trigger {
   padding: 0.1rem 0;
@@ -136,7 +89,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
   background-color: rgba(26, 46, 77, 1);
   color: $saumon;
   text-align: center;
@@ -146,13 +98,11 @@
   border-radius: 0.3rem;
   border-bottom-right-radius: 1rem;
   border-top-left-radius: 1rem;
-
   .menu-icone {
     display: inline-block;
     padding: 0.25rem;
     filter: invert(72%) sepia(73%) saturate(5296%) hue-rotate(347deg) brightness(98%) contrast(95%);
   }
-
   &:focus-visible {
     outline: 2px dashed rgba($orange-cta, .65);
     outline-offset: 3px;
@@ -188,7 +138,6 @@
       color: $creme;
       font-size: 1rem;
       text-decoration: none;
-
       &:hover { color: $orange-cta; }
       &:focus-visible {
         outline: 2px dashed rgba($orange-cta, .65);
@@ -196,13 +145,11 @@
         border-radius: .35rem;
         text-decoration: none;
       }
-
       &.is-active { text-decoration: none; font-weight: 600; }
     }
   }
 }
 
-/* Ouverture : hover, clic (classe .open), ou focus clavier */
 .side-wrapper:hover .side-menu,
 .side-wrapper.open .side-menu,
 .side-wrapper:focus-within .side-menu {
@@ -213,7 +160,6 @@
   border-bottom-right-radius: 0.7rem;
 }
 
-/* --------- RÈGLES D’ÉTAT / COULEURS --------- */
 .side-menu a[href$="index.html"] {
   color: $vert1;
   font-weight: 600;
@@ -223,7 +169,6 @@
   color: $vert1;
 }
 
-/* Page en cours : bleu accent si .is-active, sauf Accueil */
 .side-menu a.is-active:not([href$="index.html"]) {
   color: $bleu-accent;
 }
@@ -233,50 +178,27 @@
 }
 
 @media (max-width: 1024px) {
-  /* Base mobile : tout en crème par défaut */
-  .side-menu ul li a {
-    color: $creme;
-  }
-  .side-menu ul li a:hover {
-    color: $orange-cta;
-  }
+  body:not(.page_home) .side-wrapper { display: none !important; }
 
-  /* Lien actif (mobile réel) — bleu uniquement si .is-active, sauf Accueil */
-  .side-menu ul li a.is-active:not([href$="index.html"]) {
-    color: $bleu-accent !important;
-    font-weight: 700;
-  }
-  .side-menu ul li a.is-active:not([href$="index.html"]):hover,
-  .side-menu ul li a.is-active:not([href$="index.html"]):focus {
-    color: $bleu-accent !important;
-  }
-
-  /* Si un aria-current sauvage traîne sans .is-active, on le neutralise */
-  .side-menu ul li a[aria-current]:not(.is-active):not([href$="index.html"]) {
-    color: $creme !important;
-    font-weight: 400;
-  }
-}
-
-
-
-/* --------- MOBILE / TABLETTE --------- */
-@media (max-width: 1024px) {
-  .side-wrapper {
+  body.page_home .side-wrapper {
+    display: block !important;
     position: static;
-    top: auto; left: auto;
+    top: auto;
+    left: auto;
     width: 100%;
     z-index: auto;
-    background-color: transparent;
+    background: transparent;
     margin: 0;
     box-shadow: none;
     border-radius: 0;
   }
 
-  .menu-trigger { display: none; }
+  body.page_home .menu-trigger { display: none; }
 
-  .side-menu {
+  body.page_home .side-menu {
     position: relative;
+    top: auto;
+    left: auto;
     width: 100%;
     opacity: 1;
     pointer-events: auto;
@@ -287,15 +209,14 @@
     border-radius: 0;
     padding: .75rem 1rem;
     transition: none;
-    z-index: 1;
+    z-index: auto;
     overflow: hidden;
-    // background-image: url('../images/menu-mobile.jpg');
     background-color: $vert1;
     background-size: cover;
     background-position: center;
   }
 
-  .side-menu::before {
+  body.page_home .side-menu::before {
     content: "";
     position: absolute;
     inset: 0;
@@ -304,7 +225,7 @@
     pointer-events: none;
   }
 
-  .side-menu ul {
+  body.page_home .side-menu ul {
     position: relative;
     z-index: 1;
     display: grid;
@@ -319,12 +240,9 @@
     text-align: center;
   }
 
-  .side-menu ul li {
-    width: 100%;
-    position: relative;
-  }
+  body.page_home .side-menu ul li { width: 100%; position: relative; }
 
-  .side-menu ul li a {
+  body.page_home .side-menu ul li a {
     display: inline-block;
     padding: .7rem 1rem;
     width: 100%;
@@ -332,7 +250,6 @@
     border-radius: .25rem;
     border-top-left-radius: .75rem;
     border-bottom-right-radius: .75rem;
-
     background-color: rgba(255,255,255,.14);
     border: 1px solid rgba(255,255,255,.28);
     color: $creme;
@@ -347,7 +264,7 @@
   }
 
   @supports ((-webkit-backdrop-filter: blur(6px)) or (backdrop-filter: blur(6px))) {
-    .side-menu ul li a {
+    body.page_home .side-menu ul li a {
       background-color: rgba(255,255,255,.08);
       border: 1px solid rgba(255,255,255,.22);
       -webkit-backdrop-filter: saturate(160%) blur(6px);
@@ -355,36 +272,13 @@
     }
   }
 
-  .side-menu ul li a:hover {
-    transform: translateY(-1px);
-    background-color: rgba(255,255,255,.16);
-    border-color: rgba(255,255,255,.32);
-    box-shadow: 0 4px 12px rgba(0,0,0,.18);
-  }
-
-  .side-menu ul li a:focus-visible {
-    outline: 2px dashed rgba($orange-cta,.65);
-    outline-offset: 3px;
-  }
+  body.page_home .side-wrapper:hover .side-menu { width: 100% !important; opacity: 1 !important; }
 
   .side-menu a.is-active:not([href$="index.html"]) {
     border-color: rgba($bleu-accent,.6);
     box-shadow: 0 0 0 1px rgba($bleu-accent,.35) inset, 0 6px 18px rgba(0,0,0,.2);
   }
 
-  /* Accueil : saumon uniquement en responsive */
-  .side-menu a[href$="index.html"] {
-    color: $saumon;
-    border-color: rgba(255,255,255,.32);
-    box-shadow: 0 4px 12px rgba(0,0,0,.18);
-    font-weight: 400 !important;
-  }
-  .side-menu a[href$="index.html"]:hover,
-  .side-menu a[href$="index.html"]:focus {
-    color: $saumon;
-  }
-
-  /* Neutralise l’élargissement au hover en responsive */
   .side-wrapper:hover .side-menu,
   .side-wrapper.open .side-menu,
   .side-wrapper:focus-within .side-menu {
@@ -393,29 +287,5 @@
     pointer-events: all;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
-  }
-}
-
-
-
-/* Force la couleur bleue pour la page en cours (mobile / hover éteint) */
-@media (max-width: 1024px) {
-  .side-menu ul li a.is-active:not([href$="index.html"]),
-  .side-menu ul li a[aria-current]:not([href$="index.html"]),
-  .side-menu ul li a[aria-current="page"]:not([href$="index.html"]) {
-    color: $bleu-accent !important;
-    font-weight: 700;
-    border-color: rgba($bleu-accent, .6);
-    box-shadow: 0 0 0 1px rgba($bleu-accent, .35) inset, 0 6px 18px rgba(0,0,0,.2);
-  }
-}
-
-/* Sécurité pour tous les appareils sans hover (peu importe la largeur) */
-@media (hover: none) {
-  .side-menu a.is-active:not([href$="index.html"]),
-  .side-menu a[aria-current]:not([href$="index.html"]),
-  .side-menu a[aria-current="page"]:not([href$="index.html"]) {
-    color: $bleu-accent !important;
-    font-weight: 700;
   }
 }
