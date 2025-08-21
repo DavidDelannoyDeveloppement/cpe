@@ -1,4 +1,6 @@
 @use "sass:color";
+@use "sass:math";
+@use "./variables" as *; 
 
 @mixin flex-center {
     display: flex;
@@ -26,4 +28,22 @@
 
 
 
+// texte en dégradé
+@mixin text-gradient($from, $to, $ratio: 20%, $dir: 90deg, $blend: 8%, $mode: soft) {
+  @if $mode == hard or $blend == 0% {
+    background: linear-gradient($dir, $from 0 #{$ratio}, $to #{$ratio} 100%);
+  } @else {
+    $a: $ratio - $blend; // fin du plein $from
+    @if $a < 0% { $a: 0%; }
+    background: linear-gradient($dir, $from 0 #{$a}, $to #{$ratio} 100%);
+  }
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
 
+/* Alias prêt à l'emploi : $bleu → $vert1 avec 50/50, angle 135°, fondu 50% */
+@mixin text-gradient-bleu-vert() {
+  @include text-gradient($bleu, $vert1, 50%, 135deg, 50%, soft);
+}

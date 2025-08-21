@@ -81,11 +81,43 @@
     opacity: .95;
     pointer-events: none;
   }
-
+}
 
   @media (max-width: 1024px) {
     .side-wrapper .mascot-inline { top: 6px; right: 8px; }
   }
+
+
+    /* Mascotte visible par défaut */
+  .side-wrapper .mascot-inline {
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity .15s ease, transform .15s ease;
+    pointer-events: none;
+  }
+
+  /* Disparition quand le menu s’ouvre au hover (desktop uniquement) */
+  @media (hover: hover) {
+    .side-wrapper:hover .mascot-inline { 
+      opacity: 0; 
+      transform: scale(.96);
+    }
+  }
+
+  /* Disparition quand aria-expanded=true (ou data-menu-open=1) */
+  .side-wrapper .mascot-inline.is-hidden { 
+    opacity: 0; 
+    transform: scale(.96);
+  }
+
+  /* Si ton navigateur supporte :has(), ça couvre le cas sans JS supplémentaire */
+  @supports(selector(:has(*))) {
+    .side-wrapper:has(.menu-trigger[aria-expanded="true"]) .mascot-inline {
+      opacity: 0;
+      transform: scale(.96);
+    }
+  }
+
 
 
 // ===============================
@@ -94,7 +126,7 @@
 
 
 
-}
+
 
 .menu-trigger {
   padding: 0.1rem 0;
@@ -366,45 +398,24 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-/* Mascotte visible par défaut */
-.side-wrapper .mascot-inline {
-  opacity: 1;
-  transform: scale(1);
-  transition: opacity .15s ease, transform .15s ease;
-  pointer-events: none;
-}
-
-/* Disparition quand le menu s’ouvre au hover (desktop uniquement) */
-@media (hover: hover) {
-  .side-wrapper:hover .mascot-inline { 
-    opacity: 0; 
-    transform: scale(.96);
+/* Force la couleur bleue pour la page en cours (mobile / hover éteint) */
+@media (max-width: 1024px) {
+  .side-menu ul li a.is-active:not([href$="index.html"]),
+  .side-menu ul li a[aria-current]:not([href$="index.html"]),
+  .side-menu ul li a[aria-current="page"]:not([href$="index.html"]) {
+    color: $bleu-accent !important;
+    font-weight: 700;
+    border-color: rgba($bleu-accent, .6);
+    box-shadow: 0 0 0 1px rgba($bleu-accent, .35) inset, 0 6px 18px rgba(0,0,0,.2);
   }
 }
 
-/* Disparition quand aria-expanded=true (ou data-menu-open=1) */
-.side-wrapper .mascot-inline.is-hidden { 
-  opacity: 0; 
-  transform: scale(.96);
-}
-
-/* Si ton navigateur supporte :has(), ça couvre le cas sans JS supplémentaire */
-@supports(selector(:has(*))) {
-  .side-wrapper:has(.menu-trigger[aria-expanded="true"]) .mascot-inline {
-    opacity: 0;
-    transform: scale(.96);
+/* Sécurité pour tous les appareils sans hover (peu importe la largeur) */
+@media (hover: none) {
+  .side-menu a.is-active:not([href$="index.html"]),
+  .side-menu a[aria-current]:not([href$="index.html"]),
+  .side-menu a[aria-current="page"]:not([href$="index.html"]) {
+    color: $bleu-accent !important;
+    font-weight: 700;
   }
 }
-

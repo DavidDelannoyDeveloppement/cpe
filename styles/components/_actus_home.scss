@@ -1,9 +1,6 @@
-// ========================
-// === IMPORT VARIABLES ===
-// ========================
 @use "sass:color";
 @use '../utils/variables' as *;
-
+@use '../utils/mixins' as *;
 
 // ==========================
 // ======= ACTUALITÉS =======
@@ -12,8 +9,6 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  // height: auto;
-  // background: linear-gradient(to right, $bleu 0%, color.adjust($bleu, $lightness: 12%) 100%);
   padding: 4rem 3rem 6rem;
   text-align: center;
 
@@ -26,96 +21,237 @@
   }
 
   .actus-marquee {
-    overflow: hidden;
+    --label-w: clamp(84px, 14vw, 140px);
+
     position: relative;
+    overflow: hidden;
     width: 90%;
     max-width: 100%;
-    border-top: 3px solid $vert1;
-    border-bottom: 3px solid $vert1;
-    background: white;
-    padding: 1rem 0;
-    box-shadow: 4px 4px 8px $bleu;
-    border-radius: 0.4rem; 
+    padding: .6rem 0;
+    padding-left: calc(var(--label-w) + 1rem);
+
+    /* Bandeau type TV info */
+    background: linear-gradient(
+      90deg,
+      $bleu 0%,
+      color.adjust($bleu, $lightness: 6%) 100%
+    );
+    border-radius: .4rem;
     border-bottom-right-radius: 1rem;
     border-top-left-radius: 1rem;
+    box-shadow: 0 8px 18px rgba(0,0,0,.18), 0 0 0 1px rgba(255,255,255,.05) inset;
 
-    // === Pause on hover ===
-    &:hover .marquee-track {
-      animation-play-state: paused;
+    /* Pause au survol (comportement existant conservé) */
+    &:hover .marquee-track { animation-play-state: paused; }
+
+    /* Cartouche "ACTUS" à gauche (aucun HTML à changer) */
+    &::before {
+      content: "NEWS";
+      position: absolute;
+      left: .5rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: var(--label-w);
+      display: grid;
+      place-items: center;
+      padding: .35rem .6rem;
+      font-weight: 800;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: $bleu;
+      background: linear-gradient(180deg,
+        color.adjust($saumon, $lightness: 8%),
+        $saumon
+      );
+      border-radius: .35rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,.25);
+      border: 1px solid rgba(0,0,0,.05);
+      z-index: 2;
+      white-space: nowrap;
+    }
+
+    /* Point "live" à côté du cartouche (pulsant) */
+    &::after {
+      content: "";
+      position: absolute;
+      left: calc(.5rem + var(--label-w) + .35rem);
+      top: 50%;
+      transform: translateY(-50%);
+      width: .5rem; height: .5rem;
+      border-radius: 999px;
+      background: $creme;
+      box-shadow: 0 0 0 0 rgba($creme, .7);
+      animation: pulse-dot 1.6s ease-out infinite;
+      z-index: 2;
     }
   }
-  
+
   .marquee-track {
     display: flex;
-    padding: 1rem 0;
-    gap: 4rem;
-    animation: scroll-left 30s linear infinite;
+    align-items: center;
+    gap: clamp(1rem, 3vw, 2rem);
+    padding: .35rem 0;
     width: fit-content;
     will-change: transform;
+    animation: scroll-left 30s linear infinite;
   }
 
   .actu-item {
-    white-space: nowrap;
-    font-size: 1.5rem;
-    font-weight: 300;
-    color: $bleu;
-    flex-shrink: 0;
-    padding: 0 0.8rem;
-    text-decoration: none;
     position: relative;
-    transition: color 0.3s ease;
+    white-space: nowrap;
+    font-size: clamp(1.05rem, 2.2vw, 1.35rem);
+    font-weight: 700;
+    color: $creme;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: .02em;
+    line-height: 1.2;
+    padding-inline: .2rem;
+    transition: color .2s ease, text-shadow .2s ease;
 
-    &::after {
-      content: " ";
-      margin-left: 1.5rem;
-      color: $vert1;
-      font-weight: bold;
+    /* Séparateur type TV entre items */
+    & + .actu-item {
+      padding-left: 1.4rem;
     }
-
-    &:last-child::after {
-      content: "";
+    & + .actu-item::before {
+      content: "•";
+      position: absolute;
+      left: .5rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: rgba(255,255,255,.55);
+      font-weight: 900;
+      font-size: .9rem;
     }
 
     &:hover {
       color: $saumon;
-      text-decoration: underline;
+      text-shadow: 0 0 6px rgba($saumon,.35);
+      text-decoration: none;
+    }
+
+    /* Dernier lien = CTA "Voir toutes les actus" plus visible */
+    &:last-child {
+      color: $saumon;
+      font-weight: 800;
+      letter-spacing: .04em;
+    }
+    &:last-child::after {
+      content: " ›";
+      font-weight: 900;
     }
   }
 
-  // === MEDIA QUERY intégrée ===
-  @media screen and (max-width: 1024px) {
+  /* Responsive */
+  @media (max-width: 1024px) {
     padding: 2rem 1rem 3rem;
 
-    h2 {
-      font-size: 2rem;
-      margin-bottom: 1.5rem;
-    }
-
     .actus-marquee {
-      padding: 0.5rem 0;
-      border-top-width: 1px;
-      border-bottom-width: 1px;
+      --label-w: clamp(74px, 22vw, 110px);
+      padding: .5rem 0;
+      padding-left: calc(var(--label-w) + .8rem);
     }
 
     .marquee-track {
-      gap: 2rem;
-      padding: 0.5rem 0;
+      gap: clamp(.8rem, 3.2vw, 1.4rem);
+      padding: .25rem 0;
     }
 
     .actu-item {
-      font-size: 1.1rem;
-      padding: 0 0.5rem;
-      white-space: nowrap;
-
-      &::after {
-        margin-left: 1rem;
-      }
+      font-size: clamp(.95rem, 3.4vw, 1.1rem);
+      & + .actu-item { padding-left: 1rem; }
+      & + .actu-item::before { left: .3rem; }
     }
   }
 }
 
-// Animation défilement vers la gauche
+/* === PATCH BFM++ : plus haut, cartouche décalé, masque anti-défilement === */
+.actus-section {
+  .actus-marquee {
+    /* largeur du cartouche + décalage vers le centre (~1cm) */
+    --label-w: clamp(70px, 18vw, 100px);
+    --label-shift: 1cm;
+
+    /* +50% environ de hauteur */
+    padding: 1.8rem 2rem;
+    /* réserve plus large à gauche (cartouche + décalage + marge) */
+    padding-left: calc(var(--label-w) + var(--label-shift) + 1rem);
+
+    /* Masque fixe à gauche (rien ne défile derrière le cartouche) */
+    position: relative;
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: calc(var(--label-w) + var(--label-shift) + .8rem);
+      height: 100%;
+      /* même fond que le bandeau pour masquer la piste */
+      background: linear-gradient(90deg, $bleu 0%, color.adjust($bleu, $lightness: 6%) 100%);
+      z-index: 2;            /* au-dessus de la piste, sous le cartouche */
+      pointer-events: none;
+    }
+
+    /* Cartouche ACTUS — rouge de la charte, déplacé vers le centre */
+    &::before {
+      left: var(--label-shift);
+      width: var(--label-w);
+      color: $rouge-vif;
+      // background: linear-gradient(180deg, color.adjust($rouge, $lightness: 6%), $rouge);
+      background: $creme;
+      border: 2px solid $rouge-vif;
+      border-left: 4px solid $rouge-vif-border;
+      border-top: 3px solid $rouge-vif-border;
+      border-radius: 0.4rem;
+      border-top-left-radius: 1rem;
+      border-bottom-right-radius: 1rem;
+      z-index: 3;            /* au-dessus du masque */
+      padding: .7rem .8rem;  /* un peu plus costaud */
+      font-size: clamp(.85rem, 1.6vw, 1rem);
+    }
+  }
+
+  /* piste + typo un peu plus grandes pour la nouvelle hauteur */
+  .marquee-track {
+    position: relative;
+    z-index: 1;            /* sous le masque et le cartouche */
+    padding: .9rem 0;      /* + air vertical */
+  }
+  .actu-item {
+    font-size: clamp(1.2rem, 2.6vw, 1.6rem);
+  }
+
+  /* Responsive : on garde l’effet sans sur-gonfler sur mobile */
+  @media (max-width: 1024px) {
+    .actus-marquee {
+      --label-w: clamp(110px, 28vw, 160px);
+      --label-shift: clamp(12px, 6vw, 1cm);
+
+      padding: 1.35rem 0;
+      padding-left: calc(var(--label-w) + var(--label-shift) + .8rem);
+
+      &::after {
+        width: calc(var(--label-w) + var(--label-shift) + .6rem);
+      }
+      &::before {
+        padding: .45rem .7rem;
+      }
+    }
+    .marquee-track { padding: .6rem 0; }
+    .actu-item { font-size: clamp(1.05rem, 3.2vw, 1.3rem); }
+  }
+}
+
+
+/* Défilement existant conservé */
 @keyframes scroll-left {
   0% { transform: translateX(0%); }
   100% { transform: translateX(-50%); }
+}
+
+/* Petit effet "live" */
+@keyframes pulse-dot {
+  0%   { box-shadow: 0 0 0 0 rgba($creme,.7); opacity: 1; }
+  70%  { box-shadow: 0 0 0 10px rgba($creme,0); opacity: .85; }
+  100% { box-shadow: 0 0 0 0 rgba($creme,0); opacity: 1; }
 }

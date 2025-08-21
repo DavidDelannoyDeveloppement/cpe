@@ -1,0 +1,121 @@
+@use "sass:color";
+@use '../utils/variables' as *;
+@use '../utils/mixins' as *;
+
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: clamp(0.8rem, 1.6vw, 1.2rem);
+    flex-wrap: nowrap; /* ❌ jamais sur 2 lignes */
+
+    .btn {
+        position: relative;
+        /* padding & style d'origine */
+        padding: clamp(0.8rem, 1.6vw, 1rem) clamp(1.2rem, 2.6vw, 1.6rem);
+        font-size: 1.1875rem; /* 19px */
+        line-height: 1;
+        border-radius: 4px;
+        border-bottom-right-radius: 1rem;
+        border-top-left-radius: 1rem;
+        font-weight: bold;
+        text-decoration: none;
+        border: none;
+        transition: all 0.15s ease-in-out;
+
+        /* ✅ largeur identique en duo */
+        flex: 0 0 15rem;        /* 240px desktop */
+        inline-size: 15rem;
+        text-align: center;
+        white-space: nowrap;
+
+        &::before,
+        &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        width: calc(100% - 2rem);
+        height: 0.1rem;
+        border-radius: 100%;
+        }
+
+        &::before {
+        top: 0.4rem;
+        background-image: linear-gradient(270deg, rgba(255,255,255,0) 0%, #ffffff 20%, #ffffff 80%, rgba(255,255,255,0) 100%);
+        opacity: 0.5;
+        }
+
+        &::after {
+        bottom: 0.5rem;
+        background-image: linear-gradient(270deg, rgba(255,255,255,0) 0%, #ffffff 20%, #ffffff 80%, rgba(255,255,255,0) 100%);
+        filter: blur(1px);
+        opacity: 0.05;
+        }
+
+        &:hover { transform: translateY(3px) scale(0.98); }
+
+        &.btn-primary   { @include gradient-btn($color-cta-bg, $color-cta-text); }
+        &.btn-secondary { @include gradient-btn($color-accent, $color-bg, 15%, 25%, -8%); }
+    }
+
+    /* ——— Cas 1 bouton : il peut dépasser la taille unique ——— */
+    > .btn:only-child,
+    > .btn-primary:only-child,
+    > .btn-secondary:only-child {
+        flex: 0 1 auto;         /* devient flexible */
+        inline-size: auto;      /* largeur au contenu */
+        min-inline-size: 15rem; /* plancher = taille unique desktop */
+        max-inline-size: 100%;  /* évite l’overflow */
+        text-align: center;
+        white-space: nowrap;    /* garde le label sur une ligne */
+    }
+
+    /* ===== Breakpoints (évite l'overflow et garde la cohérence) ===== */
+    @media (max-width: 900px) {
+        .btn {
+        flex-basis: 13rem;   /* ~208px */
+        inline-size: 13rem;
+        font-size: 1.0625rem; /* ~17px */
+        }
+        > .btn:only-child,
+        > .btn-primary:only-child,
+        > .btn-secondary:only-child {
+        min-inline-size: 13rem; /* plancher ajusté */
+        }
+    }
+
+    @media (max-width: 520px) {
+        .btn {
+        flex-basis: 11rem;   /* ~176px */
+        inline-size: 11rem;
+        font-size: 1rem;     /* ~16px */
+        }
+        > .btn:only-child,
+        > .btn-primary:only-child,
+        > .btn-secondary:only-child {
+        min-inline-size: 11rem; /* plancher ajusté */
+        max-inline-size: 92vw;  /* sécurité mobile */
+        /* Option si un label est vraiment très long :
+            overflow: hidden; text-overflow: ellipsis; */
+        }
+    }
+
+    /* ===== Ton bloc responsive existant — conservé ===== */
+    @media screen and (max-width: 768px) {
+        text-align: center;
+
+        .container { width: 100%; }
+
+        ul {
+        padding-left: 0;
+        li {
+            padding-left: 0;
+            &::before { position: relative; display: inline-block; margin-right: 0.4rem; }
+        }
+        }
+
+        .cta-buttons { justify-content: center; }
+    }
+}
