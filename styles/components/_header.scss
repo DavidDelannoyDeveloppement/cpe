@@ -43,7 +43,7 @@
 .site-header .header-inner .brand-title {
   color: $creme;
   font-family: $font-titles;
-  font-size: clamp(1.40rem, 3.2vw, 2.40rem);
+  font-size: clamp(1.80rem, 5vw, 2.60rem);
   text-align: center;
   line-height: 1.18;
   max-width: 48ch;
@@ -62,7 +62,7 @@
 
 .site-header .header-inner .brand .brand-logo {
   display: inline-block;
-  height: clamp(40px, 8vw, 90px);
+  height: clamp(64px, 8vw, 90px);
   aspect-ratio: 833 / 301;
   background-color: $vert2;
   -webkit-mask: url('../images/logo_cpe/logo_cpe_blanc.png') no-repeat center / contain;

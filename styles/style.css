@@ -28,27 +28,27 @@
   position: relative;
   z-index: 2;
   width: min(1400px, 92vw);
-  padding: clamp(1.5rem, 3vw, 3rem);
-  padding-top: clamp(0.5rem, 1vw, 1.5rem);
+  padding: clamp(1rem, 3vw, 2rem);
   text-align: center;
 }
 .hero-section .hero-content h2 {
-  font-size: clamp(1.58rem, 2.9vw, 2.11rem);
+  font-size: clamp(1.4rem, 3.4vw, 2.1rem);
   line-height: 1.45;
-  margin-top: clamp(1rem, 2vw, 1.6rem);
-  margin-bottom: clamp(1rem, 2vw, 1.6rem);
+  margin-top: clamp(0.2rem, 2vw, 1rem);
+  margin-bottom: clamp(1rem, 2vw, 2.2rem);
   color: #5bb887;
   font-weight: 600;
 }
 .hero-section .hero-content p {
   font-size: clamp(1.05rem, 1.6vw, 1.2rem);
-  line-height: 1.9;
-  margin-bottom: clamp(0.7rem, 1.2vw, 1rem);
+  margin-bottom: clamp(1rem, 1.5vw, 2rem);
+  margin-top: clamp(1rem, 1.2vw, 1.6rem);
   color: rgba(255, 255, 250, 0.9);
 }
 .hero-section .hero-content .objectif {
   font-size: clamp(1.44rem, 2.4vw, 1.8rem);
-  font-weight: 500;
+  font-weight: 600;
+  color: #F36F21;
 }
 @media screen and (max-width: 1024px) {
   .hero-section {
@@ -58,7 +58,6 @@
   }
   .hero-section .hero-content {
     margin-left: 0;
-    padding: 1.5rem;
   }
 }
 
@@ -1234,7 +1233,7 @@ body.page-definition a {
 }
 body.page-definition h2 {
   font-family: "Poppins", sans-serif;
-  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-size: clamp(1.3rem, 3.4vw, 2.2rem);
   color: #00a250;
   text-align: center;
   background: linear-gradient(135deg, #031837 0 0%, #00a250 50% 100%);
@@ -1917,13 +1916,13 @@ body.page-definition main .objectifs .objectifs-container .goals--secondary li s
 body.page-definition main .objectifs .h4-goals {
   text-align: center;
   color: #031837;
-  font-size: 1.5rem;
+  font-size: clamp(1.15rem, 3.4vw, 1.5rem);
   margin-top: 2rem;
 }
 body.page-definition main .objectifs .h4-gaols-secondary {
   text-align: center;
   color: #031837;
-  font-size: 1.5rem;
+  font-size: clamp(1.15rem, 3.4vw, 1.5rem);
   margin-top: 2rem;
 }
 body.page-definition main .comparatif {
@@ -2304,7 +2303,7 @@ body.page-fonctionnement a {
 }
 body.page-fonctionnement h2 {
   font-family: "Poppins", sans-serif;
-  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-size: clamp(1.3rem, 3.4vw, 2.2rem);
   color: #00a250;
   text-align: center;
   background: linear-gradient(135deg, #031837 0 0%, #00a250 50% 100%);
@@ -2388,7 +2387,7 @@ body.page-fonctionnement main .etapes .etapes-container {
   /* Numéro mis en avant (1, 2, 3...) */
 }
 body.page-fonctionnement main .etapes .etapes-container h3 {
-  font-size: 1.5rem;
+  font-size: clamp(1.2rem, 3.4vw, 1.5rem);
   color: #F36F21;
   text-align: center;
 }
@@ -2682,8 +2681,11 @@ body.page-fonctionnement main .pourquoi .pourquoi-container .pourquoi-list li {
   border-top-left-radius: 1rem;
   font-size: clamp(1rem, 1.4vw, 1.1rem);
   line-height: 1.5;
+  -webkit-hyphens: auto;
+          hyphens: auto;
+  overflow-wrap: anywhere;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 0.5rem;
   transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
 }
@@ -2692,9 +2694,22 @@ body.page-fonctionnement main .pourquoi .pourquoi-container .pourquoi-list li:ho
   transform: translateX(5px);
   box-shadow: 0 4px 10px rgba(3, 24, 55, 0.15);
 }
-@media screen and (max-width: 768px) {
-  body.page-fonctionnement main .pourquoi .pourquoi-container .audience-list li {
-    font-size: 1rem;
+@media (max-width: 768px) {
+  body.page-fonctionnement main .pourquoi .pourquoi-container .pourquoi {
+    text-align: left;
+  }
+  body.page-fonctionnement main .pourquoi .pourquoi-container .pourquoi-container .pourquoi-list {
+    display: flex !important;
+    flex-direction: column;
+    -moz-columns: initial;
+         columns: initial;
+    -moz-column-count: initial !important;
+         column-count: initial !important;
+    -moz-column-width: initial;
+         column-width: initial;
+  }
+  body.page-fonctionnement main .pourquoi .pourquoi-container .pourquoi-container .pourquoi-list li {
+    line-height: 1.6;
   }
 }
 body.page-fonctionnement main .pourquoi .action {
@@ -2717,7 +2732,7 @@ body.page-fonctionnement main .pourquoi .action .cta-inner {
 }
 body.page-fonctionnement main .pourquoi .action .cta-inner .h3-action {
   color: #be097f;
-  font-size: 2rem;
+  font-size: clamp(1.3rem, 3.4vw, 2.2rem);
 }
 @media (max-width: 720px) {
   body.page-fonctionnement main .pourquoi .action .cta-inner > .btn,
@@ -2785,7 +2800,9 @@ body.page-fonctionnement main .exemple .exemple-container .exemple-text .exemple
 }
 body.page-fonctionnement main .exemple .exemple-container .exemple-text .exemple-ul {
   margin-left: 2rem;
-  line-height: 2.5rem;
+}
+body.page-fonctionnement main .exemple .exemple-container .exemple-text .exemple-ul li {
+  margin-bottom: clamp(0.6rem, 1.6vw, 1.5rem);
 }
 body.page-fonctionnement main .exemple .exemple-container .exemple-image img {
   width: 80%;
@@ -2801,6 +2818,101 @@ body.page-fonctionnement main .exemple .exemple-container .exemple-image img {
   body.page-fonctionnement main .exemple .exemple-container .exemple-image img {
     width: 100%;
   }
+}
+
+/* Scope page */
+body.page-typologies {
+  font-family: "Poppins", sans-serif;
+  color: #031837;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+body.page-typologies img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+body.page-typologies a {
+  text-decoration: none;
+  color: inherit;
+}
+body.page-typologies h2 {
+  font-family: "Poppins", sans-serif;
+  font-size: clamp(1.3rem, 3.4vw, 2.2rem);
+  color: #00a250;
+  text-align: center;
+  background: linear-gradient(135deg, #031837 0 0%, #00a250 50% 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  display: block;
+  width: -moz-max-content;
+  width: max-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0 auto 1.5rem;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+body.page-typologies h2 > :is(svg, img, i, .icon) {
+  background: none !important;
+  -webkit-background-clip: border-box;
+  background-clip: border-box;
+  -webkit-text-fill-color: initial;
+  color: #00a250;
+}
+body.page-typologies h2 > svg {
+  fill: currentColor;
+}
+body.page-typologies p {
+  font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+  line-height: 1.8;
+  margin-bottom: 1.2rem;
+}
+body.page-typologies main {
+  background: linear-gradient(135deg, rgba(39, 193, 152, 0.2), rgba(255, 122, 89, 0.3));
+}
+body.page-typologies main .intro {
+  padding: clamp(2rem, 5vw, 4rem) 1rem;
+  color: #031837;
+  text-align: justify;
+}
+body.page-typologies main .intro .intro-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+@media (max-width: 768px) {
+  body.page-typologies main .intro .intro-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+}
+body.page-typologies main .intro .intro-container .intro-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem 0;
+  height: 100%;
+  font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+  line-height: 1.7;
+}
+body.page-typologies main .intro .intro-container .intro-image img {
+  width: 100%;
+  max-width: 350px;
+  border-radius: 0.4rem;
+  border-bottom-right-radius: 1rem;
+  border-top-left-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  display: block;
+  margin: 0 auto;
 }
 
 .skip-link {
@@ -2850,7 +2962,7 @@ body.page-fonctionnement main .exemple .exemple-container .exemple-image img {
 .site-header .header-inner .brand-title {
   color: #fffffa;
   font-family: "Poppins", sans-serif;
-  font-size: clamp(1.4rem, 3.2vw, 2.4rem);
+  font-size: clamp(1.8rem, 5vw, 2.6rem);
   text-align: center;
   line-height: 1.18;
   max-width: 48ch;
@@ -2869,7 +2981,7 @@ body.page-fonctionnement main .exemple .exemple-container .exemple-image img {
 
 .site-header .header-inner .brand .brand-logo {
   display: inline-block;
-  height: clamp(40px, 8vw, 90px);
+  height: clamp(64px, 8vw, 90px);
   aspect-ratio: 833/301;
   background-color: #3fab35;
   -webkit-mask: url("../images/logo_cpe/logo_cpe_blanc.png") no-repeat center/contain;
@@ -3130,7 +3242,7 @@ body.page-fonctionnement main .exemple .exemple-container .exemple-image img {
 .side-wrapper:hover .side-menu,
 .side-wrapper.open .side-menu,
 .side-wrapper:focus-within .side-menu {
-  width: 240px;
+  width: 250px;
   opacity: 1;
   pointer-events: all;
   border-top-right-radius: 0.7rem;
@@ -3241,6 +3353,9 @@ body.page-fonctionnement main .exemple .exemple-container .exemple-image img {
     min-height: 44px;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
     transition: transform 0.15s ease, background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+  body.page_home .side-menu ul li a[href$="index.html"] {
+    color: #f6ab78;
   }
   @supports ((-webkit-backdrop-filter: blur(6px)) or (backdrop-filter: blur(6px))) {
     body.page_home .side-menu ul li a {

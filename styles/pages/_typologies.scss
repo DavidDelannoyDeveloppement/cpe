@@ -1,0 +1,162 @@
+@use "sass:color";
+@use '../utils/variables' as *;
+@use '../utils/mixins' as *;
+@use "../components/separation-section" as *;
+@use "../components/boutons" as *;
+
+
+/* Scope page */
+body.page-typologies {
+    font-family: $poppins;
+    color: #031837;
+    // background-color: $creme;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: hidden;
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { text-decoration: none; color: inherit; }
+    
+    h2 {
+        font-family: $font-titles;
+        font-size: clamp(1.30rem, 3.4vw, 2.20rem);
+        color: $vert1;
+        text-align: center;
+        @include text-gradient-bleu-vert();
+        display: block;
+        width: max-content;
+        width: fit-content;
+        margin: 0 auto 1.5rem;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+
+        & > :is(svg, img, i, .icon) {
+            background: none !important;
+            -webkit-background-clip: border-box;
+            background-clip: border-box;
+            -webkit-text-fill-color: initial;
+            color: $vert1;
+        }
+        & > svg { fill: currentColor; }
+    }
+
+    h3 {
+
+
+    }
+
+
+    h4 {
+
+        
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    p { 
+        font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+        line-height: 1.8; 
+        margin-bottom: 1.2rem; 
+    }
+
+    
+
+    main {
+        background: $background-bleu-rouge;
+        
+        .intro {
+            // background-color: $creme;
+            padding: clamp(2rem, 5vw, 4rem) 1rem;
+            color: $bleu;
+            text-align: justify;
+        
+            .intro-container {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem;
+                align-items: center;
+                max-width: 1100px;
+                margin: 0 auto;
+                @media (max-width: 768px) {
+                grid-template-columns: 1fr;
+                text-align: center;
+                }
+                
+                .intro-text {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    padding: 1rem 0;
+                    height: 100%;
+                    font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+                    line-height: 1.7;
+                }
+        
+                .intro-image {
+                    img {
+                    width: 100%;
+                    max-width: 350px;
+                    border-radius: 0.4rem; 
+                    border-bottom-right-radius: 1rem;
+                    border-top-left-radius: 1rem;
+                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+                    display: block;
+                    margin: 0 auto;
+                    }
+                }
+            }
+        }
+
+
+        
+        
+        
+    }
+}
+
+
