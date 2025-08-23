@@ -25,23 +25,9 @@ body.page-definition {
         font-family: $font-titles;
         font-size: $h2-size;
         color: $vert1;
+        margin-bottom: 1.5rem;
         text-align: left;
-        @include text-gradient-bleu-vert();
-        display: block;
-        width: max-content;
-        width: fit-content;
-        margin: 0 auto 1.5rem;
-        background-size: 100% 100%;
-        background-repeat: no-repeat;
-
-        & > :is(svg, img, i, .icon) {
-            background: none !important;
-            -webkit-background-clip: border-box;
-            background-clip: border-box;
-            -webkit-text-fill-color: initial;
-            color: $vert1;
-        }
-        & > svg { fill: currentColor; }
+        line-height: clamp(2.2rem,5vw,3rem);
     }
 
 
@@ -55,7 +41,7 @@ body.page-definition {
     main {
 
     
-        
+
         .intro {
             // background-color: $creme;
             padding: clamp(2rem, 5vw, 4rem) 1rem;
@@ -71,7 +57,7 @@ body.page-definition {
                 margin: 0 auto;
                 @media (max-width: 768px) {
                 grid-template-columns: 1fr;
-                text-align: center;
+                // text-align: center;
                 }
                 
                 .intro-text {
@@ -82,12 +68,19 @@ body.page-definition {
                     height: 100%;
                     font-size: clamp(1.05rem, 1.6vw, 1.2rem);
                     line-height: 1.7;
+                    
+                    .cta-buttons {
+                        display: flex;
+                        justify-content: center;
+                        gap: clamp(0.8rem, 1.6vw, 1.2rem);
+                        margin-top: clamp(1.2rem, 2.4vw, 2rem);
+                    }
                 }
 
                 .intro-image {
                     img {
                     width: 100%;
-                    max-width: 350px;
+                    max-width: 400px;
                     border-radius: 0.4rem; 
                     border-bottom-right-radius: 1rem;
                     border-top-left-radius: 1rem;
@@ -128,7 +121,9 @@ body.page-definition {
                 }
                 .info-card { 
                     // background: #fff; 
-                    border: 1px solid rgba(26,46,77,.08); 
+                    background: $background-vert-blanc;
+                    border-left: 4px solid $vert-border;
+                    box-shadow: 4px 4px 5px #0318370e;
                     border-radius: 0.4rem; 
                     border-bottom-right-radius: 1rem;
                     border-top-left-radius: 1rem;
@@ -140,7 +135,7 @@ body.page-definition {
                 
                 .info-card:hover { 
                     transform: translateY(-6px); 
-                    box-shadow: 0 14px 30px rgba(26,46,77,.12); 
+                    box-shadow: 0 14px 30px rgba(26, 46, 77, 0.178); 
                 }
                 
                 .info-card .ico { 
@@ -156,19 +151,6 @@ body.page-definition {
                 
                 .info-card small { 
                     color: $vert1; 
-                }
-
-                #info-card-jaune {
-                    border-left: 4px solid $jaune-border ;
-                    background: $jaune-gradient;
-                }
-                #info-card-orange {
-                    border-left: 4px solid $orange-border ;
-                    background: $orange-gradient;
-                }
-                #info-card-violet {
-                    border-left: 4px solid $violet-border ;
-                    background: $violet-gradient;
                 }
 
                 @media (max-width: 990px) {

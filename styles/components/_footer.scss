@@ -62,7 +62,7 @@
 
   /* Colonnage fluide : 4 max, puis 3, puis 2 selon la place */
   column-count: 4;         /* borne haute */
-  column-width: clamp(140px, 22vw, 220px);
+  column-width: clamp(140px, 22vw, 220px); /* largeur mini d'une colonne */
   column-gap: clamp(12px, 2vw, 24px);
   column-fill: balance;
 
@@ -72,56 +72,52 @@
 }
 
 .site-footer .legal a {
-  display: block;
-  break-inside: avoid-column;
+  display: block;                 /* un lien par ligne */
+  break-inside: avoid-column;     /* évite les coupures moches */
   padding: 2px 0;
-  color: $creme;                 /* défaut */
+  color: $creme;                  /* défaut */
   text-decoration: none;
 }
 .site-footer .legal a:visited { color: $creme; }
 
-/* Survol/focus des liens SAUF Accueil */
-.site-footer .legal a:hover:not(.home-link),
-.site-footer .legal a:focus:not(.home-link) {
+/* Survol/focus des liens (on exclut Accueil qui est .is-active permanente) */
+.site-footer .legal a:hover:not(.is-active),
+.site-footer .legal a:focus:not(.is-active) {
   color: $saumon;
   outline: none;
 }
 
-/* === Page active (hors Accueil) : violet + gras, sans soulignement === */
-.site-footer .legal a[aria-current="page"]:not(.home-link),
-.site-footer .legal a.is-active:not(.home-link) {
-  color: $violet;
-  font-weight: 700;
-  text-decoration: none;
-}
-.site-footer .legal a[aria-current="page"]:not(.home-link):hover,
-.site-footer .legal a[aria-current="page"]:not(.home-link):focus,
-.site-footer .legal a[aria-current="page"]:not(.home-link):visited,
-.site-footer .legal a.is-active:not(.home-link):hover,
-.site-footer .legal a.is-active:not(.home-link):focus,
-.site-footer .legal a.is-active:not(.home-link):visited {
-  color: $violet; /* reste violet dans tous les états */
-}
-
-/* === Accueil : toujours vert3 + gras, prioritaire en toutes circonstances === */
-.site-footer .legal a.home-link,
-.site-footer .legal a.home-link:hover,
-.site-footer .legal a.home-link:focus,
-.site-footer .legal a.home-link:visited,
-.site-footer .legal a.home-link[aria-current="page"],
-.site-footer .legal a.home-link.is-active {
+/* === Accueil : SEUL lien avec .is-active -> toujours vert + gras === */
+.site-footer .legal a.is-active,
+.site-footer .legal a.is-active:hover,
+.site-footer .legal a.is-active:focus,
+.site-footer .legal a.is-active:visited {
   color: $vert3;
   font-weight: 700;
   text-decoration: none;
 }
 
+/* === Page active réelle (hors Accueil) : violet + gras, sans soulignement === */
+.site-footer .legal a[aria-current="page"]:not(.is-active) {
+  color: $violet;
+  font-weight: 700;
+  text-decoration: none;
+}
+.site-footer .legal a[aria-current="page"]:not(.is-active):hover,
+.site-footer .legal a[aria-current="page"]:not(.is-active):focus,
+.site-footer .legal a[aria-current="page"]:not(.is-active):visited {
+  color: $violet; /* reste violet dans tous les états */
+}
+
 /* =================
    Responsive
    ================= */
+
+/* Sous 992px : logo au-dessus, liens en dessous (colonnage reste fluide) */
 @media (max-width: 992px) {
   .site-footer .footer-inner {
     flex-direction: column;
-  align-items: center;
+    align-items: center;
     text-align: left;
     gap: clamp(12px, 3vw, 20px);
   }
@@ -134,8 +130,8 @@
 /* Très étroit : on garantit au moins 2 colonnes (pas 1) */
 @media (max-width: 520px) {
   .site-footer .legal {
-    column-count: 2;
-    column-width: auto;
+    column-count: 2;       /* minimum 2 colonnes */
+    column-width: auto;    /* ignore la largeur mini pour permettre 2 */
     column-gap: 12px;
   }
 }

@@ -23,23 +23,9 @@ body.page-typologies {
         font-family: $font-titles;
         font-size: $h2-size;
         color: $vert1;
+        margin-bottom: 1.5rem;
         text-align: left;
-        @include text-gradient-bleu-vert();
-        display: block;
-        width: max-content;
-        width: fit-content;
-        margin: 0 auto 1.5rem;
-        background-size: 100% 100%;
-        background-repeat: no-repeat;
-
-        & > :is(svg, img, i, .icon) {
-            background: none !important;
-            -webkit-background-clip: border-box;
-            background-clip: border-box;
-            -webkit-text-fill-color: initial;
-            color: $vert1;
-        }
-        & > svg { fill: currentColor; }
+        line-height: clamp(2.2rem,5vw,3rem);
     }
 
     p { 
@@ -48,7 +34,7 @@ body.page-typologies {
         margin-bottom: 1.2rem; 
     }
 
-    
+
 
     main {
         

@@ -1,5 +1,30 @@
 @charset "UTF-8";
 /* Alias prêt à l'emploi : $bleu → $vert1 avec 50/50, angle 135°, fondu 50% */
+/* styles/utils/_base.scss */
+/* Typo globale Raleway */
+:root {
+  --ff-sans: "Raleway", system-ui, -apple-system, "Segoe UI", Roboto,
+             "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+}
+
+html {
+  font-family: var(--ff-sans);
+}
+
+body {
+  font-family: inherit;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Reset minimal */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 /* Composants utilisés uniquement sur la home */
 .hero-section {
   position: relative;
@@ -75,6 +100,7 @@
   color: #00a250;
   margin-bottom: 1.5rem;
   text-align: left;
+  line-height: clamp(2.2rem, 5vw, 3rem);
 }
 .section-why p {
   font-size: clamp(1.05rem, 1.6vw, 1.15rem);
@@ -131,6 +157,7 @@
   margin-bottom: 2rem;
   font-family: "Raleway", sans-serif;
   text-align: left;
+  line-height: clamp(2.2rem, 5vw, 3rem);
 }
 .audience-section .audience-container .audience-list {
   list-style: none;
@@ -402,6 +429,7 @@
   margin-bottom: 2rem;
   font-family: "Raleway", sans-serif;
   text-align: left;
+  line-height: clamp(2.2rem, 5vw, 3rem);
 }
 .simulateur-section .simulateur-container .cta-buttons {
   display: flex;
@@ -419,6 +447,7 @@
   color: #00a250;
   margin-bottom: 1rem;
   text-align: left;
+  line-height: clamp(2.2rem, 5vw, 3rem);
 }
 .expert-section .expert-content {
   display: grid;
@@ -986,30 +1015,9 @@ body.page-definition h2 {
   font-family: "Raleway", sans-serif;
   font-size: clamp(1.8rem, 4vw, 2.4rem);
   color: #00a250;
+  margin-bottom: 1.5rem;
   text-align: left;
-  background: linear-gradient(135deg, #031837 0 0%, #00a250 50% 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-  display: block;
-  width: -moz-max-content;
-  width: max-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  margin: 0 auto 1.5rem;
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-}
-body.page-definition h2 > :is(svg, img, i, .icon) {
-  background: none !important;
-  -webkit-background-clip: border-box;
-  background-clip: border-box;
-  -webkit-text-fill-color: initial;
-  color: #00a250;
-}
-body.page-definition h2 > svg {
-  fill: currentColor;
+  line-height: clamp(2.2rem, 5vw, 3rem);
 }
 body.page-definition p {
   font-size: clamp(1.05rem, 1.6vw, 1.15rem);
@@ -1032,7 +1040,6 @@ body.page-definition main .intro .intro-container {
 @media (max-width: 768px) {
   body.page-definition main .intro .intro-container {
     grid-template-columns: 1fr;
-    text-align: center;
   }
 }
 body.page-definition main .intro .intro-container .intro-text {
@@ -1044,9 +1051,15 @@ body.page-definition main .intro .intro-container .intro-text {
   font-size: clamp(1.05rem, 1.6vw, 1.2rem);
   line-height: 1.7;
 }
+body.page-definition main .intro .intro-container .intro-text .cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: clamp(0.8rem, 1.6vw, 1.2rem);
+  margin-top: clamp(1.2rem, 2.4vw, 2rem);
+}
 body.page-definition main .intro .intro-container .intro-image img {
   width: 100%;
-  max-width: 350px;
+  max-width: 400px;
   border-radius: 0.4rem;
   border-bottom-right-radius: 1rem;
   border-top-left-radius: 1rem;
@@ -1080,7 +1093,9 @@ body.page-definition main .definition .definition-container .info-grid {
   }
 }
 body.page-definition main .definition .definition-container .info-card {
-  border: 1px solid rgba(26, 46, 77, 0.08);
+  background: linear-gradient(165deg, rgba(46, 204, 113, 0.24), rgba(46, 204, 113, 0.06));
+  border-left: 4px solid rgb(0, 71, 30);
+  box-shadow: 4px 4px 5px rgba(3, 24, 55, 0.0549019608);
   border-radius: 0.4rem;
   border-bottom-right-radius: 1rem;
   border-top-left-radius: 1rem;
@@ -1090,7 +1105,7 @@ body.page-definition main .definition .definition-container .info-card {
 }
 body.page-definition main .definition .definition-container .info-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 14px 30px rgba(26, 46, 77, 0.12);
+  box-shadow: 0 14px 30px rgba(26, 46, 77, 0.178);
 }
 body.page-definition main .definition .definition-container .info-card .ico {
   font-size: 1.35rem;
@@ -1103,18 +1118,6 @@ body.page-definition main .definition .definition-container .info-card strong {
 }
 body.page-definition main .definition .definition-container .info-card small {
   color: #00a250;
-}
-body.page-definition main .definition .definition-container #info-card-jaune {
-  border-left: 4px solid rgb(187, 150, 0);
-  background: linear-gradient(165deg, rgba(241, 196, 15, 0.26), rgba(241, 196, 15, 0.06));
-}
-body.page-definition main .definition .definition-container #info-card-orange {
-  border-left: 4px solid rgb(207, 66, 0);
-  background: linear-gradient(165deg, rgba(230, 126, 34, 0.26), rgba(230, 126, 34, 0.06));
-}
-body.page-definition main .definition .definition-container #info-card-violet {
-  border-left: 4px solid rgb(124, 0, 114);
-  background: linear-gradient(165deg, rgba(155, 89, 182, 0.26), rgba(155, 89, 182, 0.06));
 }
 @media (max-width: 990px) {
   body.page-definition main .definition .definition-container .info-grid {
@@ -1925,30 +1928,9 @@ body.page-fonctionnement h2 {
   font-family: "Raleway", sans-serif;
   font-size: clamp(1.8rem, 4vw, 2.4rem);
   color: #00a250;
+  margin-bottom: 1.5rem;
   text-align: left;
-  background: linear-gradient(135deg, #031837 0 0%, #00a250 50% 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-  display: block;
-  width: -moz-max-content;
-  width: max-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  margin: 0 auto 1.5rem;
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-}
-body.page-fonctionnement h2 > :is(svg, img, i, .icon) {
-  background: none !important;
-  -webkit-background-clip: border-box;
-  background-clip: border-box;
-  -webkit-text-fill-color: initial;
-  color: #00a250;
-}
-body.page-fonctionnement h2 > svg {
-  fill: currentColor;
+  line-height: clamp(2.2rem, 5vw, 3rem);
 }
 body.page-fonctionnement p {
   font-size: clamp(1.05rem, 1.6vw, 1.15rem);
@@ -2484,30 +2466,9 @@ body.page-typologies h2 {
   font-family: "Raleway", sans-serif;
   font-size: clamp(1.8rem, 4vw, 2.4rem);
   color: #00a250;
+  margin-bottom: 1.5rem;
   text-align: left;
-  background: linear-gradient(135deg, #031837 0 0%, #00a250 50% 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-  display: block;
-  width: -moz-max-content;
-  width: max-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  margin: 0 auto 1.5rem;
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-}
-body.page-typologies h2 > :is(svg, img, i, .icon) {
-  background: none !important;
-  -webkit-background-clip: border-box;
-  background-clip: border-box;
-  -webkit-text-fill-color: initial;
-  color: #00a250;
-}
-body.page-typologies h2 > svg {
-  fill: currentColor;
+  line-height: clamp(2.2rem, 5vw, 3rem);
 }
 body.page-typologies p {
   font-size: clamp(1.05rem, 1.6vw, 1.15rem);
@@ -2758,10 +2719,10 @@ body.page-typologies main .intro .intro-container .intro-image img {
 .menu-trigger .menu-icone {
   display: inline-block;
   padding: 0.25rem;
-  filter: invert(72%) sepia(73%) saturate(5296%) hue-rotate(347deg) brightness(98%) contrast(95%);
+  filter: invert(92%) sepia(23%) saturate(6582%) hue-rotate(311deg) brightness(108%) contrast(93%);
 }
 .menu-trigger:focus-visible {
-  outline: 2px dashed rgba(243, 111, 33, 0.65);
+  outline: 2px dashed rgba(246, 171, 120, 0.65);
   outline-offset: 3px;
 }
 
@@ -2796,10 +2757,10 @@ body.page-typologies main .intro .intro-container .intro-image img {
   text-decoration: none;
 }
 .side-menu ul li a:hover {
-  color: #F36F21;
+  color: #f6ab78;
 }
 .side-menu ul li a:focus-visible {
-  outline: 2px dashed rgba(243, 111, 33, 0.65);
+  outline: 2px dashed rgba(246, 171, 120, 0.65);
   outline-offset: 3px;
   border-radius: 0.35rem;
   text-decoration: none;
@@ -2830,12 +2791,12 @@ body.page-typologies main .intro .intro-container .intro-image img {
 }
 
 .side-menu a.is-active:not([href$="index.html"]) {
-  color: #2F80ED;
+  color: #be097f;
 }
 
 .side-menu a.is-active:not([href$="index.html"]):hover,
 .side-menu a.is-active:not([href$="index.html"]):focus {
-  color: #2F80ED;
+  color: #be097f;
 }
 
 @media (max-width: 1024px) {
@@ -2881,7 +2842,7 @@ body.page-typologies main .intro .intro-container .intro-image img {
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(0deg, rgba(26, 46, 77, 0.72), rgba(26, 46, 77, 0.233));
+    background: linear-gradient(0deg, rgba(26, 46, 77, 0.82), rgba(26, 46, 77, 0.3));
     z-index: 0;
     pointer-events: none;
   }
@@ -3008,7 +2969,7 @@ body.page-typologies main .intro .intro-container .intro-image img {
   -moz-column-count: 4;
        column-count: 4; /* borne haute */
   -moz-column-width: clamp(140px, 22vw, 220px);
-       column-width: clamp(140px, 22vw, 220px);
+       column-width: clamp(140px, 22vw, 220px); /* largeur mini d'une colonne */
   -moz-column-gap: clamp(12px, 2vw, 24px);
        column-gap: clamp(12px, 2vw, 24px);
   -moz-column-fill: balance;
@@ -3022,9 +2983,9 @@ body.page-typologies main .intro .intro-container .intro-image img {
 }
 
 .site-footer .legal a {
-  display: block;
+  display: block; /* un lien par ligne */
   -moz-column-break-inside: avoid;
-       break-inside: avoid-column;
+       break-inside: avoid-column; /* évite les coupures moches */
   padding: 2px 0;
   color: #fffffa; /* défaut */
   text-decoration: none;
@@ -3034,45 +2995,40 @@ body.page-typologies main .intro .intro-container .intro-image img {
   color: #fffffa;
 }
 
-/* Survol/focus des liens SAUF Accueil */
-.site-footer .legal a:hover:not(.home-link),
-.site-footer .legal a:focus:not(.home-link) {
+/* Survol/focus des liens (on exclut Accueil qui est .is-active permanente) */
+.site-footer .legal a:hover:not(.is-active),
+.site-footer .legal a:focus:not(.is-active) {
   color: #f6ab78;
   outline: none;
 }
 
-/* === Page active (hors Accueil) : violet + gras, sans soulignement === */
-.site-footer .legal a[aria-current=page]:not(.home-link),
-.site-footer .legal a.is-active:not(.home-link) {
-  color: #be097f;
-  font-weight: 700;
-  text-decoration: none;
-}
-
-.site-footer .legal a[aria-current=page]:not(.home-link):hover,
-.site-footer .legal a[aria-current=page]:not(.home-link):focus,
-.site-footer .legal a[aria-current=page]:not(.home-link):visited,
-.site-footer .legal a.is-active:not(.home-link):hover,
-.site-footer .legal a.is-active:not(.home-link):focus,
-.site-footer .legal a.is-active:not(.home-link):visited {
-  color: #be097f; /* reste violet dans tous les états */
-}
-
-/* === Accueil : toujours vert3 + gras, prioritaire en toutes circonstances === */
-.site-footer .legal a.home-link,
-.site-footer .legal a.home-link:hover,
-.site-footer .legal a.home-link:focus,
-.site-footer .legal a.home-link:visited,
-.site-footer .legal a.home-link[aria-current=page],
-.site-footer .legal a.home-link.is-active {
+/* === Accueil : SEUL lien avec .is-active -> toujours vert + gras === */
+.site-footer .legal a.is-active,
+.site-footer .legal a.is-active:hover,
+.site-footer .legal a.is-active:focus,
+.site-footer .legal a.is-active:visited {
   color: #5bb887;
   font-weight: 700;
   text-decoration: none;
 }
 
+/* === Page active réelle (hors Accueil) : violet + gras, sans soulignement === */
+.site-footer .legal a[aria-current=page]:not(.is-active) {
+  color: #be097f;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.site-footer .legal a[aria-current=page]:not(.is-active):hover,
+.site-footer .legal a[aria-current=page]:not(.is-active):focus,
+.site-footer .legal a[aria-current=page]:not(.is-active):visited {
+  color: #be097f; /* reste violet dans tous les états */
+}
+
 /* =================
    Responsive
    ================= */
+/* Sous 992px : logo au-dessus, liens en dessous (colonnage reste fluide) */
 @media (max-width: 992px) {
   .site-footer .footer-inner {
     flex-direction: column;
@@ -3089,9 +3045,9 @@ body.page-typologies main .intro .intro-container .intro-image img {
 @media (max-width: 520px) {
   .site-footer .legal {
     -moz-column-count: 2;
-         column-count: 2;
+         column-count: 2; /* minimum 2 colonnes */
     -moz-column-width: auto;
-         column-width: auto;
+         column-width: auto; /* ignore la largeur mini pour permettre 2 */
     -moz-column-gap: 12px;
          column-gap: 12px;
   }

@@ -16,6 +16,7 @@
     color: $vert1;
     margin-bottom: 1.5rem;
     text-align: left;
+    line-height: clamp(2.2rem,5vw,3rem);
   }
 
   p { font-size: $p-size; line-height: 1.8; margin-bottom: 1.2rem; }

@@ -1,6 +1,7 @@
 // utils
 @use "utils/variables" as *;
 @use "utils/mixins" as *;
+@use "utils/base" as *;
 
 // pages
 @use "pages/main" as *;

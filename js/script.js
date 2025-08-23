@@ -22,27 +22,27 @@ document.addEventListener("DOMContentLoaded", () => {
   /* ===========================
      = Effet menu (bounce)      =
      =========================== */
-  // (function initMenuBounce() {
-  //   const trigger = document.querySelector(".menu-trigger");
-  //   const wrapper = document.querySelector(".side-wrapper");
-  //   if (!trigger || !wrapper) return;
+  (function initMenuBounce() {
+    const trigger = document.querySelector(".menu-trigger");
+    const wrapper = document.querySelector(".side-wrapper");
+    if (!trigger || !wrapper) return;
 
-  //   const bounceZoomShadow = [
-  //     { transform: "translateY(0) scale(1)",   filter: "drop-shadow(0 2px 5px rgba(0,0,0,0.2))" },
-  //     { transform: "translateY(-8px) scale(1.1)", filter: "drop-shadow(0 6px 10px rgba(0,0,0,0.25))" },
-  //     { transform: "translateY(0) scale(1)",   filter: "drop-shadow(0 2px 5px rgba(0,0,0,0.2))" },
-  //     { transform: "translateY(-4px) scale(1.05)", filter: "drop-shadow(0 4px 8px rgba(0,0,0,0.22))" },
-  //     { transform: "translateY(0) scale(1)",   filter: "drop-shadow(0 2px 5px rgba(0,0,0,0.2))" }
-  //   ];
-  //   const bounceOptions = { duration: 900, easing: "ease-in-out" };
+    const bounceZoomShadow = [
+      { transform: "translateY(0) scale(1)",   filter: "drop-shadow(0 2px 5px rgba(0,0,0,0.2))" },
+      { transform: "translateY(-8px) scale(1.1)", filter: "drop-shadow(0 6px 10px rgba(0,0,0,0.25))" },
+      { transform: "translateY(0) scale(1)",   filter: "drop-shadow(0 2px 5px rgba(0,0,0,0.2))" },
+      { transform: "translateY(-4px) scale(1.05)", filter: "drop-shadow(0 4px 8px rgba(0,0,0,0.22))" },
+      { transform: "translateY(0) scale(1)",   filter: "drop-shadow(0 2px 5px rgba(0,0,0,0.2))" }
+    ];
+    const bounceOptions = { duration: 900, easing: "ease-in-out" };
 
-  //   setInterval(() => {
-  //     // On évite l’animation quand le menu est ouvert (mobile) ou survolé (desktop)
-  //     if (!wrapper.classList.contains("open") && !wrapper.matches(":hover")) {
-  //       trigger.animate(bounceZoomShadow, bounceOptions);
-  //     }
-  //   }, 10000);
-  // })();
+    setInterval(() => {
+      // On évite l’animation quand le menu est ouvert (mobile) ou survolé (desktop)
+      if (!wrapper.classList.contains("open") && !wrapper.matches(":hover")) {
+        trigger.animate(bounceZoomShadow, bounceOptions);
+      }
+    }, 6000);
+  })();
 
 
   /* ===========================

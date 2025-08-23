@@ -13,6 +13,7 @@
     color: $vert1;
     margin-bottom: 1rem;
     text-align: left;
+    line-height: clamp(2.2rem,5vw,3rem);
   }
 
   .expert-content {
