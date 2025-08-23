@@ -2,6 +2,10 @@
 @use "../utils/variables" as *;
 @use "../utils/mixins" as *;
 
+// ========================
+// ===  SITE FOOTER v4  ===
+// ========================
+
 .site-footer {
   background: rgb(26, 46, 77);
   color: $creme;
@@ -10,12 +14,12 @@
 }
 
 .site-footer .footer-inner {
-  position: relative; /* pour centrer .legal en absolu */
+  /* Logo à gauche, bloc liens prend tout l'espace restant */
   display: flex;
   align-items: center;
-  justify-content: space-between; /* on garde le logo à gauche */
-  gap: clamp(8px, 2vw, 24px);
-  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: clamp(16px, 3vw, 48px);
+  flex-wrap: nowrap;
   width: 100%;
   margin: 0 auto;
 }
@@ -24,16 +28,19 @@
   display: inline-flex;
   align-items: center;
   text-decoration: none;
+  flex: 0 0 auto; /* ne pas étirer le logo */
 }
 
 .site-footer .brand-logo {
   display: inline-block;
-  height: clamp(34px, 6.5vw, 70px);
+  height: clamp(60px, 6.5vw, 80px);
   aspect-ratio: 833 / 301;
   background: #fff;
   -webkit-mask: url('../images/logo_cpe/logo_cpe_blanc.png') no-repeat center / contain;
           mask: url('../images/logo_cpe/logo_cpe_blanc.png') no-repeat center / contain;
-  font-size: 0; line-height: 0; color: transparent;
+  font-size: 0;
+  line-height: 0;
+  color: transparent;
 }
 
 @supports not (mask: url()) {
@@ -43,41 +50,92 @@
   }
 }
 
-/* Liens légaux centrés au milieu du footer (absolu) */
+/* =========================
+   Bloc liens "legal" adaptatif
+   ========================= */
 .site-footer .legal {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  justify-content: center;
-  gap: clamp(1.6875rem, 6vw, 3.75rem); /* +50% en rem */
-  flex-wrap: wrap;
-  text-align: center;
+  position: static;
+  transform: none;
+
+  flex: 1 1 auto;          /* occupe tout l'espace restant à droite du logo */
+  display: block;
+
+  /* Colonnage fluide : 4 max, puis 3, puis 2 selon la place */
+  column-count: 4;         /* borne haute */
+  column-width: clamp(140px, 22vw, 220px);
+  column-gap: clamp(12px, 2vw, 24px);
+  column-fill: balance;
+
+  padding-top: 4px;
+
+  ul { margin: 0; padding: 0; list-style: none; }
 }
 
 .site-footer .legal a {
-  color: $creme;
+  display: block;
+  break-inside: avoid-column;
+  padding: 2px 0;
+  color: $creme;                 /* défaut */
   text-decoration: none;
 }
+.site-footer .legal a:visited { color: $creme; }
 
-.site-footer .legal a:hover,
-.site-footer .legal a:focus {
+/* Survol/focus des liens SAUF Accueil */
+.site-footer .legal a:hover:not(.home-link),
+.site-footer .legal a:focus:not(.home-link) {
   color: $saumon;
-  font-weight: 700;
-  text-decoration: none;
   outline: none;
 }
 
-/* Mobile : on repasse en flux normal, tout centré */
+/* === Page active (hors Accueil) : violet + gras, sans soulignement === */
+.site-footer .legal a[aria-current="page"]:not(.home-link),
+.site-footer .legal a.is-active:not(.home-link) {
+  color: $violet;
+  font-weight: 700;
+  text-decoration: none;
+}
+.site-footer .legal a[aria-current="page"]:not(.home-link):hover,
+.site-footer .legal a[aria-current="page"]:not(.home-link):focus,
+.site-footer .legal a[aria-current="page"]:not(.home-link):visited,
+.site-footer .legal a.is-active:not(.home-link):hover,
+.site-footer .legal a.is-active:not(.home-link):focus,
+.site-footer .legal a.is-active:not(.home-link):visited {
+  color: $violet; /* reste violet dans tous les états */
+}
+
+/* === Accueil : toujours vert3 + gras, prioritaire en toutes circonstances === */
+.site-footer .legal a.home-link,
+.site-footer .legal a.home-link:hover,
+.site-footer .legal a.home-link:focus,
+.site-footer .legal a.home-link:visited,
+.site-footer .legal a.home-link[aria-current="page"],
+.site-footer .legal a.home-link.is-active {
+  color: $vert3;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+/* =================
+   Responsive
+   ================= */
 @media (max-width: 992px) {
-  .site-footer .footer-inner { 
-    flex-direction: column; 
-    text-align: center; 
+  .site-footer .footer-inner {
+    flex-direction: column;
+  align-items: center;
+    text-align: left;
+    gap: clamp(12px, 3vw, 20px);
   }
   .site-footer .legal {
-    position: static;
-    transform: none;
+    width: 100%;
     margin-top: .5rem;
+  }
+}
+
+/* Très étroit : on garantit au moins 2 colonnes (pas 1) */
+@media (max-width: 520px) {
+  .site-footer .legal {
+    column-count: 2;
+    column-width: auto;
+    column-gap: 12px;
   }
 }

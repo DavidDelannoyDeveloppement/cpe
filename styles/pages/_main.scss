@@ -6,6 +6,7 @@
 @use '../components/section_why';
 @use '../components/section_audience';
 @use '../components/section_vignettes_carrousel';
+@use '../components/section_simulateur';
 @use '../components/section_expert';
 @use '../components/actus_home';
 @use "../components/separation-section";
@@ -22,5 +23,8 @@ body.page_home {
   overflow-x: hidden;
 
   img { max-width: 100%; height: auto; display: block; }
-  a:not(.btn) { text-decoration: none; color: inherit; }
+  a {
+  color: currentColor;
+  text-decoration-color: currentColor;
+  }
 }

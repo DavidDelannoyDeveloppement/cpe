@@ -2,7 +2,7 @@
 @use "../utils/variables" as *; // n'utilise que $vert1 et $creme
 
 /* ===========================================
-   BOUTON UNIQUE — fond $vert1, texte $creme
+   BOUTON UNIQUE — design WHY (reflets + hover)
    =========================================== */
 .btn {
   position: relative;
@@ -10,17 +10,22 @@
   align-items: center;
   justify-content: center;
   gap: .5rem;
+  box-sizing: border-box;
 
-  /* Même taille mini PARTOUT, grandit si besoin, sans overflow mobile */
+  /* Largeur commune : même min partout, grandit si besoin */
   min-inline-size: min(15rem, 92vw);
   inline-size: max-content;
   max-inline-size: 92vw;
 
   text-align: center;
-  white-space: nowrap; /* libellés identiques → pas de wrap */
+  white-space: nowrap;   /* libellés identiques → pas de wrap */
   line-height: 1;
   font-weight: 700;
-  font-size: 1rem;
+
+  /* Tailles fluides (réf. WHY) */
+  font-size: $h5-size;
+  padding: clamp(.6rem, 1.6vw, .9rem) clamp(.8rem, 2.6vw, 1.6rem);
+
   text-decoration: none;
   border: none;
   cursor: pointer;
@@ -31,11 +36,7 @@
   border-bottom-right-radius: 1rem;
   border-top-left-radius: 1rem;
 
-  /* Padding fluide (mobile → desktop) */
-  padding-block: clamp(.7rem, 2.6vw, 1rem);
-  padding-inline: clamp(1rem, 3.6vw, 1.4rem);
-
-  /* Couleurs */
+  /* Fond $vert1 (léger dégradé) */
   background: linear-gradient(
     180deg,
     color.scale($vert1, $lightness: +12%) 0%,
@@ -43,7 +44,7 @@
     color.scale($vert1, $lightness: -10%) 100%
   );
 
-  /* Texte $creme bétonné pour éviter les surcharges globales sur <a> */
+  /* Texte $creme (bétonne tous les états lien) */
   &,
   &:link,
   &:visited,
@@ -54,34 +55,66 @@
     text-decoration: none;
   }
 
-  /* Reflet fin centré (gloss) */
-  &::before {
+  /* Reflets WHY (haut + bas) */
+  &::before,
+  &::after {
     content: "";
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    top: .4rem;
     width: calc(100% - 2rem);
     height: .1rem;
     border-radius: 999px;
-    background-image: linear-gradient(
-      to left,
-      transparent 0%,
-      #fff 20%,
-      #fff 80%,
-      transparent 100%
-    );
-    opacity: .45;
     pointer-events: none;
   }
+  &::before {
+    top: .4rem;
+    background-image: linear-gradient(
+      270deg,
+      rgba(255,255,255,0) 0%,
+      #fff 20%,
+      #fff 80%,
+      rgba(255,255,255,0) 100%
+    );
+    opacity: .5;
+  }
+  &::after {
+    bottom: .5rem;
+    background-image: linear-gradient(
+      270deg,
+      rgba(255,255,255,0) 0%,
+      #fff 20%,
+      #fff 80%,
+      rgba(255,255,255,0) 100%
+    );
+    filter: blur(1px);
+    opacity: .05;
+  }
 
-  /* États */
+  /* États (WHY : léger enfoncé) */
   transition: transform .15s ease, box-shadow .15s ease;
-  &:hover  { transform: translateY(2px) scale(.985); box-shadow: 0 6px 14px rgba(0,0,0,.22); }
-  &:active { transform: translateY(3px) scale(.98);  box-shadow: 0 4px 10px rgba(0,0,0,.20); }
-  &:focus-visible { outline: 2px solid rgba(255,255,255,.5); outline-offset: 2px; }
-  &[disabled], &.is-disabled { opacity: .55; pointer-events: none; }
+  &:hover        { transform: translateY(3px) scale(.98); }
+  &:active       { transform: translateY(3px) scale(.98); }
+  &:focus-visible{ outline: 2px solid rgba(255,255,255,.5); outline-offset: 2px; }
+  &[disabled],
+  &.is-disabled  { opacity: .55; pointer-events: none; }
 
   /* Icône interne optionnelle */
   .ico { color: currentColor; fill: currentColor; inline-size: 1.2em; block-size: 1.2em; }
+}
+
+/* =========================================================
+   Mobile — version plus compacte (≤ 520px)
+   ========================================================= */
+@media (max-width: 520px) {
+  .btn {
+    /* ↓ plus petit que 1.05rem sur mobile */
+    font-size: clamp(.94rem, 3.8vw, 1.02rem);
+
+    /* ↓ padding plus contenu */
+    padding: clamp(.5rem, 3.2vw, .75rem) clamp(.7rem, 5vw, 1.1rem);
+
+    /* ↓ largeur mini un peu réduite (optionnel) */
+    min-inline-size: min(13rem, 92vw);
+  }
 }

@@ -1,18 +1,100 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Fonctionnement du CPE</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Import Police -->
+  <!-- Titre & description uniques -->
+  <title>Fonctionnement d’un Contrat de Performance Énergétique (CPE) – Étapes, M&V, garanties</title>
+  <meta name="description" content="Comprendre le fonctionnement d’un CPE : cadrage, ligne de base, conception, contractualisation, réalisation et suivi avec IPMVP. Étapes clés, mesures, garanties et rôles.">
+
+  <!-- Indexation / robots -->
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta name="googlebot" content="index, follow">
+
+  <!-- Canonique -->
+  <link rel="canonical" href="https://daviddelannoydeveloppement.github.io/cpe/fonctionnement.html">
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/logo_cpe/logo_seul_cpe_gradient.svg">
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,200..1,900&display=swap" rel="stylesheet">
+
   <!-- CSS principal -->
   <link rel="preload" href="./styles/style.css" as="style">
   <link rel="stylesheet" href="./styles/style.css">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="./images/logo_cpe/logo_seul_cpe_gradient.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/logo_cpe/logo_32.png">
+  <link rel="apple-touch-icon" href="./images/logo_cpe/apple-touch-icon.png">
+  <meta name="theme-color" content="#1A2E4D">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="Contrat de Performance Énergétique (CPE)">
+  <meta property="og:title" content="Fonctionnement d’un Contrat de Performance Énergétique (CPE)">
+  <meta property="og:description" content="Les 6 grandes étapes d’un CPE : cadrage, ligne de base, conception, contrat, réalisation, suivi (IPMVP).">
+  <meta property="og:url" content="https://daviddelannoydeveloppement.github.io/cpe/fonctionnement.html">
+  <meta property="og:image" content="https://daviddelannoydeveloppement.github.io/cpe/images/social/og-cpe-fonctionnement.jpg">
+  <meta property="og:image:alt" content="Schéma des étapes du fonctionnement d’un CPE">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Fonctionnement d’un Contrat de Performance Énergétique (CPE)">
+  <meta name="twitter:description" content="Étapes clés, protocoles de mesure (IPMVP) et garanties de performance d’un CPE.">
+  <meta name="twitter:image" content="https://daviddelannoydeveloppement.github.io/cpe/images/social/og-cpe-fonctionnement.jpg">
+
+  <!-- Hreflang -->
+  <link rel="alternate" href="https://daviddelannoydeveloppement.github.io/cpe/fonctionnement.html" hreflang="fr">
+
+  <!-- Données structurées JSON-LD : WebPage + Fil d’Ariane + HowTo (les 6 étapes) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://daviddelannoydeveloppement.github.io/cpe/fonctionnement.html",
+        "url": "https://daviddelannoydeveloppement.github.io/cpe/fonctionnement.html",
+        "name": "Fonctionnement d’un Contrat de Performance Énergétique (CPE)",
+        "inLanguage": "fr",
+        "isPartOf": {
+          "@type": "WebSite",
+          "url": "https://daviddelannoydeveloppement.github.io/cpe/",
+          "name": "Guides CPE"
+        },
+        "description": "Comment fonctionne un CPE : cadrage, ligne de base, conception, contractualisation, réalisation et suivi avec IPMVP.",
+        "datePublished": "2025-08-01",
+        "dateModified": "2025-08-23"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://daviddelannoydeveloppement.github.io/cpe/" },
+          { "@type": "ListItem", "position": 2, "name": "Fonctionnement du CPE", "item": "https://daviddelannoydeveloppement.github.io/cpe/fonctionnement.html" }
+        ]
+      },
+      {
+        "@type": "HowTo",
+        "name": "Étapes d’un projet CPE",
+        "inLanguage": "fr",
+        "description": "Les six phases d’un Contrat de Performance Énergétique, du cadrage au suivi des résultats.",
+        "step": [
+          { "@type": "HowToStep", "name": "Cadrage et faisabilité", "text": "Patrimoine, historiques de consommation, diagnostic, potentiel d’économies, analyse juridique et financière." },
+          { "@type": "HowToStep", "name": "Ligne de base énergétique", "text": "Définition de la référence (historiques, météo, usages) pour mesurer les économies." },
+          { "@type": "HowToStep", "name": "Conception des solutions", "text": "Bouquet d’actions techniques dimensionnées (régulation, LED, ventilation, GTB, etc.)." },
+          { "@type": "HowToStep", "name": "Contractualisation", "text": "Objectifs, durée, modalités de calcul, M&V (IPMVP), pénalités/bonus, responsabilités." },
+          { "@type": "HowToStep", "name": "Réalisation", "text": "Travaux, exploitation, sensibilisation ; montage financier éventuel (tiers-financement)." },
+          { "@type": "HowToStep", "name": "Suivi et garantie", "text": "Comptages, suivi mensuel, rapports annuels, comparaison à la baseline, compensations si écart." }
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
 
 
@@ -26,13 +108,13 @@
   <!-- ======= HEADER ======= -->
   <header class="site-header" role="banner">
     <div class="header-inner">
-      <a class="brand" href="/" aria-label="Accueil - Site CPE">
+      <a class="brand" href="./index.html" aria-label="Accueil - Site CPE">
         <span class="brand-logo" role="img" aria-label="Logo CPE"></span>
       </a>
-      <h1 class="brand-title">Fonctionnement du CPE</h1>
+      <h1 class="brand-title">Comprendre et réussir votre CPE</h1>
       <div class="cta-buttons">
-        <a href="/simulation" class="btn btn-secondary">Simuler mon CPE</a>
-        <a href="/contact" class="btn btn-primary">Contacter un expert</a>
+        <a href="#" class="btn">Simuler mon CPE</a>
+        <a href="#" class="btn">Contacter un expert</a>
       </div>
     </div>
   </header>
@@ -51,30 +133,30 @@
     </div>
     <nav class="side-menu" id="sideMenu" aria-label="Menu latéral">
       <ul>
-        <li><a href="./index.html" class="is-active" aria-current="page"><b>Accueil</b></a></li>
-        <li><a href="./definition.html" aria-current="page">Définition du CPE</a></li>
+        <li><a href="./index.html" class="is-active"><b>Accueil</b></a></li>
+        <li><a href="./definition.html">Définition du CPE</a></li>
         <li><a href="./fonctionnement.html" aria-current="page">Fonctionnement du CPE</a></li>
-        <li><a href="./typologies.html" aria-current="page">Typologies de CPE</a></li>
-        <li><a href="./avantages.html" aria-current="page">Avantages et limites</a></li>
-        <li><a href="./reglementation.html" aria-current="page">Réglementation</a></li>
-        <li><a href="./etapes.html" aria-current="page">Étapes, durée, contrôle</a></li>
-        <li><a href="./chiffres.html" aria-current="page">Chiffres clés</a></li>
-        <li><a href="./financement.html" aria-current="page">Financement</a></li>
-        <li><a href="./recommandations.html" aria-current="page">Recommandations</a></li>
-        <li><a href="./actualites.html" aria-current="page">Actualités</a></li>
-        <li><a href="./glossaire.html" aria-current="page">Glossaire</a></li>
+        <li><a href="./typologies.html">Typologies de CPE</a></li>
+        <li><a href="./avantages.html">Avantages et limites</a></li>
+        <li><a href="./reglementation.html">Réglementation</a></li>
+        <li><a href="./etapes.html">Étapes, durée, contrôle</a></li>
+        <li><a href="./chiffres.html">Chiffres clés</a></li>
+        <li><a href="./financement.html">Financement</a></li>
+        <li><a href="./recommandations.html">Recommandations</a></li>
+        <li><a href="./actualites.html">Actualités</a></li>
+        <li><a href="./glossaire.html">Glossaire</a></li>
       </ul>
     </nav>
   </div>
 
 
-  <main>
+  <main id="contenu">
 
     <section class="intro">
       <h2><span class="icon">⚙️</span> Un mécanisme basé sur l’engagement de performance</h2>
         <div class="intro-container">
             <div class="intro-image">
-              <img src="./images/fonctionnement-intro-480.webp" alt="image-intro">
+              <img src="./images/fonctionnement-intro-480.webp" alt="Illustration : audit, travaux et suivi des consommations dans un CPE">
             </div>
             <div class="intro-text">
                 <p>Le fonctionnement d’un CPE repose sur un principe fondamental : <strong> le prestataire s’engage sur un résultat mesurable,</strong> généralement une économie d’énergie exprimée en kWh ou en pourcentage par rapport à une situation de référence. Cet engagement est encadré contractuellement, avec des pénalités ou bonus selon l’atteinte (ou non) des objectifs.</p>  
@@ -198,7 +280,7 @@
             </div>
           </div>
           <div class="ipmvp-image">
-            <img src="./images/fonctionnement-ipmvp-480.webp" alt="image-ipmvp">
+            <img src="./images/fonctionnement-ipmvp-480.webp" alt="Schéma des options A, B, C, D du protocole IPMVP">
           </div>
         </div>
     </section>
@@ -264,8 +346,8 @@
           <h3 class="h3-action">🚀 Prêt à passer à l’action ?</h3>
           <p><strong> Estimez vos économies ou échangez avec un spécialiste.</strong></p>
           <div class="cta-buttons">
-            <a href="./simulateur.html" class="btn btn-secondary">Simuler vos gains</a>
-            <a href="./contact-expert.html" class="btn btn-primary">Contacter un expert</a>
+            <a href="./simulateur.html" class="btn">Simuler vos gains</a>
+            <a href="./contact-expert.html" class="btn">Contacter un expert</a>
           </div>
         </div>
       </div>
@@ -279,7 +361,7 @@
       <h2><span class="icon">💬</span>Exemple réel de fonctionnement d’un CPE </h2>
       <div class="exemple-container">
         <div class="exemple-image">
-          <img src="./images/fonctionnement-exemple-480.webp" alt="image-exemple">
+          <img src="./images/fonctionnement-exemple-480.webp" alt="Exemple : mairie rénovée et bâtiments publics concernés par un CPE">
         </div>
         <div class="exemple-text">
           <p class="exemple-p">Une commune de 8 000 habitants a rénové ses <strong> 6 bâtiments publics avec un CPE :</strong></p>  
@@ -298,12 +380,25 @@
 
   </main>
 
+  <!-- Footer -->
   <footer class="site-footer" role="contentinfo" aria-label="Pied de page">
     <div class="footer-inner">
       <a href="./index.html" class="brand" aria-label="Retour à l’accueil">
         <span class="brand-logo" aria-hidden="true"></span>
       </a>
       <nav class="legal" aria-label="Liens légaux">
+        <a href="./index.html" class="is-active"><b>Accueil</b></a>
+        <a href="./definition.html">Définition du CPE</a>
+        <a href="./fonctionnement.html" aria-current="page">Fonctionnement du CPE</a>
+        <a href="./typologies.html">Typologies de CPE</a>
+        <a href="./avantages.html">Avantages et limites</a>
+        <a href="./reglementation.html">Réglementation</a>
+        <a href="./etapes.html">Étapes, durée, contrôle</a>
+        <a href="./chiffres.html">Chiffres clés</a>
+        <a href="./financement.html">Financement</a>
+        <a href="./recommandations.html">Recommandations</a>
+        <a href="./actualites.html">Actualités</a>
+        <a href="./glossaire.html">Glossaire</a>
         <a href="./cgu.html">CGU</a>
         <a href="./mentions-legales.html">Mentions légales</a>
       </nav>

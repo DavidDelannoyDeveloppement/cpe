@@ -21,7 +21,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(26, 46, 77, 0.75);
+  background: rgba(26, 46, 77, 0.85);
   z-index: 1;
 }
 .hero-section .hero-content {
@@ -100,64 +100,6 @@
   color: #5bb887;
   font-weight: bold;
 }
-.section-why .cta-buttons {
-  display: flex;
-  justify-content: center;
-  gap: clamp(0.8rem, 1.6vw, 1.2rem);
-  margin-top: clamp(1.2rem, 2.4vw, 2rem);
-}
-.section-why .cta-buttons .btn {
-  position: relative;
-  padding: clamp(0.6rem, 1.6vw, 0.9rem) clamp(0.8rem, 2.6vw, 1.6rem);
-  font-size: clamp(1.1rem, 2vw, 1.2rem);
-  border-radius: 4px;
-  border-bottom-right-radius: 1rem;
-  border-top-left-radius: 1rem;
-  font-weight: bold;
-  text-decoration: none;
-  border: none;
-  transition: all 0.15s ease-in-out;
-}
-.section-why .cta-buttons .btn::before, .section-why .cta-buttons .btn::after {
-  content: "";
-  display: block;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  width: calc(100% - 2rem);
-  height: 0.1rem;
-  border-radius: 100%;
-}
-.section-why .cta-buttons .btn::before {
-  top: 0.4rem;
-  background-image: linear-gradient(270deg, rgba(255, 255, 255, 0) 0%, #ffffff 20%, #ffffff 80%, rgba(255, 255, 255, 0) 100%);
-  opacity: 0.5;
-}
-.section-why .cta-buttons .btn::after {
-  bottom: 0.5rem;
-  background-image: linear-gradient(270deg, rgba(255, 255, 255, 0) 0%, #ffffff 20%, #ffffff 80%, rgba(255, 255, 255, 0) 100%);
-  filter: blur(1px);
-  opacity: 0.05;
-}
-.section-why .cta-buttons .btn:hover {
-  transform: translateY(3px) scale(0.98);
-}
-.section-why .cta-buttons .btn.btn-primary {
-  background-image: linear-gradient(-180deg, rgb(0, 213, 105.1851851852) 0%, #00a250 100%);
-  border: 1px solid rgb(34.5, 255, 143.3888888889);
-  color: #ffffff;
-}
-.section-why .cta-buttons .btn.btn-primary:hover {
-  background-color: rgb(0, 121.2, 59.8518518519);
-}
-.section-why .cta-buttons .btn.btn-secondary {
-  background-image: linear-gradient(-180deg, rgb(0, 238.5, 117.7777777778) 0%, #00a250 100%);
-  border: 1px solid rgb(34.5, 255, 143.3888888889);
-  color: #fffffa;
-}
-.section-why .cta-buttons .btn.btn-secondary:hover {
-  background-color: rgb(0, 121.2, 59.8518518519);
-}
 @media screen and (max-width: 768px) {
   .section-why .container {
     width: 100%;
@@ -172,9 +114,6 @@
     position: relative;
     display: inline-block;
     margin-right: 0.4rem;
-  }
-  .section-why .cta-buttons {
-    justify-content: center;
   }
 }
 
@@ -449,6 +388,28 @@
   }
 }
 
+.simulateur-section {
+  padding: clamp(1rem, 3vw, 2rem) 1rem clamp(2rem, 3vw, 2rem);
+  text-align: justify;
+}
+.simulateur-section .simulateur-container {
+  width: min(1100px, 92vw);
+  margin: 0 auto;
+}
+.simulateur-section .simulateur-container h2 {
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  color: #00a250;
+  margin-bottom: 2rem;
+  font-family: "Raleway", sans-serif;
+  text-align: left;
+}
+.simulateur-section .simulateur-container .cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: clamp(0.8rem, 1.6vw, 1.2rem);
+  margin-top: clamp(1.2rem, 2.4vw, 2rem);
+}
+
 .expert-section {
   padding: clamp(1rem, 3vw, 1.2rem) 1rem clamp(2rem, 3vw, 2rem);
 }
@@ -486,60 +447,6 @@
 .expert-section .expert-text .highlight {
   font-weight: bold;
   margin-top: 1.5rem;
-}
-.expert-section .expert-text .btn {
-  position: relative;
-  align-self: center;
-  margin-top: auto;
-  padding: clamp(0.6rem, 1.6vw, 0.9rem) clamp(0.8rem, 2.6vw, 1.6rem);
-  font-size: clamp(1.05rem, 1.6vw, 1.15rem);
-  border-radius: 4px;
-  border-bottom-right-radius: 1rem;
-  border-top-left-radius: 1rem;
-  font-weight: bold;
-  text-decoration: none;
-  border: none;
-  transition: all 0.15s ease-in-out;
-}
-.expert-section .expert-text .btn::before, .expert-section .expert-text .btn::after {
-  content: "";
-  display: block;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  width: calc(100% - 2rem);
-  height: 0.1rem;
-  border-radius: 100%;
-}
-.expert-section .expert-text .btn::before {
-  top: 0.4rem;
-  background-image: linear-gradient(270deg, rgba(255, 255, 255, 0) 0%, #ffffff 20%, #ffffff 80%, rgba(255, 255, 255, 0) 100%);
-  opacity: 0.5;
-}
-.expert-section .expert-text .btn::after {
-  bottom: 0.5rem;
-  background-image: linear-gradient(270deg, rgba(255, 255, 255, 0) 0%, #ffffff 20%, #ffffff 80%, rgba(255, 255, 255, 0) 100%);
-  filter: blur(1px);
-  opacity: 0.05;
-}
-.expert-section .expert-text .btn:hover {
-  transform: translateY(3px) scale(0.98);
-}
-.expert-section .expert-text .btn.btn-primary {
-  background-image: linear-gradient(-180deg, rgb(0, 213, 105.1851851852) 0%, #00a250 100%);
-  border: 1px solid rgb(34.5, 255, 143.3888888889);
-  color: #ffffff;
-}
-.expert-section .expert-text .btn.btn-primary:hover {
-  background-color: rgb(0, 121.2, 59.8518518519);
-}
-.expert-section .expert-text .btn.btn-secondary {
-  background-image: linear-gradient(-180deg, rgb(0, 238.5, 117.7777777778) 0%, #00a250 100%);
-  border: 1px solid rgb(34.5, 255, 143.3888888889);
-  color: #fffffa;
-}
-.expert-section .expert-text .btn.btn-secondary:hover {
-  background-color: rgb(0, 121.2, 59.8518518519);
 }
 @media (max-width: 768px) {
   .expert-section .expert-text {
@@ -834,7 +741,7 @@
   }
 }
 /* ===========================================
-   BOUTON UNIQUE — fond $vert1, texte $creme
+   BOUTON UNIQUE — design WHY (reflets + hover)
    =========================================== */
 .btn {
   position: relative;
@@ -842,7 +749,8 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  /* Même taille mini PARTOUT, grandit si besoin, sans overflow mobile */
+  box-sizing: border-box;
+  /* Largeur commune : même min partout, grandit si besoin */
   min-inline-size: min(15rem, 92vw);
   inline-size: -moz-max-content;
   inline-size: max-content;
@@ -851,7 +759,9 @@
   white-space: nowrap; /* libellés identiques → pas de wrap */
   line-height: 1;
   font-weight: 700;
-  font-size: 1rem;
+  /* Tailles fluides (réf. WHY) */
+  font-size: clamp(1.1rem, 2vw, 1.2rem);
+  padding: clamp(0.6rem, 1.6vw, 0.9rem) clamp(0.8rem, 2.6vw, 1.6rem);
   text-decoration: none;
   border: none;
   cursor: pointer;
@@ -860,14 +770,11 @@
   border-radius: 4px;
   border-bottom-right-radius: 1rem;
   border-top-left-radius: 1rem;
-  /* Padding fluide (mobile → desktop) */
-  padding-block: clamp(0.7rem, 2.6vw, 1rem);
-  padding-inline: clamp(1rem, 3.6vw, 1.4rem);
-  /* Couleurs */
+  /* Fond $vert1 (léger dégradé) */
   background: linear-gradient(180deg, rgb(0, 203.76, 100.6222222222) 0%, #00a250 60%, rgb(0, 145.8, 72) 100%);
-  /* Texte $creme bétonné pour éviter les surcharges globales sur <a> */
-  /* Reflet fin centré (gloss) */
-  /* États */
+  /* Texte $creme (bétonne tous les états lien) */
+  /* Reflets WHY (haut + bas) */
+  /* États (WHY : léger enfoncé) */
   transition: transform 0.15s ease, box-shadow 0.15s ease;
   /* Icône interne optionnelle */
 }
@@ -875,26 +782,32 @@
   color: #fffffa;
   text-decoration: none;
 }
-.btn::before {
+.btn::before, .btn::after {
   content: "";
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  top: 0.4rem;
   width: calc(100% - 2rem);
   height: 0.1rem;
   border-radius: 999px;
-  background-image: linear-gradient(to left, transparent 0%, #fff 20%, #fff 80%, transparent 100%);
-  opacity: 0.45;
   pointer-events: none;
 }
+.btn::before {
+  top: 0.4rem;
+  background-image: linear-gradient(270deg, rgba(255, 255, 255, 0) 0%, #fff 20%, #fff 80%, rgba(255, 255, 255, 0) 100%);
+  opacity: 0.5;
+}
+.btn::after {
+  bottom: 0.5rem;
+  background-image: linear-gradient(270deg, rgba(255, 255, 255, 0) 0%, #fff 20%, #fff 80%, rgba(255, 255, 255, 0) 100%);
+  filter: blur(1px);
+  opacity: 0.05;
+}
 .btn:hover {
-  transform: translateY(2px) scale(0.985);
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.22);
+  transform: translateY(3px) scale(0.98);
 }
 .btn:active {
   transform: translateY(3px) scale(0.98);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 .btn:focus-visible {
   outline: 2px solid rgba(255, 255, 255, 0.5);
@@ -911,6 +824,19 @@
   block-size: 1.2em;
 }
 
+/* =========================================================
+   Mobile — version plus compacte (≤ 520px)
+   ========================================================= */
+@media (max-width: 520px) {
+  .btn {
+    /* ↓ plus petit que 1.05rem sur mobile */
+    font-size: clamp(0.94rem, 3.8vw, 1.02rem);
+    /* ↓ padding plus contenu */
+    padding: clamp(0.5rem, 3.2vw, 0.75rem) clamp(0.7rem, 5vw, 1.1rem);
+    /* ↓ largeur mini un peu réduite (optionnel) */
+    min-inline-size: min(13rem, 92vw);
+  }
+}
 body.page_home {
   font-family: "Raleway", sans-serif;
   color: #031837;
@@ -926,9 +852,9 @@ body.page_home img {
   height: auto;
   display: block;
 }
-body.page_home a:not(.btn) {
-  text-decoration: none;
-  color: inherit;
+body.page_home a {
+  color: currentColor;
+  text-decoration-color: currentColor;
 }
 
 /* Scope page */
@@ -1053,8 +979,8 @@ body.page-definition img {
   display: block;
 }
 body.page-definition a {
-  text-decoration: none;
-  color: inherit;
+  color: currentColor;
+  text-decoration-color: currentColor;
 }
 body.page-definition h2 {
   font-family: "Raleway", sans-serif;
@@ -2726,21 +2652,21 @@ body.page-typologies main .intro .intro-container .intro-image img {
   }
 }
 /* ============================================
-   CTA zone — LAYOUT UNIQUEMENT (pas de width/padding/couleur)
+   CTA zone — LAYOUT UNIQUEMENT
+   (les .btn gardent leur style global)
    ============================================ */
 .site-header .header-inner .cta-buttons {
   display: flex;
-  flex-direction: column; /* ← empilé en mobile… et partout */
+  flex-direction: column; /* empilé partout */
   align-items: center;
   justify-content: center;
   gap: clamp(0.8rem, 1.6vw, 1.2rem);
-  flex-wrap: nowrap; /* pas de wrap : on force la colonne */
+  flex-wrap: nowrap; /* pas de wrap, colonne forcée */
   height: auto;
   align-content: center;
   flex: 0 1 auto;
 }
 
-/* ne pas toucher au style des .btn ici */
 .site-header .header-inner .cta-buttons > * {
   align-self: center;
   flex: 0 0 auto;
@@ -2774,24 +2700,6 @@ body.page-typologies main .intro .intro-container .intro-image img {
     flex: 1 1 auto;
   }
 }
-/* ============================
-   HOTFIX HEADER — uniformiser .btn
-   (forcer padding & font-size)
-   ============================ */
-.site-header .header-inner .cta-buttons .btn,
-.site-header .cta-buttons .btn,
-.site-header .btn {
-  font-size: 1rem !important;
-  line-height: 1 !important;
-  /* mêmes paddings que le composant .btn */
-  padding-block: clamp(0.7rem, 2.6vw, 1rem) !important;
-  padding-inline: clamp(1rem, 3.6vw, 1.4rem) !important;
-  min-inline-size: min(15rem, 92vw) !important;
-  inline-size: -moz-max-content !important;
-  inline-size: max-content !important;
-  max-inline-size: 92vw !important;
-}
-
 .side-wrapper {
   position: fixed;
   top: 180px;
@@ -3053,12 +2961,12 @@ body.page-typologies main .intro .intro-container .intro-image img {
 }
 
 .site-footer .footer-inner {
-  position: relative; /* pour centrer .legal en absolu */
+  /* Logo à gauche, bloc liens prend tout l'espace restant */
   display: flex;
   align-items: center;
-  justify-content: space-between; /* on garde le logo à gauche */
-  gap: clamp(8px, 2vw, 24px);
-  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: clamp(16px, 3vw, 48px);
+  flex-wrap: nowrap;
   width: 100%;
   margin: 0 auto;
 }
@@ -3067,11 +2975,12 @@ body.page-typologies main .intro .intro-container .intro-image img {
   display: inline-flex;
   align-items: center;
   text-decoration: none;
+  flex: 0 0 auto; /* ne pas étirer le logo */
 }
 
 .site-footer .brand-logo {
   display: inline-block;
-  height: clamp(34px, 6.5vw, 70px);
+  height: clamp(60px, 6.5vw, 80px);
   aspect-ratio: 833/301;
   background: #fff;
   -webkit-mask: url("../images/logo_cpe/logo_cpe_blanc.png") no-repeat center/contain;
@@ -3087,42 +2996,104 @@ body.page-typologies main .intro .intro-container .intro-image img {
     background: url("../images/logo_cpe/logo_cpe_blanc.png") no-repeat center/contain;
   }
 }
-/* Liens légaux centrés au milieu du footer (absolu) */
+/* =========================
+   Bloc liens "legal" adaptatif
+   ========================= */
 .site-footer .legal {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  justify-content: center;
-  gap: clamp(1.6875rem, 6vw, 3.75rem); /* +50% en rem */
-  flex-wrap: wrap;
-  text-align: center;
+  position: static;
+  transform: none;
+  flex: 1 1 auto; /* occupe tout l'espace restant à droite du logo */
+  display: block;
+  /* Colonnage fluide : 4 max, puis 3, puis 2 selon la place */
+  -moz-column-count: 4;
+       column-count: 4; /* borne haute */
+  -moz-column-width: clamp(140px, 22vw, 220px);
+       column-width: clamp(140px, 22vw, 220px);
+  -moz-column-gap: clamp(12px, 2vw, 24px);
+       column-gap: clamp(12px, 2vw, 24px);
+  -moz-column-fill: balance;
+       column-fill: balance;
+  padding-top: 4px;
+}
+.site-footer .legal ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .site-footer .legal a {
-  color: #fffffa;
+  display: block;
+  -moz-column-break-inside: avoid;
+       break-inside: avoid-column;
+  padding: 2px 0;
+  color: #fffffa; /* défaut */
   text-decoration: none;
 }
 
-.site-footer .legal a:hover,
-.site-footer .legal a:focus {
+.site-footer .legal a:visited {
+  color: #fffffa;
+}
+
+/* Survol/focus des liens SAUF Accueil */
+.site-footer .legal a:hover:not(.home-link),
+.site-footer .legal a:focus:not(.home-link) {
   color: #f6ab78;
-  font-weight: 700;
-  text-decoration: none;
   outline: none;
 }
 
-/* Mobile : on repasse en flux normal, tout centré */
+/* === Page active (hors Accueil) : violet + gras, sans soulignement === */
+.site-footer .legal a[aria-current=page]:not(.home-link),
+.site-footer .legal a.is-active:not(.home-link) {
+  color: #be097f;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.site-footer .legal a[aria-current=page]:not(.home-link):hover,
+.site-footer .legal a[aria-current=page]:not(.home-link):focus,
+.site-footer .legal a[aria-current=page]:not(.home-link):visited,
+.site-footer .legal a.is-active:not(.home-link):hover,
+.site-footer .legal a.is-active:not(.home-link):focus,
+.site-footer .legal a.is-active:not(.home-link):visited {
+  color: #be097f; /* reste violet dans tous les états */
+}
+
+/* === Accueil : toujours vert3 + gras, prioritaire en toutes circonstances === */
+.site-footer .legal a.home-link,
+.site-footer .legal a.home-link:hover,
+.site-footer .legal a.home-link:focus,
+.site-footer .legal a.home-link:visited,
+.site-footer .legal a.home-link[aria-current=page],
+.site-footer .legal a.home-link.is-active {
+  color: #5bb887;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+/* =================
+   Responsive
+   ================= */
 @media (max-width: 992px) {
   .site-footer .footer-inner {
     flex-direction: column;
-    text-align: center;
+    align-items: center;
+    text-align: left;
+    gap: clamp(12px, 3vw, 20px);
   }
   .site-footer .legal {
-    position: static;
-    transform: none;
+    width: 100%;
     margin-top: 0.5rem;
+  }
+}
+/* Très étroit : on garantit au moins 2 colonnes (pas 1) */
+@media (max-width: 520px) {
+  .site-footer .legal {
+    -moz-column-count: 2;
+         column-count: 2;
+    -moz-column-width: auto;
+         column-width: auto;
+    -moz-column-gap: 12px;
+         column-gap: 12px;
   }
 }
 .next-cta {

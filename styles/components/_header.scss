@@ -94,21 +94,20 @@
 }
 
 /* ============================================
-   CTA zone — LAYOUT UNIQUEMENT (pas de width/padding/couleur)
+   CTA zone — LAYOUT UNIQUEMENT
+   (les .btn gardent leur style global)
    ============================================ */
 .site-header .header-inner .cta-buttons {
   display: flex;
-  flex-direction: column;   /* ← empilé en mobile… et partout */
+  flex-direction: column;   /* empilé partout */
   align-items: center;
   justify-content: center;
-  gap: clamp(0.80rem, 1.60vw, 1.20rem);
-  flex-wrap: nowrap;        /* pas de wrap : on force la colonne */
+  gap: clamp(.80rem, 1.60vw, 1.20rem);
+  flex-wrap: nowrap;        /* pas de wrap, colonne forcée */
   height: auto;
   align-content: center;
   flex: 0 1 auto;
 }
-
-/* ne pas toucher au style des .btn ici */
 .site-header .header-inner .cta-buttons > * {
   align-self: center;
   flex: 0 0 auto;
@@ -140,24 +139,3 @@
     flex: 1 1 auto;
   }
 }
-
-
-/* ============================
-   HOTFIX HEADER — uniformiser .btn
-   (forcer padding & font-size)
-   ============================ */
-.site-header .header-inner .cta-buttons .btn,
-.site-header .cta-buttons .btn,
-.site-header .btn {
-  font-size: 1rem !important;
-  line-height: 1 !important;
-
-  /* mêmes paddings que le composant .btn */
-  padding-block: clamp(.7rem, 2.6vw, 1rem) !important;
-  padding-inline: clamp(1rem, 3.6vw, 1.4rem) !important;
-  min-inline-size: min(15rem, 92vw) !important;
-  inline-size: max-content !important;
-  max-inline-size: 92vw !important;
-
-}
-
