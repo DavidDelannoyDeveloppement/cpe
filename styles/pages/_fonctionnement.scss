@@ -7,9 +7,9 @@
 
 /* Scope page */
 body.page-fonctionnement {
-    font-family: $poppins;
+    font-family: $font-body;
     color: #031837;
-    // background-color: $creme;
+    background-color: $creme;
     line-height: 1.6;
     display: flex;
     flex-direction: column;
@@ -21,9 +21,9 @@ body.page-fonctionnement {
     
     h2 {
         font-family: $font-titles;
-        font-size: clamp(1.30rem, 3.4vw, 2.20rem);
+        font-size: $h2-size;
         color: $vert1;
-        text-align: center;
+        text-align: left;
         @include text-gradient-bleu-vert();
         display: block;
         width: max-content;
@@ -43,7 +43,7 @@ body.page-fonctionnement {
     }
 
     p { 
-        font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+        font-size: $p-size;
         line-height: 1.8; 
         margin-bottom: 1.2rem; 
     }
@@ -51,8 +51,7 @@ body.page-fonctionnement {
     
 
     main {
-        background: $background-bleu-rouge;
-        
+
         .intro {
             // background-color: $creme;
             padding: clamp(2rem, 5vw, 4rem) 1rem;
@@ -485,19 +484,46 @@ body.page-fonctionnement {
                         }
                     }
                 }
-                @media (max-width:768px) {
-                    .pourquoi { text-align: left; }
-
-                    .pourquoi-container .pourquoi-list {
-                        display: flex !important;           
-                        flex-direction: column;
-                        columns: initial;
-                        column-count: initial!important;
-                        column-width: initial;
+                /* === PATCH — Section "Pourquoi" : fix mobile (<=768px) === */
+                @media (max-width: 768px) {
+                    /* 1) Lisibilité : pas de justify en très petite largeur */
+                    .page-fonctionnement .pourquoi {
+                        text-align: left;
                     }
 
-                    .pourquoi-container .pourquoi-list li {
-                        line-height: 1.6; 
+                    /* 2) Neutralise tout multi-colonnage éventuel */
+                    .page-fonctionnement .pourquoi .pourquoi-container {
+                        columns: initial !important;
+                        -webkit-columns: initial !important;
+                        -moz-columns: initial !important;
+                        column-count: 1 !important;
+                        -webkit-column-count: 1 !important;
+                        -moz-column-count: 1 !important;
+                    }
+
+                    .page-fonctionnement .pourquoi .pourquoi-container .pourquoi-list {
+                        /* Reviens à un flux normal vertical */
+                        display: block !important;
+                        columns: auto !important;
+                        -webkit-columns: auto !important;
+                        -moz-columns: auto !important;
+                        column-count: 1 !important;
+                        -webkit-column-count: 1 !important;
+                        -moz-column-count: 1 !important;
+                        column-width: auto !important;
+                    }
+
+                    /* 3) Les <li> ne doivent jamais se casser entre colonnes */
+                    .page-fonctionnement .pourquoi .pourquoi-container .pourquoi-list > li {
+                        break-inside: avoid;
+                        -webkit-column-break-inside: avoid;
+                        page-break-inside: avoid;
+
+                        /* Cohérence avec ton layout initial */
+                        display: flex;
+                        align-items: flex-start;
+                        gap: 0.5rem;
+                        line-height: 1.6;
                     }
                 }
 

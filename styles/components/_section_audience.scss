@@ -11,42 +11,49 @@
 // ===========================
 .audience-section {
   // background-color: $creme;
-  padding: clamp(2rem, 5vw, 4rem) 1rem;
-  text-align: center;
+  padding: clamp(0.2rem, 3vw, 1.2rem) 1rem clamp(2rem, 3vw, 2rem);
+  text-align: justify;
 
-  h2 {
-    font-size: clamp(1.8rem, 3vw, 2.4rem);
-    color: $vert1;
-    margin-bottom: 2rem;
-    font-family: $font-titles;
-  }
-
-  .audience-list {
-    list-style: none;
-    padding: 0;
-    max-width: 900px;
+  .audience-container {
+    width: min(1100px, 92vw); 
     margin: 0 auto;
-    text-align: left;
 
-    li {
-      background: rgba($bleu, 0.05);
-      border-left: 4px solid $bleu;
-      padding: 1rem;
-      margin-bottom: 1rem;
-      border-radius: 6px;
-      font-size: clamp(1rem, 1.4vw, 1.1rem);
-      line-height: 1.5;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      transition: background 0.25s ease, 
-                  transform 0.25s ease, 
-                  box-shadow 0.25s ease;
 
-      &:hover {
-        background: rgba($bleu, 0.1);
-        transform: translateX(5px);
-        box-shadow: 0 4px 10px rgba($bleu, 0.15);
+    h2 {
+      font-size: $h2-size;
+      color: $vert1;
+      margin-bottom: 2rem;
+      font-family: $font-titles;
+      text-align: left;
+    }
+
+    .audience-list {
+      list-style: none;
+      padding: 0;
+      max-width: 900px;
+      // margin: 0 auto;
+      text-align: left;
+
+      li {
+        background: $vert-gradient;
+        border-left: 4px solid $vert-border;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        border-radius: 6px;
+        font-size: $p-size;
+        line-height: 1.5;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: background 0.25s ease, 
+                    transform 0.25s ease, 
+                    box-shadow 0.25s ease;
+
+        &:hover {
+          // background: rgba($bleu, 0.1);
+          transform: translateX(5px);
+          box-shadow: 0 4px 10px rgba($bleu, 0.15);
+        }
       }
     }
   }
@@ -55,10 +62,6 @@
   @media screen and (max-width: 768px) {
     .audience-section {
       text-align: left;
-  
-      .audience-list li {
-        font-size: 1rem;
-      }
     }
   }
 }

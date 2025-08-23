@@ -15,58 +15,58 @@
   background: transparent;
   font-family: inherit;
 
-  .mascot-inline {
-    position: absolute;
-    top: 14px;
-    right: 12px;
-    width: 34px;
-    height: 34px;
-    padding: 5px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4px;
-    border-radius: 999px;
-    background: linear-gradient(180deg, color.adjust($orange-cta, $lightness: 8%), $orange-cta);
-    box-shadow: 0 2px 6px rgba(0,0,0,.25);
-    border: 1px solid rgba(255,255,255,.15);
-    pointer-events: none;
-    z-index: 5;
-  }
-  .mascot-inline .eye {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: #fff;
-    position: relative;
-    overflow: hidden;
-    box-shadow: inset 0 0 0 1px rgba(0,0,0,.06);
-  }
-  .mascot-inline .pupil {
-    position: absolute;
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background: $bleu-accent;
-    top: calc(50% - 2.5px);
-    left: calc(50% - 2.5px);
-    transform: translate(var(--tx, 0), var(--ty, 0));
-    transition: transform 70ms linear;
-    will-change: transform;
-  }
-  .mascot-inline .mouth {
-    position: absolute;
-    left: 50%;
-    bottom: 6px;
-    transform: translateX(-50%);
-    width: 12px;
-    height: 7px;
-    border: 0;
-    border-bottom: 2px solid #fff;
-    border-radius: 0 0 12px 12px;
-    background: transparent;
-    opacity: .95;
-    pointer-events: none;
-  }
+  // .mascot-inline {
+  //   position: absolute;
+  //   top: 14px;
+  //   right: 12px;
+  //   width: 34px;
+  //   height: 34px;
+  //   padding: 5px;
+  //   display: grid;
+  //   grid-template-columns: 1fr 1fr;
+  //   gap: 4px;
+  //   border-radius: 999px;
+  //   background: linear-gradient(180deg, color.adjust($orange-cta, $lightness: 8%), $orange-cta);
+  //   box-shadow: 0 2px 6px rgba(0,0,0,.25);
+  //   border: 1px solid rgba(255,255,255,.15);
+  //   pointer-events: none;
+  //   z-index: 5;
+  // }
+  // .mascot-inline .eye {
+  //   width: 12px;
+  //   height: 12px;
+  //   border-radius: 50%;
+  //   background: #fff;
+  //   position: relative;
+  //   overflow: hidden;
+  //   box-shadow: inset 0 0 0 1px rgba(0,0,0,.06);
+  // }
+  // .mascot-inline .pupil {
+  //   position: absolute;
+  //   width: 5px;
+  //   height: 5px;
+  //   border-radius: 50%;
+  //   background: $bleu-accent;
+  //   top: calc(50% - 2.5px);
+  //   left: calc(50% - 2.5px);
+  //   transform: translate(var(--tx, 0), var(--ty, 0));
+  //   transition: transform 70ms linear;
+  //   will-change: transform;
+  // }
+  // .mascot-inline .mouth {
+  //   position: absolute;
+  //   left: 50%;
+  //   bottom: 6px;
+  //   transform: translateX(-50%);
+  //   width: 12px;
+  //   height: 7px;
+  //   border: 0;
+  //   border-bottom: 2px solid #fff;
+  //   border-radius: 0 0 12px 12px;
+  //   background: transparent;
+  //   opacity: .95;
+  //   pointer-events: none;
+  // }
 }
 
 @media (max-width: 1024px) {

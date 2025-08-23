@@ -7,17 +7,19 @@
 // ==========================
 .actus-section {
   display: flex;
-  align-items: center;
+  // align-items: center;
   flex-direction: column;
-  padding: 4rem 3rem 6rem;
-  text-align: center;
+  padding: clamp(1rem, 3vw, 1.2rem) 0 clamp(2rem, 3vw, 3rem);
+  text-align: left;
+  width: min(1100px, 92vw);
+  margin: 0 auto;
 
   h2 {
     font-family: $font-titles;
-    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    font-size: $h2-size;
     color: $vert1;
     margin-bottom: 1.5rem;
-    text-align: center;
+    text-align: left;
   }
 
   .actus-marquee {
@@ -25,7 +27,7 @@
 
     position: relative;
     overflow: hidden;
-    width: 90%;
+    width: 100%;
     max-width: 100%;
     padding: .6rem 0;
     padding-left: calc(var(--label-w) + 1rem);
@@ -132,13 +134,16 @@
 
     /* Dernier lien = CTA "Voir toutes les actus" plus visible */
     &:last-child {
-      color: $saumon;
+      color: $vert3;
       font-weight: 800;
       letter-spacing: .04em;
     }
     &:last-child::after {
       content: " ›";
       font-weight: 900;
+    }
+    &:last-child:hover {
+      color: $saumon;
     }
   }
 
@@ -218,7 +223,7 @@
     padding: .9rem 0;      /* + air vertical */
   }
   .actu-item {
-    font-size: clamp(1.2rem, 2.6vw, 1.6rem);
+    font-size: $h4-size;
   }
 
   /* Responsive : on garde l’effet sans sur-gonfler sur mobile */

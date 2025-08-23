@@ -4,7 +4,7 @@
 
 /* Scope page */
 body.page-actus {
-    font-family: $poppins;
+    font-family: $font-body;
     color: #031837;
     background-color: $creme;
     line-height: 1.6;
@@ -24,7 +24,7 @@ body.page-actus {
       margin: 0 0 1.25rem;
       color: $bleu;
       font-family: $font-titles;
-      font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+      font-size: $h2-size;
       text-align: center;
     }
 
@@ -70,14 +70,14 @@ body.page-actus {
     .actu-title {
       margin: 0 0 .35rem;
       color: $bleu;
-      font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+      font-size: $h4-size;
       line-height: 1.25;
     }
 
     .actu-meta {
       margin: 0 0 .6rem;
       color: $gris-600;
-      font-size: .95rem;
+      font-size: $p-size;
       opacity: .9;
 
       .tag {
@@ -87,7 +87,7 @@ body.page-actus {
         border-radius: .4rem;
         background: rgba($orange-cta, .14);
         color: $orange-cta;
-        font-size: .8rem;
+        font-size: $p-size;
         line-height: 1;
         vertical-align: baseline;
       }
@@ -97,7 +97,7 @@ body.page-actus {
       margin: 0;
       color: $bleu;
       opacity: .9;
-      font-size: clamp(.98rem, 1.6vw, 1.05rem);
+      font-size: $p-size;
       line-height: 1.45;
     }
 
@@ -106,8 +106,6 @@ body.page-actus {
       padding: 1.6rem .8rem;
 
       .actu-list { gap: .8rem; }
-      .actu-title { font-size: clamp(1rem, 4vw, 1.15rem); }
-      .actu-summary { font-size: clamp(.95rem, 3.6vw, 1rem); }
     }
   }
 

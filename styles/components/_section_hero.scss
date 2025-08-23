@@ -41,7 +41,7 @@
     text-align: center;
 
     h2 {
-      font-size: clamp(1.40rem, 3.4vw, 2.1rem);
+      font-size: $h3-size;
       line-height: 1.45;
       margin-top: clamp(0.2rem, 2vw, 1rem);
       margin-bottom: clamp(1rem, 2vw, 2.2rem);
@@ -50,7 +50,7 @@
     }
 
     p {
-      font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+      font-size: $p-size;
       // line-height: 1.9;
       margin-bottom: clamp(1rem, 1.5vw, 2rem);
       margin-top: clamp(1rem, 1.2vw, 1.6rem);
@@ -58,9 +58,8 @@
     }
     
     .objectif {
-      font-size: clamp(1.44rem, 2.40vw, 1.80rem); 
+      font-size: $h3-size; 
       font-weight: 600;
-      color: $orange-cta;
     }
   }
 

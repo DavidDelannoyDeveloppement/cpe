@@ -6,9 +6,9 @@
 
 /* Scope page */
 body.page-definition {
-    font-family: $poppins;
+    font-family: $font-body;
     color: #031837;
-    // background-color: $creme;
+    background-color: $creme;
     line-height: 1.6;
     display: flex;
     flex-direction: column;
@@ -20,9 +20,9 @@ body.page-definition {
     
     h2 {
         font-family: $font-titles;
-        font-size: clamp(1.30rem, 3.4vw, 2.20rem);
+        font-size: $h2-size;
         color: $vert1;
-        text-align: center;
+        text-align: left;
         @include text-gradient-bleu-vert();
         display: block;
         width: max-content;
@@ -43,16 +43,15 @@ body.page-definition {
 
 
     p { 
-        font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+        font-size: $p-size;
         line-height: 1.8; 
         margin-bottom: 1.2rem; 
     }
 
 
     main {
-        background: $background-bleu-rouge;
-    
 
+    
         .intro {
             // background-color: $creme;
             padding: clamp(2rem, 5vw, 4rem) 1rem;

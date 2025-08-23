@@ -1,8 +1,14 @@
 @use "sass:color";
 @use "../utils/variables" as *;
 @use "../utils/mixins" as *;
-@use "../components/boutons" as *;
 
+:root{
+  --ff-sans: "Raleway", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+}
+
+/* ============================================
+   Skip link
+   ============================================ */
 .skip-link {
   position: absolute;
   left: -9999px;
@@ -19,6 +25,9 @@
   border-radius: .25rem;
 }
 
+/* ============================================
+   Header
+   ============================================ */
 .site-header {
   position: static;
   top: auto;
@@ -43,7 +52,7 @@
 .site-header .header-inner .brand-title {
   color: $creme;
   font-family: $font-titles;
-  font-size: clamp(1.80rem, 5vw, 2.60rem);
+  font-size: $h1-size;
   text-align: center;
   line-height: 1.18;
   max-width: 48ch;
@@ -84,16 +93,22 @@
   }
 }
 
+/* ============================================
+   CTA zone — LAYOUT UNIQUEMENT (pas de width/padding/couleur)
+   ============================================ */
 .site-header .header-inner .cta-buttons {
   display: flex;
-  flex-direction: column;
+  flex-direction: column;   /* ← empilé en mobile… et partout */
   align-items: center;
   justify-content: center;
   gap: clamp(0.80rem, 1.60vw, 1.20rem);
+  flex-wrap: nowrap;        /* pas de wrap : on force la colonne */
   height: auto;
   align-content: center;
   flex: 0 1 auto;
 }
+
+/* ne pas toucher au style des .btn ici */
 .site-header .header-inner .cta-buttons > * {
   align-self: center;
   flex: 0 0 auto;
@@ -101,6 +116,9 @@
   max-width: 100%;
 }
 
+/* ============================================
+   Responsif
+   ============================================ */
 @media (min-width: 993px) {
   .site-header { position: sticky; top: 0; }
 }
@@ -118,45 +136,28 @@
   }
   .site-header .header-inner .brand-title {
     text-align: center;
-    font-size: clamp(1.20rem, 4.2vw, 2.10rem);
+    font-size: $h1-size;
     flex: 1 1 auto;
   }
 }
 
-/* ============================================
-   CTA HEADER — Surcharge locale des .btn SEULEMENT
-   (sans modifier les conteneurs du header)
-   ============================================ */
 
-.site-header .header-inner .cta-buttons .btn {
-  /* Laisse le component gérer le style, on adapte juste la largeur */
-  display: block;                 /* évite les bizarreries inline */
-  box-sizing: border-box;
-  inline-size: clamp(12rem, 72vw, 18rem);  /* plus large que la version précédente */
-  max-inline-size: 92vw;                     /* ne colle pas aux bords en mobile */
-  min-inline-size: 12rem;
+/* ============================
+   HOTFIX HEADER — uniformiser .btn
+   (forcer padding & font-size)
+   ============================ */
+.site-header .header-inner .cta-buttons .btn,
+.site-header .cta-buttons .btn,
+.site-header .btn {
+  font-size: 1rem !important;
+  line-height: 1 !important;
 
-  /* Empêche le wrap tant qu'on a de la place */
-  white-space: nowrap;
-  overflow-wrap: normal;
-  word-break: keep-all;
+  /* mêmes paddings que le composant .btn */
+  padding-block: clamp(.7rem, 2.6vw, 1rem) !important;
+  padding-inline: clamp(1rem, 3.6vw, 1.4rem) !important;
+  min-inline-size: min(15rem, 92vw) !important;
+  inline-size: max-content !important;
+  max-inline-size: 92vw !important;
 
-  /* Confort */
-  line-height: 1.2;
-  min-height: 44px;
-  text-align: center;
-  padding-inline: clamp(14px, 3.5vw, 18px);
-}
-
-/* Très petits écrans : OK pour un wrap propre si nécessaire */
-@media (max-width: 520px) {
-  .site-header .header-inner .cta-buttons .btn {
-    inline-size: clamp(11rem, 88vw, 16rem);
-    white-space: normal;          /* autorise le retour à la ligne SEULEMENT ici */
-    overflow-wrap: anywhere;      /* coupe proprement si mot long */
-    word-break: normal;
-    hyphens: auto;
-    font-size: clamp(1rem, 3.8vw, 1.05rem);
-  }
 }
 
