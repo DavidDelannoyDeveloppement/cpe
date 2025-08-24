@@ -9,18 +9,78 @@ $vert2: #3fab35; // vert secondaire
 $vert3: #5bb887; // vert tertiaire
 $rouge: #ff0000;
 $blanc_pied: #fffff2;
-
 // Secondaires (existantes)
 $creme: #fffffa; // fond clair
 $saumon: #f6ab78;
 $violet: #be097f;
 
+// Background-color 
+$background-bleu-vert1 : linear-gradient(135deg, $bleu, $vert1);
+$background-vert-blanc : linear-gradient(165deg, rgba(46, 204, 112, 0.164), rgba(67, 233, 139, 0.062));
+$bleu-fond: rgba(26, 46, 77);
+
+
+// Vert foncé (prestataire)
+$vert-gradient:linear-gradient(165deg, rgba(46, 204, 113, 0.24), rgba(135, 211, 167, 0.295));
+$vert-border:rgb(0, 71, 30);
+$vert-border-top: rgba(0, 71, 30, 0.63);
+
+
+// ========================
+// ====== TYPOGRAPHIE =====
+// ========================
+$raleway : 'Raleway', sans-serif;
+
+$h1-size: clamp(2rem, 5vw, 3rem);
+$h2-size: clamp(1.70rem, 4vw, 2.40rem);
+$h3-size: clamp(1.40rem, 3.5vw, 1.80rem);
+$h4-size: clamp(1.20rem, 2.8vw, 1.40rem);
+$h5-size: clamp(1.10rem, 2vw, 1.20rem);
+$p-size : clamp(1.00rem, 1.5vw, 1.10rem);
+
+
+$font-titles: $raleway; // Titres/menus
+$font-body: $raleway; // Paragraphes/labels 
+$font-ui: $raleway; // Boutons, badges, formulaires
+
+
+// ========================
+// ===== DESIGN TOKENS ====
+// ========================
+$border-left-vert : 4px solid $vert-border;
+$border-top-vert: 1px solid $vert-border-top;
+$shadow-defaut: 4px 4px 5px #0318370e;
+$shadow-hover: 0 14px 30px rgba(26, 46, 77, 0.178);
+$shadow-photo :0 4px 12px rgba(0, 0, 0, 0.2);
+
+
+// ========================
+// ===  DESIGN BTN/IMG  ===
+// ========================
+$padding-btn: clamp(0.45rem, 1.25vw, 0.70rem) clamp(0.60rem, 1.90vw, 1.20rem);
+
+
+
+
+
+
+
+
+
+
+
+
+
+// =====================
+// =====   DIVERS   ====
+// =====================
+$transition-fast: 120ms ease;
+$transition-base: 220ms ease;
+
+
 // >>> AJOUTS MODERNES (en cohérence avec ta palette) <<<
 // Accent CTA (orange moderne, accessible sur fond sombre)
 $orange-cta: #F36F21;
-
-// Bleu d’accent/hover (liens, pictos, focus)
-$bleu-fond: rgba(26, 46, 77);
 $bleu-accent: #2F80ED;
 $bleu-pastel: #6C7A99;
 
@@ -33,11 +93,8 @@ $gris-500: #6B7280;
 $gris-600: #4B5563;
 $gris-700: #374151;
 
-// Background-color 
-$background-bleu-rouge : linear-gradient(135deg, rgba(39,193,152,.20), rgba(255,122,89,.30));
-$background-bleu-vert1 : linear-gradient(135deg, $bleu, $vert1);
-$background-vert-blanc : linear-gradient(165deg, rgba(46, 204, 113, 0.24), rgba(46, 204, 113, 0.06));
 
+$background-bleu-rouge : linear-gradient(135deg, rgba(39,193,152,.20), rgba(255,122,89,.30));
 
 
 
@@ -48,10 +105,7 @@ $bleu-clair:        #3498db;
 $bleu-clair-gradient: linear-gradient(165deg, rgba(33, 179, 223, 0.28), rgba(52,152,219,0.06));
 $bleu-clair-border: $bleu;
 
-// Vert foncé (prestataire)
-$vert-fonce:        rgb(0, 71, 30);
-$vert-gradient:     linear-gradient(165deg, rgba(46,204,113,0.24), rgba(46,204,113,0.06));
-$vert-border:       $vert-fonce;
+
 
 // Jaune doré (AMO)
 $jaune-dore:        rgb(187, 150, 0);
@@ -91,22 +145,6 @@ $color-danger: $rouge; // erreurs/alertes
 $color-cta-bg: $vert1; // fond bouton CTA
 $color-cta-text: #ffffff; // texte bouton CTA
 
-// ========================
-// ====== TYPOGRAPHIE =====
-// ========================
-$raleway : 'Raleway', sans-serif;
-
-$h1-size: clamp(2rem, 5vw, 3rem);
-$h2-size : clamp(1.8rem, 4vw, 2.4rem);
-$h3-size :clamp(1.30rem, 3.4vw, 1.80rem);
-$h4-size :clamp(1.15rem,2.8vw, 1.35rem);
-$h5-size :clamp(1.1rem, 2vw, 1.2rem);
-$p-size :clamp(1.05rem, 1.6vw, 1.15rem);
-
-// Alias conseillés
-$font-titles: $raleway; // Titres/menus
-$font-body: $raleway; // Paragraphes/labels (lisibilité top)
-$font-ui: $raleway; // Boutons, badges, formulaires
 
 // ========================
 // ===== DESIGN TOKENS ====
@@ -118,13 +156,4 @@ $radius-lg: 20px;
 $shadow-sm: 0 1px 3px rgba(3, 24, 55, 0.08);
 $shadow-md: 0 8px 24px rgba(3, 24, 55, 0.10);
 
-$transition-fast: 120ms ease;
-$transition-base: 220ms ease;
-
-
-
-// =======================
-// =====  DESIGN BTN  ====
-// =======================
-$padding-btn :clamp(0.6rem, 1.6vw, 0.9rem) clamp(0.8rem, 2.6vw, 1.6rem);
 

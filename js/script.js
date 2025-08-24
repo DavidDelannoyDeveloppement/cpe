@@ -29,9 +29,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const bounceZoomShadow = [
       { transform: "translateY(0) scale(1)",   filter: "drop-shadow(0 2px 5px rgba(0,0,0,0.2))" },
-      { transform: "translateY(-8px) scale(1.1)", filter: "drop-shadow(0 6px 10px rgba(0,0,0,0.25))" },
+      { transform: "translateY(-6px) scale(1.1)", filter: "drop-shadow(0 6px 10px rgba(0,0,0,0.25))" },
       { transform: "translateY(0) scale(1)",   filter: "drop-shadow(0 2px 5px rgba(0,0,0,0.2))" },
-      { transform: "translateY(-4px) scale(1.05)", filter: "drop-shadow(0 4px 8px rgba(0,0,0,0.22))" },
+      { transform: "translateY(-3px) scale(1.05)", filter: "drop-shadow(0 4px 8px rgba(0,0,0,0.22))" },
       { transform: "translateY(0) scale(1)",   filter: "drop-shadow(0 2px 5px rgba(0,0,0,0.2))" }
     ];
     const bounceOptions = { duration: 900, easing: "ease-in-out" };
@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!wrapper.classList.contains("open") && !wrapper.matches(":hover")) {
         trigger.animate(bounceZoomShadow, bounceOptions);
       }
-    }, 6000);
+    }, 8000);
   })();
 
 

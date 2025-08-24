@@ -47,3 +47,13 @@
 @mixin text-gradient-bleu-vert() {
   @include text-gradient($bleu, $vert1, 50%, 135deg, 50%, soft);
 }
+
+
+
+//Radius
+@mixin radius-cpe {
+  border-radius: 0.4rem; 
+  border-top-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+}
+

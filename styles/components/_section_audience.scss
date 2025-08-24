@@ -36,8 +36,10 @@
       text-align: left;
 
       li {
-        background: $vert-gradient;
+        background: $background-vert-blanc;
         border-left: 4px solid $vert-border;
+        border-top: 1px solid $vert-border-top;
+        box-shadow: $shadow-defaut;
         padding: 1rem;
         margin-bottom: 1rem;
         border-radius: 6px;
@@ -53,7 +55,7 @@
         &:hover {
           // background: rgba($bleu, 0.1);
           transform: translateX(5px);
-          box-shadow: 0 4px 10px rgba($bleu, 0.15);
+          box-shadow: $shadow-hover;
         }
       }
     }

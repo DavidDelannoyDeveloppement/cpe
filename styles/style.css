@@ -57,7 +57,7 @@ body {
   text-align: center;
 }
 .hero-section .hero-content h2 {
-  font-size: clamp(1.3rem, 3.4vw, 1.8rem);
+  font-size: clamp(1.7rem, 4vw, 2.4rem);
   line-height: 1.45;
   margin-top: clamp(0.2rem, 2vw, 1rem);
   margin-bottom: clamp(1rem, 2vw, 2.2rem);
@@ -65,13 +65,13 @@ body {
   font-weight: 600;
 }
 .hero-section .hero-content p {
-  font-size: clamp(1.05rem, 1.6vw, 1.15rem);
+  font-size: clamp(1.1rem, 2vw, 1.2rem);
   margin-bottom: clamp(1rem, 1.5vw, 2rem);
   margin-top: clamp(1rem, 1.2vw, 1.6rem);
   color: rgba(255, 255, 250, 0.9);
 }
 .hero-section .hero-content .objectif {
-  font-size: clamp(1.3rem, 3.4vw, 1.8rem);
+  font-size: clamp(1.4rem, 3.5vw, 1.8rem);
   font-weight: 600;
 }
 @media screen and (max-width: 1024px) {
@@ -96,14 +96,14 @@ body {
 }
 .section-why h2 {
   font-family: "Raleway", sans-serif;
-  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  font-size: clamp(1.7rem, 4vw, 2.4rem);
   color: #00a250;
   margin-bottom: 1.5rem;
   text-align: left;
   line-height: clamp(2.2rem, 5vw, 3rem);
 }
 .section-why p {
-  font-size: clamp(1.05rem, 1.6vw, 1.15rem);
+  font-size: clamp(1rem, 1.5vw, 1.1rem);
   line-height: 1.8;
   margin-bottom: 1.2rem;
 }
@@ -115,7 +115,7 @@ body {
 .section-why ul li {
   position: relative;
   padding-left: 1.8rem;
-  font-size: clamp(1.05rem, 1.6vw, 1.15rem);
+  font-size: clamp(1rem, 1.5vw, 1.1rem);
   line-height: 1.8;
   margin-bottom: 0.8rem;
 }
@@ -152,7 +152,7 @@ body {
   margin: 0 auto;
 }
 .audience-section .audience-container h2 {
-  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  font-size: clamp(1.7rem, 4vw, 2.4rem);
   color: #00a250;
   margin-bottom: 2rem;
   font-family: "Raleway", sans-serif;
@@ -166,12 +166,14 @@ body {
   text-align: left;
 }
 .audience-section .audience-container .audience-list li {
-  background: linear-gradient(165deg, rgba(46, 204, 113, 0.24), rgba(46, 204, 113, 0.06));
+  background: linear-gradient(165deg, rgba(46, 204, 112, 0.164), rgba(67, 233, 139, 0.062));
   border-left: 4px solid rgb(0, 71, 30);
+  border-top: 1px solid rgba(0, 71, 30, 0.63);
+  box-shadow: 4px 4px 5px rgba(3, 24, 55, 0.0549019608);
   padding: 1rem;
   margin-bottom: 1rem;
   border-radius: 6px;
-  font-size: clamp(1.05rem, 1.6vw, 1.15rem);
+  font-size: clamp(1rem, 1.5vw, 1.1rem);
   line-height: 1.5;
   display: flex;
   align-items: center;
@@ -180,7 +182,7 @@ body {
 }
 .audience-section .audience-container .audience-list li:hover {
   transform: translateX(5px);
-  box-shadow: 0 4px 10px rgba(3, 24, 55, 0.15);
+  box-shadow: 0 14px 30px rgba(26, 46, 77, 0.178);
 }
 @media screen and (max-width: 768px) {
   .audience-section .audience-section {
@@ -211,7 +213,7 @@ body {
   z-index: 1;
 }
 .vignettes-section h2 {
-  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  font-size: clamp(1.7rem, 4vw, 2.4rem);
   margin-bottom: 1.5rem;
   color: #fffffa;
   font-weight: 700;
@@ -424,7 +426,7 @@ body {
   margin: 0 auto;
 }
 .simulateur-section .simulateur-container h2 {
-  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  font-size: clamp(1.7rem, 4vw, 2.4rem);
   color: #00a250;
   margin-bottom: 2rem;
   font-family: "Raleway", sans-serif;
@@ -443,7 +445,7 @@ body {
 }
 .expert-section h2 {
   font-family: "Raleway", sans-serif;
-  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  font-size: clamp(1.7rem, 4vw, 2.4rem);
   color: #00a250;
   margin-bottom: 1rem;
   text-align: left;
@@ -467,23 +469,26 @@ body {
   justify-content: space-between;
   padding: 1rem 0;
   height: 100%;
-  font-size: clamp(1.05rem, 1.6vw, 1.15rem);
+  font-size: clamp(1rem, 1.5vw, 1.1rem);
   line-height: 1.7;
 }
 .expert-section .expert-text p {
-  margin-bottom: 1rem;
+  margin-bottom: clamp(0.2rem, 1.4vw, 1rem);
 }
 .expert-section .expert-text .highlight {
   font-weight: bold;
   margin-top: 1.5rem;
 }
+.expert-section .expert-text .cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: clamp(0.8rem, 1.6vw, 1.2rem);
+  margin-top: clamp(1rem, 2.4vw, 2rem);
+  margin-bottom: clamp(1rem, 1.4vw, 1rem);
+}
 @media (max-width: 768px) {
   .expert-section .expert-text {
     align-items: center;
-  }
-  .expert-section .expert-text .btn {
-    align-self: center;
-    margin-top: 1.5rem;
   }
 }
 .expert-section .expert-image img {
@@ -508,7 +513,7 @@ body {
 }
 .actus-section h2 {
   font-family: "Raleway", sans-serif;
-  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  font-size: clamp(1.7rem, 4vw, 2.4rem);
   color: #00a250;
   margin-bottom: 1.5rem;
   text-align: left;
@@ -526,7 +531,7 @@ body {
   border-radius: 0.4rem;
   border-bottom-right-radius: 1rem;
   border-top-left-radius: 1rem;
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18), 0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   /* Pause au survol (comportement existant conservé) */
   /* Cartouche "ACTUS" à gauche (aucun HTML à changer) */
   /* Point "live" à côté du cartouche (pulsant) */
@@ -625,9 +630,6 @@ body {
   color: #f6ab78;
 }
 @media (max-width: 1024px) {
-  .actus-section {
-    padding: 2rem 1rem 3rem;
-  }
   .actus-section .actus-marquee {
     --label-w: clamp(74px, 22vw, 110px);
     padding: 0.5rem 0;
@@ -698,7 +700,7 @@ body {
   padding: 0.9rem 0; /* + air vertical */
 }
 .actus-section .actu-item {
-  font-size: clamp(1.15rem, 2.8vw, 1.35rem);
+  font-size: clamp(1.2rem, 2.8vw, 1.4rem);
 }
 @media (max-width: 1024px) {
   .actus-section .actus-marquee {
@@ -780,7 +782,7 @@ body {
   gap: 0.5rem;
   box-sizing: border-box;
   /* Largeur commune : même min partout, grandit si besoin */
-  min-inline-size: min(15rem, 92vw);
+  min-inline-size: min(13rem, 79vw);
   inline-size: -moz-max-content;
   inline-size: max-content;
   max-inline-size: 92vw;
@@ -790,15 +792,15 @@ body {
   font-weight: 700;
   /* Tailles fluides (réf. WHY) */
   font-size: clamp(1.1rem, 2vw, 1.2rem);
-  padding: clamp(0.6rem, 1.6vw, 0.9rem) clamp(0.8rem, 2.6vw, 1.6rem);
+  padding: clamp(0.45rem, 1.25vw, 0.7rem) clamp(0.6rem, 1.9vw, 1.2rem);
   text-decoration: none;
   border: none;
   cursor: pointer;
   min-height: 44px;
   /* Rayons */
-  border-radius: 4px;
-  border-bottom-right-radius: 1rem;
+  border-radius: 0.4rem;
   border-top-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
   /* Fond $vert1 (léger dégradé) */
   background: linear-gradient(180deg, rgb(0, 203.76, 100.6222222222) 0%, #00a250 60%, rgb(0, 145.8, 72) 100%);
   /* Texte $creme (bétonne tous les états lien) */
@@ -915,7 +917,7 @@ body.page-actus .actualites-section h2 {
   margin: 0 0 1.25rem;
   color: #031837;
   font-family: "Raleway", sans-serif;
-  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  font-size: clamp(1.7rem, 4vw, 2.4rem);
   text-align: center;
 }
 body.page-actus .actualites-section .actu-list {
@@ -955,13 +957,13 @@ body.page-actus .actualites-section .actu-body {
 body.page-actus .actualites-section .actu-title {
   margin: 0 0 0.35rem;
   color: #031837;
-  font-size: clamp(1.15rem, 2.8vw, 1.35rem);
+  font-size: clamp(1.2rem, 2.8vw, 1.4rem);
   line-height: 1.25;
 }
 body.page-actus .actualites-section .actu-meta {
   margin: 0 0 0.6rem;
   color: #4B5563;
-  font-size: clamp(1.05rem, 1.6vw, 1.15rem);
+  font-size: clamp(1rem, 1.5vw, 1.1rem);
   opacity: 0.9;
 }
 body.page-actus .actualites-section .actu-meta .tag {
@@ -971,7 +973,7 @@ body.page-actus .actualites-section .actu-meta .tag {
   border-radius: 0.4rem;
   background: rgba(243, 111, 33, 0.14);
   color: #F36F21;
-  font-size: clamp(1.05rem, 1.6vw, 1.15rem);
+  font-size: clamp(1rem, 1.5vw, 1.1rem);
   line-height: 1;
   vertical-align: baseline;
 }
@@ -979,7 +981,7 @@ body.page-actus .actualites-section .actu-summary {
   margin: 0;
   color: #031837;
   opacity: 0.9;
-  font-size: clamp(1.05rem, 1.6vw, 1.15rem);
+  font-size: clamp(1rem, 1.5vw, 1.1rem);
   line-height: 1.45;
 }
 @media (max-width: 768px) {
@@ -1013,19 +1015,19 @@ body.page-definition a {
 }
 body.page-definition h2 {
   font-family: "Raleway", sans-serif;
-  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  font-size: clamp(1.7rem, 4vw, 2.4rem);
   color: #00a250;
   margin-bottom: 1.5rem;
   text-align: left;
   line-height: clamp(2.2rem, 5vw, 3rem);
 }
 body.page-definition p {
-  font-size: clamp(1.05rem, 1.6vw, 1.15rem);
+  font-size: clamp(1rem, 1.5vw, 1.1rem);
   line-height: 1.8;
   margin-bottom: 1.2rem;
 }
 body.page-definition main .intro {
-  padding: clamp(2rem, 5vw, 4rem) 1rem;
+  padding: clamp(1rem, 5vw, 3rem) 1rem clamp(2rem, 5vw, 4rem);
   color: #031837;
   text-align: justify;
 }
@@ -1046,9 +1048,7 @@ body.page-definition main .intro .intro-container .intro-text {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 1rem 0;
   height: 100%;
-  font-size: clamp(1.05rem, 1.6vw, 1.2rem);
   line-height: 1.7;
 }
 body.page-definition main .intro .intro-container .intro-text .cta-buttons {
@@ -1068,7 +1068,7 @@ body.page-definition main .intro .intro-container .intro-image img {
   margin: 0 auto;
 }
 body.page-definition main .definition {
-  padding: clamp(2rem, 5vw, 4rem) 1rem;
+  padding: clamp(1rem, 5vw, 3rem) 1rem clamp(2rem, 5vw, 4rem);
   color: #031837;
   text-align: justify;
 }
@@ -1093,13 +1093,14 @@ body.page-definition main .definition .definition-container .info-grid {
   }
 }
 body.page-definition main .definition .definition-container .info-card {
-  background: linear-gradient(165deg, rgba(46, 204, 113, 0.24), rgba(46, 204, 113, 0.06));
+  background: linear-gradient(165deg, rgba(46, 204, 112, 0.164), rgba(67, 233, 139, 0.062));
+  border-top: 2px solid rgb(0, 71, 30);
   border-left: 4px solid rgb(0, 71, 30);
   box-shadow: 4px 4px 5px rgba(3, 24, 55, 0.0549019608);
   border-radius: 0.4rem;
   border-bottom-right-radius: 1rem;
   border-top-left-radius: 1rem;
-  padding: 0.9rem;
+  padding: clamp(0.1rem, 0.6vw, 0.9rem) clamp(0.2rem, 1.3vw, 0.9rem) clamp(0.2rem, 1.3vw, 0.9rem);
   text-align: center;
   transition: transform 0.12s ease, box-shadow 0.12s ease;
 }
@@ -1108,16 +1109,18 @@ body.page-definition main .definition .definition-container .info-card:hover {
   box-shadow: 0 14px 30px rgba(26, 46, 77, 0.178);
 }
 body.page-definition main .definition .definition-container .info-card .ico {
-  font-size: 1.35rem;
+  font-size: 1.8rem;
   display: block;
   margin-bottom: 0.25rem;
 }
 body.page-definition main .definition .definition-container .info-card strong {
   display: block;
   color: #031837;
+  font-size: clamp(1rem, 1.5vw, 1.1rem);
 }
 body.page-definition main .definition .definition-container .info-card small {
   color: #00a250;
+  font-size: clamp(1rem, 1.5vw, 1.1rem);
 }
 @media (max-width: 990px) {
   body.page-definition main .definition .definition-container .info-grid {
@@ -1145,7 +1148,7 @@ body.page-definition main .definition .definition-container .info-card small {
   }
 }
 body.page-definition main .cadre {
-  padding: clamp(2rem, 5vw, 4rem) 1rem;
+  padding: clamp(1rem, 5vw, 3rem) 1rem clamp(2rem, 5vw, 3rem);
   color: #031837;
   text-align: justify;
 }
@@ -1160,34 +1163,36 @@ body.page-definition main .cadre .cadre-container .cadre-list {
   list-style: none;
   padding: 0;
   max-width: 900px;
-  margin: 0 auto;
   text-align: left;
-  margin-bottom: clamp(1.02rem, 2.04vw, 1.7rem);
+  margin: clamp(1.02rem, 2.04vw, 1.7rem) 0 clamp(1.02rem, 2.04vw, 1.7rem);
 }
 body.page-definition main .cadre .cadre-container .cadre-list li {
-  background: linear-gradient(165deg, rgba(46, 204, 113, 0.24), rgba(46, 204, 113, 0.06));
+  background: linear-gradient(165deg, rgba(46, 204, 112, 0.164), rgba(67, 233, 139, 0.062));
   border-left: 4px solid rgb(0, 71, 30);
+  border-top: 1px solid rgba(0, 71, 30, 0.63);
   padding: 1rem;
   margin-bottom: 1rem;
   border-radius: 0.4rem;
   border-bottom-right-radius: 1rem;
   border-top-left-radius: 1rem;
-  font-size: clamp(1rem, 1.4vw, 1.1rem);
+  font-size: clamp(1rem, 1.5vw, 1.1rem);
   line-height: 1.5;
   display: flex;
   align-items: center;
+  box-shadow: 4px 4px 5px rgba(3, 24, 55, 0.0549019608);
   gap: 0.5rem;
   transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
 }
 body.page-definition main .cadre .cadre-container .cadre-list li:hover {
-  background: linear-gradient(165deg, rgba(46, 204, 113, 0.24), rgba(46, 204, 113, 0.06));
+  background: linear-gradient(165deg, rgba(46, 204, 113, 0.24), rgba(135, 211, 167, 0.295));
   transform: translateX(5px);
-  box-shadow: 0 4px 10px rgba(3, 24, 55, 0.15);
+  box-shadow: 0 14px 30px rgba(26, 46, 77, 0.178);
 }
-@media screen and (max-width: 768px) {
-  body.page-definition main .cadre .cadre-container .audience-list li {
-    font-size: 1rem;
-  }
+body.page-definition main .cadre .cadre-container .cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: clamp(0.8rem, 1.6vw, 1.2rem);
+  margin: clamp(2rem, 4vw, 5rem) 0rem clamp(1rem, 1.4vw, 1rem);
 }
 body.page-definition main .principe {
   padding: clamp(2rem, 5vw, 4rem) 1rem;
@@ -1197,7 +1202,13 @@ body.page-definition main .principe {
 body.page-definition main .principe .principe-container {
   width: min(1100px, 92vw);
   margin: 0 auto;
-  /* Numéro mis en avant (1, 2, 3...) */
+  /* ====== Mise en page texte | carte (60 / 40) ====== */
+  /* Alternance : items pairs = carte à gauche, texte à droite (40 / 60) */
+  /* ====== Bloc texte ====== */
+  /* Titre + rond numéroté */
+  /* Liste interne (puces) */
+  /* ====== Carte (flip) – hauteur FIXE ====== */
+  /* ====== Responsive ====== */
 }
 body.page-definition main .principe .principe-container .principe-list {
   counter-reset: principe;
@@ -1207,54 +1218,30 @@ body.page-definition main .principe .principe-container .principe-list {
   display: grid;
   gap: 1.2rem;
 }
-body.page-definition main .principe .principe-container .principe-list > li {
+body.page-definition main .principe .principe-container .principe-list > li.principe-item {
+  counter-increment: principe;
+  display: grid;
+  grid-template-columns: 5fr 2fr; /* 60% texte | 40% carte */
+  grid-template-areas: "texte carte";
+  align-items: start; /* le texte peut être plus haut */
+  -moz-column-gap: clamp(1rem, 2.5vw, 2rem);
+       column-gap: clamp(1rem, 2.5vw, 2rem); /* espace entre texte et carte */
+  row-gap: 0;
   margin: 0;
-  padding-bottom: 2rem;
+  padding-bottom: clamp(1.2rem, 2.5vw, 2rem);
 }
-body.page-definition main .principe .principe-container .principe-list > li .flip-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 500px));
-  justify-content: center; /* centre le “bloc” de colonnes */
-  gap: 0.9rem;
-  margin-top: 0.8rem;
+body.page-definition main .principe .principe-container .principe-list > li.principe-item:nth-child(2n) {
+  grid-template-columns: 2fr 5fr; /* 40% carte | 60% texte */
+  grid-template-areas: "carte texte";
 }
-body.page-definition main .principe .principe-container .principe-list > li .flip-card {
-  perspective: 1000px;
+body.page-definition main .principe .principe-container .principe-item__texte {
+  grid-area: texte;
+  min-width: 0; /* évite overflow si texte long */
 }
-body.page-definition main .principe .principe-container .principe-list > li .flip-inner {
-  position: relative;
-  transform-style: preserve-3d;
-  transition: transform 0.45s ease;
-}
-body.page-definition main .principe .principe-container .principe-list > li .flip-card:hover .flip-inner {
-  transform: rotateY(180deg);
-}
-body.page-definition main .principe .principe-container .principe-list > li .flip-face {
-  background: #fff;
-  border: 1px solid rgba(26, 46, 77, 0.08);
-  border-radius: 0.4rem;
-  border-bottom-right-radius: 1rem;
-  border-top-left-radius: 1rem;
-  box-shadow: 1px 1px 3px #031837;
-  padding: 1.2rem;
-  min-height: clamp(70px, 10vw, 90px);
-  display: grid;
-  place-items: center;
-  text-align: center;
-  backface-visibility: hidden;
-  font-weight: bold;
-}
-body.page-definition main .principe .principe-container .principe-list > li .flip-face.back {
-  position: absolute;
-  inset: 0;
-  transform: rotateY(180deg);
-  font-weight: 200;
-}
-body.page-definition main .principe .principe-container .principe-list > li > h4 {
+body.page-definition main .principe .principe-container .principe-list > li.principe-item > .principe-item__texte > h4 {
   display: flex;
   align-items: center;
-  justify-content: center;
-  flex-wrap: nowrap;
+  justify-content: flex-start;
   gap: 0.75rem;
   margin: 0 0 0.5rem;
   padding: 0;
@@ -1262,50 +1249,92 @@ body.page-definition main .principe .principe-container .principe-list > li > h4
   line-height: 1.35;
   color: #031837;
 }
-body.page-definition main .principe .principe-container .principe-list > li > h4::before {
+body.page-definition main .principe .principe-container .principe-list > li.principe-item > .principe-item__texte > h4::before {
   content: counter(principe);
-  counter-increment: principe;
-  /* Fix "rond" qui s’écrase */
   flex: 0 0 auto;
   aspect-ratio: 1/1;
   width: 2.2rem;
   min-width: 2.2rem;
-  height: auto;
   border-radius: 50%;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: #2F80ED;
+  background: #3fab35;
   color: #fffffa;
   font-weight: 800;
   font-size: 1rem;
 }
-body.page-definition main .principe .principe-container .principe-list > li > ul {
-  margin: 0.35rem auto 0;
+body.page-definition main .principe .principe-container .principe-list > li.principe-item > .principe-item__texte > ul {
+  margin: 0.35rem 0 0;
   padding: 0;
   list-style: disc inside;
-  text-align: center;
+  text-align: left;
 }
-body.page-definition main .principe .principe-container .principe-list > li > ul li {
+body.page-definition main .principe .principe-container .principe-list > li.principe-item > .principe-item__texte > ul li {
   margin: 0.35rem 0;
   font-size: clamp(1.02rem, 1.6vw, 1.12rem);
   line-height: 1.6;
 }
+body.page-definition main .principe .principe-container .flip-grid {
+  grid-area: carte;
+  display: grid;
+  grid-template-columns: 1fr;
+  align-self: start; /* reste en haut, n’étire pas */
+  justify-content: center;
+  align-items: start;
+  gap: 0.9rem;
+  margin-top: 0.2rem;
+}
+body.page-definition main .principe .principe-container .flip-card {
+  perspective: 1000px;
+  display: grid;
+  /* pas de height:100% ici */
+}
+body.page-definition main .principe .principe-container .flip-inner {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.45s ease;
+  /* pas de height:100% ici non plus */
+}
+body.page-definition main .principe .principe-container .flip-card:hover .flip-inner {
+  transform: rotateY(180deg);
+}
+body.page-definition main .principe .principe-container .flip-face {
+  background: linear-gradient(165deg, rgba(46, 204, 112, 0.164), rgba(67, 233, 139, 0.062));
+  border-top: 1px solid rgba(0, 71, 30, 0.63);
+  border-left: 4px solid rgb(0, 71, 30);
+  border-radius: 0.4rem;
+  border-bottom-right-radius: 1rem;
+  border-top-left-radius: 1rem;
+  box-shadow: 4px 4px 5px rgba(3, 24, 55, 0.0549019608);
+  /* ⬇️ hauteur fixée, responsive via clamp */
+  height: clamp(6rem, 3vw, 8rem);
+  padding: clamp(1rem, 2vw, 1.4rem);
+  display: grid;
+  place-items: center;
+  text-align: center;
+  backface-visibility: hidden;
+  font-weight: bold;
+}
+body.page-definition main .principe .principe-container .flip-face.back {
+  position: absolute;
+  inset: 0;
+  transform: rotateY(180deg);
+  font-weight: 200;
+}
 @media (max-width: 700px) {
-  body.page-definition main .principe .principe-container .principe-list > li > h4 {
+  body.page-definition main .principe .principe-container .principe-list > li.principe-item,
+  body.page-definition main .principe .principe-container .principe-list > li.principe-item:nth-child(2n) {
+    grid-template-columns: 1fr;
+    grid-template-areas: "texte" "carte";
+    row-gap: clamp(0.6rem, 2vw, 1rem);
+    -moz-column-gap: 0;
+         column-gap: 0;
+  }
+  body.page-definition main .principe .principe-container .principe-list > li.principe-item > .principe-item__texte > h4 {
     flex-direction: column;
     gap: 0.45rem;
-    justify-content: flex-start;
     text-align: center;
-  }
-  body.page-definition main .principe .principe-container .principe-list > li > h4::before {
-    width: clamp(1.8rem, 6vw, 2rem);
-    min-width: clamp(1.8rem, 6vw, 2rem);
-    font-size: 0.95rem;
-    margin-bottom: 0.1rem;
-  }
-  body.page-definition main .principe .principe-container .principe-list > li > ul {
-    margin-left: 0;
   }
 }
 body.page-definition main .domaines {
@@ -1926,14 +1955,14 @@ body.page-fonctionnement a {
 }
 body.page-fonctionnement h2 {
   font-family: "Raleway", sans-serif;
-  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  font-size: clamp(1.7rem, 4vw, 2.4rem);
   color: #00a250;
   margin-bottom: 1.5rem;
   text-align: left;
   line-height: clamp(2.2rem, 5vw, 3rem);
 }
 body.page-fonctionnement p {
-  font-size: clamp(1.05rem, 1.6vw, 1.15rem);
+  font-size: clamp(1rem, 1.5vw, 1.1rem);
   line-height: 1.8;
   margin-bottom: 1.2rem;
 }
@@ -2201,7 +2230,7 @@ body.page-fonctionnement main .roles .roles-container .mairie {
   border-left: 4px solid #031837;
 }
 body.page-fonctionnement main .roles .roles-container .prestataire {
-  background: linear-gradient(165deg, rgba(46, 204, 113, 0.24), rgba(46, 204, 113, 0.06));
+  background: linear-gradient(165deg, rgba(46, 204, 113, 0.24), rgba(135, 211, 167, 0.295));
   border-left: 4px solid rgb(0, 71, 30);
 }
 body.page-fonctionnement main .roles .roles-container .amo {
@@ -2464,14 +2493,14 @@ body.page-typologies a {
 }
 body.page-typologies h2 {
   font-family: "Raleway", sans-serif;
-  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  font-size: clamp(1.7rem, 4vw, 2.4rem);
   color: #00a250;
   margin-bottom: 1.5rem;
   text-align: left;
   line-height: clamp(2.2rem, 5vw, 3rem);
 }
 body.page-typologies p {
-  font-size: clamp(1.05rem, 1.6vw, 1.15rem);
+  font-size: clamp(1rem, 1.5vw, 1.1rem);
   line-height: 1.8;
   margin-bottom: 1.2rem;
 }

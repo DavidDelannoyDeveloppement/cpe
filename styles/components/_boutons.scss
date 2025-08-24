@@ -1,5 +1,6 @@
 @use "sass:color";
-@use "../utils/variables" as *; // n'utilise que $vert1 et $creme
+@use "../utils/variables" as *;
+@use "../utils/mixins" as *;
 
 /* ===========================================
    BOUTON UNIQUE — design WHY (reflets + hover)
@@ -13,7 +14,7 @@
   box-sizing: border-box;
 
   /* Largeur commune : même min partout, grandit si besoin */
-  min-inline-size: min(15rem, 92vw);
+  min-inline-size: min(13rem, 79vw);
   inline-size: max-content;
   max-inline-size: 92vw;
 
@@ -24,7 +25,7 @@
 
   /* Tailles fluides (réf. WHY) */
   font-size: $h5-size;
-  padding: clamp(.6rem, 1.6vw, .9rem) clamp(.8rem, 2.6vw, 1.6rem);
+  padding: $padding-btn;
 
   text-decoration: none;
   border: none;
@@ -32,9 +33,7 @@
   min-height: 44px;
 
   /* Rayons */
-  border-radius: 4px;
-  border-bottom-right-radius: 1rem;
-  border-top-left-radius: 1rem;
+  @include radius-cpe;
 
   /* Fond $vert1 (léger dégradé) */
   background: linear-gradient(

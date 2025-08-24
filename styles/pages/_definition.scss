@@ -44,7 +44,7 @@ body.page-definition {
 
         .intro {
             // background-color: $creme;
-            padding: clamp(2rem, 5vw, 4rem) 1rem;
+            padding: clamp(1rem, 5vw, 3rem) 1rem clamp(2rem, 5vw, 4rem);
             color: $bleu;
             text-align: justify;
 
@@ -64,9 +64,8 @@ body.page-definition {
                     display: flex;
                     flex-direction: column;
                     justify-content: space-between;
-                    padding: 1rem 0;
+                    // padding: 1rem 0;
                     height: 100%;
-                    font-size: clamp(1.05rem, 1.6vw, 1.2rem);
                     line-height: 1.7;
                     
                     .cta-buttons {
@@ -84,7 +83,7 @@ body.page-definition {
                     border-radius: 0.4rem; 
                     border-bottom-right-radius: 1rem;
                     border-top-left-radius: 1rem;
-                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+                    box-shadow: $shadow-photo;
                     display: block;
                     margin: 0 auto;
                     }
@@ -95,7 +94,7 @@ body.page-definition {
 
         .definition {
             // background: $backgroud-bleu-rouge;
-            padding: clamp(2rem, 5vw, 4rem) 1rem;
+            padding: clamp(1rem, 5vw, 3rem) 1rem clamp(2rem, 5vw, 4rem);
             color: $bleu;
             text-align: justify;
             
@@ -122,12 +121,13 @@ body.page-definition {
                 .info-card { 
                     // background: #fff; 
                     background: $background-vert-blanc;
+                    border-top: 2px solid $vert-border;
                     border-left: 4px solid $vert-border;
-                    box-shadow: 4px 4px 5px #0318370e;
+                    box-shadow: $shadow-defaut;
                     border-radius: 0.4rem; 
                     border-bottom-right-radius: 1rem;
                     border-top-left-radius: 1rem;
-                    padding: .9rem; 
+                    padding: clamp(0.1rem, 0.6vw, 0.9rem) clamp(0.2rem, 1.3vw, 0.9rem)clamp(0.2rem, 1.3vw, 0.9rem); 
                     text-align: center; 
                     transition: transform .12s ease, 
                     box-shadow .12s ease; 
@@ -135,11 +135,11 @@ body.page-definition {
                 
                 .info-card:hover { 
                     transform: translateY(-6px); 
-                    box-shadow: 0 14px 30px rgba(26, 46, 77, 0.178); 
+                    box-shadow: $shadow-hover 
                 }
                 
                 .info-card .ico { 
-                    font-size: 1.35rem; 
+                    font-size: 1.8rem; 
                     display: block; 
                     margin-bottom: .25rem; 
                 }
@@ -147,10 +147,12 @@ body.page-definition {
                 .info-card strong { 
                     display: block; 
                     color: $bleu; 
+                    font-size: $p-size;
                 }
                 
                 .info-card small { 
                     color: $vert1; 
+                    font-size: $p-size;
                 }
 
                 @media (max-width: 990px) {
@@ -170,7 +172,7 @@ body.page-definition {
 
         .cadre {
             // background: $backgroud-bleu-rouge;
-            padding: clamp(2rem, 5vw, 4rem) 1rem;
+            padding: clamp(1rem, 5vw, 3rem) 1rem clamp(2rem, 5vw, 3rem);
             color: $bleu;
             text-align: justify;
             
@@ -186,40 +188,44 @@ body.page-definition {
                     list-style: none;
                     padding: 0;
                     max-width: 900px;
-                    margin: 0 auto;
                     text-align: left;
-                    margin-bottom: clamp(1.02rem, 2.04vw, 1.7rem);
+                    margin: clamp(1.02rem, 2.04vw, 1.7rem) 0 clamp(1.02rem, 2.04vw, 1.7rem);
 
 
                     li {
-                    background: $vert-gradient;
-                    border-left: 4px solid $vert-border;
-                    padding: 1rem;
-                    margin-bottom: 1rem;
-                    border-radius: 0.4rem; 
-                    border-bottom-right-radius: 1rem;
-                    border-top-left-radius: 1rem;
-                    font-size: clamp(1rem, 1.4vw, 1.1rem);
-                    line-height: 1.5;
-                    display: flex;
-                    align-items: center;
-                    gap: 0.5rem;
-                    transition: background 0.25s ease, 
-                                transform 0.25s ease, 
-                                box-shadow 0.25s ease;
+                        background: $background-vert-blanc;
+                        border-left: 4px solid $vert-border;
+                        border-top: 1px solid $vert-border-top;
+                        padding: 1rem;
+                        margin-bottom: 1rem;
+                        border-radius: 0.4rem; 
+                        border-bottom-right-radius: 1rem;
+                        border-top-left-radius: 1rem;
+                        font-size: $p-size;
+                        line-height: 1.5;
+                        display: flex;
+                        align-items: center;
+                        box-shadow: $shadow-defaut;
+                        gap: 0.5rem;
+                        transition: background 0.25s ease, 
+                                    transform 0.25s ease, 
+                                    box-shadow 0.25s ease;
 
-                    &:hover {
-                        background: $vert-gradient;
-                        transform: translateX(5px);
-                        box-shadow: 0 4px 10px rgba($bleu, 0.15);
-                    }
-                    }
-                }
-                @media screen and (max-width: 768px) {
-                    .audience-list li {
-                        font-size: 1rem;
+                        &:hover {
+                            background: $vert-gradient;
+                            transform: translateX(5px);
+                            box-shadow: $shadow-hover;
+                        }
                     }
                 }
+
+                .cta-buttons {
+                    display: flex;
+                    justify-content: center;
+                    gap: clamp(0.8rem, 1.6vw, 1.2rem);
+                    margin: clamp(2rem, 4vw, 5rem) 0rem clamp(1rem, 1.4vw, 1rem);
+                }
+                
             }
         }
 
@@ -229,129 +235,165 @@ body.page-definition {
             color: $bleu;
             text-align: justify;
 
-
             .principe-container {
-                width: min(1100px, 92vw); 
+                width: min(1100px, 92vw);
                 margin: 0 auto;
 
-
-
                 .principe-list {
-                    counter-reset: principe;
-                    list-style: none;
-                    margin: 2rem 0 0;
-                    padding: 0;
-                    display: grid;
-                    gap: 1.2rem;
+                counter-reset: principe;
+                list-style: none;
+                margin: 2rem 0 0;
+                padding: 0;
+                display: grid;
+                gap: 1.2rem;
                 }
 
-                .principe-list > li {
-                    margin: 0;
-                    padding-bottom: 2rem;
-
-
-                    .flip-grid { 
-                        display: grid;
-                        grid-template-columns: repeat(auto-fit, minmax(260px, 500px));
-                        justify-content: center;   /* centre le “bloc” de colonnes */
-                        gap: .9rem;
-                        margin-top: .8rem;
-                    }
-
-                    .flip-card { perspective: 1000px; }
-                    .flip-inner { position: relative; transform-style: preserve-3d; transition: transform .45s ease; }
-                    .flip-card:hover .flip-inner { transform: rotateY(180deg); }
-                    .flip-face { 
-                        background: #fff; 
-                        border: 1px solid rgba(26,46,77,.08); 
-                        border-radius: 0.4rem; 
-                        border-bottom-right-radius: 1rem;
-                        border-top-left-radius: 1rem; 
-                        box-shadow: 1px 1px 3px $bleu;
-                        padding: 1.2rem; 
-                        min-height: clamp(70px, 10vw, 90px);
-                        display: grid; 
-                        place-items: center; 
-                        text-align: center; 
-                        backface-visibility: hidden; 
-                        font-weight: bold;
-                    }
-                    .flip-face.back { 
-                        position: absolute; 
-                        inset: 0; 
-                        transform: rotateY(180deg);
-                        font-weight: 200;
-                    }
-                }    
-
-
-                .principe-list > li > h4 {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    flex-wrap: nowrap;
-                    gap: .75rem;
-                    margin: 0 0 .5rem;
-                    padding: 0;
-                    font-size: clamp(1.2rem, 2vw, 1.4rem);
-                    line-height: 1.35;
-                    color: $bleu;
+                /* ====== Mise en page texte | carte (60 / 40) ====== */
+                .principe-list > li.principe-item {
+                counter-increment: principe;
+                display: grid;
+                grid-template-columns: 5fr 2fr;                /* 60% texte | 40% carte */
+                grid-template-areas: "texte carte";
+                align-items: start;                             /* le texte peut être plus haut */
+                column-gap: clamp(1rem, 2.5vw, 2rem);          /* espace entre texte et carte */
+                row-gap: 0;
+                margin: 0;
+                padding-bottom: clamp(1.2rem, 2.5vw, 2rem);
                 }
 
-                /* Numéro mis en avant (1, 2, 3...) */
-                .principe-list > li > h4::before {
-                    content: counter(principe);
-                    counter-increment: principe;
-                    /* Fix "rond" qui s’écrase */
-                    flex: 0 0 auto;          // <-- empêche le shrink
-                    aspect-ratio: 1 / 1;     // <-- garantit le cercle
-                    width: 2.2rem;
-                    min-width: 2.2rem;       // <-- taille minimale
-                    height: auto;
-                    border-radius: 50%;
-                    display: inline-flex;
-                    align-items: center;
-                    justify-content: center;
-                    background: $bleu-accent;
-                    color: $color-bg;
-                    font-weight: 800;
-                    font-size: 1rem;
-                    }
+                /* Alternance : items pairs = carte à gauche, texte à droite (40 / 60) */
+                .principe-list > li.principe-item:nth-child(2n) {
+                grid-template-columns: 2fr 5fr;                /* 40% carte | 60% texte */
+                grid-template-areas: "carte texte";
+                } 
 
+                /* ====== Bloc texte ====== */
+                .principe-item__texte {
+                grid-area: texte;
+                min-width: 0;                                  /* évite overflow si texte long */
+                }
 
+                /* Titre + rond numéroté */
+                .principe-list > li.principe-item > .principe-item__texte > h4 {
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                gap: .75rem;
+                margin: 0 0 .5rem;
+                padding: 0;
+                font-size: clamp(1.2rem, 2vw, 1.4rem);
+                line-height: 1.35;
+                color: $bleu;
+                }
 
-                .principe-list > li > ul {
-                    margin: .35rem auto 0;
-                    padding: 0;
-                    list-style: disc inside;
-                    text-align: center;
-                    }
+                .principe-list > li.principe-item > .principe-item__texte > h4::before {
+                content: counter(principe);
+                flex: 0 0 auto;
+                aspect-ratio: 1 / 1;
+                width: 2.2rem;
+                min-width: 2.2rem;
+                border-radius: 50%;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                background: $vert2;
+                color: $color-bg;
+                font-weight: 800;
+                font-size: 1rem;
+                }
 
-                .principe-list > li > ul li {
-                    margin: .35rem 0;
-                    font-size: clamp(1.02rem, 1.6vw, 1.12rem);
-                    line-height: 1.6;
-                    }
+                /* Liste interne (puces) */
+                .principe-list > li.principe-item > .principe-item__texte > ul {
+                margin: .35rem 0 0;
+                padding: 0;
+                list-style: disc inside;
+                text-align: left;
+                }
 
+                .principe-list > li.principe-item > .principe-item__texte > ul li {
+                margin: .35rem 0;
+                font-size: clamp(1.02rem, 1.6vw, 1.12rem);
+                line-height: 1.6;
+                }
+
+                /* ====== Carte (flip) – hauteur FIXE ====== */
+                .flip-grid {
+                grid-area: carte;
+                display: grid;
+                grid-template-columns: 1fr;
+                align-self: start;                              /* reste en haut, n’étire pas */
+                justify-content: center;
+                align-items: start;
+                gap: .9rem;
+                margin-top: .2rem;
+                }
+
+                .flip-card {
+                perspective: 1000px;
+                display: grid;
+                /* pas de height:100% ici */
+                }
+
+                .flip-inner {
+                position: relative;
+                transform-style: preserve-3d;
+                transition: transform .45s ease;
+                /* pas de height:100% ici non plus */
+                }
+
+                .flip-card:hover .flip-inner { transform: rotateY(180deg); }
+
+                .flip-face {
+                background: $background-vert-blanc;
+                border-top: $border-top-vert;
+                border-left: $border-left-vert;
+                border-radius: 0.4rem;
+                border-bottom-right-radius: 1rem;
+                border-top-left-radius: 1rem;
+                box-shadow: $shadow-defaut;
+
+                /* ⬇️ hauteur fixée, responsive via clamp */
+                height: clamp(6rem, 3vw, 8rem);
+
+                padding: clamp(1rem, 2vw, 1.4rem);
+                display: grid;
+                place-items: center;
+                text-align: center;
+                backface-visibility: hidden;
+                font-weight: bold;
+                }
+
+                .flip-face.back {
+                position: absolute;
+                inset: 0;
+                transform: rotateY(180deg);
+                font-weight: 200;
+                }
+
+                /* ====== Responsive ====== */
                 @media (max-width: 700px) {
-                    .principe-list > li > h4 {
-                        flex-direction: column;
-                        gap: .45rem;
-                        justify-content: flex-start;
-                        text-align: center;
-                    }
-                    .principe-list > li > h4::before {
-                        width: clamp(1.8rem, 6vw, 2rem);
-                        min-width: clamp(1.8rem, 6vw, 2rem);
-                        font-size: .95rem;
-                        margin-bottom: .1rem;
-                    }
-                    .principe-list > li > ul {
-                        margin-left: 0;
-                    }
+                .principe-list > li.principe-item,
+                .principe-list > li.principe-item:nth-child(2n) {
+                    grid-template-columns: 1fr;
+                    grid-template-areas:
+                    "texte"
+                    "carte";
+                    row-gap: clamp(.6rem, 2vw, 1rem);
+                    column-gap: 0;
+                }
+
+                .principe-list > li.principe-item > .principe-item__texte > h4 {
+                    flex-direction: column;
+                    gap: .45rem;
+                    text-align: center;
+                }
                 }
             }
         }
+
+
+
+
 
 
         .domaines {
