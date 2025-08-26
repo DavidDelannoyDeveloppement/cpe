@@ -15,8 +15,12 @@ $saumon: #f6ab78;
 $violet: #be097f;
 
 // Background-color 
-$background-bleu-vert1 : linear-gradient(135deg, $bleu, $vert1);
 $background-vert-blanc : linear-gradient(165deg, rgba(46, 204, 112, 0.164), rgba(67, 233, 139, 0.062));
+$background-vert-blanc-hover: linear-gradient(165deg, rgba(46, 204, 113, 0.24), rgba(135, 211, 167, 0.295));
+$background-bleu-vert1 : linear-gradient(135deg, $bleu, $vert1);
+$background-bleu-bleu : linear-gradient(135deg, $bleu, #08316e);
+$background-bleu-bleu-transparence : linear-gradient(135deg, #031837e7, #08316ee7);
+
 $bleu-fond: rgba(26, 46, 77);
 
 
@@ -31,18 +35,21 @@ $vert-border-top: rgba(0, 71, 30, 0.63);
 // ========================
 $raleway : 'Raleway', sans-serif;
 
-$h1-size: clamp(2rem, 5vw, 3rem);
-$h2-size: clamp(1.70rem, 4vw, 2.40rem);
-$h3-size: clamp(1.40rem, 3.5vw, 1.80rem);
-$h4-size: clamp(1.20rem, 2.8vw, 1.40rem);
-$h5-size: clamp(1.10rem, 2vw, 1.20rem);
-$p-size : clamp(1.00rem, 1.5vw, 1.10rem);
+$h1-size: clamp(2.20rem, 5.50vw, 3.30rem);
+$h2-size: clamp(1.85rem, 4.40vw, 2.65rem);
+$h3-size: clamp(1.55rem, 3.85vw, 2.00rem);
+$h4-size: clamp(1.30rem, 3.10vw, 1.55rem);
+$h5-size: clamp(1.20rem, 2.20vw, 1.30rem);
+$p-size : clamp(1.10rem, 1.65vw, 1.20rem);
+
 
 
 $font-titles: $raleway; // Titres/menus
 $font-body: $raleway; // Paragraphes/labels 
 $font-ui: $raleway; // Boutons, badges, formulaires
 
+// /largeur image par défaut
+$witdh-img-defaut: clamp(12.5rem, 9.195rem + 20.339vw, 27.5rem);
 
 // ========================
 // ===== DESIGN TOKENS ====

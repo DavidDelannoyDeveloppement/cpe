@@ -12,7 +12,7 @@
   justify-content: center;
   gap: .5rem;
   box-sizing: border-box;
-
+  box-shadow: $shadow-photo;
   /* Largeur commune : même min partout, grandit si besoin */
   min-inline-size: min(13rem, 79vw);
   inline-size: max-content;
@@ -52,6 +52,7 @@
   &:focus-visible {
     color: $creme;
     text-decoration: none;
+
   }
 
   /* Reflets WHY (haut + bas) */
@@ -92,7 +93,7 @@
 
   /* États (WHY : léger enfoncé) */
   transition: transform .15s ease, box-shadow .15s ease;
-  &:hover        { transform: translateY(3px) scale(.98); }
+  &:hover        { transform: translateY(3px) scale(.98);box-shadow: none; }
   &:active       { transform: translateY(3px) scale(.98); }
   &:focus-visible{ outline: 2px solid rgba(255,255,255,.5); outline-offset: 2px; }
   &[disabled],

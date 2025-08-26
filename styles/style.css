@@ -53,25 +53,25 @@ body {
   position: relative;
   z-index: 2;
   width: min(1400px, 92vw);
-  padding: clamp(1rem, 3vw, 2rem);
+  padding: clamp(1rem, 2.5vw, 1.5rem);
   text-align: center;
 }
 .hero-section .hero-content h2 {
-  font-size: clamp(1.7rem, 4vw, 2.4rem);
-  line-height: 1.45;
-  margin-top: clamp(0.2rem, 2vw, 1rem);
+  font-size: clamp(1.85rem, 4.4vw, 2.65rem);
+  line-height: 1.3;
+  margin-top: clamp(0.2rem, 1.2vw, 0.4rem);
   margin-bottom: clamp(1rem, 2vw, 2.2rem);
   color: #5bb887;
   font-weight: 600;
 }
 .hero-section .hero-content p {
-  font-size: clamp(1.1rem, 2vw, 1.2rem);
+  font-size: clamp(1.2rem, 2.2vw, 1.3rem);
   margin-bottom: clamp(1rem, 1.5vw, 2rem);
   margin-top: clamp(1rem, 1.2vw, 1.6rem);
   color: rgba(255, 255, 250, 0.9);
 }
 .hero-section .hero-content .objectif {
-  font-size: clamp(1.4rem, 3.5vw, 1.8rem);
+  font-size: clamp(1.55rem, 3.85vw, 2rem);
   font-weight: 600;
 }
 @media screen and (max-width: 1024px) {
@@ -96,14 +96,14 @@ body {
 }
 .section-why h2 {
   font-family: "Raleway", sans-serif;
-  font-size: clamp(1.7rem, 4vw, 2.4rem);
+  font-size: clamp(1.85rem, 4.4vw, 2.65rem);
   color: #00a250;
   margin-bottom: 1.5rem;
   text-align: left;
   line-height: clamp(2.2rem, 5vw, 3rem);
 }
 .section-why p {
-  font-size: clamp(1rem, 1.5vw, 1.1rem);
+  font-size: clamp(1.1rem, 1.65vw, 1.2rem);
   line-height: 1.8;
   margin-bottom: 1.2rem;
 }
@@ -115,7 +115,7 @@ body {
 .section-why ul li {
   position: relative;
   padding-left: 1.8rem;
-  font-size: clamp(1rem, 1.5vw, 1.1rem);
+  font-size: clamp(1.1rem, 1.65vw, 1.2rem);
   line-height: 1.8;
   margin-bottom: 0.8rem;
 }
@@ -152,7 +152,7 @@ body {
   margin: 0 auto;
 }
 .audience-section .audience-container h2 {
-  font-size: clamp(1.7rem, 4vw, 2.4rem);
+  font-size: clamp(1.85rem, 4.4vw, 2.65rem);
   color: #00a250;
   margin-bottom: 2rem;
   font-family: "Raleway", sans-serif;
@@ -173,7 +173,7 @@ body {
   padding: 1rem;
   margin-bottom: 1rem;
   border-radius: 6px;
-  font-size: clamp(1rem, 1.5vw, 1.1rem);
+  font-size: clamp(1.1rem, 1.65vw, 1.2rem);
   line-height: 1.5;
   display: flex;
   align-items: center;
@@ -183,6 +183,7 @@ body {
 .audience-section .audience-container .audience-list li:hover {
   transform: translateX(5px);
   box-shadow: 0 14px 30px rgba(26, 46, 77, 0.178);
+  background: linear-gradient(165deg, rgba(46, 204, 113, 0.24), rgba(135, 211, 167, 0.295));
 }
 @media screen and (max-width: 768px) {
   .audience-section .audience-section {
@@ -213,7 +214,7 @@ body {
   z-index: 1;
 }
 .vignettes-section h2 {
-  font-size: clamp(1.7rem, 4vw, 2.4rem);
+  font-size: clamp(1.85rem, 4.4vw, 2.65rem);
   margin-bottom: 1.5rem;
   color: #fffffa;
   font-weight: 700;
@@ -426,7 +427,7 @@ body {
   margin: 0 auto;
 }
 .simulateur-section .simulateur-container h2 {
-  font-size: clamp(1.7rem, 4vw, 2.4rem);
+  font-size: clamp(1.85rem, 4.4vw, 2.65rem);
   color: #00a250;
   margin-bottom: 2rem;
   font-family: "Raleway", sans-serif;
@@ -445,7 +446,7 @@ body {
 }
 .expert-section h2 {
   font-family: "Raleway", sans-serif;
-  font-size: clamp(1.7rem, 4vw, 2.4rem);
+  font-size: clamp(1.85rem, 4.4vw, 2.65rem);
   color: #00a250;
   margin-bottom: 1rem;
   text-align: left;
@@ -469,7 +470,7 @@ body {
   justify-content: space-between;
   padding: 1rem 0;
   height: 100%;
-  font-size: clamp(1rem, 1.5vw, 1.1rem);
+  font-size: clamp(1.1rem, 1.65vw, 1.2rem);
   line-height: 1.7;
 }
 .expert-section .expert-text p {
@@ -492,8 +493,7 @@ body {
   }
 }
 .expert-section .expert-image img {
-  width: 100%;
-  max-width: 350px;
+  width: clamp(12.5rem, 9.195rem + 20.339vw, 27.5rem);
   border-radius: 0.4rem;
   border-bottom-right-radius: 1rem;
   border-top-left-radius: 1rem;
@@ -513,7 +513,7 @@ body {
 }
 .actus-section h2 {
   font-family: "Raleway", sans-serif;
-  font-size: clamp(1.7rem, 4vw, 2.4rem);
+  font-size: clamp(1.85rem, 4.4vw, 2.65rem);
   color: #00a250;
   margin-bottom: 1.5rem;
   text-align: left;
@@ -527,7 +527,7 @@ body {
   padding: 0.6rem 0;
   padding-left: calc(var(--label-w) + 1rem);
   /* Bandeau type TV info */
-  background: linear-gradient(90deg, #031837 0%, rgb(4.5827586207, 36.6620689655, 84.0172413793) 100%);
+  background: linear-gradient(135deg, #031837, #08316e);
   border-radius: 0.4rem;
   border-bottom-right-radius: 1rem;
   border-top-left-radius: 1rem;
@@ -700,7 +700,7 @@ body {
   padding: 0.9rem 0; /* + air vertical */
 }
 .actus-section .actu-item {
-  font-size: clamp(1.2rem, 2.8vw, 1.4rem);
+  font-size: clamp(1.3rem, 3.1vw, 1.55rem);
 }
 @media (max-width: 1024px) {
   .actus-section .actus-marquee {
@@ -726,7 +726,7 @@ body {
 /* Rétrécir la boîte "NEWS" uniquement en mobile */
 @media (max-width: 1024px) {
   .actus-section .actus-marquee {
-    --label-w: 40px;
+    --label-w: 74px;
   }
 }
 /* Défilement existant conservé */
@@ -781,6 +781,7 @@ body {
   justify-content: center;
   gap: 0.5rem;
   box-sizing: border-box;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   /* Largeur commune : même min partout, grandit si besoin */
   min-inline-size: min(13rem, 79vw);
   inline-size: -moz-max-content;
@@ -791,7 +792,7 @@ body {
   line-height: 1;
   font-weight: 700;
   /* Tailles fluides (réf. WHY) */
-  font-size: clamp(1.1rem, 2vw, 1.2rem);
+  font-size: clamp(1.2rem, 2.2vw, 1.3rem);
   padding: clamp(0.45rem, 1.25vw, 0.7rem) clamp(0.6rem, 1.9vw, 1.2rem);
   text-decoration: none;
   border: none;
@@ -836,6 +837,7 @@ body {
 }
 .btn:hover {
   transform: translateY(3px) scale(0.98);
+  box-shadow: none;
 }
 .btn:active {
   transform: translateY(3px) scale(0.98);
@@ -917,7 +919,7 @@ body.page-actus .actualites-section h2 {
   margin: 0 0 1.25rem;
   color: #031837;
   font-family: "Raleway", sans-serif;
-  font-size: clamp(1.7rem, 4vw, 2.4rem);
+  font-size: clamp(1.85rem, 4.4vw, 2.65rem);
   text-align: center;
 }
 body.page-actus .actualites-section .actu-list {
@@ -957,13 +959,13 @@ body.page-actus .actualites-section .actu-body {
 body.page-actus .actualites-section .actu-title {
   margin: 0 0 0.35rem;
   color: #031837;
-  font-size: clamp(1.2rem, 2.8vw, 1.4rem);
+  font-size: clamp(1.3rem, 3.1vw, 1.55rem);
   line-height: 1.25;
 }
 body.page-actus .actualites-section .actu-meta {
   margin: 0 0 0.6rem;
   color: #4B5563;
-  font-size: clamp(1rem, 1.5vw, 1.1rem);
+  font-size: clamp(1.1rem, 1.65vw, 1.2rem);
   opacity: 0.9;
 }
 body.page-actus .actualites-section .actu-meta .tag {
@@ -973,7 +975,7 @@ body.page-actus .actualites-section .actu-meta .tag {
   border-radius: 0.4rem;
   background: rgba(243, 111, 33, 0.14);
   color: #F36F21;
-  font-size: clamp(1rem, 1.5vw, 1.1rem);
+  font-size: clamp(1.1rem, 1.65vw, 1.2rem);
   line-height: 1;
   vertical-align: baseline;
 }
@@ -981,7 +983,7 @@ body.page-actus .actualites-section .actu-summary {
   margin: 0;
   color: #031837;
   opacity: 0.9;
-  font-size: clamp(1rem, 1.5vw, 1.1rem);
+  font-size: clamp(1.1rem, 1.65vw, 1.2rem);
   line-height: 1.45;
 }
 @media (max-width: 768px) {
@@ -1015,14 +1017,14 @@ body.page-definition a {
 }
 body.page-definition h2 {
   font-family: "Raleway", sans-serif;
-  font-size: clamp(1.7rem, 4vw, 2.4rem);
+  font-size: clamp(1.85rem, 4.4vw, 2.65rem);
   color: #00a250;
   margin-bottom: 1.5rem;
   text-align: left;
   line-height: clamp(2.2rem, 5vw, 3rem);
 }
 body.page-definition p {
-  font-size: clamp(1rem, 1.5vw, 1.1rem);
+  font-size: clamp(1.1rem, 1.65vw, 1.2rem);
   line-height: 1.8;
   margin-bottom: 1.2rem;
 }
@@ -1058,7 +1060,7 @@ body.page-definition main .intro .intro-container .intro-text .cta-buttons {
   margin-top: clamp(1.2rem, 2.4vw, 2rem);
 }
 body.page-definition main .intro .intro-container .intro-image img {
-  width: 100%;
+  width: clamp(12.5rem, 10.434rem + 12.712vw, 21.875rem);
   max-width: 400px;
   border-radius: 0.4rem;
   border-bottom-right-radius: 1rem;
@@ -1107,6 +1109,7 @@ body.page-definition main .definition .definition-container .info-card {
 body.page-definition main .definition .definition-container .info-card:hover {
   transform: translateY(-6px);
   box-shadow: 0 14px 30px rgba(26, 46, 77, 0.178);
+  background: linear-gradient(165deg, rgba(46, 204, 113, 0.24), rgba(135, 211, 167, 0.295));
 }
 body.page-definition main .definition .definition-container .info-card .ico {
   font-size: 1.8rem;
@@ -1116,11 +1119,11 @@ body.page-definition main .definition .definition-container .info-card .ico {
 body.page-definition main .definition .definition-container .info-card strong {
   display: block;
   color: #031837;
-  font-size: clamp(1rem, 1.5vw, 1.1rem);
+  font-size: clamp(1.1rem, 1.65vw, 1.2rem);
 }
 body.page-definition main .definition .definition-container .info-card small {
   color: #00a250;
-  font-size: clamp(1rem, 1.5vw, 1.1rem);
+  font-size: clamp(1.1rem, 1.65vw, 1.2rem);
 }
 @media (max-width: 990px) {
   body.page-definition main .definition .definition-container .info-grid {
@@ -1175,7 +1178,7 @@ body.page-definition main .cadre .cadre-container .cadre-list li {
   border-radius: 0.4rem;
   border-bottom-right-radius: 1rem;
   border-top-left-radius: 1rem;
-  font-size: clamp(1rem, 1.5vw, 1.1rem);
+  font-size: clamp(1.1rem, 1.65vw, 1.2rem);
   line-height: 1.5;
   display: flex;
   align-items: center;
@@ -1203,7 +1206,6 @@ body.page-definition main .principe .principe-container {
   width: min(1100px, 92vw);
   margin: 0 auto;
   /* ====== Mise en page texte | carte (60 / 40) ====== */
-  /* Alternance : items pairs = carte à gauche, texte à droite (40 / 60) */
   /* ====== Bloc texte ====== */
   /* Titre + rond numéroté */
   /* Liste interne (puces) */
@@ -1221,22 +1223,22 @@ body.page-definition main .principe .principe-container .principe-list {
 body.page-definition main .principe .principe-container .principe-list > li.principe-item {
   counter-increment: principe;
   display: grid;
-  grid-template-columns: 5fr 2fr; /* 60% texte | 40% carte */
+  grid-template-columns: 5fr 2fr;
   grid-template-areas: "texte carte";
-  align-items: start; /* le texte peut être plus haut */
+  align-items: start;
   -moz-column-gap: clamp(1rem, 2.5vw, 2rem);
-       column-gap: clamp(1rem, 2.5vw, 2rem); /* espace entre texte et carte */
+       column-gap: clamp(1rem, 2.5vw, 2rem);
   row-gap: 0;
   margin: 0;
-  padding-bottom: clamp(1.2rem, 2.5vw, 2rem);
+  padding-bottom: clamp(1.6rem, 1.468rem + 0.814vw, 2.2rem);
 }
 body.page-definition main .principe .principe-container .principe-list > li.principe-item:nth-child(2n) {
-  grid-template-columns: 2fr 5fr; /* 40% carte | 60% texte */
+  grid-template-columns: 2fr 5fr;
   grid-template-areas: "carte texte";
 }
 body.page-definition main .principe .principe-container .principe-item__texte {
   grid-area: texte;
-  min-width: 0; /* évite overflow si texte long */
+  min-width: 0;
 }
 body.page-definition main .principe .principe-container .principe-list > li.principe-item > .principe-item__texte > h4 {
   display: flex;
@@ -1259,7 +1261,7 @@ body.page-definition main .principe .principe-container .principe-list > li.prin
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: #3fab35;
+  background: #be097f;
   color: #fffffa;
   font-weight: 800;
   font-size: 1rem;
@@ -1320,6 +1322,7 @@ body.page-definition main .principe .principe-container .flip-face.back {
   position: absolute;
   inset: 0;
   transform: rotateY(180deg);
+  background: linear-gradient(165deg, rgba(46, 204, 113, 0.24), rgba(135, 211, 167, 0.295));
   font-weight: 200;
 }
 @media (max-width: 700px) {
@@ -1341,261 +1344,116 @@ body.page-definition main .domaines {
   padding: clamp(2rem, 5vw, 4rem) 1rem;
   color: #031837;
   text-align: center;
-  /* ===== Mobile / tablette (≤ 990px) : paires texte | image, portrait, sans anim ===== */
+  /* ==== Grille 2×2 desktop, responsive ==== */
+  /* Une carte = image + bandeau bas */
+  /* =================
+      Responsive
+      ================= */
+  /* Tablette : on garde 2 colonnes, on rend les cartes un peu plus larges */
+  /* Mobile : 1 colonne empilée */
+  /* Respecte la préférence d’accessibilité */
   /* ===========================
       Liste “Pertinent lorsque…”
+      (inchangée, on garde ta base)
       =========================== */
 }
 body.page-definition main .domaines .domaines-container {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0;
-  align-items: center;
-  max-width: 1100px;
+  width: min(1100px, 92vw);
   margin: 0 auto;
-  /* === Colonne gauche : texte + tuiles === */
-  /* === Colonne droite : images 2×2, même comportement === */
-  /* === Colonne image unique (si utilisée ailleurs) === */
 }
-@media (max-width: 990px) {
-  body.page-definition main .domaines .domaines-container {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
+body.page-definition main .domaines .domaines-container p {
+  text-align: start;
 }
-body.page-definition main .domaines .domaines-container .domaines-text {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 1rem 0;
-  height: 100%;
-  font-size: clamp(1.05rem, 1.6vw, 1.2rem);
-  line-height: 1.7;
-  /* Grille 2×2 centrée */
-  /* Tuile texte */
-}
-body.page-definition main .domaines .domaines-container .domaines-text .tiles {
+body.page-definition main .domaines .domaines-grid {
+  list-style: none;
+  margin: clamp(1rem, 2.5vw, 1.5rem) auto 0;
+  padding: 0;
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.2rem;
-  width: 65%;
-  margin: 0 auto;
-  border-radius: 0.4rem;
-  border-bottom-right-radius: 1rem;
-  border-top-left-radius: 1rem;
+  grid-template-columns: repeat(2, minmax(220px, 400px)); /* 2 colonnes */
+  justify-content: center;
+  justify-items: center;
+  gap: clamp(0.6rem, 0.292rem + 1.898vw, 2rem);
 }
-@media (max-width: 990px) {
-  body.page-definition main .domaines .domaines-container .domaines-text .tiles {
-    width: 100%;
-    grid-template-columns: 1fr;
-    gap: 0.6rem;
-    justify-items: center; /* centre les cartes */
-  }
-}
-body.page-definition main .domaines .domaines-container .domaines-text .tile {
-  aspect-ratio: 2/3;
-  display: grid;
-  place-content: center;
-  overflow: hidden;
-  background-color: #fffffa;
-  border: 1px solid rgba(26, 46, 77, 0.45);
-  padding: 1.1rem;
-  text-align: center;
-  text-decoration: none;
-  color: #00a250;
-  transition: transform 0.12s ease, box-shadow 0.12s ease, border-color 0.12s ease;
-  /* coins personnalisés par position (1..4) */
-  /* Hover local et hover “lié” via JS */
-}
-body.page-definition main .domaines .domaines-container .domaines-text .tile:nth-child(1) {
-  border-top-left-radius: 1rem;
-}
-body.page-definition main .domaines .domaines-container .domaines-text .tile:nth-child(2) {
-  border-top-right-radius: 0.4rem;
-}
-body.page-definition main .domaines .domaines-container .domaines-text .tile:nth-child(3) {
-  border-bottom-left-radius: 0.4rem;
-}
-body.page-definition main .domaines .domaines-container .domaines-text .tile:nth-child(4) {
-  border-bottom-right-radius: 1rem;
-}
-body.page-definition main .domaines .domaines-container .domaines-text .tile:hover, body.page-definition main .domaines .domaines-container .domaines-text .tile.is-linked-hover {
-  transform: translateY(-12px);
-  box-shadow: 0 14px 30px rgba(26, 46, 77, 0.12);
-  border-color: rgba(39, 193, 152, 0.5);
-}
-body.page-definition main .domaines .domaines-container .domaines-text .tile span {
-  font-size: 1.6rem;
-  line-height: 1;
-}
-body.page-definition main .domaines .domaines-container .domaines-text .tile em {
+body.page-definition main .domaines .domaine .card {
+  position: relative;
   display: block;
-  margin-top: 0.335rem;
-  font-style: normal;
-  color: #031837;
-}
-@media (max-width: 990px) {
-  body.page-definition main .domaines .domaines-container .domaines-text .tile {
-    /* cartes plus petites et centrées */
-    width: clamp(220px, 82vw, 320px);
-    aspect-ratio: 3/2; /* moins haut en mobile */
-    margin: 0 auto;
-    padding: 0; /* le flip gère son propre padding */
-    cursor: pointer; /* interactif en mobile */
-    perspective: 1000px; /* préparation flip */
-  }
-}
-body.page-definition main .domaines .domaines-container .domaines-media .tiles {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.2rem;
-  width: 65%;
-  margin: 0 auto;
-}
-@media (max-width: 990px) {
-  body.page-definition main .domaines .domaines-container .domaines-media .tiles {
-    width: 100%;
-    grid-template-columns: 1fr;
-    gap: 0.6rem;
-  }
-}
-body.page-definition main .domaines .domaines-container .domaines-media .tile {
-  aspect-ratio: 2/3;
-  display: grid;
-  place-content: center;
-  overflow: hidden;
-  border: 1px solid rgba(26, 46, 77, 0.45);
-  padding: 0; /* pas de padding autour de l’image */
-  background: transparent;
-  transition: transform 0.12s ease, box-shadow 0.12s ease, border-color 0.12s ease;
-  cursor: pointer;
-  /* mêmes coins que la colonne texte */
-}
-body.page-definition main .domaines .domaines-container .domaines-media .tile:nth-child(1) {
+  width: 100%;
+  aspect-ratio: 4/3; /* format confortable */
+  border-radius: 0.4rem;
   border-top-left-radius: 1rem;
-}
-body.page-definition main .domaines .domaines-container .domaines-media .tile:nth-child(2) {
-  border-top-right-radius: 0.4rem;
-}
-body.page-definition main .domaines .domaines-container .domaines-media .tile:nth-child(3) {
-  border-bottom-left-radius: 0.4rem;
-}
-body.page-definition main .domaines .domaines-container .domaines-media .tile:nth-child(4) {
   border-bottom-right-radius: 1rem;
+  overflow: clip; /* évite les débords du bandeau */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  background: #000;
+  /* Bandeau bas */
+  /* Hover/focus (desktop) */
 }
-body.page-definition main .domaines .domaines-container .domaines-media .tile:hover, body.page-definition main .domaines .domaines-container .domaines-media .tile.is-linked-hover {
-  transform: translateY(-12px);
-  box-shadow: 0 14px 30px rgba(26, 46, 77, 0.12);
-  border-color: rgba(39, 193, 152, 0.5);
-}
-body.page-definition main .domaines .domaines-container .domaines-media .tile img {
+body.page-definition main .domaines .domaine .card img {
   width: 100%;
   height: 100%;
   display: block;
   -o-object-fit: cover;
-     object-fit: cover; /* remplit la tuile sans déformer */
+     object-fit: cover;
   -o-object-position: center;
      object-position: center;
 }
-body.page-definition main .domaines .domaines-container .domaines-img img {
-  width: 100%;
-  max-width: 350px;
-  border-radius: 0.4rem;
-  border-bottom-right-radius: 1rem;
-  border-top-left-radius: 1rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  display: block;
-  margin: 0 auto;
+body.page-definition main .domaines .domaine .card .band {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-align: left;
+  padding: 0.6rem 0.8rem;
+  background: rgba(3, 24, 55, 0.86);
+  color: #fffffa;
+  box-shadow: 0 -10px 18px rgba(0, 0, 0, 0.22) inset;
 }
-@media (max-width: 990px) {
-  body.page-definition main .domaines {
-    /* Grille mobile générée par le JS, à l’intérieur de chaque .domaines-content */
-    /* Une paire = 2 colonnes (tuile texte | tuile image) */
-    /* Taille commune des vignettes en format portrait */
-    /* --- Vignette TEXTE (même look que desktop) --- */
-    /* typo interne du bloc texte existant */
-    /* --- Vignette IMAGE (bordure/arrondis + image qui remplit) --- */
-    /* Centrage du contenu des tuiles texte */
+body.page-definition main .domaines .domaine .card .band .txt {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+body.page-definition main .domaines .domaine .card .band .txt em {
+  font-style: normal;
+  font-weight: 700;
+  color: #fffffa;
+  font-size: clamp(1rem, 1.7vw, 1.2rem);
+}
+body.page-definition main .domaines .domaine .card .band .txt small {
+  font-size: clamp(0.85rem, 1.4vw, 0.95rem);
+  color: rgb(255, 255, 219.7);
+  opacity: 0.95;
+  margin-top: 0.1rem;
+}
+@media (hover: hover) and (pointer: fine) {
+  body.page-definition main .domaines .domaine .card {
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
   }
-  body.page-definition main .domaines .domaines-mobile {
-    display: grid;
-    gap: 1rem;
+  body.page-definition main .domaines .domaine .card:hover {
+    transform: translateY(-12px);
+    box-shadow: 14px 14px 25px rgba(1, 16, 39, 0.6156862745);
   }
-  body.page-definition main .domaines .domaines-mobile .pair {
-    display: grid;
+}
+@media (max-width: 992px) {
+  body.page-definition main .domaines .domaines-grid {
     grid-template-columns: 1fr 1fr;
-    gap: 0.75rem;
-    align-items: stretch;
+    gap: clamp(0.6rem, 2.4vw, 1.2rem);
   }
-  body.page-definition main .domaines .domaines-mobile .pair .tile {
-    width: 100%;
-    aspect-ratio: 2/3;
-    margin: 0;
-    transform: none;
-    transition: none;
-    box-shadow: none;
-  }
-  body.page-definition main .domaines .domaines-mobile .pair .tile.tile-text {
-    background-color: #E5E7EB;
-    border: 1px solid rgba(26, 46, 77, 0.45);
-    color: #00a250;
-    padding: 1.1rem;
-    text-align: center;
-    border-radius: 0.4rem;
-    border-bottom-right-radius: 1rem;
-    border-top-left-radius: 1rem;
-  }
-  body.page-definition main .domaines .domaines-mobile .pair .tile.tile-text > .tile-text span {
-    font-size: 1.6rem;
-    line-height: 1;
-  }
-  body.page-definition main .domaines .domaines-mobile .pair .tile.tile-text > .tile-text em {
-    display: block;
-    margin-top: 0.335rem;
-    font-style: normal;
-    color: #031837;
-  }
-  body.page-definition main .domaines .domaines-mobile .pair .tile.tile-text > .tile-text small {
-    display: block;
-    margin-top: 0.15rem;
-  }
-  body.page-definition main .domaines .domaines-mobile .pair .tile.tile-image {
-    overflow: hidden;
-    border: 1px solid rgba(26, 46, 77, 0.45);
-    border-radius: 0.4rem;
-    border-bottom-right-radius: 1rem;
-    border-top-left-radius: 1rem;
-    padding: 0;
-  }
-  body.page-definition main .domaines .domaines-mobile .pair .tile.tile-image img {
-    width: 100%;
-    height: 100%;
-    display: block;
-    -o-object-fit: cover;
-       object-fit: cover;
-    -o-object-position: center;
-       object-position: center;
-  }
-  body.page-definition main .domaines .domaines-mobile .pair .tile.tile-text {
-    display: grid;
-    place-items: center;
-  }
-  body.page-definition main .domaines .domaines-mobile .pair .tile.tile-text > .tile-text {
-    text-align: center;
-    margin-top: -3rem;
+  body.page-definition main .domaines .domaine .card {
+    aspect-ratio: 16/10; /* un peu plus “bannière” en tablette */
   }
 }
-@media (max-width: 260px) {
-  body.page-definition main .domaines .domaines-mobile .pair {
+@media (max-width: 640px) {
+  body.page-definition main .domaines .domaines-grid {
     grid-template-columns: 1fr;
-    grid-template-areas: "text" "image";
-    gap: 0.6rem; /* petit air entre les deux */
+    max-width: 560px; /* évite le plein écran trop large */
   }
-  body.page-definition main .domaines .domaines-mobile .pair .tile.tile-text {
-    grid-area: text;
-  }
-  body.page-definition main .domaines .domaines-mobile .pair .tile.tile-image {
-    grid-area: image;
+}
+@media (prefers-reduced-motion: reduce) {
+  body.page-definition main .domaines .domaine .card {
+    transition: none !important;
   }
 }
 body.page-definition main .domaines .domaines-list {
@@ -1638,8 +1496,10 @@ body.page-definition main .objectifs {
 body.page-definition main .objectifs .objectifs-container {
   width: min(1100px, 92vw);
   margin: 0 auto;
-  /* Si tu mets une icône/emoji au début, tu peux l'entourer d'un span.ico */
-  /* Mise en valeur des morceaux en <strong> dans le texte */
+}
+body.page-definition main .objectifs .objectifs-container h5 {
+  font-size: clamp(1.2rem, 2.2vw, 1.3rem);
+  margin-top: 2rem;
 }
 body.page-definition main .objectifs .objectifs-container .goals {
   list-style: none;
@@ -1660,50 +1520,21 @@ body.page-definition main .objectifs .objectifs-container .goals {
   }
 }
 body.page-definition main .objectifs .objectifs-container .goals li {
-  background: linear-gradient(165deg, rgba(230, 126, 34, 0.26), rgba(230, 126, 34, 0.06));
-  border-left: 4px solid rgb(207, 66, 0);
+  background: linear-gradient(165deg, rgba(46, 204, 112, 0.164), rgba(67, 233, 139, 0.062));
+  border-left: 4px solid rgb(0, 71, 30);
+  border-top: 1px solid rgba(0, 71, 30, 0.63);
   border-radius: 0.4rem;
-  border-bottom-right-radius: 1rem;
   border-top-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  box-shadow: 4px 4px 5px rgba(3, 24, 55, 0.0549019608);
   padding: 0.9rem;
   text-align: center;
   transition: transform 0.12s ease, box-shadow 0.12s ease;
 }
 body.page-definition main .objectifs .objectifs-container .goals li:hover {
   transform: translateY(-6px);
-  box-shadow: 0 10px 10px rgba(3, 24, 55, 0.18);
-}
-body.page-definition main .objectifs .objectifs-container .goals li .ico {
-  font-size: 1.35rem;
-  display: block;
-  margin-bottom: 0.25rem;
-}
-body.page-definition main .objectifs .objectifs-container .goals li strong {
-  color: #031837; /* même teinte que info-card */
-  font-weight: 700;
-}
-body.page-definition main .objectifs .objectifs-container .goals--secondary li {
-  background: linear-gradient(165deg, rgba(33, 179, 223, 0.28), rgba(52, 152, 219, 0.06));
-  border-left: 4px solid #031837;
-}
-body.page-definition main .objectifs .objectifs-container .goals--secondary li:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 10px 10px rgba(3, 24, 55, 0.18);
-}
-body.page-definition main .objectifs .objectifs-container .goals--secondary li strong {
-  color: #2F80ED;
-}
-body.page-definition main .objectifs .h4-goals {
-  text-align: center;
-  color: #031837;
-  font-size: clamp(1.15rem, 3.4vw, 1.5rem);
-  margin-top: 2rem;
-}
-body.page-definition main .objectifs .h4-gaols-secondary {
-  text-align: center;
-  color: #031837;
-  font-size: clamp(1.15rem, 3.4vw, 1.5rem);
-  margin-top: 2rem;
+  box-shadow: 0 14px 30px rgba(26, 46, 77, 0.178);
+  background: linear-gradient(165deg, rgba(46, 204, 113, 0.24), rgba(135, 211, 167, 0.295));
 }
 body.page-definition main .comparatif {
   padding: clamp(2rem, 5vw, 4rem) 1rem;
@@ -1955,14 +1786,14 @@ body.page-fonctionnement a {
 }
 body.page-fonctionnement h2 {
   font-family: "Raleway", sans-serif;
-  font-size: clamp(1.7rem, 4vw, 2.4rem);
+  font-size: clamp(1.85rem, 4.4vw, 2.65rem);
   color: #00a250;
   margin-bottom: 1.5rem;
   text-align: left;
   line-height: clamp(2.2rem, 5vw, 3rem);
 }
 body.page-fonctionnement p {
-  font-size: clamp(1rem, 1.5vw, 1.1rem);
+  font-size: clamp(1.1rem, 1.65vw, 1.2rem);
   line-height: 1.8;
   margin-bottom: 1.2rem;
 }
@@ -1995,7 +1826,7 @@ body.page-fonctionnement main .intro .intro-container .intro-text {
   line-height: 1.7;
 }
 body.page-fonctionnement main .intro .intro-container .intro-image img {
-  width: 100%;
+  width: clamp(12.5rem, 9.195rem + 20.339vw, 27.5rem);
   max-width: 350px;
   border-radius: 0.4rem;
   border-bottom-right-radius: 1rem;
@@ -2136,8 +1967,7 @@ body.page-fonctionnement main .ipmvp .ipmvp-container .ipmvp-text .ipmvp-ul {
   margin-bottom: 2rem;
 }
 body.page-fonctionnement main .ipmvp .ipmvp-container .ipmvp-image img {
-  width: 130%;
-  max-width: 440px;
+  width: clamp(12.5rem, 9.195rem + 20.339vw, 27.5rem);
   border-radius: 0.4rem;
   border-bottom-right-radius: 1rem;
   border-top-left-radius: 1rem;
@@ -2456,19 +2286,13 @@ body.page-fonctionnement main .exemple .exemple-container .exemple-text .exemple
   margin-bottom: clamp(0.6rem, 1.6vw, 1.5rem);
 }
 body.page-fonctionnement main .exemple .exemple-container .exemple-image img {
-  width: 80%;
-  max-width: 340px;
+  width: clamp(12.5rem, 9.195rem + 20.339vw, 27.5rem);
   border-radius: 0.4rem;
   border-bottom-right-radius: 1rem;
   border-top-left-radius: 1rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   display: block;
   margin: 0 auto;
-}
-@media (max-width: 400px) {
-  body.page-fonctionnement main .exemple .exemple-container .exemple-image img {
-    width: 100%;
-  }
 }
 
 /* Scope page */
@@ -2493,14 +2317,14 @@ body.page-typologies a {
 }
 body.page-typologies h2 {
   font-family: "Raleway", sans-serif;
-  font-size: clamp(1.7rem, 4vw, 2.4rem);
+  font-size: clamp(1.85rem, 4.4vw, 2.65rem);
   color: #00a250;
   margin-bottom: 1.5rem;
   text-align: left;
   line-height: clamp(2.2rem, 5vw, 3rem);
 }
 body.page-typologies p {
-  font-size: clamp(1rem, 1.5vw, 1.1rem);
+  font-size: clamp(1.1rem, 1.65vw, 1.2rem);
   line-height: 1.8;
   margin-bottom: 1.2rem;
 }
@@ -2579,7 +2403,7 @@ body.page-typologies main .intro .intro-container .intro-image img {
   position: static;
   top: auto;
   z-index: 1100;
-  background: rgba(26, 46, 77, 0.75);
+  background: linear-gradient(135deg, rgba(3, 24, 55, 0.9058823529), rgba(8, 49, 110, 0.9058823529));
   border-bottom: 1px solid rgba(0, 0, 0, 0.06);
   -webkit-backdrop-filter: saturate(1.2) blur(4px);
           backdrop-filter: saturate(1.2) blur(4px);
@@ -2600,7 +2424,7 @@ body.page-typologies main .intro .intro-container .intro-image img {
 .site-header .header-inner .brand-title {
   color: #fffffa;
   font-family: "Raleway", sans-serif;
-  font-size: clamp(2rem, 5vw, 3rem);
+  font-size: clamp(2.2rem, 5.5vw, 3.3rem);
   text-align: center;
   line-height: 1.18;
   max-width: 48ch;
@@ -2686,7 +2510,7 @@ body.page-typologies main .intro .intro-container .intro-image img {
   }
   .site-header .header-inner .brand-title {
     text-align: center;
-    font-size: clamp(2rem, 5vw, 3rem);
+    font-size: clamp(2.2rem, 5.5vw, 3.3rem);
     flex: 1 1 auto;
   }
 }
@@ -2760,7 +2584,7 @@ body.page-typologies main .intro .intro-container .intro-image img {
   top: 0;
   left: 0;
   width: 120px;
-  background-color: rgb(26, 46, 77);
+  background: linear-gradient(135deg, #031837, #08316e);
   transition: width 0.1s ease, opacity 0.1s ease;
   opacity: 0;
   pointer-events: none;
@@ -2944,7 +2768,7 @@ body.page-typologies main .intro .intro-container .intro-image img {
   }
 }
 .site-footer {
-  background: rgb(26, 46, 77);
+  background: linear-gradient(135deg, #031837, #08316e);
   color: #fffffa;
   padding: clamp(14px, 2vw, 24px) clamp(16px, 4vw, 48px);
   box-shadow: 0 -2px 3px rgba(0, 0, 0, 0.9);
@@ -3079,6 +2903,40 @@ body.page-typologies main .intro .intro-container .intro-image img {
          column-width: auto; /* ignore la largeur mini pour permettre 2 */
     -moz-column-gap: 12px;
          column-gap: 12px;
+  }
+}
+/* Sous 992px : logo au-dessus, liens en dessous (colonnage reste fluide) */
+@media (max-width: 992px) {
+  .site-footer .footer-inner {
+    flex-direction: column;
+    align-items: center;
+    text-align: left;
+    gap: clamp(12px, 3vw, 20px);
+  }
+  .site-footer .legal {
+    width: 100%;
+    margin-top: 0.5rem;
+    /* === Séparateur entre colonnes (responsive only) === */
+    -moz-column-rule: 1px solid rgba(255, 255, 250, 0.25);
+         column-rule: 1px solid rgba(255, 255, 250, 0.25);
+    /* un peu d’air pour éviter que le trait colle aux liens */
+    padding-inline: 4px;
+    -moz-column-gap: clamp(12px, 3vw, 24px);
+         column-gap: clamp(12px, 3vw, 24px);
+  }
+}
+/* Très étroit : on garantit au moins 2 colonnes (pas 1) */
+@media (max-width: 520px) {
+  .site-footer .legal {
+    -moz-column-count: 2;
+         column-count: 2; /* minimum 2 colonnes */
+    -moz-column-width: auto;
+         column-width: auto; /* ignore la largeur mini pour permettre 2 */
+    -moz-column-gap: 14px;
+         column-gap: 14px;
+    /* Séparateur un poil plus léger en très étroit */
+    -moz-column-rule: 1px solid rgba(255, 255, 250, 0.18);
+         column-rule: 1px solid rgba(255, 255, 250, 0.18);
   }
 }
 .next-cta {

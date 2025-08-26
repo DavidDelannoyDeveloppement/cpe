@@ -7,7 +7,8 @@
 // ========================
 
 .site-footer {
-  background: rgb(26, 46, 77);
+  // background: rgb(26, 46, 77);
+  background: $background-bleu-bleu;
   color: $creme;
   padding: clamp(14px, 2vw, 24px) clamp(16px, 4vw, 48px);
   box-shadow: 0 -2px 3px rgba(0, 0, 0, 0.9);
@@ -133,5 +134,40 @@
     column-count: 2;       /* minimum 2 colonnes */
     column-width: auto;    /* ignore la largeur mini pour permettre 2 */
     column-gap: 12px;
+  }
+}
+
+
+// Apport de la séparation des liens 
+/* Sous 992px : logo au-dessus, liens en dessous (colonnage reste fluide) */
+@media (max-width: 992px) {
+  .site-footer .footer-inner {
+    flex-direction: column;
+    align-items: center;
+    text-align: left;
+    gap: clamp(12px, 3vw, 20px);
+  }
+
+  .site-footer .legal {
+    width: 100%;
+    margin-top: .5rem;
+
+    /* === Séparateur entre colonnes (responsive only) === */
+    column-rule: 1px solid color.change($creme, $alpha: 0.25);
+    /* un peu d’air pour éviter que le trait colle aux liens */
+    padding-inline: 4px;
+    column-gap: clamp(12px, 3vw, 24px);
+  }
+}
+
+/* Très étroit : on garantit au moins 2 colonnes (pas 1) */
+@media (max-width: 520px) {
+  .site-footer .legal {
+    column-count: 2;       /* minimum 2 colonnes */
+    column-width: auto;    /* ignore la largeur mini pour permettre 2 */
+    column-gap: 14px;
+
+    /* Séparateur un poil plus léger en très étroit */
+    column-rule: 1px solid color.change($creme, $alpha: 0.18);
   }
 }

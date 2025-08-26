@@ -56,8 +56,7 @@
 
   .expert-image {
     img {
-      width: 100%;
-      max-width: 350px;
+      width: $witdh-img-defaut;
       border-radius: 0.4rem; 
       border-bottom-right-radius: 1rem;
       border-top-left-radius: 1rem;

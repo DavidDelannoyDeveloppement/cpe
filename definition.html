@@ -271,68 +271,73 @@
 
 
     <section class="domaines">
-      <h2><span class="icon">🏛️</span> Domaines d’application du CPE</h2>
-      <p>Le CPE est particulièrement adapté aux patrimoines avec des <strong> consommations d’énergie significatives,</strong> comme :</p>
       <div class="domaines-container">
-        <!-- Grille 1 : tuiles texte -->
-        <div class="domaines-text">
-          <div class="tiles tiles--labels">
-            <div class="tile" data-key="public">
-              <span aria-hidden="true">🏫</span>
-              <div class="tile-text">
-                <em>Les bâtiments publics</em>
-                <small>Écoles, gymnases, mairies, hôpitaux</small>
-              </div>
-            </div>
+        <h2>Domaines d’application du CPE</h2>
+        <p>Le CPE est particulièrement adapté aux patrimoines avec des <strong>consommations d’énergie significatives</strong>, comme :</p>
+        <ul class="domaines-grid" role="list">
+          <!-- 1. Bâtiments publics -->
+          <li class="domaine">
+            <figure class="card">
+              <img src="images/domaines-ecole-480.webp"
+                  alt="Bâtiments publics : écoles, gymnases, mairies, hôpitaux"
+                  loading="lazy" width="960" height="640">
+              <figcaption class="band">
+                <div class="txt">
+                  <em>Les bâtiments publics</em>
+                  <small>Écoles, gymnases, mairies, hôpitaux</small>
+                </div>
+              </figcaption>
+            </figure>
+          </li>
 
-            <div class="tile" data-key="tertiaire">
-              <span aria-hidden="true">🏢</span>
-              <div class="tile-text">
-                <em>Le tertiaire privé</em>
-                <small>Bureaux, hôtels, commerces</small>
-              </div>
-            </div>
+          <!-- 2. Tertiaire privé -->
+          <li class="domaine">
+            <figure class="card">
+              <img src="images/domaines-hotel-480.webp"
+                  alt="Tertiaire privé : bureaux, hôtels, commerces"
+                  loading="lazy" width="960" height="640">
+              <figcaption class="band">
+                <div class="txt">
+                  <em>Le tertiaire privé</em>
+                  <small>Bureaux, hôtels, commerces</small>
+                </div>
+              </figcaption>
+            </figure>
+          </li>
 
-            <div class="tile" data-key="industrie">
-              <span aria-hidden="true">🏭</span>
-              <div class="tile-text">
-                <em>L’industrie</em>
-                <small>Process, utilités, locaux</small>
-              </div>
-            </div>
+          <!-- 3. Industrie -->
+          <li class="domaine">
+            <figure class="card">
+              <img src="images/domaines-usine-480.webp"
+                  alt="Industrie : process, utilités, locaux"
+                  loading="lazy" width="960" height="640">
+              <figcaption class="band">
+                <div class="txt">
+                  <em>L’industrie</em>
+                  <small>Process, utilités, locaux</small>
+                </div>
+              </figcaption>
+            </figure>
+          </li>
 
-            <div class="tile" data-key="copro">
-              <span aria-hidden="true">🏘️</span>
-              <div class="tile-text">
-                <em>Les copropriétés</em>
-                <small>En rénovation globale</small>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Grille 2 : tuiles images (même ordre / mêmes clés) -->
-        <div class="domaines-media">
-          <div class="tiles tiles--images">
-            <div class="tile" data-key="public">
-              <img src="images/domaines-ecole-480.webp" alt="Bâtiments publics">
-            </div>
-
-            <div class="tile" data-key="tertiaire">
-              <img src="images/domaines-hotel-480.webp" alt="Tertiaire privé">
-            </div>
-
-            <div class="tile" data-key="industrie">
-              <img src="images/domaines-usine-480.webp" alt="Industrie">
-            </div>
-
-            <div class="tile" data-key="copro">
-              <img src="images/domaines-immeuble-480.webp" alt="Copropriétés">
-            </div>
-          </div>
-        </div>
+          <!-- 4. Copropriétés -->
+          <li class="domaine">
+            <figure class="card">
+              <img src="images/domaines-immeuble-480.webp"
+                  alt="Copropriétés en rénovation globale"
+                  loading="lazy" width="960" height="640">
+              <figcaption class="band">
+                <div class="txt">
+                  <em>Les copropriétés</em>
+                  <small>En rénovation globale</small>
+                </div>
+              </figcaption>
+            </figure>
+          </li>
+        </ul>
       </div>
 
+      <!-- On conserve toute la domaines-list telle quelle -->
       <ol class="domaines-list">
         <h4>Pertinent lorsque…</h4>
         <ul>
@@ -341,18 +346,20 @@
           <li>Le maître d’ouvrage veut de la visibilité long terme</li>
         </ul>
       </ol>
+
       <div class="cta-buttons">
         <a href="/simulateur" class="btn btn-secondary">Découvrir le simulateur</a>
       </div>
     </section>
+
 
     <span class="text-sep shape-diamond" aria-hidden="true"></span>
 
 
     <section class="objectifs">
       <div class="objectifs-container">
-        <h2><span class="icon">🔄</span> Quels sont les objectifs d’un CPE&nbsp;?</h2>
-        <h4 class="h4-goals">Un CPE vise plusieurs finalités complémentaires</h4>
+        <h2>Quels sont les objectifs d’un CPE&nbsp;?</h2>
+        <h5>Un CPE vise plusieurs finalités complémentaires :</h5>
         <ul class="goals">
           <li>Réduction durable des consommations énergétiques</li>
           <li>Amélioration du confort thermique et de la qualité d’usage</li>
@@ -362,8 +369,8 @@
           <li>Conformité avec les obligations réglementaires (décret tertiaire, etc.)</li>
         </ul>
 
-        <h4 class="h4-gaols-secondary">Exemples de gains concrets observés</h4>
-        <ul class="goals goals--secondary">
+        <h5>Exemples de gains concrets observés :</h5>
+        <ul class="goals">
           <li>Une collectivité ayant rénové 5 écoles a obtenu <strong> -32 % de consommation d’énergie finale,</strong> avec un CPE de 8 ans.</li>
           <li>Un groupe hôtelier a signé un CPE multi-sites garantissant <strong> -28 % sur les consommations de chauffage, ECS et ventilation.</strong></li>
           <li>Une copropriété de 70 logements a combiné travaux d’enveloppe et pilotage intelligent, atteignant <strong> -40 % d’économies garanties.</strong></li>
@@ -376,8 +383,7 @@
 
     
     <section class="comparatif">
-      <h2><span class="icon">📝</span> Pourquoi faire un CPE et non un contrat classique ?</h2>
-      
+      <h2>Pourquoi faire un CPE et non un contrat classique ?</h2>
       <div class="comparatif-container">
         <div class="colonne" id="objectif">
           <h4 class="h4-colonne">Objectifs</h4>
@@ -442,13 +448,13 @@
         <span class="brand-logo" aria-hidden="true"></span>
       </a>
       <nav class="legal" aria-label="Liens légaux">
-        <a href="./index.html" class="is-active"><b>Accueil</b></a>
-        <a href="./definition.html" aria-current="page">Définition du CPE</a>
-        <a href="./fonctionnement.html">Fonctionnement du CPE</a>
-        <a href="./typologies.html">Typologies de CPE</a>
+        <a href="./index.html" class="is-active" aria-current="page"><b>Accueil</b></a>
+        <a href="./definition.html" >Définition</a>
+        <a href="./fonctionnement.html">Fonctionnement</a>
+        <a href="./typologies.html">Typologies</a>
         <a href="./avantages.html">Avantages et limites</a>
         <a href="./reglementation.html">Réglementation</a>
-        <a href="./etapes.html">Étapes, durée, contrôle</a>
+        <a href="./etapes.html">Étapes</a>
         <a href="./chiffres.html">Chiffres clés</a>
         <a href="./financement.html">Financement</a>
         <a href="./recommandations.html">Recommandations</a>

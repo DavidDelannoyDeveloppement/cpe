@@ -32,7 +32,8 @@
   position: static;
   top: auto;
   z-index: 1100;
-  background: rgba(26, 46, 77, 0.75);
+  // background: rgba(26, 46, 77, 0.904);
+  background: $background-bleu-bleu-transparence;
   border-bottom: 1px solid rgba(0,0,0,0.06);
   backdrop-filter: saturate(1.2) blur(4px);
   box-shadow: 0px 5px 8px $bleu;

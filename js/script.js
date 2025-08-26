@@ -131,9 +131,9 @@ document.addEventListener("DOMContentLoaded", () => {
   })();
 
 
-  /* ==================================================
+  /* =====================================
      = Skip-link : focus sur #main si présent (A11y)  =
-     ================================================== */
+     ================================== */
   (function initSkipLink() {
     const main = document.getElementById("main");
     if (!main) return;
@@ -147,9 +147,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-/* ===================================================
-    ========   Vignettes Retournement Card    ========
-    ================================================== */
+/* ======================================
+    ===  Vignettes Retournement Card  ===
+    =================================== */
 // (function(){
 //   function clamp(n,min,max){return Math.max(min,Math.min(n,max));}
 //   function initHoverFlag(){
@@ -262,9 +262,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-/* ===================================================
-    ========   Section Vignettes Carrousel    ========
-    ================================================== */
+/* =======================================
+    ===  Section Vignettes Carrousel   ===
+    =================================== */
 (function () {
   const roots = document.querySelectorAll('.vignettes-carousel .vc-inner');
   if (!roots.length) return;
@@ -440,221 +440,221 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // ===========================
 //tile survol page definition/domaines
-(() => {
-  const BREAKPOINT = 990;
-  const mq = window.matchMedia(`(max-width:${BREAKPOINT}px)`);
-  const HANDLERS = Symbol('handlers');
-  const stateByContainer = new WeakMap(); // par .domaines-content
+// (() => {
+//   const BREAKPOINT = 990;
+//   const mq = window.matchMedia(`(max-width:${BREAKPOINT}px)`);
+//   const HANDLERS = Symbol('handlers');
+//   const stateByContainer = new WeakMap(); // par .domaines-content
 
-  document.addEventListener('DOMContentLoaded', refreshAll);
-  mq.addEventListener?.('change', refreshAll);
+//   document.addEventListener('DOMContentLoaded', refreshAll);
+//   mq.addEventListener?.('change', refreshAll);
 
-  function refreshAll() {
-    document.querySelectorAll('.domaines-container').forEach(container => {
-      const labelsWrap = container.querySelector('.tiles--labels'); // grille texte
-      const imagesWrap = container.querySelector('.tiles--images'); // grille images
-      if (!labelsWrap || !imagesWrap) return;
+//   function refreshAll() {
+//     document.querySelectorAll('.domaines-container').forEach(container => {
+//       const labelsWrap = container.querySelector('.tiles--labels'); // grille texte
+//       const imagesWrap = container.querySelector('.tiles--images'); // grille images
+//       if (!labelsWrap || !imagesWrap) return;
 
-      // init état une seule fois (on mémorise les emplacements d’origine)
-      if (!stateByContainer.has(container)) {
-        const remember = node => ({ node, parent: node.parentNode, next: node.nextSibling });
-        const labels = Array.from(labelsWrap.querySelectorAll('.tile'));
-        const images = Array.from(imagesWrap.querySelectorAll('.tile'));
-        if (!labels.length || labels.length !== images.length) return;
+//       // init état une seule fois (on mémorise les emplacements d’origine)
+//       if (!stateByContainer.has(container)) {
+//         const remember = node => ({ node, parent: node.parentNode, next: node.nextSibling });
+//         const labels = Array.from(labelsWrap.querySelectorAll('.tile'));
+//         const images = Array.from(imagesWrap.querySelectorAll('.tile'));
+//         if (!labels.length || labels.length !== images.length) return;
 
-        stateByContainer.set(container, {
-          labelsWrap, imagesWrap,
-          slotsLabels: labels.map(remember),
-          slotsImages: images.map(remember),
-          mobileGrid: null
-        });
-      }
+//         stateByContainer.set(container, {
+//           labelsWrap, imagesWrap,
+//           slotsLabels: labels.map(remember),
+//           slotsImages: images.map(remember),
+//           mobileGrid: null
+//         });
+//       }
 
-      const s = stateByContainer.get(container);
-      if (mq.matches) {
-        // ===== MOBILE =====
-        toMobile(container, s);
-        // sécurité : pas de “liage” en mobile
-        teardownLinkedDesktop(container);
-      } else {
-        // ===== DESKTOP =====
-        fromMobileIfAny(s);
-        setupLinkedDesktop(container); // <-- rebranche TOUJOURS après restauration
-      }
-    });
-  }
+//       const s = stateByContainer.get(container);
+//       if (mq.matches) {
+//         // ===== MOBILE =====
+//         toMobile(container, s);
+//         // sécurité : pas de “liage” en mobile
+//         teardownLinkedDesktop(container);
+//       } else {
+//         // ===== DESKTOP =====
+//         fromMobileIfAny(s);
+//         setupLinkedDesktop(container); // <-- rebranche TOUJOURS après restauration
+//       }
+//     });
+//   }
 
-  /* ------------------- MOBILE ------------------- */
-  // REMPLACE ta fonction toMobile par celle-ci
-  function toMobile(container, s) {
-    if (s.mobileGrid) return; // déjà actif
+//   /* ------------------- MOBILE ------------------- */
+//   // REMPLACE ta fonction toMobile par celle-ci
+//   function toMobile(container, s) {
+//     if (s.mobileGrid) return; // déjà actif
 
-    // conteneur mobile
-    const grid = document.createElement('div');
-    grid.className = 'domaines-mobile';
-    container.appendChild(grid);
-    s.mobileGrid = grid;
+//     // conteneur mobile
+//     const grid = document.createElement('div');
+//     grid.className = 'domaines-mobile';
+//     container.appendChild(grid);
+//     s.mobileGrid = grid;
 
-    // on cache les grilles d’origine
-    s.labelsWrap.style.display = 'none';
-    s.imagesWrap.style.display = 'none';
+//     // on cache les grilles d’origine
+//     s.labelsWrap.style.display = 'none';
+//     s.imagesWrap.style.display = 'none';
 
-    // pairage par data-key si présent, sinon index
-    const labels = s.slotsLabels.map(x => x.node);
-    const images = s.slotsImages.map(x => x.node);
-    const mapImgByKey = new Map(images.map(el => [el.dataset.key, el]));
+//     // pairage par data-key si présent, sinon index
+//     const labels = s.slotsLabels.map(x => x.node);
+//     const images = s.slotsImages.map(x => x.node);
+//     const mapImgByKey = new Map(images.map(el => [el.dataset.key, el]));
 
-    labels.forEach((label, i) => {
-      const pair = document.createElement('div');
-      pair.className = 'pair';
+//     labels.forEach((label, i) => {
+//       const pair = document.createElement('div');
+//       pair.className = 'pair';
 
-      const key = label.dataset.key;
-      const img = key ? mapImgByKey.get(key) : images[i];
+//       const key = label.dataset.key;
+//       const img = key ? mapImgByKey.get(key) : images[i];
 
-      // classes de style SUR .tile
-      label.classList.add('tile-text');
-      if (img) img.classList.add('tile-image');
+//       // classes de style SUR .tile
+//       label.classList.add('tile-text');
+//       if (img) img.classList.add('tile-image');
 
-      // ➜ ALTERNE : lignes impaires = [texte | image], lignes paires = [image | texte]
-      const isOddRow = i % 2 === 1; // 0-based : 0,1,2,3...
-      if (isOddRow) {
-        if (img) pair.appendChild(img);
-        pair.appendChild(label);
-      } else {
-        pair.appendChild(label);
-        if (img) pair.appendChild(img);
-      }
+//       // ➜ ALTERNE : lignes impaires = [texte | image], lignes paires = [image | texte]
+//       const isOddRow = i % 2 === 1; // 0-based : 0,1,2,3...
+//       if (isOddRow) {
+//         if (img) pair.appendChild(img);
+//         pair.appendChild(label);
+//       } else {
+//         pair.appendChild(label);
+//         if (img) pair.appendChild(img);
+//       }
 
-      grid.appendChild(pair);
-    });
-  }
+//       grid.appendChild(pair);
+//     });
+//   }
 
 
-  /* ------------------- RESTAURE (quand on repasse desktop) ------------------- */
-  function fromMobileIfAny(s) {
-    if (!s.mobileGrid) return;
+//   /* ------------------- RESTAURE (quand on repasse desktop) ------------------- */
+//   function fromMobileIfAny(s) {
+//     if (!s.mobileGrid) return;
 
-    // réinsère chaque tuile à sa place d’origine (ordre conservé)
-    s.slotsLabels.forEach(({ node, parent, next }) => parent.insertBefore(node, next));
-    s.slotsImages.forEach(({ node, parent, next }) => parent.insertBefore(node, next));
+//     // réinsère chaque tuile à sa place d’origine (ordre conservé)
+//     s.slotsLabels.forEach(({ node, parent, next }) => parent.insertBefore(node, next));
+//     s.slotsImages.forEach(({ node, parent, next }) => parent.insertBefore(node, next));
 
-    // nettoie classes ajoutées en mobile
-    s.slotsLabels.forEach(({ node }) => node.classList.remove('tile-text', 'is-linked-hover'));
-    s.slotsImages.forEach(({ node }) => node.classList.remove('tile-image', 'is-linked-hover'));
+//     // nettoie classes ajoutées en mobile
+//     s.slotsLabels.forEach(({ node }) => node.classList.remove('tile-text', 'is-linked-hover'));
+//     s.slotsImages.forEach(({ node }) => node.classList.remove('tile-image', 'is-linked-hover'));
 
-    // supprime la grille mobile et ré-affiche les grilles d’origine
-    s.mobileGrid.remove();
-    s.mobileGrid = null;
-    s.labelsWrap.style.display = '';
-    s.imagesWrap.style.display = '';
-  }
+//     // supprime la grille mobile et ré-affiche les grilles d’origine
+//     s.mobileGrid.remove();
+//     s.mobileGrid = null;
+//     s.labelsWrap.style.display = '';
+//     s.imagesWrap.style.display = '';
+//   }
 
-  /* ------------------- DESKTOP : survol lié ------------------- */
-  function setupLinkedDesktop(container) {
-    const labels = Array.from(container.querySelectorAll('.tiles--labels .tile'));
-    const images = Array.from(container.querySelectorAll('.tiles--images .tile'));
-    if (!labels.length || labels.length !== images.length) return;
+//   /* ------------------- DESKTOP : survol lié ------------------- */
+//   function setupLinkedDesktop(container) {
+//     const labels = Array.from(container.querySelectorAll('.tiles--labels .tile'));
+//     const images = Array.from(container.querySelectorAll('.tiles--images .tile'));
+//     if (!labels.length || labels.length !== images.length) return;
 
-    // nettoie d’éventuels anciens handlers
-    teardownLinkedDesktop(container);
+//     // nettoie d’éventuels anciens handlers
+//     teardownLinkedDesktop(container);
 
-    // lier par data-key si possible
-    const mapImgByKey = new Map(images.map(el => [el.dataset.key, el]));
-    labels.forEach((label, i) => {
-      const twin = label.dataset.key ? mapImgByKey.get(label.dataset.key) : images[i];
-      if (!twin) return;
-      bindPair(label, twin);
-    });
-  }
+//     // lier par data-key si possible
+//     const mapImgByKey = new Map(images.map(el => [el.dataset.key, el]));
+//     labels.forEach((label, i) => {
+//       const twin = label.dataset.key ? mapImgByKey.get(label.dataset.key) : images[i];
+//       if (!twin) return;
+//       bindPair(label, twin);
+//     });
+//   }
 
-  function bindPair(a, b) {
-    teardownOne(a);
-    teardownOne(b);
+//   function bindPair(a, b) {
+//     teardownOne(a);
+//     teardownOne(b);
 
-    const enterA = () => b.classList.add('is-linked-hover');
-    const leaveA = () => b.classList.remove('is-linked-hover');
-    const enterB = () => a.classList.add('is-linked-hover');
-    const leaveB = () => a.classList.remove('is-linked-hover');
+//     const enterA = () => b.classList.add('is-linked-hover');
+//     const leaveA = () => b.classList.remove('is-linked-hover');
+//     const enterB = () => a.classList.add('is-linked-hover');
+//     const leaveB = () => a.classList.remove('is-linked-hover');
 
-    add(a, 'mouseenter', enterA);
-    add(a, 'mouseleave', leaveA);
-    add(a, 'focusin',    enterA);
-    add(a, 'focusout',   leaveA);
+//     add(a, 'mouseenter', enterA);
+//     add(a, 'mouseleave', leaveA);
+//     add(a, 'focusin',    enterA);
+//     add(a, 'focusout',   leaveA);
 
-    add(b, 'mouseenter', enterB);
-    add(b, 'mouseleave', leaveB);
-    add(b, 'focusin',    enterB);
-    add(b, 'focusout',   leaveB);
-  }
+//     add(b, 'mouseenter', enterB);
+//     add(b, 'mouseleave', leaveB);
+//     add(b, 'focusin',    enterB);
+//     add(b, 'focusout',   leaveB);
+//   }
 
-  function teardownLinkedDesktop(container) {
-    container.querySelectorAll('.tile').forEach(teardownOne);
-  }
+//   function teardownLinkedDesktop(container) {
+//     container.querySelectorAll('.tile').forEach(teardownOne);
+//   }
 
-  function add(target, ev, fn) {
-    target.addEventListener(ev, fn);
-    (target[HANDLERS] ||= []).push({ ev, fn });
-  }
-  function teardownOne(target) {
-    const hs = target[HANDLERS];
-    if (!hs) return;
-    hs.forEach(({ ev, fn }) => target.removeEventListener(ev, fn));
-    target[HANDLERS] = [];
-    target.classList.remove('is-linked-hover');
-  }
-})();
+//   function add(target, ev, fn) {
+//     target.addEventListener(ev, fn);
+//     (target[HANDLERS] ||= []).push({ ev, fn });
+//   }
+//   function teardownOne(target) {
+//     const hs = target[HANDLERS];
+//     if (!hs) return;
+//     hs.forEach(({ ev, fn }) => target.removeEventListener(ev, fn));
+//     target[HANDLERS] = [];
+//     target.classList.remove('is-linked-hover');
+//   }
+// })();
 
 
 
 
 // ===========================
 // Personnalisation du comparatif
-(()=> {
-  const els = document.querySelectorAll('.comparatif .comparatif-container .colonne');
-  const tilt = 9;
-  let raf = null;
+// (()=> {
+//   const els = document.querySelectorAll('.comparatif .comparatif-container .colonne');
+//   const tilt = 9;
+//   let raf = null;
 
-  function baseTransform(el, hovered){
-    if (hovered && el.id === 'col-cpe') return 'translateY(-4px) scale(1.035) ';
-    return '';
-  }
+//   function baseTransform(el, hovered){
+//     if (hovered && el.id === 'col-cpe') return 'translateY(-4px) scale(1.035) ';
+//     return '';
+//   }
 
-  function apply(el, x, y, hovered){
-    const r = el.getBoundingClientRect();
-    const px = (x / r.width - .5) * 2;
-    const py = (y / r.height - .5) * 2;
-    const rx = (-py * tilt).toFixed(2);
-    const ry = ( px * tilt).toFixed(2);
-    el.style.transform = `perspective(800px) ${baseTransform(el, hovered)}rotateX(${rx}deg) rotateY(${ry}deg)`;
-    el.style.setProperty('--mx', x + 'px');
-    el.style.setProperty('--my', y + 'px');
-  }
+//   function apply(el, x, y, hovered){
+//     const r = el.getBoundingClientRect();
+//     const px = (x / r.width - .5) * 2;
+//     const py = (y / r.height - .5) * 2;
+//     const rx = (-py * tilt).toFixed(2);
+//     const ry = ( px * tilt).toFixed(2);
+//     el.style.transform = `perspective(800px) ${baseTransform(el, hovered)}rotateX(${rx}deg) rotateY(${ry}deg)`;
+//     el.style.setProperty('--mx', x + 'px');
+//     el.style.setProperty('--my', y + 'px');
+//   }
 
-  function reset(el){
-    el.style.transform = `perspective(800px) ${baseTransform(el, false)}`;
-    el.style.setProperty('--mx', '50%');
-    el.style.setProperty('--my', '50%');
-  }
+//   function reset(el){
+//     el.style.transform = `perspective(800px) ${baseTransform(el, false)}`;
+//     el.style.setProperty('--mx', '50%');
+//     el.style.setProperty('--my', '50%');
+//   }
 
-  els.forEach(el => {
-    reset(el);
+//   els.forEach(el => {
+//     reset(el);
 
-    el.addEventListener('pointermove', e => {
-      const r = el.getBoundingClientRect();
-      const x = e.clientX - r.left;
-      const y = e.clientY - r.top;
-      if (raf) cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(() => apply(el, x, y, true));
-    });
+//     el.addEventListener('pointermove', e => {
+//       const r = el.getBoundingClientRect();
+//       const x = e.clientX - r.left;
+//       const y = e.clientY - r.top;
+//       if (raf) cancelAnimationFrame(raf);
+//       raf = requestAnimationFrame(() => apply(el, x, y, true));
+//     });
 
-    el.addEventListener('pointerleave', () => {
-      if (raf) cancelAnimationFrame(raf);
-      reset(el);
-    });
+//     el.addEventListener('pointerleave', () => {
+//       if (raf) cancelAnimationFrame(raf);
+//       reset(el);
+//     });
 
-    el.addEventListener('pointerdown', e => {
-      const r = el.getBoundingClientRect();
-      apply(el, e.clientX - r.left, e.clientY - r.top, true);
-    });
-  });
-})();
+//     el.addEventListener('pointerdown', e => {
+//       const r = el.getBoundingClientRect();
+//       apply(el, e.clientX - r.left, e.clientY - r.top, true);
+//     });
+//   });
+// })();

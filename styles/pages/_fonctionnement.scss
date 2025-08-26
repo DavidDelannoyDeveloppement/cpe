@@ -68,7 +68,7 @@ body.page-fonctionnement {
         
                 .intro-image {
                     img {
-                    width: 100%;
+                    width: $witdh-img-defaut;
                     max-width: 350px;
                     border-radius: 0.4rem; 
                     border-bottom-right-radius: 1rem;
@@ -235,8 +235,7 @@ body.page-fonctionnement {
         
                 .ipmvp-image {
                     img {
-                    width: 130%;
-                    max-width: 440px;
+                    width: $witdh-img-defaut;
                     border-radius: 0.4rem; 
                     border-bottom-right-radius: 1rem;
                     border-top-left-radius: 1rem;
@@ -622,20 +621,13 @@ body.page-fonctionnement {
         
                 .exemple-image {
                     img {
-                    width: 80%;
-                    max-width: 340px;
+                    width: $witdh-img-defaut;
                     border-radius: 0.4rem; 
                     border-bottom-right-radius: 1rem;
                     border-top-left-radius: 1rem;
                     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
                     display: block;
                     margin: 0 auto;
-                    }
-
-                    @media (max-width: 400px) {
-                        img {
-                            width: 100%;
-                        } 
                     }
                 }
             }

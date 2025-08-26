@@ -57,3 +57,44 @@
   border-bottom-right-radius: 1rem;
 }
 
+
+// utils/_mixins.scss
+// =====================================
+// Double soulignage stylé pour titres
+// =====================================
+@mixin double-underline(
+  // $color         : couleur des traits
+  // $thickness     : épaisseur des traits (ex: 3px)
+  // $gap           : écart texte → 1er trait (ex: .25em)
+  // $sep           : écart vertical entre trait 1 et 2 (ex: 4px)
+  // $left-offset   : marge vide au début du 1er trait (ex: 10px)
+  // $right-offset  : marge vide à la fin du 2e trait (ex: 10px)
+  // $first-end     : fin du 1er trait (ex: 66%)
+  // $second-start  : début du 2e trait (ex: 33%)
+  $color: $bleu,
+  $thickness: 3px,
+  $gap: .25em,
+  $sep: 6px,
+  $left-offset: 10px,
+  $right-offset: 10px,
+  $first-end: 66%,
+  $second-start: 33%
+) {
+  display: inline-block; // le fond suit la largeur réelle du titre
+  background:
+    // Trait 1 : de $left-offset → $first-end
+    linear-gradient(
+      to right,
+      transparent $left-offset,
+      $color $left-offset $first-end,
+      transparent $first-end
+    ) 0 calc(100% - #{$gap}) / 100% $thickness no-repeat,
+
+    // Trait 2 : de $second-start → (100% - $right-offset)
+    linear-gradient(
+      to right,
+      transparent $second-start,
+      $color $second-start calc(100% - #{$right-offset}),
+      transparent calc(100% - #{$right-offset})
+    ) 0 calc(100% - #{$gap} - #{$sep}) / 100% $thickness no-repeat;
+}

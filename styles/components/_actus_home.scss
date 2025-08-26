@@ -33,11 +33,8 @@
     padding-left: calc(var(--label-w) + 1rem);
 
     /* Bandeau type TV info */
-    background: linear-gradient(
-      90deg,
-      $bleu 0%,
-      color.adjust($bleu, $lightness: 6%) 100%
-    );
+    // background: linear-gradient(90deg,$bleu 0%,color.adjust($bleu, $lightness: 6%) 100%);
+    background: $background-bleu-bleu;
     border-radius: .4rem;
     border-bottom-right-radius: 1rem;
     border-top-left-radius: 1rem;
@@ -248,7 +245,7 @@
 
 /* Rétrécir la boîte "NEWS" uniquement en mobile */
 @media (max-width: 1024px) {
-  .actus-section .actus-marquee { --label-w: 40px; } // ajuste la valeur à ton goût
+  .actus-section .actus-marquee { --label-w: 74px; } // ajuste la valeur à ton goût
 }
 
 
