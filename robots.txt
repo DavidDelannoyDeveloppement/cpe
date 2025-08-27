@@ -1,9 +1,4 @@
 User-agent: *
 Allow: /
 
-# Laisse CSS/JS accessibles pour le rendu Google (ne pas les bloquer)
-# Bloque juste tes brouillons éventuels :
-Disallow: /drafts/
-Disallow: /images/temp/
-
 Sitemap: https://daviddelannoydeveloppement.github.io/cpe/sitemap.xml
