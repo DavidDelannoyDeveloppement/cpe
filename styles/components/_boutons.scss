@@ -14,13 +14,13 @@
   box-sizing: border-box;
   box-shadow: $shadow-photo;
   /* Largeur commune : même min partout, grandit si besoin */
-  min-inline-size: min(13rem, 79vw);
+  min-inline-size: min(14.5rem, 80vw);
   inline-size: max-content;
   max-inline-size: 92vw;
 
   text-align: center;
   white-space: nowrap;   /* libellés identiques → pas de wrap */
-  line-height: 1;
+  line-height: 0.7;
   font-weight: 700;
 
   /* Tailles fluides (réf. WHY) */
@@ -30,7 +30,7 @@
   text-decoration: none;
   border: none;
   cursor: pointer;
-  min-height: 44px;
+  min-height: clamp(1.875rem, 1.682rem + 1.186vw, 2.75rem);
 
   /* Rayons */
   @include radius-cpe;
@@ -115,6 +115,6 @@
     padding: clamp(.5rem, 3.2vw, .75rem) clamp(.7rem, 5vw, 1.1rem);
 
     /* ↓ largeur mini un peu réduite (optionnel) */
-    min-inline-size: min(13rem, 92vw);
+    min-inline-size: min(11.5rem, 92vw);
   }
 }

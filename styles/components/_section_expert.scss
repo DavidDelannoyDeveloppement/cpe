@@ -17,6 +17,7 @@
   }
 
   .expert-content {
+    width: min(1100px, 92vw);
     display: grid;
     grid-template-columns: 1fr 1fr;
     // gap: 1.2rem;

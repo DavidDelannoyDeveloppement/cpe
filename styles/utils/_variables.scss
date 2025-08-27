@@ -49,13 +49,15 @@ $font-body: $raleway; // Paragraphes/labels
 $font-ui: $raleway; // Boutons, badges, formulaires
 
 // /largeur image par défaut
-$witdh-img-defaut: clamp(12.5rem, 9.195rem + 20.339vw, 27.5rem);
+$witdh-img-defaut: clamp(12.5rem, 10.434rem + 12.712vw, 21.875rem);
 
 // ========================
 // ===== DESIGN TOKENS ====
 // ========================
 $border-left-vert : 4px solid $vert-border;
 $border-top-vert: 1px solid $vert-border-top;
+$border-top-vert-2px: 2px solid $vert-border-top;
+$border-top-vert-3px: 3px solid $vert-border-top;
 $shadow-defaut: 4px 4px 5px #0318370e;
 $shadow-hover: 0 14px 30px rgba(26, 46, 77, 0.178);
 $shadow-photo :0 4px 12px rgba(0, 0, 0, 0.2);

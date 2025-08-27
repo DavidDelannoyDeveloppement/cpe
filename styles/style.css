@@ -453,6 +453,7 @@ body {
   line-height: clamp(2.2rem, 5vw, 3rem);
 }
 .expert-section .expert-content {
+  width: min(1100px, 92vw);
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
@@ -493,7 +494,7 @@ body {
   }
 }
 .expert-section .expert-image img {
-  width: clamp(12.5rem, 9.195rem + 20.339vw, 27.5rem);
+  width: clamp(12.5rem, 10.434rem + 12.712vw, 21.875rem);
   border-radius: 0.4rem;
   border-bottom-right-radius: 1rem;
   border-top-left-radius: 1rem;
@@ -783,13 +784,13 @@ body {
   box-sizing: border-box;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   /* Largeur commune : même min partout, grandit si besoin */
-  min-inline-size: min(13rem, 79vw);
+  min-inline-size: min(14.5rem, 80vw);
   inline-size: -moz-max-content;
   inline-size: max-content;
   max-inline-size: 92vw;
   text-align: center;
   white-space: nowrap; /* libellés identiques → pas de wrap */
-  line-height: 1;
+  line-height: 0.7;
   font-weight: 700;
   /* Tailles fluides (réf. WHY) */
   font-size: clamp(1.2rem, 2.2vw, 1.3rem);
@@ -797,7 +798,7 @@ body {
   text-decoration: none;
   border: none;
   cursor: pointer;
-  min-height: 44px;
+  min-height: clamp(1.875rem, 1.682rem + 1.186vw, 2.75rem);
   /* Rayons */
   border-radius: 0.4rem;
   border-top-left-radius: 1rem;
@@ -867,7 +868,7 @@ body {
     /* ↓ padding plus contenu */
     padding: clamp(0.5rem, 3.2vw, 0.75rem) clamp(0.7rem, 5vw, 1.1rem);
     /* ↓ largeur mini un peu réduite (optionnel) */
-    min-inline-size: min(13rem, 92vw);
+    min-inline-size: min(11.5rem, 92vw);
   }
 }
 body.page_home {
@@ -1061,7 +1062,6 @@ body.page-definition main .intro .intro-container .intro-text .cta-buttons {
 }
 body.page-definition main .intro .intro-container .intro-image img {
   width: clamp(12.5rem, 10.434rem + 12.712vw, 21.875rem);
-  max-width: 400px;
   border-radius: 0.4rem;
   border-bottom-right-radius: 1rem;
   border-top-left-radius: 1rem;
@@ -1151,7 +1151,7 @@ body.page-definition main .definition .definition-container .info-card small {
   }
 }
 body.page-definition main .cadre {
-  padding: clamp(1rem, 5vw, 3rem) 1rem clamp(2rem, 5vw, 3rem);
+  padding: clamp(1rem, 0.559rem + 2.712vw, 3rem) 1rem clamp(2rem, 1.78rem + 1.356vw, 3rem);
   color: #031837;
   text-align: justify;
 }
@@ -1337,25 +1337,13 @@ body.page-definition main .principe .principe-container .flip-face.back {
   body.page-definition main .principe .principe-container .principe-list > li.principe-item > .principe-item__texte > h4 {
     flex-direction: column;
     gap: 0.45rem;
-    text-align: center;
+    text-align: start;
   }
 }
 body.page-definition main .domaines {
   padding: clamp(2rem, 5vw, 4rem) 1rem;
   color: #031837;
   text-align: center;
-  /* ==== Grille 2×2 desktop, responsive ==== */
-  /* Une carte = image + bandeau bas */
-  /* =================
-      Responsive
-      ================= */
-  /* Tablette : on garde 2 colonnes, on rend les cartes un peu plus larges */
-  /* Mobile : 1 colonne empilée */
-  /* Respecte la préférence d’accessibilité */
-  /* ===========================
-      Liste “Pertinent lorsque…”
-      (inchangée, on garde ta base)
-      =========================== */
 }
 body.page-definition main .domaines .domaines-container {
   width: min(1100px, 92vw);
@@ -1369,7 +1357,7 @@ body.page-definition main .domaines .domaines-grid {
   margin: clamp(1rem, 2.5vw, 1.5rem) auto 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(2, minmax(220px, 400px)); /* 2 colonnes */
+  grid-template-columns: repeat(2, minmax(220px, 400px));
   justify-content: center;
   justify-items: center;
   gap: clamp(0.6rem, 0.292rem + 1.898vw, 2rem);
@@ -1378,15 +1366,13 @@ body.page-definition main .domaines .domaine .card {
   position: relative;
   display: block;
   width: 100%;
-  aspect-ratio: 4/3; /* format confortable */
+  aspect-ratio: 4/3;
   border-radius: 0.4rem;
   border-top-left-radius: 1rem;
   border-bottom-right-radius: 1rem;
-  overflow: clip; /* évite les débords du bandeau */
+  overflow: clip;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   background: #000;
-  /* Bandeau bas */
-  /* Hover/focus (desktop) */
 }
 body.page-definition main .domaines .domaine .card img {
   width: 100%;
@@ -1442,13 +1428,25 @@ body.page-definition main .domaines .domaine .card .band .txt small {
     gap: clamp(0.6rem, 2.4vw, 1.2rem);
   }
   body.page-definition main .domaines .domaine .card {
-    aspect-ratio: 16/10; /* un peu plus “bannière” en tablette */
+    aspect-ratio: 16/10;
   }
 }
 @media (max-width: 640px) {
   body.page-definition main .domaines .domaines-grid {
     grid-template-columns: 1fr;
-    max-width: 560px; /* évite le plein écran trop large */
+    max-width: 560px;
+  }
+}
+@media (hover: none), (pointer: coarse), (max-width: 992px) {
+  body.page-definition main .domaines .domaine .card {
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+  body.page-definition main .domaines .domaine .card:active,
+  body.page-definition main .domaines .domaine .card:focus-visible {
+    transform: translateY(-8px);
+    box-shadow: 6px 6px 10px rgba(1, 16, 39, 0.6156862745);
   }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -1486,6 +1484,10 @@ body.page-definition main .domaines .domaines-list > ul li {
 @media (max-width: 990px) {
   body.page-definition main .domaines .domaines-list > ul {
     max-width: 68ch;
+    text-align: start;
+  }
+  body.page-definition main .domaines .domaines-list > h4 {
+    text-align: start;
   }
 }
 body.page-definition main .objectifs {
@@ -1540,194 +1542,189 @@ body.page-definition main .comparatif {
   padding: clamp(2rem, 5vw, 4rem) 1rem;
   color: #031837;
   text-align: center;
-  /* tilt + reflet */
+}
+body.page-definition main .comparatif h2 {
+  width: min(1100px, 92vw);
+  margin: 0 auto clamp(1rem, 0.78rem + 1.356vw, 2rem);
 }
 body.page-definition main .comparatif .comparatif-container {
-  width: min(1200px, 92vw);
+  width: min(1100px, 92vw);
   margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  align-items: stretch;
-  gap: 0.8rem;
-  flex-wrap: wrap;
-  /* ===== Couleurs pastel-néon ===== */
-}
-body.page-definition main .comparatif .comparatif-container .colonne {
-  display: flex;
-  flex-direction: column;
-  flex: 0 0 390px;
-  width: 390px;
-  max-width: 390px;
-  min-width: 320px;
-  padding: 1rem 3rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0;
   border-radius: 0.4rem;
-  border-bottom-right-radius: 1rem;
   border-top-left-radius: 1rem;
-  box-sizing: border-box;
-  position: relative;
+  border-bottom-right-radius: 1rem;
+  border-top: 2px solid rgba(0, 71, 30, 0.63);
+  border-left: 4px solid rgb(0, 71, 30);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   overflow: hidden;
-  isolation: isolate;
-  -webkit-backdrop-filter: saturate(1.02);
-          backdrop-filter: saturate(1.02);
-  transition: transform 0.12s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.12s ease, filter 0.12s ease;
-  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.18), 0 2px 6px rgba(0, 0, 0, 0.12);
-  /* film + vignettage (la couleur se fait par colonne) */
-  background-blend-mode: screen, multiply;
-  background-image: repeating-linear-gradient(120deg, rgba(255, 255, 255, 0.08) 0 2px, rgba(255, 255, 255, 0) 2px 8px), radial-gradient(120% 120% at 100% 100%, rgba(0, 0, 0, 0.16), transparent 60%);
 }
-body.page-definition main .comparatif .comparatif-container .colonne::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.14), inset 0 0 0 2px rgba(255, 255, 255, 0.06), inset 0 0 38px rgba(0, 0, 0, 0.22);
-  pointer-events: none;
-  z-index: 1;
+body.page-definition main .comparatif .colonne {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  align-content: start;
 }
-body.page-definition main .comparatif .comparatif-container .colonne::after {
-  content: "";
-  position: absolute;
-  inset: -35% -20%;
-  transform: rotate(-18deg) translateX(-130%);
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.55) 50%, rgba(255, 255, 255, 0) 100%);
-  mix-blend-mode: screen;
-  opacity: 0.9;
-  pointer-events: none;
-  z-index: 1;
+body.page-definition main .comparatif .colonne:not(:first-child) {
+  border-inline-start: 1px solid rgba(3, 24, 55, 0.12);
 }
-body.page-definition main .comparatif .comparatif-container .colonne:hover {
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.22), 0 4px 10px rgba(0, 0, 0, 0.16);
-  filter: saturate(1.05);
+body.page-definition main .comparatif .h4-colonne {
+  margin: 0;
+  padding: 0.6rem 1rem;
+  background: rgba(246, 171, 120, 0.6);
+  color: #031837;
+  font-weight: 700;
+  line-height: 1.25;
+  border-bottom: 1px solid rgba(3, 24, 55, 0.6);
 }
-body.page-definition main .comparatif .comparatif-container .colonne:hover::after {
-  animation: sheen 800ms ease;
+body.page-definition main .comparatif #col-cpe .h4-colonne {
+  border-bottom-color: rgb(56.7, 153.9, 47.7);
 }
-@keyframes sheen {
-  0% {
-    transform: rotate(-18deg) translateX(-130%);
-    opacity: 0;
-  }
-  12% {
-    opacity: 0.9;
-  }
-  100% {
-    transform: rotate(-18deg) translateX(130%);
-    opacity: 0;
-  }
+body.page-definition main .comparatif .col-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
-body.page-definition main .comparatif .comparatif-container .h4-colonne {
+body.page-definition main .comparatif .col-list li {
+  margin: 0;
+  padding: 0.75rem 0.9rem;
+  min-height: 2.75rem;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  line-height: 1.25;
-  background-color: #fffffa;
-  margin: 0 0 1rem 0;
-  padding: 0.3rem 1rem;
-  overflow-wrap: anywhere;
-  color: #031837;
-  border-radius: 0.4rem;
-  border-bottom-right-radius: 1rem;
-  border-top-left-radius: 1rem;
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.6) inset, 2px 2px 3px #6B7280;
-  font-size: 1.2rem;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  word-break: break-word;
-  -webkit-hyphens: auto;
-          hyphens: auto;
-  height: 4.2rem;
-  position: relative;
-  z-index: 2;
+  border-bottom: 1px solid rgba(3, 24, 55, 0.3);
+  background: #fffffa;
 }
-body.page-definition main .comparatif .comparatif-container .col-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  position: relative;
-  z-index: 2;
+body.page-definition main .comparatif .col-list li:last-child {
+  border-bottom: 0;
 }
-body.page-definition main .comparatif .comparatif-container .col-list li {
-  background-color: #fffffa;
-  margin: 0.5rem 0;
-  padding: 0.5rem 0.75rem;
-  border-radius: 0.6rem;
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.65) inset, 2px 2px 3px #6B7280;
-  border: 1px solid rgba(3, 24, 55, 0.08);
-  width: 100%;
-  overflow-wrap: anywhere;
-  word-break: break-word;
-  -webkit-hyphens: auto;
-          hyphens: auto;
-  transition: transform 0.1s ease, box-shadow 0.1s ease;
+body.page-definition main .comparatif #col-cpe {
+  background: rgba(63, 171, 53, 0.04);
+  border-inline-start: 2px solid rgb(56.7, 153.9, 47.7);
+  border-inline-end: 2px solid rgb(56.7, 153.9, 47.7);
 }
-body.page-definition main .comparatif .comparatif-container .col-list li:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.75) inset, 4px 6px 10px rgba(0, 0, 0, 0.12);
+body.page-definition main .comparatif #col-cpe .col-list li {
+  background: rgba(63, 171, 53, 0.05);
+  font-weight: 600;
+  border-bottom-color: rgb(59.85, 162.45, 50.35);
 }
-body.page-definition main .comparatif .comparatif-container #objectif {
-  background-color: hsl(210, 100%, 88%); /* fallback */
-  background-blend-mode: normal, screen, multiply;
-  background-image: linear-gradient(135deg, hsl(213, 90%, 92%) 0%, hsl(208, 90%, 66%) 52%, hsl(200, 100%, 80%) 100%), repeating-linear-gradient(120deg, rgba(255, 255, 255, 0.08) 0 2px, rgba(255, 255, 255, 0) 2px 8px), radial-gradient(120% 120% at 100% 100%, rgba(0, 0, 0, 0.12), transparent 60%);
-  color: #031837;
-  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.18), 0 2px 6px rgba(0, 0, 0, 0.12);
-  border-left: 5px solid rgba(3, 24, 55, 0.8);
-  border-bottom: 5px solid rgba(3, 24, 55, 0.5);
+body.page-definition main .comparatif #col-classic .col-list li {
+  background: rgba(190, 9, 127, 0.1);
+  color: rgb(2.85, 22.8, 52.25);
 }
-body.page-definition main .comparatif .comparatif-container #col-cpe {
-  background-color: hsl(151, 85%, 62%); /* fallback */
-  background-blend-mode: normal, screen, multiply;
-  background-image: linear-gradient(135deg, hsl(152, 80%, 92%) 0%, hsl(151, 85%, 62%) 52%, hsl(149, 95%, 74%) 100%), repeating-linear-gradient(120deg, rgba(255, 255, 255, 0.08) 0 2px, rgba(255, 255, 255, 0) 2px 8px), radial-gradient(120% 120% at 100% 100%, rgba(0, 0, 0, 0.12), transparent 60%);
-  box-shadow: 0 14px 26px rgba(0, 0, 0, 0.22), 0 4px 10px rgba(0, 0, 0, 0.16);
-  color: rgb(0, 83, 0);
-  border-left: 5px solid rgba(0, 58, 0, 0.8);
-  border-bottom: 5px solid rgba(0, 58, 0, 0.6);
-  transform: translateZ(0);
-}
-body.page-definition main .comparatif .comparatif-container #col-cpe:hover {
-  transform: translateY(-4px) scale(1.035);
-  transition: transform 0.1s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.1s ease;
-  box-shadow: 0 18px 30px rgba(0, 0, 0, 0.26), 0 6px 12px rgba(0, 0, 0, 0.18);
-}
-body.page-definition main .comparatif .comparatif-container #col-classic {
-  /* fallback uni */
-  background-color: rgba(230, 57, 70, 0.2);
-  /* calques recolorés en rouge vif */
-  background-blend-mode: normal, screen, multiply;
-  background-image: linear-gradient(135deg, rgba(230, 57, 70, 0.16) 0%, rgba(230, 57, 70, 0.55) 52%, rgba(230, 57, 70, 0.3) 100%), repeating-linear-gradient(120deg, rgba(255, 255, 255, 0.08) 0 2px, rgba(255, 255, 255, 0) 2px 8px), radial-gradient(120% 120% at 100% 100%, rgba(0, 0, 0, 0.12), transparent 60%);
-  color: #e63946;
-  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.18), 0 2px 6px rgba(0, 0, 0, 0.12);
-  /* bordures accordées */
-  border-left: 5px solid rgba(230, 57, 70, 0.85);
-  border-bottom: 5px solid rgba(230, 57, 70, 0.6);
-}
-body.page-definition main .comparatif .comparatif .comparatif-container .colonne {
-  --rx: 0deg;
-  --ry: 0deg;
-  --mx: 50%;
-  --my: 50%;
-  transform: perspective(800px) rotateX(var(--rx)) rotateY(var(--ry));
-}
-body.page-definition main .comparatif .comparatif .comparatif-container .colonne:hover::after {
-  animation: none;
-}
-body.page-definition main .comparatif .comparatif .comparatif-container .colonne::after {
-  background: radial-gradient(320px 140px at var(--mx) var(--my), rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0) 60%), linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.55) 50%, rgba(255, 255, 255, 0) 100%);
-}
-body.page-definition main .comparatif .comparatif .comparatif-container #col-cpe:hover {
-  transform: translateY(-4px) scale(1.035) rotateX(var(--rx)) rotateY(var(--ry));
-}
-@media (max-width: 390px) {
-  body.page-definition main .comparatif .comparatif-container {
-    gap: 0.6rem;
+@media (hover: hover) and (pointer: fine) {
+  body.page-definition main .comparatif .col-list li:hover {
+    background: rgba(255, 255, 250, 0.6);
   }
-  body.page-definition main .comparatif .comparatif-container .colonne {
-    flex: 0 1 auto;
-    width: auto;
-    max-width: clamp(260px, 92vw, 320px);
-    min-width: 0;
-    padding: 1rem 1rem;
-    box-sizing: border-box;
+  body.page-definition main .comparatif #col-cpe .col-list li:hover {
+    background: rgba(63, 171, 53, 0.1);
+  }
+}
+@media (max-width: 900px) {
+  body.page-definition main .comparatif .h4-colonne {
+    display: none;
+  }
+  body.page-definition main .comparatif .comparatif-container {
+    display: flex;
+    flex-wrap: wrap;
+    border: 0;
+    box-shadow: none;
+    overflow: visible;
+    background: transparent;
+  }
+  body.page-definition main .comparatif .comparatif-container .colonne,
+  body.page-definition main .comparatif .comparatif-container .colonne > .col-list {
+    display: contents;
+  }
+  body.page-definition main .comparatif .col-list li {
+    flex: 1 1 100%;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: start;
+    gap: 0.6rem;
+    text-align: left;
+    border-top: 2px solid rgba(0, 71, 30, 0.63);
+    border-left: 4px solid rgb(0, 71, 30);
+    background: #fffffa;
+    padding: 0.8rem 1rem;
+  }
+  body.page-definition main .comparatif #objectif .col-list li::before {
+    content: "Objectif";
+    font-weight: 700;
+    color: #031837;
+  }
+  body.page-definition main .comparatif #col-cpe .col-list li::before {
+    content: "CPE";
+    font-weight: 700;
+    color: rgb(50.4, 136.8, 42.4);
+  }
+  body.page-definition main .comparatif #col-classic .col-list li::before {
+    content: "Contrat classique";
+    font-weight: 700;
+    color: rgb(2.7, 21.6, 49.5);
+  }
+  body.page-definition main .comparatif #objectif .col-list li {
+    border-radius: 0.6rem 0.6rem 0 0;
+    border-bottom: 0;
+    background: #fffffa;
+  }
+  body.page-definition main .comparatif #col-cpe .col-list li {
+    border-top: 2px solid rgb(56.7, 153.9, 47.7);
+    border-bottom: 2px solid rgb(56.7, 153.9, 47.7);
+    border-left: 4px solid rgb(0, 71, 30);
+    border-right: 0;
+    background: rgba(63, 171, 53, 0.06);
+    font-weight: 600;
+  }
+  body.page-definition main .comparatif #col-classic .col-list li {
+    border-radius: 0 0 0.6rem 0.6rem;
+    border-top: 1px solid rgba(3, 24, 55, 0.3);
+    margin-bottom: 0.8rem;
+    background: rgba(190, 9, 127, 0.1);
+    color: rgb(2.85, 22.8, 52.25);
+  }
+  body.page-definition main .comparatif #objectif .col-list li:nth-child(1) {
+    order: 1;
+  }
+  body.page-definition main .comparatif #col-cpe .col-list li:nth-child(1) {
+    order: 2;
+  }
+  body.page-definition main .comparatif #col-classic .col-list li:nth-child(1) {
+    order: 3;
+  }
+  body.page-definition main .comparatif #objectif .col-list li:nth-child(2) {
+    order: 4;
+  }
+  body.page-definition main .comparatif #col-cpe .col-list li:nth-child(2) {
+    order: 5;
+  }
+  body.page-definition main .comparatif #col-classic .col-list li:nth-child(2) {
+    order: 6;
+  }
+  body.page-definition main .comparatif #objectif .col-list li:nth-child(3) {
+    order: 7;
+  }
+  body.page-definition main .comparatif #col-cpe .col-list li:nth-child(3) {
+    order: 8;
+  }
+  body.page-definition main .comparatif #col-classic .col-list li:nth-child(3) {
+    order: 9;
+  }
+  body.page-definition main .comparatif #objectif .col-list li:nth-child(4) {
+    order: 10;
+  }
+  body.page-definition main .comparatif #col-cpe .col-list li:nth-child(4) {
+    order: 11;
+  }
+  body.page-definition main .comparatif #col-classic .col-list li:nth-child(4) {
+    order: 12;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  body.page-definition main .comparatif .col-list li {
+    transition: none !important;
   }
 }
 body.page-definition main .expert-section {
@@ -1737,7 +1734,16 @@ body.page-definition main .expert-section {
 }
 body.page-definition main .expert-section .expert-content {
   width: min(1100px, 92vw);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  max-width: 1100px;
   margin: 0 auto;
+}
+@media (max-width: 768px) {
+  body.page-definition main .expert-section .expert-content {
+    grid-template-columns: 1fr;
+  }
 }
 body.page-definition main .expert-section .expert-content .expert-text {
   display: flex;
@@ -1745,7 +1751,7 @@ body.page-definition main .expert-section .expert-content .expert-text {
   justify-content: space-between;
   padding: 1rem 0;
   height: 100%;
-  font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+  font-size: clamp(1.1rem, 1.65vw, 1.2rem);
   line-height: 1.7;
 }
 body.page-definition main .expert-section .expert-content .expert-text p {
@@ -1755,6 +1761,18 @@ body.page-definition main .expert-section .expert-content .expert-text .highligh
   font-weight: bold;
   margin-top: 1.5rem;
 }
+body.page-definition main .expert-section .expert-content .expert-text .cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: clamp(0.8rem, 1.6vw, 1.2rem);
+  margin-top: clamp(1rem, 2.4vw, 2rem);
+  margin-bottom: clamp(1rem, 1.4vw, 1rem);
+}
+@media (max-width: 768px) {
+  body.page-definition main .expert-section .expert-content .expert-text {
+    align-items: center;
+  }
+}
 body.page-definition main .expert-section .expert-content .expert-text .h3-resume {
   color: #00a250;
 }
@@ -1762,6 +1780,15 @@ body.page-definition main .expert-section .expert-content .expert-text .h3-resum
   body.page-definition main .expert-section .expert-content .expert-text {
     align-items: center;
   }
+}
+body.page-definition main .expert-section .expert-content .expert-text .expert-image img {
+  width: clamp(12.5rem, 10.434rem + 12.712vw, 21.875rem);
+  border-radius: 0.4rem;
+  border-bottom-right-radius: 1rem;
+  border-top-left-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  display: block;
+  margin: 0 auto;
 }
 
 /* Scope page */
@@ -1798,14 +1825,14 @@ body.page-fonctionnement p {
   margin-bottom: 1.2rem;
 }
 body.page-fonctionnement main .intro {
-  padding: clamp(2rem, 5vw, 4rem) 1rem;
+  padding: clamp(1rem, 5vw, 3rem) 1rem clamp(2rem, 1.78rem + 1.356vw, 3rem);
   color: #031837;
   text-align: justify;
 }
 body.page-fonctionnement main .intro .intro-container {
+  width: min(1100px, 92vw);
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2rem;
   align-items: center;
   max-width: 1100px;
   margin: 0 auto;
@@ -1813,7 +1840,6 @@ body.page-fonctionnement main .intro .intro-container {
 @media (max-width: 768px) {
   body.page-fonctionnement main .intro .intro-container {
     grid-template-columns: 1fr;
-    text-align: center;
   }
 }
 body.page-fonctionnement main .intro .intro-container .intro-text {
@@ -1822,12 +1848,23 @@ body.page-fonctionnement main .intro .intro-container .intro-text {
   justify-content: space-between;
   padding: 1rem 0;
   height: 100%;
-  font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+  font-size: clamp(1.1rem, 1.65vw, 1.2rem);
   line-height: 1.7;
 }
+body.page-fonctionnement main .intro .intro-container .intro-text .cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: clamp(0.8rem, 1.6vw, 1.2rem);
+  margin-top: clamp(1rem, 2.4vw, 2rem);
+  margin-bottom: clamp(1rem, 1.4vw, 1rem);
+}
+@media (max-width: 768px) {
+  body.page-fonctionnement main .intro .intro-container .intro-text {
+    align-items: center;
+  }
+}
 body.page-fonctionnement main .intro .intro-container .intro-image img {
-  width: clamp(12.5rem, 9.195rem + 20.339vw, 27.5rem);
-  max-width: 350px;
+  width: clamp(12.5rem, 10.434rem + 12.712vw, 21.875rem);
   border-radius: 0.4rem;
   border-bottom-right-radius: 1rem;
   border-top-left-radius: 1rem;
@@ -1843,12 +1880,10 @@ body.page-fonctionnement main .etapes {
 body.page-fonctionnement main .etapes .etapes-container {
   width: min(1100px, 92vw);
   margin: 0 auto;
-  /* Numéro mis en avant (1, 2, 3...) */
 }
-body.page-fonctionnement main .etapes .etapes-container h3 {
-  font-size: clamp(1.2rem, 3.4vw, 1.5rem);
-  color: #F36F21;
-  text-align: center;
+body.page-fonctionnement main .etapes .etapes-container h4 {
+  font-size: clamp(1.3rem, 3.1vw, 1.55rem);
+  color: #be097f;
 }
 body.page-fonctionnement main .etapes .etapes-container .etapes-list {
   counter-reset: principe;
@@ -1861,19 +1896,64 @@ body.page-fonctionnement main .etapes .etapes-container .etapes-list {
 body.page-fonctionnement main .etapes .etapes-container .etapes-list > li {
   margin: 0;
   padding-bottom: 2rem;
+  display: grid;
+  gap: clamp(1rem, 3vw, 2rem);
+  align-items: start;
 }
-body.page-fonctionnement main .etapes .etapes-container .etapes-list > li h5 {
-  text-align: center;
-  font-size: clamp(1.1rem, 2vw, 1.2rem);
-  color: #3fab35;
+@media (min-width: 768px) {
+  body.page-fonctionnement main .etapes .etapes-container .etapes-list > li:nth-child(odd) {
+    grid-template-columns: 2fr 1fr;
+  }
+  body.page-fonctionnement main .etapes .etapes-container .etapes-list > li:nth-child(odd) .etape-text {
+    grid-column: 1;
+  }
+  body.page-fonctionnement main .etapes .etapes-container .etapes-list > li:nth-child(odd) .etape-media {
+    grid-column: 2;
+  }
+  body.page-fonctionnement main .etapes .etapes-container .etapes-list > li:nth-child(even) {
+    grid-template-columns: 1fr 2fr;
+  }
+  body.page-fonctionnement main .etapes .etapes-container .etapes-list > li:nth-child(even) .etape-media {
+    grid-column: 1;
+  }
+  body.page-fonctionnement main .etapes .etapes-container .etapes-list > li:nth-child(even) .etape-text {
+    grid-column: 2;
+  }
 }
-body.page-fonctionnement main .etapes .etapes-container .etapes-list > li p {
-  text-align: center;
+body.page-fonctionnement main .etapes .etapes-container .etape-text {
+  text-align: left;
+}
+body.page-fonctionnement main .etapes .etapes-container .etape-media {
+  width: clamp(12rem, 8.898rem + 6.78vw, 15rem);
+  aspect-ratio: 2/3;
+  border-radius: 0.4rem;
+  border-top-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+body.page-fonctionnement main .etapes .etapes-container .etape-media img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+body.page-fonctionnement main .etapes .etapes-container .etapes-list .etape-text > h5 {
+  font-size: clamp(1.2rem, 2.2vw, 1.3rem);
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+body.page-fonctionnement main .etapes .etapes-container .etapes-list .etape-text > p {
+  font-size: clamp(1.1rem, 1.65vw, 1.2rem);
 }
 body.page-fonctionnement main .etapes .etapes-container li:last-child {
   padding-bottom: 0;
 }
-body.page-fonctionnement main .etapes .etapes-container .etapes-list > li > h4 {
+body.page-fonctionnement main .etapes .etapes-container .etapes-list .etape-text > h4 {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1884,11 +1964,11 @@ body.page-fonctionnement main .etapes .etapes-container .etapes-list > li > h4 {
   font-size: clamp(1.2rem, 2vw, 1.4rem);
   line-height: 1.35;
   color: #031837;
+  text-align: center;
 }
-body.page-fonctionnement main .etapes .etapes-container .etapes-list > li > h4::before {
+body.page-fonctionnement main .etapes .etapes-container .etapes-list .etape-text > h5::before {
   content: counter(principe);
   counter-increment: principe;
-  /* Fix "rond" qui s’écrase */
   flex: 0 0 auto;
   aspect-ratio: 1/1;
   width: 2.2rem;
@@ -1898,36 +1978,54 @@ body.page-fonctionnement main .etapes .etapes-container .etapes-list > li > h4::
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: #2F80ED;
+  background: #5bb887;
   color: #fffffa;
   font-weight: 800;
   font-size: 1rem;
+  margin-right: 1rem;
 }
-body.page-fonctionnement main .etapes .etapes-container .etapes-list > li > ul {
+body.page-fonctionnement main .etapes .etapes-container .etapes-list .etape-text > ul {
   margin: 0.35rem auto 0.6rem;
   padding: 0;
   list-style: disc inside;
-  text-align: center;
 }
-body.page-fonctionnement main .etapes .etapes-container .etapes-list > li > ul li {
+body.page-fonctionnement main .etapes .etapes-container .etapes-list .etape-text > ul li {
   margin: 0.35rem 0;
-  font-size: clamp(1.02rem, 1.6vw, 1.12rem);
+  font-size: clamp(1.1rem, 1.65vw, 1.2rem);
   line-height: 1.6;
 }
-@media (max-width: 700px) {
-  body.page-fonctionnement main .etapes .etapes-container .etapes-list > li > h4 {
+@media (max-width: 768px) {
+  body.page-fonctionnement main .etapes .etapes-container .etapes-list > li {
+    grid-template-columns: 1fr;
+    justify-items: stretch;
+    align-items: center;
+  }
+  body.page-fonctionnement main .etapes .etapes-container .etapes-list > li .etape-text {
+    grid-column: 1;
+    grid-row: 1;
+    width: 100%;
+    max-width: none;
+  }
+  body.page-fonctionnement main .etapes .etapes-container .etapes-list > li .etape-media {
+    justify-self: center;
+    grid-column: 1;
+    grid-row: 2;
+    max-width: none;
+  }
+  body.page-fonctionnement main .etapes .etapes-container .etapes-list .etape-text > h5 {
     flex-direction: column;
     gap: 0.45rem;
     justify-content: flex-start;
     text-align: center;
   }
-  body.page-fonctionnement main .etapes .etapes-container .etapes-list > li > h4::before {
+  body.page-fonctionnement main .etapes .etapes-container .etapes-list .etape-text > h5::before {
     width: clamp(1.8rem, 6vw, 2rem);
     min-width: clamp(1.8rem, 6vw, 2rem);
     font-size: 0.95rem;
     margin-bottom: 0.1rem;
+    margin-right: 0;
   }
-  body.page-fonctionnement main .etapes .etapes-container .etapes-list > li > ul {
+  body.page-fonctionnement main .etapes .etapes-container .etapes-list .etape-text > ul {
     margin-left: 0;
   }
 }
@@ -1937,9 +2035,9 @@ body.page-fonctionnement main .ipmvp {
   text-align: justify;
 }
 body.page-fonctionnement main .ipmvp .ipmvp-container {
+  width: min(1100px, 92vw);
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2rem;
   align-items: center;
   max-width: 1100px;
   margin: 0 auto;
@@ -1947,27 +2045,36 @@ body.page-fonctionnement main .ipmvp .ipmvp-container {
 @media (max-width: 768px) {
   body.page-fonctionnement main .ipmvp .ipmvp-container {
     grid-template-columns: 1fr;
-    text-align: center;
   }
 }
 body.page-fonctionnement main .ipmvp .ipmvp-container .ipmvp-text {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 1rem 0;
   height: 100%;
-  font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+  font-size: clamp(1.1rem, 1.65vw, 1.2rem);
   line-height: 1.7;
 }
 body.page-fonctionnement main .ipmvp .ipmvp-container .ipmvp-text .ipmvp-p {
   margin-bottom: 0;
 }
 body.page-fonctionnement main .ipmvp .ipmvp-container .ipmvp-text .ipmvp-ul {
-  margin-left: 2rem;
-  margin-bottom: 2rem;
+  margin-left: clamp(0rem, -0.441rem + 2.712vw, 2rem);
+}
+body.page-fonctionnement main .ipmvp .ipmvp-container .ipmvp-text .cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: clamp(0.8rem, 1.6vw, 1.2rem);
+  margin-top: clamp(1rem, 2.4vw, 2rem);
+  margin-bottom: clamp(1rem, 1.4vw, 1rem);
+}
+@media (max-width: 768px) {
+  body.page-fonctionnement main .ipmvp .ipmvp-container .ipmvp-text {
+    align-items: center;
+  }
 }
 body.page-fonctionnement main .ipmvp .ipmvp-container .ipmvp-image img {
-  width: clamp(12.5rem, 9.195rem + 20.339vw, 27.5rem);
+  width: clamp(12.5rem, 10.434rem + 12.712vw, 21.875rem);
   border-radius: 0.4rem;
   border-bottom-right-radius: 1rem;
   border-top-left-radius: 1rem;
@@ -1981,184 +2088,105 @@ body.page-fonctionnement main .ipmvp .ipmvp-container .ipmvp-image img {
   }
 }
 body.page-fonctionnement main .roles {
-  padding: clamp(2rem, 5vw, 2rem) 1rem;
+  padding: clamp(1rem, 5vw, 3rem) 1rem clamp(2rem, 5vw, 4rem);
   margin-bottom: 2rem;
   color: #031837;
   text-align: justify;
 }
 body.page-fonctionnement main .roles .roles-container {
-  width: min(1300px, 92vw);
+  width: min(1100px, 92vw);
   margin: 0 auto;
-  /* =========================
-  Responsive petits écrans
-  ========================= */
-  /* Sécurité tactile : si l’appareil ne supporte pas hover,
-  on applique le même comportement quel que soit le viewport */
 }
-body.page-fonctionnement main .roles .roles-container .roles-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.5rem;
+body.page-fonctionnement main .roles .roles-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* centre toutes les lignes */
+  gap: 0.8rem;
+  margin-top: 0.8rem;
 }
-body.page-fonctionnement main .roles .roles-container .role-card {
-  position: relative;
-  overflow: hidden;
-  padding: 1.6rem 1.2rem;
-  border-radius: 0.4rem;
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
-  background: #fffffa;
-  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
-}
-body.page-fonctionnement main .roles .roles-container .role-card:nth-child(odd) {
-  border-top-left-radius: 1rem;
-  border-bottom-right-radius: 1rem;
-}
-body.page-fonctionnement main .roles .roles-container .role-card:nth-child(even) {
-  border-top-left-radius: 1rem;
-  border-bottom-right-radius: 1rem;
-}
-body.page-fonctionnement main .roles .roles-container .role-card::before {
-  content: "";
-  position: absolute;
-  inset: -30%;
-  transform: rotate(18deg);
-  opacity: 0.25;
-  pointer-events: none;
-  background: linear-gradient(135deg, rgba(26, 46, 77, 0.1), rgba(26, 46, 77, 0.02));
-}
-body.page-fonctionnement main .roles .roles-container .role-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.18);
-}
-body.page-fonctionnement main .roles .roles-container .role-card .role-icon {
-  width: 68px;
-  height: 68px;
-  margin-bottom: 0.9rem;
-  display: inline-block;
-  filter: grayscale(1) brightness(0.82) contrast(1);
-  mix-blend-mode: normal;
-  transition: filter 0.25s ease, transform 0.25s ease;
-}
-body.page-fonctionnement main .roles .roles-container .role-card:hover .role-icon {
-  filter: none;
-  transform: translateY(-2px);
-}
-body.page-fonctionnement main .roles .roles-container .role-card h3 {
-  font-size: clamp(1.12rem, 2vw, 1.28rem);
-  margin-bottom: 0.55rem;
-  color: #031837;
-  font-weight: 700;
-}
-body.page-fonctionnement main .roles .roles-container .role-card p {
-  font-size: clamp(0.96rem, 1.6vw, 1.06rem);
-  line-height: 1.45;
-  color: #031837;
-  opacity: 0.95;
-}
-body.page-fonctionnement main .roles .roles-container .mairie {
-  background: linear-gradient(165deg, rgba(33, 179, 223, 0.28), rgba(52, 152, 219, 0.06));
-  border-left: 4px solid #031837;
-}
-body.page-fonctionnement main .roles .roles-container .prestataire {
-  background: linear-gradient(165deg, rgba(46, 204, 113, 0.24), rgba(135, 211, 167, 0.295));
+body.page-fonctionnement main .roles .role-card {
+  flex: 0 1 clamp(280px, 30vw, 340px); /* largeur carte bornée */
+  max-inline-size: 340px;
+  width: 100%;
+  background: linear-gradient(165deg, rgba(46, 204, 112, 0.164), rgba(67, 233, 139, 0.062));
+  border-top: 2px solid rgb(0, 71, 30);
   border-left: 4px solid rgb(0, 71, 30);
+  box-shadow: 4px 4px 5px rgba(3, 24, 55, 0.0549019608);
+  border-radius: 0.4rem;
+  border-bottom-right-radius: 1rem;
+  border-top-left-radius: 1rem;
+  padding: clamp(0.3rem, 1vw, 0.9rem) clamp(0.6rem, 1.3vw, 0.9rem);
+  text-align: center;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
 }
-body.page-fonctionnement main .roles .roles-container .amo {
-  background: linear-gradient(165deg, rgba(241, 196, 15, 0.26), rgba(241, 196, 15, 0.06));
-  border-left: 4px solid rgb(187, 150, 0);
+body.page-fonctionnement main .roles .role-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 30px rgba(26, 46, 77, 0.178);
+  background: linear-gradient(165deg, rgba(46, 204, 113, 0.24), rgba(135, 211, 167, 0.295));
 }
-body.page-fonctionnement main .roles .roles-container .financeur {
-  background: linear-gradient(165deg, rgba(230, 126, 34, 0.26), rgba(230, 126, 34, 0.06));
-  border-left: 4px solid rgb(207, 66, 0);
+body.page-fonctionnement main .roles .role-card .role-icon {
+  display: block;
+  margin: 0 auto 0.25rem;
+  inline-size: clamp(44px, 6.8vw, 60px);
+  block-size: auto;
+  filter: invert(17%) sepia(100%) saturate(3540%) hue-rotate(308deg) brightness(86%) contrast(110%);
 }
-body.page-fonctionnement main .roles .roles-container .usagers {
-  background: linear-gradient(165deg, rgba(155, 89, 182, 0.26), rgba(155, 89, 182, 0.06));
-  border-left: 4px solid rgb(124, 0, 114);
+body.page-fonctionnement main .roles .role-card h3 {
+  color: #031837;
+  font-size: clamp(1.1rem, 1.65vw, 1.2rem);
+  margin-bottom: 0.25rem;
+  line-height: 1.2;
 }
-@media (max-width: 520px) {
-  body.page-fonctionnement main .roles .roles-container {
-    /* Sur mobile : pas d'effet hover (carte et icône restent stables) */
-  }
-  body.page-fonctionnement main .roles .roles-container .role-card {
-    padding: 1.2rem 0.9rem;
-  }
-  body.page-fonctionnement main .roles .roles-container .role-card .role-icon {
-    width: clamp(52px, 12vw, 64px);
-    height: clamp(52px, 12vw, 64px);
-    /* Sur mobile : blanc + brillance par défaut */
-    filter: brightness(1.12) saturate(0) contrast(105%) drop-shadow(0 0 4px rgba(255, 255, 255, 0.6)) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
-    transform: translateY(-2px);
-  }
-  body.page-fonctionnement main .roles .roles-container .role-card:hover {
-    transform: none;
-    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
-  }
-  body.page-fonctionnement main .roles .roles-container .role-card:hover .role-icon {
-    filter: brightness(1.12) saturate(0) contrast(105%) drop-shadow(0 0 4px rgba(255, 255, 255, 0.6)) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
-    transform: translateY(-2px);
-  }
+body.page-fonctionnement main .roles .role-card p {
+  color: #00a250;
+  font-size: clamp(1.1rem, 1.65vw, 1.2rem);
+  line-height: 1.35;
+  margin: 0;
 }
-@media (hover: none) {
-  body.page-fonctionnement main .roles .roles-container .roles .role-card:hover {
-    transform: none;
-    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
-  }
-  body.page-fonctionnement main .roles .roles-container .roles .role-card .role-icon {
-    filter: brightness(1.12) saturate(0) contrast(105%) drop-shadow(0 0 4px rgba(255, 255, 255, 0.6)) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
-    transform: translateY(-2px);
-  }
-  body.page-fonctionnement main .roles .roles-container .roles .role-card:hover .role-icon {
-    filter: brightness(1.12) saturate(0) contrast(105%) drop-shadow(0 0 4px rgba(255, 255, 255, 0.6)) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
-    transform: translateY(-2px);
+@media (max-width: 600px) {
+  body.page-fonctionnement main .roles .role-card {
+    flex-basis: 100%;
+    max-inline-size: none;
   }
 }
 body.page-fonctionnement main .pourquoi {
-  padding: clamp(2rem, 5vw, 2rem) 1rem;
+  padding: clamp(1rem, 0.559rem + 2.712vw, 3rem) 1rem clamp(2rem, 1.78rem + 1.356vw, 3rem);
   color: #031837;
   text-align: justify;
 }
 body.page-fonctionnement main .pourquoi .pourquoi-container {
   width: min(1100px, 92vw);
   margin: 0 auto;
-  /* === PATCH — Section "Pourquoi" : fix mobile (<=768px) === */
 }
 body.page-fonctionnement main .pourquoi .pourquoi-container .pourquoi-list {
   list-style: none;
   padding: 0;
   max-width: 900px;
-  margin: 0 auto;
   text-align: left;
-  margin-bottom: clamp(1.02rem, 2.04vw, 1.7rem);
+  margin: clamp(1.02rem, 2.04vw, 1.7rem) 0;
 }
 body.page-fonctionnement main .pourquoi .pourquoi-container .pourquoi-list li {
-  background: linear-gradient(165deg, rgba(241, 196, 15, 0.26), rgba(241, 196, 15, 0.06));
-  border-left: 4px solid rgb(187, 150, 0);
+  background: linear-gradient(165deg, rgba(46, 204, 112, 0.164), rgba(67, 233, 139, 0.062));
+  border-left: 4px solid rgb(0, 71, 30);
+  border-top: 1px solid rgba(0, 71, 30, 0.63);
   padding: 1rem;
   margin-bottom: 1rem;
   border-radius: 0.4rem;
-  border-bottom-right-radius: 1rem;
   border-top-left-radius: 1rem;
-  font-size: clamp(1rem, 1.4vw, 1.1rem);
+  border-bottom-right-radius: 1rem;
+  font-size: clamp(1.1rem, 1.65vw, 1.2rem);
   line-height: 1.5;
-  -webkit-hyphens: auto;
-          hyphens: auto;
-  overflow-wrap: anywhere;
-  display: flex;
-  align-items: flex-start;
+  align-items: center;
+  box-shadow: 4px 4px 5px rgba(3, 24, 55, 0.0549019608);
   gap: 0.5rem;
   transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
 }
 body.page-fonctionnement main .pourquoi .pourquoi-container .pourquoi-list li:hover {
-  background: linear-gradient(165deg, rgba(241, 196, 15, 0.26), rgba(241, 196, 15, 0.06));
+  background: linear-gradient(165deg, rgba(46, 204, 113, 0.24), rgba(135, 211, 167, 0.295));
   transform: translateX(5px);
-  box-shadow: 0 4px 10px rgba(3, 24, 55, 0.15);
+  box-shadow: 0 14px 30px rgba(26, 46, 77, 0.178);
 }
 @media (max-width: 768px) {
-  body.page-fonctionnement main .pourquoi .pourquoi-container {
-    /* 1) Lisibilité : pas de justify en très petite largeur */
-    /* 2) Neutralise tout multi-colonnage éventuel */
-    /* 3) Les <li> ne doivent jamais se casser entre colonnes */
-  }
   body.page-fonctionnement main .pourquoi .pourquoi-container .page-fonctionnement .pourquoi {
     text-align: left;
   }
@@ -2171,7 +2199,6 @@ body.page-fonctionnement main .pourquoi .pourquoi-container .pourquoi-list li:ho
     -moz-column-count: 1 !important;
   }
   body.page-fonctionnement main .pourquoi .pourquoi-container .page-fonctionnement .pourquoi .pourquoi-container .pourquoi-list {
-    /* Reviens à un flux normal vertical */
     display: block !important;
     columns: auto !important;
     -webkit-columns: auto !important;
@@ -2186,23 +2213,21 @@ body.page-fonctionnement main .pourquoi .pourquoi-container .pourquoi-list li:ho
     -moz-column-break-inside: avoid;
          break-inside: avoid;
     page-break-inside: avoid;
-    /* Cohérence avec ton layout initial */
     display: flex;
     align-items: flex-start;
     gap: 0.5rem;
     line-height: 1.6;
   }
 }
-body.page-fonctionnement main .pourquoi .action {
+body.page-fonctionnement main .action {
   width: 100%;
   display: block;
-  padding: clamp(2rem, 5vw, 3rem) 1rem;
   padding-top: clamp(0.8rem, 2vw, 1.2rem);
   text-align: center;
   color: #031837;
   box-sizing: border-box;
 }
-body.page-fonctionnement main .pourquoi .action .cta-inner {
+body.page-fonctionnement main .action .cta-inner {
   max-width: 1100px;
   width: 100%;
   margin: 0 auto;
@@ -2211,14 +2236,24 @@ body.page-fonctionnement main .pourquoi .action .cta-inner {
   align-items: center;
   gap: 0.8rem;
 }
-body.page-fonctionnement main .pourquoi .action .cta-inner .h3-action {
+body.page-fonctionnement main .action .cta-inner h3 {
   color: #be097f;
-  font-size: clamp(1.3rem, 3.4vw, 2.2rem);
+  font-size: clamp(1.55rem, 3.85vw, 2rem);
+}
+body.page-fonctionnement main .action .cta-inner h5 {
+  font-size: clamp(1.2rem, 2.2vw, 1.3rem);
+}
+body.page-fonctionnement main .action .cta-inner .cta-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(0.8rem, 1.6vw, 1.2rem);
+  margin: clamp(1rem, 0.78rem + 1.356vw, 2rem) 0 0;
 }
 @media (max-width: 720px) {
-  body.page-fonctionnement main .pourquoi .action .cta-inner > .btn,
-  body.page-fonctionnement main .pourquoi .action .cta-inner > * > .btn,
-  body.page-fonctionnement main .pourquoi .action .cta-inner > * > * > .btn {
+  body.page-fonctionnement main .action .action .cta-inner > .btn,
+  body.page-fonctionnement main .action .action .cta-inner > * > .btn,
+  body.page-fonctionnement main .action .action .cta-inner > * > * > .btn {
     display: block;
     box-sizing: border-box;
     flex: 1 1 100%;
@@ -2234,7 +2269,7 @@ body.page-fonctionnement main .pourquoi .action .cta-inner .h3-action {
     text-align: center;
     padding-inline: clamp(14px, 3.5vw, 18px);
   }
-  body.page-fonctionnement main .pourquoi .action .cta-inner > *:has(> .btn) {
+  body.page-fonctionnement main .action .action .cta-inner > *:has(> .btn) {
     display: flex !important;
     flex-direction: column !important;
     align-items: center;
@@ -2242,21 +2277,21 @@ body.page-fonctionnement main .pourquoi .action .cta-inner .h3-action {
     flex-wrap: nowrap !important;
     width: 100%;
   }
-  body.page-fonctionnement main .pourquoi .action .cta-inner > .btn + .btn,
-  body.page-fonctionnement main .pourquoi .action .cta-inner > * > .btn + .btn,
-  body.page-fonctionnement main .pourquoi .action .cta-inner > * > * > .btn + .btn {
+  body.page-fonctionnement main .action .action .cta-inner > .btn + .btn,
+  body.page-fonctionnement main .action .action .cta-inner > * > .btn + .btn,
+  body.page-fonctionnement main .action .action .cta-inner > * > * > .btn + .btn {
     margin-top: 0.8rem;
   }
 }
 body.page-fonctionnement main .exemple {
-  padding: clamp(2rem, 5vw, 4rem) 1rem;
+  padding: clamp(1rem, 0.559rem + 2.712vw, 3rem) 1rem clamp(2rem, 1.78rem + 1.356vw, 3rem);
   color: #031837;
   text-align: justify;
 }
 body.page-fonctionnement main .exemple .exemple-container {
+  width: min(1100px, 92vw);
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2rem;
   align-items: center;
   max-width: 1100px;
   margin: 0 auto;
@@ -2264,29 +2299,27 @@ body.page-fonctionnement main .exemple .exemple-container {
 @media (max-width: 768px) {
   body.page-fonctionnement main .exemple .exemple-container {
     grid-template-columns: 1fr;
-    text-align: center;
   }
 }
 body.page-fonctionnement main .exemple .exemple-container .exemple-text {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  padding: 1rem 0;
+  justify-content: space-between;
   height: 100%;
-  font-size: clamp(1.05rem, 1.6vw, 1.2rem);
-  line-height: 1.7;
+  font-size: clamp(1.1rem, 1.65vw, 1.2rem);
+  line-height: 1.5;
 }
 body.page-fonctionnement main .exemple .exemple-container .exemple-text .exemple-p {
   margin-bottom: 0;
 }
 body.page-fonctionnement main .exemple .exemple-container .exemple-text .exemple-ul {
-  margin-left: 2rem;
+  margin-left: clamp(0.5rem, 0.169rem + 2.034vw, 2rem);
 }
 body.page-fonctionnement main .exemple .exemple-container .exemple-text .exemple-ul li {
-  margin-bottom: clamp(0.6rem, 1.6vw, 1.5rem);
+  margin-bottom: clamp(0.5rem, 0.39rem + 0.678vw, 1rem);
 }
 body.page-fonctionnement main .exemple .exemple-container .exemple-image img {
-  width: clamp(12.5rem, 9.195rem + 20.339vw, 27.5rem);
+  width: clamp(12.5rem, 10.434rem + 12.712vw, 21.875rem);
   border-radius: 0.4rem;
   border-bottom-right-radius: 1rem;
   border-top-left-radius: 1rem;
