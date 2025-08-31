@@ -48,9 +48,9 @@ $font-body: $raleway; // Paragraphes/labels
 $font-ui: $raleway; // Boutons, badges, formulaires
 
 // /largeur image par défaut
-$witdh-img-500: clamp(12.5rem, 0rem + 33.333vw, 30rem);
-$witdh-img-400: clamp(12.5rem, 3.571rem + 23.81vw, 25rem);
-$witdh-img-defaut: clamp(12.5rem, 10.434rem + 12.712vw, 21.875rem);
+$witdh-img-500: clamp(17.5rem, 8.571rem + 23.81vw, 30rem);
+$witdh-img-400: clamp(17.5rem, 12.143rem + 14.286vw, 25rem);
+$witdh-img-defaut: clamp(17.5rem, 14.375rem + 8.333vw, 21.875rem);
 
 // ========================
 // ===== DESIGN TOKENS ====

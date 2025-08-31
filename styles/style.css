@@ -560,7 +560,7 @@ body {
   border-bottom-right-radius: 1rem;
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  width: clamp(12.5rem, 10.434rem + 12.712vw, 21.875rem);
+  width: clamp(17.5rem, 14.375rem + 8.333vw, 21.875rem);
 }
 .expert-section .expert-image > img, .expert-section .expert-image > picture > img {
   width: 100%;
@@ -1287,7 +1287,7 @@ body.page-definition main .intro .intro-container .intro-image {
   border-bottom-right-radius: 1rem;
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  width: clamp(12.5rem, 10.434rem + 12.712vw, 21.875rem);
+  width: clamp(17.5rem, 14.375rem + 8.333vw, 21.875rem);
 }
 body.page-definition main .intro .intro-container .intro-image > img, body.page-definition main .intro .intro-container .intro-image > picture > img {
   width: 100%;
@@ -2104,7 +2104,7 @@ body.page-fonctionnement main .intro .intro-container .intro-image {
   border-bottom-right-radius: 1rem;
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  width: clamp(12.5rem, 10.434rem + 12.712vw, 21.875rem);
+  width: clamp(17.5rem, 14.375rem + 8.333vw, 21.875rem);
 }
 body.page-fonctionnement main .intro .intro-container .intro-image > img, body.page-fonctionnement main .intro .intro-container .intro-image > picture > img {
   width: 100%;
@@ -2364,7 +2364,7 @@ body.page-fonctionnement main .ipmvp .ipmvp-container .ipmvp-image {
   justify-self: center;
 }
 body.page-fonctionnement main .ipmvp .ipmvp-container .ipmvp-image img {
-  width: clamp(12.5rem, 10.434rem + 12.712vw, 21.875rem);
+  width: clamp(17.5rem, 14.375rem + 8.333vw, 21.875rem);
   border-radius: 0.4rem;
   border-bottom-right-radius: 1rem;
   border-top-left-radius: 1rem;
@@ -2648,7 +2648,7 @@ body.page-fonctionnement main .exemple .exemple-container .exemple-image {
   border-bottom-right-radius: 1rem;
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  width: clamp(12.5rem, 10.434rem + 12.712vw, 21.875rem);
+  width: clamp(17.5rem, 14.375rem + 8.333vw, 21.875rem);
 }
 body.page-fonctionnement main .exemple .exemple-container .exemple-image > img, body.page-fonctionnement main .exemple .exemple-container .exemple-image > picture > img {
   width: 100%;
@@ -2794,7 +2794,7 @@ body.page-typologies main .intro .intro-container .intro-image {
   border-bottom-right-radius: 1rem;
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  width: clamp(12.5rem, 0rem + 33.333vw, 30rem);
+  width: clamp(17.5rem, 8.571rem + 23.81vw, 30rem);
 }
 body.page-typologies main .intro .intro-container .intro-image > img, body.page-typologies main .intro .intro-container .intro-image > picture > img {
   width: 100%;
@@ -2923,7 +2923,7 @@ body.page-typologies main .etapes .etapes-container .etape-text {
   text-align: left;
 }
 body.page-typologies main .etapes .etapes-container .etape-media {
-  width: clamp(12.5rem, 3.571rem + 23.81vw, 25rem);
+  width: clamp(17.5rem, 12.143rem + 14.286vw, 25rem);
   aspect-ratio: 2/3;
   border-radius: 0.4rem;
   border-top-left-radius: 1rem;
@@ -2932,7 +2932,7 @@ body.page-typologies main .etapes .etapes-container .etape-media {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 body.page-typologies main .etapes .etapes-container .etape-media img {
-  width: clamp(12.5rem, 0rem + 33.333vw, 30rem);
+  width: clamp(17.5rem, 8.571rem + 23.81vw, 30rem);
   height: 100%;
   display: block;
   -o-object-fit: cover;
