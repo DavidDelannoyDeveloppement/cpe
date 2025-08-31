@@ -27,4 +27,38 @@ body.page_home {
   color: currentColor;
   text-decoration-color: currentColor;
   }
+  h1 {
+    color: $bleu;
+    font-family: $font-titles;
+    font-weight: 800;
+    font-size: $h1-size;
+    text-align: center;
+    line-height: 1.18;
+    padding: clamp(0.5rem, 0.143rem + 0.952vw, 1rem);
+  }
+  h2 {
+    font-family: $font-titles;
+    text-align: left;
+    font-size: $h2-size;
+    color: $vert1;
+    margin-bottom: 1.5rem;
+    line-height: clamp(2.2rem,5vw,3rem);
+  }
+  h3 {
+    font-family: $font-titles;
+    text-align: center;
+    width: min(1100px, 92vw); 
+    margin: 0 auto;
+    font-size: $h3-size;
+    color: $vert1;
+    line-height: clamp(2.2rem, 1.914rem + 0.762vw, 2.6rem);
+  }
+  @media (max-width:768px){
+    h3 {
+      width: 95%;
+    }
+  }
+  p {
+    text-align: justify;
+  }
 }

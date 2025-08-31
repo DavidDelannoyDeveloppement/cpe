@@ -11,7 +11,7 @@
 // ===========================
 .simulateur-section {
   // background-color: $creme;
-  padding: clamp(1rem, 3vw, 2rem) 1rem clamp(2rem, 3vw, 2rem);
+  padding: $padding-marge-section;
   text-align: justify;
 
   .simulateur-container {

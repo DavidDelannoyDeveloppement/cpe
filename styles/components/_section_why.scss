@@ -4,7 +4,7 @@
 
 .section-why {
   // background-color: $creme;
-  padding: clamp(0.2rem, 3vw, 1.2rem) 1rem clamp(1rem, 3vw, 2rem);
+  padding: $padding-marge-section;
   color: $bleu;
   text-align: justify;
 
@@ -19,12 +19,13 @@
     line-height: clamp(2.2rem,5vw,3rem);
   }
 
-  p { font-size: $p-size; line-height: 1.8; margin-bottom: 1.2rem; }
+  p { font-size: $p-size; line-height: 1.8; }
 
   ul {
     list-style: none;
     padding-left: 0;
     margin-bottom: 1.5rem;
+    margin-top: 1.5rem;
 
     li {
       position: relative;

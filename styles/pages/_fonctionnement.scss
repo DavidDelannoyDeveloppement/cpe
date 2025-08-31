@@ -19,12 +19,21 @@ body.page-fonctionnement {
     img { max-width: 100%; height: auto; display: block; }
     a { text-decoration: none; color: inherit; }
     
+    h1 {
+    color: $bleu;
+    font-family: $font-titles;
+    font-weight: 800;
+    font-size: $h1-size;
+    text-align: center;
+    line-height: 1.18;
+    padding: clamp(0.5rem, 0.143rem + 0.952vw, 1rem);
+    }
+
     h2 {
         font-family: $font-titles;
         font-size: $h2-size;
         color: $vert1;
         margin-bottom: 1.5rem;
-        text-align: left;
         line-height: clamp(2.2rem,5vw,3rem);
     }
 
@@ -32,22 +41,23 @@ body.page-fonctionnement {
         font-size: $p-size;
         line-height: 1.8; 
         margin-bottom: 1.2rem; 
+        text-align: justify;
     }
 
-    
+
 
     main {
 
         .intro {
             // background-color: $creme;
-            padding: clamp(1rem, 5vw, 3rem) 1rem clamp(2rem, 1.78rem + 1.356vw, 3rem);
+            padding: $padding-marge-section;
             color: $bleu;
-            text-align: justify;
-        
+
             .intro-container {
                 width: min(1100px, 92vw);
                 display: grid;
-                grid-template-columns: 1fr 1fr;
+                grid-template-columns: 2fr 1fr;
+                gap: 2rem;
                 align-items: center;
                 max-width: 1100px;
                 margin: 0 auto;
@@ -60,7 +70,7 @@ body.page-fonctionnement {
                     display: flex;
                     flex-direction: column;
                     justify-content: space-between;
-                    padding: 1rem 0;
+                    // padding: 1rem 0;
                     height: 100%;
                     font-size: $p-size;
                     line-height: 1.7;
@@ -70,7 +80,7 @@ body.page-fonctionnement {
                         justify-content: center;
                         gap: clamp(0.8rem, 1.6vw, 1.2rem);
                         margin-top: clamp(1rem, 2.4vw, 2rem);
-                        margin-bottom: clamp(1rem, 1.4vw, 1rem);
+                        // margin-bottom: clamp(1rem, 1.4vw, 1rem);
                     }
                     @media (max-width: 768px) {
                     align-items: center;
@@ -78,14 +88,21 @@ body.page-fonctionnement {
                 }
         
                 .intro-image {
-                    img {
-                    width: $witdh-img-defaut;
-                    border-radius: 0.4rem; 
-                    border-bottom-right-radius: 1rem;
-                    border-top-left-radius: 1rem;
+                    display: flex;
+                    justify-self: center;
+                    @include cpe-zoom-frame(8s, ease-in-out, true, 1.05, -2%, -2%);
+                    @include radius-cpe;
+                    overflow: hidden;
                     box-shadow: $shadow-photo;
+                    width: $witdh-img-defaut;
+
+                    img {
+                    width: 100%;
                     display: block;
                     margin: 0 auto;
+                    height: 100%;
+                    object-fit: cover;
+                    display: block;
                     }
                 }
             }
@@ -93,7 +110,7 @@ body.page-fonctionnement {
 
 
         .etapes {
-            padding: clamp(2rem, 5vw, 2rem) 1rem;
+            padding: $padding-marge-section;
             color: $bleu;
             text-align: justify;
 
@@ -136,11 +153,13 @@ body.page-fonctionnement {
                 .etape-text { text-align: left; }
 
                 .etape-media {
-                width: clamp(12rem, 8.898rem + 6.78vw, 15rem);
-                aspect-ratio: 2 / 3;
-                @include radius-cpe;
-                overflow: hidden;
-                box-shadow: $shadow-photo;
+                    display: flex;
+                    justify-self: center;
+                    width: clamp(12rem, 8.898rem + 6.78vw, 15rem);
+                    aspect-ratio: 2 / 3;
+                    @include radius-cpe;
+                    overflow: hidden;
+                    box-shadow: $shadow-photo;
 
                 img {
                     width: 100%;
@@ -247,14 +266,15 @@ body.page-fonctionnement {
 
         .ipmvp {
             // background-color: $creme;
-            padding: clamp(2rem, 5vw, 4rem) 1rem;
+            padding: $padding-marge-section;
             color: $bleu;
             text-align: justify;
         
             .ipmvp-container {
                 width: min(1100px, 92vw);
                 display: grid;
-                grid-template-columns: 1fr 1fr;
+                grid-template-columns: 2fr 1fr;
+                gap: 2rem;
                 align-items: center;
                 max-width: 1100px;
                 margin: 0 auto;
@@ -294,6 +314,8 @@ body.page-fonctionnement {
                 }
         
                 .ipmvp-image {
+                    display: flex;
+                    justify-self: center;
                     img {
                     width: $witdh-img-defaut;
                     border-radius: 0.4rem; 
@@ -316,7 +338,6 @@ body.page-fonctionnement {
 
         .roles {
             padding: clamp(1rem, 5vw, 3rem) 1rem clamp(2rem, 5vw, 4rem);
-            margin-bottom: 2rem;
             color: $bleu;
             text-align: justify;
 
@@ -325,61 +346,81 @@ body.page-fonctionnement {
                 margin: 0 auto;
             }
 
+            /* === Vignettes CENTRÉES comme ta version d'origine (flex) === */
             .roles-grid {
                 display: flex;
                 flex-wrap: wrap;
-                justify-content: center;   /* centre toutes les lignes */
+                justify-content: center;   /* centre chaque rangée */
                 gap: .8rem;
                 margin-top: .8rem;
             }
 
             .role-card {
-                flex: 0 1 clamp(280px, 30vw, 340px); /* largeur carte bornée */
+                flex: 0 1 clamp(280px, 30vw, 340px);
                 max-inline-size: 340px;
                 width: 100%;
+            }
 
+            /* === Flip sans JS : hover + focus/tap (mobile) === */
+            .flip-card { perspective: 1000px; display: block; outline: none; }
+            .flip-inner { display: grid; transform-style: preserve-3d; transition: transform .45s ease; }
+            .flip-card:hover .flip-inner,
+            .flip-card:focus-within .flip-inner { transform: rotateY(180deg); }
+
+            /* Overlay grid => hauteur AUTO = max(face, verso) */
+            .flip-face {
+                grid-area: 1 / 1;
                 background: $background-vert-blanc;
-                border-top: 2px solid $vert-border;
-                border-left: 4px solid $vert-border;
-                box-shadow: $shadow-defaut;
+                border-top: $border-top-vert;
+                border-left: $border-left-vert;
                 border-radius: .4rem;
                 border-bottom-right-radius: 1rem;
                 border-top-left-radius: 1rem;
-                padding: clamp(.3rem, 1vw, .9rem) clamp(.6rem, 1.3vw, .9rem);
+                box-shadow: $shadow-defaut;
+
+                /* IMPORTANT pour éviter l’écrasement */
+                height: auto;                 /* override de toute hauteur fixe résiduelle */
+                min-height: clamp(7.5rem, 11vw, 10.5rem);
+
+                padding: clamp(1rem, 2vw, 1.4rem);
+                display: grid;
+                place-items: center;
                 text-align: center;
-                transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
+                backface-visibility: hidden;
+                -webkit-backface-visibility: hidden; backface-visibility: hidden;
+            }
 
-                &:hover {
-                transform: translateY(-6px);
-                box-shadow: $shadow-hover;
+            .flip-face.back {
+                transform: rotateY(180deg);
                 background: $background-vert-blanc-hover;
-                }
 
-                .role-icon {
-                display: block;
-                margin: 0 auto .25rem;
+            }
+
+            .role-icon {
                 inline-size: clamp(44px, 6.8vw, 60px);
-                block-size: auto;
+                aspect-ratio: 1 / 1;
+                object-fit: contain;
+                margin-bottom: .35rem;
                 filter: invert(17%) sepia(100%) saturate(3540%) hue-rotate(308deg) brightness(86%) contrast(110%);
-                }
+            }
 
-                h3 {
+            h3 { 
+                color: $vert1; 
+                font-size: $h5-size; 
+                line-height: 1.2; 
+                margin: 0; 
+            }
+            p  { 
                 color: $bleu;
                 font-size: $p-size;
-                margin-bottom: .25rem;
-                line-height: 1.2;
-                }
-
-                p {
-                color: $vert1;
-                font-size: $p-size;
-                line-height: 1.35;
-                margin: 0;
-                }
+                line-height: 1.45; 
+                margin: 0; 
+                font-weight: 100;
+                text-align: center;
             }
 
             @media (max-width: 600px) {
-                .role-card { flex-basis: 100%; max-inline-size: none; }
+                .role-card { flex-basis: 100%; max-inline-size: none; }  /* 1 par ligne, centrée */
             }
         }
 
@@ -538,12 +579,12 @@ body.page-fonctionnement {
         .exemple {
             padding: clamp(1rem, 0.559rem + 2.712vw, 3rem) 1rem clamp(2rem, 1.78rem + 1.356vw, 3rem);
             color: $bleu;
-            text-align: justify;
         
             .exemple-container {
                 width: min(1100px, 92vw);
                 display: grid;
-                grid-template-columns: 1fr 1fr;
+                grid-template-columns: 2fr 1fr;
+                gap: clamp(1rem, 0.286rem + 1.905vw, 2rem);
                 align-items: center;
                 max-width: 1100px;
                 margin: 0 auto;
@@ -574,14 +615,25 @@ body.page-fonctionnement {
                 }
         
                 .exemple-image {
-                    img {
+                    @include cpe-zoom-frame(8s, ease-in-out, true, 1.05, -2%, -2%);
+                    @include radius-cpe;
+                    overflow: hidden;
+                    box-shadow: $shadow-photo;
                     width: $witdh-img-defaut;
-                        border-radius: 0.4rem; 
-                        border-bottom-right-radius: 1rem;
-                        border-top-left-radius: 1rem;
-                        box-shadow: $shadow-photo;
-                        display: block;
-                        margin: 0 auto;
+
+                    img {
+                    width: 100%;
+                    display: block;
+                    margin: 0 auto;
+                    height: 100%;
+                    object-fit: cover;
+                    display: block;
+                    }
+                }
+                @media (max-width:933px){
+                    .exemple-image {
+                        justify-self: center;
+                        margin-bottom: 1rem;
                     }
                 }
             }

@@ -2,6 +2,7 @@
 @use '../utils/variables' as *;
 @use '../utils/mixins' as *;
 @use "../components/separation-section" as *;
+@use "../components/boutons" as *;
 
 
 /* Scope page */
@@ -19,6 +20,16 @@ body.page-definition {
       a {
         color: currentColor;
         text-decoration-color: currentColor;
+    }
+
+    h1 {
+    color: $bleu;
+    font-family: $font-titles;
+    font-weight: 800;
+    font-size: $h1-size;
+    text-align: center;
+    line-height: 1.18;
+    padding: clamp(0.5rem, 0.143rem + 0.952vw, 1rem);
     }
     
     h2 {
@@ -44,13 +55,13 @@ body.page-definition {
 
         .intro {
             // background-color: $creme;
-            padding: clamp(1rem, 5vw, 3rem) 1rem clamp(2rem, 5vw, 4rem);
+            padding: $padding-marge-section;
             color: $bleu;
             text-align: justify;
 
             .intro-container {
                 display: grid;
-                grid-template-columns: 1fr 1fr;
+                grid-template-columns: 2fr 1fr;
                 gap: 2rem;
                 align-items: center;
                 max-width: 1100px;
@@ -72,19 +83,25 @@ body.page-definition {
                         display: flex;
                         justify-content: center;
                         gap: clamp(0.8rem, 1.6vw, 1.2rem);
-                        margin-top: clamp(1.2rem, 2.4vw, 2rem);
                     }
                 }
 
                 .intro-image {
-                    img {
-                    width: $witdh-img-defaut;
-                    border-radius: 0.4rem; 
-                    border-bottom-right-radius: 1rem;
-                    border-top-left-radius: 1rem;
+                    display: flex;
+                    justify-self: center;
+                    @include cpe-zoom-frame(8s, ease-in-out, true, 1.05, -2%, -2%);
+                    @include radius-cpe;
+                    overflow: hidden;
                     box-shadow: $shadow-photo;
-                    display: block;
-                    margin: 0 auto;
+                    width: $witdh-img-defaut;
+
+                    img {
+                        width: 100%;
+                        display: block;
+                        margin: 0 auto;
+                        height: 100%;
+                        object-fit: cover;
+                        display: block;
                     }
                 }
             }
@@ -93,7 +110,7 @@ body.page-definition {
 
         .definition {
             // background: $backgroud-bleu-rouge;
-            padding: clamp(1rem, 5vw, 3rem) 1rem clamp(2rem, 5vw, 4rem);
+            padding: $padding-marge-section;
             color: $bleu;
             text-align: justify;
             
@@ -171,7 +188,7 @@ body.page-definition {
 
 
         .cadre {
-            padding: clamp(1rem, 0.559rem + 2.712vw, 3rem) 1rem clamp(2rem, 1.78rem + 1.356vw, 3rem);
+            padding: $padding-marge-section;
             color: $bleu;
             text-align: justify;
             
@@ -230,7 +247,7 @@ body.page-definition {
 
 
         .principe {
-            padding: clamp(2rem, 5vw, 4rem) 1rem;
+            padding: clamp(1rem, 0.286rem + 1.905vw, 2rem) 1rem clamp(0.5rem, 0.143rem + 0.952vw, 1rem);
             color: $bleu;
             text-align: justify;
 
@@ -350,6 +367,7 @@ body.page-definition {
                 border-bottom-right-radius: 1rem;
                 border-top-left-radius: 1rem;
                 box-shadow: $shadow-defaut;
+                font-size: $p-size;
 
                 /* ⬇️ hauteur fixée, responsive via clamp */
                 height: clamp(6rem, 3vw, 8rem);
@@ -393,7 +411,7 @@ body.page-definition {
 
 
         .domaines {
-            padding: clamp(2rem, 5vw, 4rem) 1rem;
+            padding: $padding-marge-section;
             color: $bleu;
             text-align: center;
 
@@ -552,7 +570,7 @@ body.page-definition {
 
 
         .objectifs {
-            padding: clamp(2rem, 5vw, 4rem) 1rem calc(clamp(2rem, 5vw, 4rem)) 1rem;
+            padding: $padding-marge-section;
             color: $bleu;
             text-align: justify;
 
@@ -602,7 +620,7 @@ body.page-definition {
 
 
         .comparatif {
-            padding: clamp(2rem, 5vw, 4rem) 1rem;
+            padding: $padding-marge-section;
             color: $bleu;
             text-align: center;
 
@@ -779,62 +797,62 @@ body.page-definition {
 
 
         .expert-section {
-            padding: clamp(2rem, 5vw, 4rem) 1rem;
+            padding: $padding-marge-section;
             color: $bleu;
             text-align: justify;
 
 
             .expert-content {
-                width: min(1100px, 92vw);
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                align-items: center;
-                max-width: 1100px;
-                margin: 0 auto;
+                // width: min(1100px, 92vw);
+                // display: grid;
+                // grid-template-columns: 1fr 1fr;
+                // align-items: center;
+                // max-width: 1100px;
+                // margin: 0 auto;
 
-                @media (max-width: 768px) {
-                grid-template-columns: 1fr;
-                }
+                // @media (max-width: 768px) {
+                // grid-template-columns: 1fr;
+                // }
 
                 .expert-text {
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: space-between;
-                    padding: 1rem 0;
-                    height: 100%;
-                    font-size: $p-size;
-                    line-height: 1.7;
+                    // display: flex;
+                    // flex-direction: column;
+                    // justify-content: space-between;
+                    // padding: 1rem 0;
+                    // height: 100%;
+                    // font-size: $p-size;
+                    // line-height: 1.7;
 
-                    p { margin-bottom: 1rem; }
-                    .highlight { font-weight: bold; margin-top: 1.5rem; }
+                    // p { margin-bottom: 1rem; }
+                    // .highlight { font-weight: bold; margin-top: 1.5rem; }
 
-                    .cta-buttons {
-                        display: flex;
-                        justify-content: center;
-                        gap: clamp(0.8rem, 1.6vw, 1.2rem);
-                        margin-top: clamp(1rem, 2.4vw, 2rem);
-                        margin-bottom: clamp(1rem, 1.4vw, 1rem);
-                    }
-                    @media (max-width: 768px) {
-                    align-items: center;
-                    }
+                    // .cta-buttons {
+                    //     display: flex;
+                    //     justify-content: center;
+                    //     gap: clamp(0.8rem, 1.6vw, 1.2rem);
+                    //     margin-top: clamp(1rem, 2.4vw, 2rem);
+                    //     margin-bottom: clamp(1rem, 1.4vw, 1rem);
+                    // }
+                    // @media (max-width: 768px) {
+                    // align-items: center;
+                    // }
 
                     .h3-resume {color: $vert1;}
 
                     @media (max-width: 768px) {
                     align-items: center;
                     }
-                .expert-image {
-                    img {
-                        width: $witdh-img-defaut;
-                        border-radius: 0.4rem; 
-                        border-bottom-right-radius: 1rem;
-                        border-top-left-radius: 1rem;
-                        box-shadow: $shadow-photo;
-                        display: block;
-                        margin: 0 auto;
-                        }
-                    }
+                // .expert-image {
+                //     img {
+                //         width: $witdh-img-defaut;
+                //         border-radius: 0.4rem; 
+                //         border-bottom-right-radius: 1rem;
+                //         border-top-left-radius: 1rem;
+                //         box-shadow: $shadow-photo;
+                //         display: block;
+                //         margin: 0 auto;
+                //         }
+                //     }
                 }
             }
         }

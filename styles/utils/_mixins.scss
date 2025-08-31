@@ -58,43 +58,82 @@
 }
 
 
-// utils/_mixins.scss
 // =====================================
-// Double soulignage stylé pour titres
+// ======  Effet Zoom aux images  ======
 // =====================================
-@mixin double-underline(
-  // $color         : couleur des traits
-  // $thickness     : épaisseur des traits (ex: 3px)
-  // $gap           : écart texte → 1er trait (ex: .25em)
-  // $sep           : écart vertical entre trait 1 et 2 (ex: 4px)
-  // $left-offset   : marge vide au début du 1er trait (ex: 10px)
-  // $right-offset  : marge vide à la fin du 2e trait (ex: 10px)
-  // $first-end     : fin du 1er trait (ex: 66%)
-  // $second-start  : début du 2e trait (ex: 33%)
-  $color: $bleu,
-  $thickness: 3px,
-  $gap: .25em,
-  $sep: 6px,
-  $left-offset: 10px,
-  $right-offset: 10px,
-  $first-end: 66%,
-  $second-start: 33%
-) {
-  display: inline-block; // le fond suit la largeur réelle du titre
-  background:
-    // Trait 1 : de $left-offset → $first-end
-    linear-gradient(
-      to right,
-      transparent $left-offset,
-      $color $left-offset $first-end,
-      transparent $first-end
-    ) 0 calc(100% - #{$gap}) / 100% $thickness no-repeat,
+/* === Ken Burns avec PAN (zoom + translation) === */
+$cpe-kb-defined: false !default;
 
-    // Trait 2 : de $second-start → (100% - $right-offset)
-    linear-gradient(
-      to right,
-      transparent $second-start,
-      $color $second-start calc(100% - #{$right-offset}),
-      transparent calc(100% - #{$right-offset})
-    ) 0 calc(100% - #{$gap} - #{$sep}) / 100% $thickness no-repeat;
+@mixin _cpe-define-kb() {
+  @if $cpe-kb-defined == false {
+    $cpe-kb-defined: true !global;
+    /* on définit un keyframe générique ; les valeurs finales seront injectées via animation */
+    @keyframes cpe-kb-zoom-pan { from { } to { } }
+  }
 }
+
+/* Conteneur-cadre qui masque le débord, et anime l'image à l'intérieur */
+@mixin cpe-zoom-frame(
+  $duration: 12s,
+  $timing: ease-in-out,
+  $pause-on-hover: true,
+  $scale-to: 1.06,   // zoom final
+  $pan-x: 0%,        // translation horizontale finale (ex: 3%, -2%)
+  $pan-y: -2%        // translation verticale finale (ex: -3% = vers le haut)
+) {
+  @include _cpe-define-kb();
+
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: inherit;
+
+  > img, > picture > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform-origin: center;
+    will-change: transform;
+
+    /* on utilise animation + @property pour animer vers des valeurs custom via variables */
+    @supports (transform: scale(1)) {
+      @media (prefers-reduced-motion: no-preference) {
+        animation: cpe-kb-zoom-pan $duration $timing infinite alternate;
+      }
+      /* on injecte les valeurs finales via CSS vars et une transition calc */
+      --kb-scale-to: #{$scale-to};
+      --kb-pan-x: #{$pan-x};
+      --kb-pan-y: #{$pan-y};
+
+      /* on sur-déclare les frames avec les valeurs */
+      /* (truc simple : on met une animation-name dédiée pour ne pas multiplier les keyframes) */
+      /* on utilise la propriété animation-timeline implicite (fallback simple ci-dessous) */
+    }
+
+    /* Fallback simple : on “fige” les frames avec une animation dédiée inline via shorthand */
+    animation-name: cpe-kb-zoom-pan;
+  }
+
+  /* Pause au survol optionnelle */
+  @if $pause-on-hover == true {
+    @media (hover: hover) {
+      &:hover > img,
+      &:hover > picture > img { animation-play-state: paused; }
+    }
+  }
+
+  /* Réécriture des frames avec les valeurs passées au mixin (portée locale via nesting) */
+  @at-root {
+    @keyframes cpe-kb-zoom-pan {
+      from { transform: scale(1) translate3d(0, 0, 0); }
+      to   { transform: scale(#{$scale-to}) translate3d(#{$pan-x}, #{$pan-y}, 0); }
+    }
+  }
+}
+
+/* Utilitaire : ratio fixe (optionnel) */
+@mixin cpe-aspect($ratio) { aspect-ratio: $ratio; }
+
+
+
+

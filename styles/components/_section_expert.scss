@@ -3,7 +3,7 @@
 @use '../utils/mixins' as *;
 
 .expert-section {
-  padding: clamp(1rem, 3vw, 1.2rem) 1rem clamp(2rem, 3vw, 2rem);
+  padding: clamp(1rem, 0.286rem + 1.905vw, 2rem) 1rem clamp(2rem, 1.78rem + 1.356vw, 3rem);
   // background-color: $creme;
   // text-align: center;
 
@@ -19,9 +19,10 @@
   .expert-content {
     width: min(1100px, 92vw);
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    // gap: 1.2rem;
+    grid-template-columns: 2fr 1fr;
+    gap: clamp(1rem, 0.286rem + 1.905vw, 2rem);
     align-items: center;
+    justify-items: center;
     max-width: 1100px;
     margin: 0 auto;
 
@@ -56,14 +57,19 @@
   }
 
   .expert-image {
+    @include cpe-zoom-frame(8s, ease-in-out, true, 1.05, -2%, -2%);
+    @include radius-cpe;
+    overflow: hidden;
+    box-shadow: $shadow-photo;
+    width: $witdh-img-defaut;
+
     img {
-      width: $witdh-img-defaut;
-      border-radius: 0.4rem; 
-      border-bottom-right-radius: 1rem;
-      border-top-left-radius: 1rem;
-      box-shadow: $shadow-photo;
+      width: 100%;
       display: block;
       margin: 0 auto;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
   }
 }

@@ -7,7 +7,7 @@
 .vignettes-section {
   position: relative;
   isolation: isolate;
-  padding: clamp(1.8rem, 2vw, 2rem) 1rem clamp(1.8rem, 4vw, 3rem);
+  padding: $padding-marge-section;
   text-align: center;
   background: url('../images/photo-accueil_vignettes.webp') center/cover no-repeat;
 
@@ -22,8 +22,10 @@
 
   * { position: relative; z-index: 1; }
 
-  h2 {
+  .vc-title {
     font-size: $h2-size;
+    width: min(1100px, 92vw);
+    margin: 0 auto;
     margin-bottom: 1.5rem;
     color: $creme;
     font-weight: 700;
@@ -35,9 +37,9 @@
    ============================ */
 .vignettes-carousel {
   --edge-offset: clamp(2rem, (100vw - 1200px)/2 + 1rem, 12vw);
-  --front-fs: clamp(1.05rem, 1.6vw, 1.2rem);
-  --back-fs: clamp(1.05rem, 1.6vw, 1.2rem);
-  --cta-fs: clamp(1.05rem, 1.6vw, 1.2rem);
+  --front-fs: $p-size;
+  --back-fs: $p-size;
+  --cta-fs: $p-size;
   --icon-fs: clamp(1.7rem, 3.57vw, 2.72rem);
   --front-grad-angle: 135deg;
 

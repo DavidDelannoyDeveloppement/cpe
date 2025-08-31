@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <html lang="fr">
-<!DOCTYPE html>
-<html lang="fr">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -107,36 +105,24 @@
 
   <!-- ======= HEADER ======= -->
   <header class="site-header" role="banner">
-    <div class="header-inner">
-      <a class="brand" href="./index.html" aria-label="Accueil - Site CPE">
-        <span class="brand-logo" role="img" aria-label="Logo CPE"></span>
-      </a>
-      <h1 class="brand-title">Les différentes typologies de CPE</h1>
-      <div class="cta-buttons">
-        <a href="#" class="btn">Simuler mon CPE</a>
-        <a href="#" class="btn">Contacter un expert</a>
-      </div>
-    </div>
+    <a href="https://www.fitt-solutions.io/" class="btn" target="_blank" rel="noopener noreferrer">Simuler mon CPE</a>
+    <a class="brand" href="./index.html" aria-label="Accueil - Site CPE"><span class="brand-logo" role="img" aria-label="Logo CPE"></span></a>
+    <a href="./contact.html" class="btn">Contacter un expert</a>
   </header>
 
 
   <!-- ===== Menu déroulant, juste après le header ===== -->
   <div class="side-wrapper" role="navigation" aria-label="Menu rapide">
-    <div class="mascot-inline" aria-hidden="true">
-      <div class="eye"><span class="pupil"></span></div>
-      <div class="eye"><span class="pupil"></span></div>
-      <span class="mouth" aria-hidden="true"></span>
-    </div>
-
     <div class="menu-trigger" role="button" tabindex="0" aria-controls="sideMenu" aria-expanded="false" aria-label="Ouvrir le menu">
       <img src="./images/icones/menu-icone.svg" class="menu-icone" alt="" aria-hidden="true">
     </div>
+
     <nav class="side-menu" id="sideMenu" aria-label="Menu latéral">
       <ul>
-        <li><a href="./index.html" class="is-active"><b>Accueil</b></a></li>
+        <li><a href="./index.html" class="is-active" aria-current="page"><b>Accueil</b></a></li>
         <li><a href="./definition.html">Définition du CPE</a></li>
         <li><a href="./fonctionnement.html">Fonctionnement du CPE</a></li>
-        <li><a href="./typologies.html" aria-current="page">Typologies de CPE</a></li>
+        <li><a href="./typologies.html">Typologies de CPE</a></li>
         <li><a href="./avantages.html">Avantages et limites</a></li>
         <li><a href="./reglementation.html">Réglementation</a></li>
         <li><a href="./etapes.html">Étapes, durée, contrôle</a></li>
@@ -145,6 +131,8 @@
         <li><a href="./recommandations.html">Recommandations</a></li>
         <li><a href="./actualites.html">Actualités</a></li>
         <li><a href="./glossaire.html">Glossaire</a></li>
+        <li><a href="./contact.html">Contact</a></li>
+        <li><a href="https://www.fitt-solutions.io/" target="_blank" rel="noopener noreferrer">Simulateur</a></li>
       </ul>
     </nav>
   </div>
@@ -152,30 +140,189 @@
 
   <main id="contenu">
 
+    <h1>Les différentes typologies de CPE</h1>
+
+
     <section class="intro">
-      <h2>Un outil adaptable selon le périmètre,<br> la gouvernance et les objectifs</h2>
-        <div class="intro-container">
-            <div class="intro-image">
-              <img src="./images/" alt="image-intro">
+      <div class="intro-container">
+        <div class="intro-text">
+            <h2>Un outil adaptable selon le périmètre,<br> la gouvernance et les objectifs</h2>
+            <p>Le Contrat de Performance Énergétique n’est pas un format unique. Il existe plusieurs typologies de CPE, chacune adaptée à une nature de patrimoine, une stratégie de maîtrise d’ouvrage et une capacité d’investissement différente.</p>  
+            <p>Le bon choix de modèle dépend de :</p>
+            <ul class="intro-ul">
+              <li>la taille du projet</li>
+              <li>le niveau de garantie attendu</li>
+              <li>la capacité de pilotage du donneur d’ordre</li>
+              <li>les besoins en financement</li>
+              <li>les contraintes juridiques (marché public ou privé)</li>
+            </ul>
+            <div class="cta-buttons">
+              <a href="https://www.fitt-solutions.io/" class="btn" target="_blank" rel="noopener noreferrer">Simuler mon CPE</a>
             </div>
-            <div class="intro-text">
-                <p>Le Contrat de Performance Énergétique n’est pas un format unique. Il existe plusieurs typologies de CPE, chacune adaptée à une nature de patrimoine, une stratégie de maîtrise d’ouvrage et une capacité d’investissement différente.</p>  
-                <p>Le bon choix de modèle dépend de :</p>
-                <ul>
-                    <li>la taille du projet</li>
-                    <li>le niveau de garantie attendu</li>
-                    <li>la capacité de pilotage du donneur d’ordre</li>
-                    <li>les besoins en financement</li>
-                    <li>les contraintes juridiques (marché public ou privé)</li>
-                </ul>
-                <div class="cta-buttons">
-                <a href="/simulateur" class="btn">Simuler mon CPE</a>
-                </div>
-            </div>
+          </div>
+          <div class="intro-image">
+            <img src="./images/typologies-intro-480.webp" alt="image-intro">
+          </div>
         </div>
     </section>
 
-    
+
+    <span class="text-sep shape-diamond" aria-hidden="true"></span>
+
+
+    <section class="etapes">
+      <div class="etapes-container">
+        <h2>Les grandes familles de CPE</h2>
+        <h4>On distingue principalement trois grandes catégories de CPE, définies par l’ADEME et le CSTB.</h4>
+
+        <ol class="etapes-list">
+          <!-- 1) CPE Services -->
+          <li class="etape">
+            <div class="etape-text">
+              <h5>CPE Services (ou exploitation garantie)</h5>
+
+              <p>🔧 <strong>Objet :</strong> amélioration de l’exploitation et de la maintenance des installations énergétiques, avec un engagement de performance.</p>
+
+              <p>📌 <strong>Caractéristiques :</strong></p>
+              <ul>
+                <li>peu ou pas de travaux</li>
+                <li>garantie d’une réduction de consommation (pilotage, réglages, comportement)</li>
+                <li>engagement sur les résultats grâce à l’optimisation du fonctionnement</li>
+              </ul>
+
+              <p>🗓️ <strong>Durée typique :</strong> 3 à 8 ans</p>
+
+              <p>👤 <strong>Clients types :</strong></p>
+              <ul>
+                <li>gestionnaires de patrimoine</li>
+                <li>collectivités</li>
+                <li>tertiaire privé avec équipements déjà rénovés</li>
+              </ul>
+
+              <p>✅ <strong>Avantages :</strong></p>
+              <ul>
+                <li>mise en œuvre rapide</li>
+                <li>peu d’investissement</li>
+                <li>idéal pour une montée en compétence progressive</li>
+              </ul>
+            </div>
+
+            <div class="etape-media">
+              <img src="./images/typologies-etape-1-480.webp" alt="Illustration CPE Services (exploitation garantie)">
+            </div>
+
+            <div class="etape-limites">
+              <p>⚠️ <strong>Limites :</strong></p>
+              <ul>
+                <li>moins d’impact structurel</li>
+                <li>dépend fortement des usages</li>
+              </ul>
+            </div>
+          </li>
+
+          <!-- 2) CPE Travaux + Services -->
+          <li class="etape">
+            <div class="etape-media">
+              <img src="./images/typologies-etape-2-480.webp" alt="Illustration CPE Travaux + Services">
+            </div>
+
+            <div class="etape-limites">
+              <p>⚠️ <strong>Limites :</strong></p>
+              <ul>
+                <li>processus plus long</li>
+                <li>mobilisation financière nécessaire (ou tiers-financement)</li>
+              </ul>
+            </div>
+
+            <div class="etape-text">
+              <h5>CPE Travaux + Services</h5>
+
+              <p>🔧🔨 <strong>Objet :</strong> combiner des travaux d’amélioration énergétique (isolation, relamping, ventilation, etc.) avec un contrat d’exploitation incluant une garantie de performance énergétique globale.</p>
+
+              <p>📌 <strong>Caractéristiques :</strong></p>
+              <ul>
+                <li>audit et travaux d’efficacité énergétique</li>
+                <li>maintenance des équipements sur la durée</li>
+                <li>engagement contractuel sur les économies d’énergie</li>
+                <li>contrôle par mesure &amp; vérification</li>
+              </ul>
+
+              <p>🗓️ <strong>Durée typique :</strong> 6 à 12 ans</p>
+
+              <p>👤 <strong>Clients types :</strong></p>
+              <ul>
+                <li>collectivités locales</li>
+                <li>établissements scolaires</li>
+                <li>hôpitaux</li>
+                <li>industriels</li>
+                <li>bailleurs sociaux</li>
+              </ul>
+
+              <p>✅ <strong>Avantages :</strong></p>
+              <ul>
+                <li>impact fort sur les consommations</li>
+                <li>garantie pluriannuelle</li>
+                <li>partage des risques technique et financier</li>
+              </ul>
+            </div>
+          </li>
+
+          <!-- 3) CPE Tiers-financement -->
+          <li class="etape">
+            <div class="etape-text">
+              <h5>CPE Tiers-financement (ou CPE avec investissement externe)</h5>
+
+              <p>💶 <strong>Objet :</strong> le prestataire ou un tiers prend en charge l’investissement initial (travaux, équipements, etc.), en se rémunérant grâce aux économies d’énergie générées.</p>
+
+              <p>📌 <strong>Caractéristiques :</strong></p>
+              <ul>
+                <li>intégré dans des montages type Energy Performance Contracting (EPC)</li>
+                <li>peut s’appuyer sur des contrats de location, crédit-bail, BEA, Intracting</li>
+                <li>idéal pour les structures sans capacité d’investissement</li>
+              </ul>
+
+              <p>🗓️ <strong>Durée typique :</strong> 8 à 15 ans</p>
+
+              <p>👤 <strong>Clients types :</strong></p>
+              <ul>
+                <li>communes à faible budget</li>
+                <li>copropriétés</li>
+                <li>bailleurs</li>
+                <li>PME</li>
+              </ul>
+
+              <p>✅ <strong>Avantages :</strong></p>
+              <ul>
+                <li>aucun investissement initial requis</li>
+                <li>accès facilité à la rénovation</li>
+                <li>paiement indexé sur la performance réelle</li>
+              </ul>
+            </div>
+
+            <div class="etape-media">
+              <img src="./images/typologies-etape-3-480.webp" alt="Illustration CPE Tiers-financement">
+            </div>
+
+            <div class="etape-limites">
+              <p>⚠️ <strong>Limites :</strong></p>
+              <ul>
+                <li>durée longue (8 à 15 ans)</li>
+                <li>contractualisation complexe</li>
+                <li>nécessite un partenaire de confiance</li>
+              </ul>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+
+
+
+
+
+
+
     <span class="text-sep shape-diamond" aria-hidden="true"></span>
 
 
@@ -209,16 +356,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-    <span class="text-sep shape-diamond" aria-hidden="true"></span>
     
     
     <span class="text-sep shape-diamond" aria-hidden="true"></span>
@@ -255,6 +392,8 @@
         <a href="./recommandations.html">Recommandations</a>
         <a href="./actualites.html">Actualités</a>
         <a href="./glossaire.html">Glossaire</a>
+        <a href="./contact.html">Contact</a>
+        <a href="https://www.fitt-solutions.io/" target="_blank" rel="noopener noreferrer">Simulateur</a>
         <a href="./cgu.html">CGU</a>
         <a href="./mentions-legales.html">Mentions légales</a>
       </nav>

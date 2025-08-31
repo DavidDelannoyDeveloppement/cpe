@@ -106,35 +106,23 @@
 
   <!-- ======= HEADER ======= -->
   <header class="site-header" role="banner">
-    <div class="header-inner">
-      <a class="brand" href="./index.html" aria-label="Accueil - Site CPE">
-        <span class="brand-logo" role="img" aria-label="Logo CPE"></span>
-      </a>
-      <h1 class="brand-title">Fonctionnement du CPE</h1>
-      <div class="cta-buttons">
-        <a href="#" class="btn">Simuler mon CPE</a>
-        <a href="#" class="btn">Contacter un expert</a>
-      </div>
-    </div>
+    <a href="https://www.fitt-solutions.io/" class="btn" target="_blank" rel="noopener noreferrer">Simuler mon CPE</a>
+    <a class="brand" href="./index.html" aria-label="Accueil - Site CPE"><span class="brand-logo" role="img" aria-label="Logo CPE"></span></a>
+    <a href="./contact.html" class="btn">Contacter un expert</a>
   </header>
 
 
   <!-- ===== Menu déroulant, juste après le header ===== -->
   <div class="side-wrapper" role="navigation" aria-label="Menu rapide">
-    <div class="mascot-inline" aria-hidden="true">
-      <div class="eye"><span class="pupil"></span></div>
-      <div class="eye"><span class="pupil"></span></div>
-      <span class="mouth" aria-hidden="true"></span>
-    </div>
-
     <div class="menu-trigger" role="button" tabindex="0" aria-controls="sideMenu" aria-expanded="false" aria-label="Ouvrir le menu">
       <img src="./images/icones/menu-icone.svg" class="menu-icone" alt="" aria-hidden="true">
     </div>
+
     <nav class="side-menu" id="sideMenu" aria-label="Menu latéral">
       <ul>
-        <li><a href="./index.html" class="is-active"><b>Accueil</b></a></li>
+        <li><a href="./index.html" class="is-active" aria-current="page"><b>Accueil</b></a></li>
         <li><a href="./definition.html">Définition du CPE</a></li>
-        <li><a href="./fonctionnement.html" aria-current="page">Fonctionnement du CPE</a></li>
+        <li><a href="./fonctionnement.html">Fonctionnement du CPE</a></li>
         <li><a href="./typologies.html">Typologies de CPE</a></li>
         <li><a href="./avantages.html">Avantages et limites</a></li>
         <li><a href="./reglementation.html">Réglementation</a></li>
@@ -144,12 +132,17 @@
         <li><a href="./recommandations.html">Recommandations</a></li>
         <li><a href="./actualites.html">Actualités</a></li>
         <li><a href="./glossaire.html">Glossaire</a></li>
+        <li><a href="./contact.html">Contact</a></li>
+        <li><a href="https://www.fitt-solutions.io/" target="_blank" rel="noopener noreferrer">Simulateur</a></li>
       </ul>
     </nav>
   </div>
 
 
   <main id="contenu">
+
+    <h1>Fonctionnement du CPE</h1>
+
 
     <section class="intro">
       <div class="intro-container">
@@ -158,7 +151,7 @@
           <p>Le fonctionnement d’un CPE repose sur un principe fondamental : <strong> le prestataire s’engage sur un résultat mesurable,</strong> généralement une économie d’énergie exprimée en kWh ou en pourcentage par rapport à une situation de référence. Cet engagement est encadré contractuellement, avec des pénalités ou bonus selon l’atteinte (ou non) des objectifs.</p>  
           <p>Cela implique une approche <strong> globale, intégrée et pilotée dans le temps,</strong> depuis l’audit initial jusqu’au suivi des consommations pendant plusieurs années.</p>
           <div class="cta-buttons">
-            <a href="/simulateur" class="btn">Simuler mon CPE</a>
+            <a href="https://www.fitt-solutions.io/" class="btn" target="_blank" rel="noopener noreferrer">Simuler mon CPE</a>
           </div>
         </div>
         <div class="intro-image">
@@ -293,14 +286,14 @@
       <div class="ipmvp-container">
         <div class="ipmvp-text">
             <h2>Le protocole IPMVP</h2>
-            <p class="ipmvp-p">Le protocole <strong> IPMVP (International Performance Measurement and Verification Protocol) </strong>est le référentiel le plus utilisé pour encadrer les mesures dans les CPE. Il prévoit plusieurs options selon la complexité du projet (Option A, B, C, D) et garantit :</p>  
+            <p class="ipmvp-p">Le protocole <strong> IPMVP </strong> (International Performance Measurement and Verification Protocol)est le référentiel le plus utilisé pour encadrer les mesures dans les CPE. Il prévoit plusieurs options selon la complexité du projet (Option A, B, C, D) et garantit :</p>  
             <ul class="ipmvp-ul">
                 <li>une <strong> traçabilité </strong>des données</li>
                 <li>des <strong> résultats objectivables</strong></li>
                 <li>une <strong> transparence contractuelle</strong></li>
             </ul>
             <div class="cta-buttons">
-              <a href="/simulateur" class="btn">Contactez un expert</a>
+              <a href="./contact.html" class="btn">Contactez un expert</a>
             </div>
           </div>
           <div class="ipmvp-image">
@@ -319,34 +312,75 @@
 
         <div class="roles-grid">
           <div class="role-card">
-            <img src="./images/icones/mairie_white.png" alt="Maître d’ouvrage" class="role-icon">
-            <h3>Maître d’ouvrage</h3>
-            <p>Définit les objectifs, valide les étapes, suit les résultats</p>
+            <div class="flip-card" tabindex="0">
+              <div class="flip-inner">
+                <div class="flip-face front">
+                  <img src="./images/icones/mairie_white.png" alt="Maître d’ouvrage" class="role-icon" width="60" height="60" loading="lazy">
+                  <h3>Maître d’ouvrage</h3>
+                </div>
+                <div class="flip-face back">
+                  <p>Définit les objectifs, valide les étapes, suit les résultats</p>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div class="role-card">
-            <img src="./images/icones/entreprise_white.png" alt="Prestataire CPE" class="role-icon">
-            <h3>Prestataire CPE</h3>
-            <p>Conçoit, met en œuvre, garantit les économies</p>
+            <div class="flip-card" tabindex="0">
+              <div class="flip-inner">
+                <div class="flip-face front">
+                  <img src="./images/icones/entreprise_white.png" alt="Prestataire CPE" class="role-icon" width="60" height="60" loading="lazy">
+                  <h3>Prestataire CPE</h3>
+                </div>
+                <div class="flip-face back">
+                  <p>Conçoit, met en œuvre, garantit les économies</p>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div class="role-card">
-            <img src="./images/icones/amo_white.png" alt="AMO" class="role-icon">
-            <h3>AMO (facultatif)</h3>
-            <p>Aide au pilotage du projet, au choix des solutions, à la rédaction</p>
+            <div class="flip-card" tabindex="0">
+              <div class="flip-inner">
+                <div class="flip-face front">
+                  <img src="./images/icones/amo_white.png" alt="AMO" class="role-icon" width="60" height="60" loading="lazy">
+                  <h3>AMO (facultatif)</h3>
+                </div>
+                <div class="flip-face back">
+                  <p>Aide au pilotage du projet, au choix des solutions, à la rédaction</p>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div class="role-card">
-            <img src="./images/icones/banque_white.png" alt="Tiers-financeur" class="role-icon">
-            <h3>Tiers-financeur (facultatif)</h3>
-            <p>Prend en charge l’investissement en échange d’un remboursement</p>
+            <div class="flip-card" tabindex="0">
+              <div class="flip-inner">
+                <div class="flip-face front">
+                  <img src="./images/icones/banque_white.png" alt="Tiers-financeur" class="role-icon" width="60" height="60" loading="lazy">
+                  <h3>Tiers-financeur (facultatif)</h3>
+                </div>
+                <div class="flip-face back">
+                  <p>Prend en charge l’investissement en échange d’un remboursement</p>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div class="role-card">
-            <img src="./images/icones/usagers_white.png" alt="Usagers" class="role-icon">
-            <h3>Usagers/exploitants</h3>
-            <p>Participent au bon usage et à la durabilité des résultats</p>
+            <div class="flip-card" tabindex="0">
+              <div class="flip-inner">
+                <div class="flip-face front">
+                  <img src="./images/icones/usagers_white.png" alt="Usagers/exploitants" class="role-icon" width="60" height="60" loading="lazy">
+                  <h3>Usagers/exploitants</h3>
+                </div>
+                <div class="flip-face back">
+                  <p>Participent au bon usage et à la durabilité des résultats</p>
+                </div>
+              </div>
+            </div>
           </div>
+
         </div>
       </div>
     </section>
@@ -370,8 +404,8 @@
           <h3>Prêt à passer à l’action ?</h3>
           <h5>Estimez vos économies ou échangez avec un spécialiste.</h5>
           <div class="cta-buttons">
-            <a href="./simulateur.html" class="btn">Simuler mon CPE</a>
-            <a href="./contact-expert.html" class="btn">Contacter un expert</a>
+            <a href="https://www.fitt-solutions.io/" class="btn" target="_blank" rel="noopener noreferrer">Simuler mon CPE</a>
+            <a href="./contact.html" class="btn">Contacter un expert</a>
           </div>
         </div>
       </div>
@@ -400,8 +434,6 @@
       </div>
     </section>
 
-
-
   </main>
 
   <!-- Footer -->
@@ -423,6 +455,8 @@
         <a href="./recommandations.html">Recommandations</a>
         <a href="./actualites.html">Actualités</a>
         <a href="./glossaire.html">Glossaire</a>
+        <a href="./contact.html">Contact</a>
+        <a href="https://www.fitt-solutions.io/" target="_blank" rel="noopener noreferrer">Simulateur</a>
         <a href="./cgu.html">CGU</a>
         <a href="./mentions-legales.html">Mentions légales</a>
       </nav>

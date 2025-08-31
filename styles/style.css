@@ -1,5 +1,8 @@
 @charset "UTF-8";
 /* Alias prêt à l'emploi : $bleu → $vert1 avec 50/50, angle 135°, fondu 50% */
+/* === Ken Burns avec PAN (zoom + translation) === */
+/* Conteneur-cadre qui masque le débord, et anime l'image à l'intérieur */
+/* Utilitaire : ratio fixe (optionnel) */
 /* styles/utils/_base.scss */
 /* Typo globale Raleway */
 :root {
@@ -27,66 +30,114 @@ body {
 
 /* Composants utilisés uniquement sur la home */
 .hero-section {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fffffa;
+  padding: 1rem 1rem clamp(2rem, 1.78rem + 1.356vw, 3rem);
+  color: #031837;
 }
-.hero-section .hero-bg {
-  position: absolute;
-  inset: 0;
+.hero-section .hero-content {
+  width: min(1100px, 92vw);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+@media (max-width: 912px) {
+  .hero-section .hero-content {
+    grid-template-columns: 1fr;
+  }
+}
+.hero-section .hero-content .hero-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem 0;
+  height: 100%;
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+.hero-section .hero-content .hero-image {
+  display: flex;
+  justify-self: flex-end;
+  /* on définit un keyframe générique ; les valeurs finales seront injectées via animation */
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: inherit;
+  /* Pause au survol optionnelle */
+  /* Réécriture des frames avec les valeurs passées au mixin (portée locale via nesting) */
+  border-radius: 0.4rem;
+  border-top-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  width: clamp(17.5rem, 8.571rem + 23.81vw, 30rem);
+}
+@keyframes cpe-kb-zoom-pan {}
+.hero-section .hero-content .hero-image > img, .hero-section .hero-content .hero-image > picture > img {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
-  z-index: 0;
+  transform-origin: center;
+  will-change: transform;
+  /* on utilise animation + @property pour animer vers des valeurs custom via variables */
+  /* Fallback simple : on “fige” les frames avec une animation dédiée inline via shorthand */
+  animation-name: cpe-kb-zoom-pan;
 }
-.hero-section::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(26, 46, 77, 0.85);
-  z-index: 1;
+@supports (transform: scale(1)) {
+  .hero-section .hero-content .hero-image > img, .hero-section .hero-content .hero-image > picture > img {
+    /* on injecte les valeurs finales via CSS vars et une transition calc */
+    --kb-scale-to: 1.05;
+    --kb-pan-x: -2%;
+    --kb-pan-y: -2%;
+    /* on sur-déclare les frames avec les valeurs */
+    /* (truc simple : on met une animation-name dédiée pour ne pas multiplier les keyframes) */
+    /* on utilise la propriété animation-timeline implicite (fallback simple ci-dessous) */
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .hero-section .hero-content .hero-image > img, .hero-section .hero-content .hero-image > picture > img {
+      animation: cpe-kb-zoom-pan 8s ease-in-out infinite alternate;
+    }
+  }
 }
-.hero-section .hero-content {
-  position: relative;
-  z-index: 2;
-  width: min(1400px, 92vw);
-  padding: clamp(1rem, 2.5vw, 1.5rem);
+@media (hover: hover) {
+  .hero-section .hero-content .hero-image:hover > img, .hero-section .hero-content .hero-image:hover > picture > img {
+    animation-play-state: paused;
+  }
+}
+@keyframes cpe-kb-zoom-pan {
+  from {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+  to {
+    transform: scale(1.05) translate3d(-2%, -2%, 0);
+  }
+}
+.hero-section .hero-content .hero-image img {
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: block;
+}
+@media (max-width: 933px) {
+  .hero-section .hero-content .hero-image {
+    justify-self: center;
+    margin-bottom: 1rem;
+  }
+}
+.hero-section .objectif {
+  width: 100%;
   text-align: center;
-}
-.hero-section .hero-content h2 {
-  font-size: clamp(1.85rem, 4.4vw, 2.65rem);
-  line-height: 1.3;
-  margin-top: clamp(0.2rem, 1.2vw, 0.4rem);
-  margin-bottom: clamp(1rem, 2vw, 2.2rem);
-  color: #5bb887;
-  font-weight: 600;
-}
-.hero-section .hero-content p {
-  font-size: clamp(1.2rem, 2.2vw, 1.3rem);
-  margin-bottom: clamp(1rem, 1.5vw, 2rem);
-  margin-top: clamp(1rem, 1.2vw, 1.6rem);
-  color: rgba(255, 255, 250, 0.9);
-}
-.hero-section .hero-content .objectif {
-  font-size: clamp(1.55rem, 3.85vw, 2rem);
-  font-weight: 600;
-}
-@media screen and (max-width: 1024px) {
-  .hero-section {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-  .hero-section .hero-content {
-    margin-left: 0;
-  }
+  font-size: clamp(1.3rem, 1.193rem + 0.286vw, 1.45rem);
+  font-weight: 700;
+  padding-top: 0.5rem;
 }
 
 .section-why {
-  padding: clamp(0.2rem, 3vw, 1.2rem) 1rem clamp(1rem, 3vw, 2rem);
+  padding: clamp(1rem, 0.286rem + 1.905vw, 2rem) 1rem clamp(2rem, 1.78rem + 1.356vw, 3rem);
   color: #031837;
   text-align: justify;
 }
@@ -96,26 +147,26 @@ body {
 }
 .section-why h2 {
   font-family: "Raleway", sans-serif;
-  font-size: clamp(1.85rem, 4.4vw, 2.65rem);
+  font-size: clamp(1.85rem, 1.314rem + 1.429vw, 2.6rem);
   color: #00a250;
   margin-bottom: 1.5rem;
   text-align: left;
   line-height: clamp(2.2rem, 5vw, 3rem);
 }
 .section-why p {
-  font-size: clamp(1.1rem, 1.65vw, 1.2rem);
+  font-size: 1.1rem;
   line-height: 1.8;
-  margin-bottom: 1.2rem;
 }
 .section-why ul {
   list-style: none;
   padding-left: 0;
   margin-bottom: 1.5rem;
+  margin-top: 1.5rem;
 }
 .section-why ul li {
   position: relative;
   padding-left: 1.8rem;
-  font-size: clamp(1.1rem, 1.65vw, 1.2rem);
+  font-size: 1.1rem;
   line-height: 1.8;
   margin-bottom: 0.8rem;
 }
@@ -144,7 +195,7 @@ body {
 }
 
 .audience-section {
-  padding: clamp(0.2rem, 3vw, 1.2rem) 1rem clamp(2rem, 3vw, 2rem);
+  padding: clamp(1rem, 0.286rem + 1.905vw, 2rem) 1rem clamp(2rem, 1.78rem + 1.356vw, 3rem);
   text-align: justify;
 }
 .audience-section .audience-container {
@@ -152,7 +203,7 @@ body {
   margin: 0 auto;
 }
 .audience-section .audience-container h2 {
-  font-size: clamp(1.85rem, 4.4vw, 2.65rem);
+  font-size: clamp(1.85rem, 1.314rem + 1.429vw, 2.6rem);
   color: #00a250;
   margin-bottom: 2rem;
   font-family: "Raleway", sans-serif;
@@ -173,7 +224,7 @@ body {
   padding: 1rem;
   margin-bottom: 1rem;
   border-radius: 6px;
-  font-size: clamp(1.1rem, 1.65vw, 1.2rem);
+  font-size: 1.1rem;
   line-height: 1.5;
   display: flex;
   align-items: center;
@@ -197,7 +248,7 @@ body {
 .vignettes-section {
   position: relative;
   isolation: isolate;
-  padding: clamp(1.8rem, 2vw, 2rem) 1rem clamp(1.8rem, 4vw, 3rem);
+  padding: clamp(1rem, 0.286rem + 1.905vw, 2rem) 1rem clamp(2rem, 1.78rem + 1.356vw, 3rem);
   text-align: center;
   background: url("../images/photo-accueil_vignettes.webp") center/cover no-repeat;
 }
@@ -213,10 +264,12 @@ body {
   position: relative;
   z-index: 1;
 }
-.vignettes-section h2 {
-  font-size: clamp(1.85rem, 4.4vw, 2.65rem);
+.vignettes-section .vc-title {
+  font-size: clamp(1.85rem, 1.314rem + 1.429vw, 2.6rem);
+  width: min(1100px, 92vw);
+  margin: 0 auto;
   margin-bottom: 1.5rem;
-  color: #fffffa;
+  color: #ffffff;
   font-weight: 700;
 }
 
@@ -225,9 +278,9 @@ body {
    ============================ */
 .vignettes-carousel {
   --edge-offset: clamp(2rem, (100vw - 1200px)/2 + 1rem, 12vw);
-  --front-fs: clamp(1.05rem, 1.6vw, 1.2rem);
-  --back-fs: clamp(1.05rem, 1.6vw, 1.2rem);
-  --cta-fs: clamp(1.05rem, 1.6vw, 1.2rem);
+  --front-fs: $p-size;
+  --back-fs: $p-size;
+  --cta-fs: $p-size;
   --icon-fs: clamp(1.7rem, 3.57vw, 2.72rem);
   --front-grad-angle: 135deg;
   /* Face avant */
@@ -343,17 +396,17 @@ body {
   color: #031837;
 }
 .vignettes-carousel .vc-item.vc-a {
-  --front-bg: color-mix(in oklab, #2F80ED 22%, #fffffa);
+  --front-bg: color-mix(in oklab, #2F80ED 22%, #ffffff);
   --front-fg: #031837;
   --front-fw: 600;
-  --back-bg: #fffffa;
+  --back-bg: #ffffff;
   --back-fg: #031837;
 }
 .vignettes-carousel .vc-item.vc-b {
-  --front-bg: color-mix(in oklab, #00a250 28%, #fffffa);
+  --front-bg: color-mix(in oklab, #00a250 28%, #ffffff);
   --front-fg: #031837;
   --front-fw: 600;
-  --back-bg: #fffffa;
+  --back-bg: #ffffff;
   --back-fg: #031837;
 }
 .vignettes-carousel .vc-btn {
@@ -364,7 +417,7 @@ body {
   height: 42px;
   border-radius: 999px;
   border: 1px solid rgba(26, 46, 77, 0.12);
-  background: color-mix(in oklab, #fffffa 70%, #fff 30%);
+  background: color-mix(in oklab, #ffffff 70%, #fff 30%);
   box-shadow: 0 2px 8px rgba(26, 46, 77, 0.15);
   display: grid;
   place-items: center;
@@ -419,7 +472,7 @@ body {
 }
 
 .simulateur-section {
-  padding: clamp(1rem, 3vw, 2rem) 1rem clamp(2rem, 3vw, 2rem);
+  padding: clamp(1rem, 0.286rem + 1.905vw, 2rem) 1rem clamp(2rem, 1.78rem + 1.356vw, 3rem);
   text-align: justify;
 }
 .simulateur-section .simulateur-container {
@@ -427,7 +480,7 @@ body {
   margin: 0 auto;
 }
 .simulateur-section .simulateur-container h2 {
-  font-size: clamp(1.85rem, 4.4vw, 2.65rem);
+  font-size: clamp(1.85rem, 1.314rem + 1.429vw, 2.6rem);
   color: #00a250;
   margin-bottom: 2rem;
   font-family: "Raleway", sans-serif;
@@ -442,11 +495,11 @@ body {
 }
 
 .expert-section {
-  padding: clamp(1rem, 3vw, 1.2rem) 1rem clamp(2rem, 3vw, 2rem);
+  padding: clamp(1rem, 0.286rem + 1.905vw, 2rem) 1rem clamp(2rem, 1.78rem + 1.356vw, 3rem);
 }
 .expert-section h2 {
   font-family: "Raleway", sans-serif;
-  font-size: clamp(1.85rem, 4.4vw, 2.65rem);
+  font-size: clamp(1.85rem, 1.314rem + 1.429vw, 2.6rem);
   color: #00a250;
   margin-bottom: 1rem;
   text-align: left;
@@ -455,8 +508,10 @@ body {
 .expert-section .expert-content {
   width: min(1100px, 92vw);
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 2fr 1fr;
+  gap: clamp(1rem, 0.286rem + 1.905vw, 2rem);
   align-items: center;
+  justify-items: center;
   max-width: 1100px;
   margin: 0 auto;
 }
@@ -471,7 +526,7 @@ body {
   justify-content: space-between;
   padding: 1rem 0;
   height: 100%;
-  font-size: clamp(1.1rem, 1.65vw, 1.2rem);
+  font-size: 1.1rem;
   line-height: 1.7;
 }
 .expert-section .expert-text p {
@@ -493,14 +548,68 @@ body {
     align-items: center;
   }
 }
-.expert-section .expert-image img {
-  width: clamp(12.5rem, 10.434rem + 12.712vw, 21.875rem);
+.expert-section .expert-image {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: inherit;
+  /* Pause au survol optionnelle */
+  /* Réécriture des frames avec les valeurs passées au mixin (portée locale via nesting) */
   border-radius: 0.4rem;
-  border-bottom-right-radius: 1rem;
   border-top-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  overflow: hidden;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  width: clamp(12.5rem, 10.434rem + 12.712vw, 21.875rem);
+}
+.expert-section .expert-image > img, .expert-section .expert-image > picture > img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transform-origin: center;
+  will-change: transform;
+  /* on utilise animation + @property pour animer vers des valeurs custom via variables */
+  /* Fallback simple : on “fige” les frames avec une animation dédiée inline via shorthand */
+  animation-name: cpe-kb-zoom-pan;
+}
+@supports (transform: scale(1)) {
+  .expert-section .expert-image > img, .expert-section .expert-image > picture > img {
+    /* on injecte les valeurs finales via CSS vars et une transition calc */
+    --kb-scale-to: 1.05;
+    --kb-pan-x: -2%;
+    --kb-pan-y: -2%;
+    /* on sur-déclare les frames avec les valeurs */
+    /* (truc simple : on met une animation-name dédiée pour ne pas multiplier les keyframes) */
+    /* on utilise la propriété animation-timeline implicite (fallback simple ci-dessous) */
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .expert-section .expert-image > img, .expert-section .expert-image > picture > img {
+      animation: cpe-kb-zoom-pan 8s ease-in-out infinite alternate;
+    }
+  }
+}
+@media (hover: hover) {
+  .expert-section .expert-image:hover > img, .expert-section .expert-image:hover > picture > img {
+    animation-play-state: paused;
+  }
+}
+@keyframes cpe-kb-zoom-pan {
+  from {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+  to {
+    transform: scale(1.05) translate3d(-2%, -2%, 0);
+  }
+}
+.expert-section .expert-image img {
+  width: 100%;
   display: block;
   margin: 0 auto;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: block;
 }
 
 .actus-section {
@@ -514,7 +623,7 @@ body {
 }
 .actus-section h2 {
   font-family: "Raleway", sans-serif;
-  font-size: clamp(1.85rem, 4.4vw, 2.65rem);
+  font-size: clamp(1.85rem, 1.314rem + 1.429vw, 2.6rem);
   color: #00a250;
   margin-bottom: 1.5rem;
   text-align: left;
@@ -570,8 +679,8 @@ body {
   width: 0.5rem;
   height: 0.5rem;
   border-radius: 999px;
-  background: #fffffa;
-  box-shadow: 0 0 0 0 rgba(255, 255, 250, 0.7);
+  background: #ffffff;
+  box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
   animation: pulse-dot 1.6s ease-out infinite;
   z-index: 2;
 }
@@ -590,7 +699,7 @@ body {
   white-space: nowrap;
   font-size: clamp(1.05rem, 2.2vw, 1.35rem);
   font-weight: 700;
-  color: #fffffa;
+  color: #ffffff;
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 0.02em;
@@ -684,7 +793,7 @@ body {
   left: 1.5rem;
   width: var(--label-w);
   color: #e63946;
-  background: #fffffa;
+  background: #ffffff;
   border: 2px solid #e63946;
   border-left: 4px solid #e63946;
   border-top: 3px solid #e63946;
@@ -701,7 +810,7 @@ body {
   padding: 0.9rem 0; /* + air vertical */
 }
 .actus-section .actu-item {
-  font-size: clamp(1.3rem, 3.1vw, 1.55rem);
+  font-size: clamp(1.3rem, 1.193rem + 0.286vw, 1.45rem);
 }
 @media (max-width: 1024px) {
   .actus-section .actus-marquee {
@@ -742,15 +851,15 @@ body {
 /* Petit effet "live" */
 @keyframes pulse-dot {
   0% {
-    box-shadow: 0 0 0 0 rgba(255, 255, 250, 0.7);
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
     opacity: 1;
   }
   70% {
-    box-shadow: 0 0 0 10px rgba(255, 255, 250, 0);
+    box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
     opacity: 0.85;
   }
   100% {
-    box-shadow: 0 0 0 0 rgba(255, 255, 250, 0);
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
     opacity: 1;
   }
 }
@@ -784,7 +893,7 @@ body {
   box-sizing: border-box;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   /* Largeur commune : même min partout, grandit si besoin */
-  min-inline-size: min(14.5rem, 80vw);
+  min-inline-size: min(13rem, 80vw);
   inline-size: -moz-max-content;
   inline-size: max-content;
   max-inline-size: 92vw;
@@ -793,12 +902,12 @@ body {
   line-height: 0.7;
   font-weight: 700;
   /* Tailles fluides (réf. WHY) */
-  font-size: clamp(1.2rem, 2.2vw, 1.3rem);
+  font-size: 1.1rem;
   padding: clamp(0.45rem, 1.25vw, 0.7rem) clamp(0.6rem, 1.9vw, 1.2rem);
   text-decoration: none;
   border: none;
   cursor: pointer;
-  min-height: clamp(1.875rem, 1.682rem + 1.186vw, 2.75rem);
+  min-height: clamp(2.2rem, 2.057rem + 0.381vw, 2.4rem);
   /* Rayons */
   border-radius: 0.4rem;
   border-top-left-radius: 1rem;
@@ -812,7 +921,7 @@ body {
   /* Icône interne optionnelle */
 }
 .btn, .btn:link, .btn:visited, .btn:hover, .btn:active, .btn:focus-visible {
-  color: #fffffa;
+  color: #ffffff;
   text-decoration: none;
 }
 .btn::before, .btn::after {
@@ -863,18 +972,13 @@ body {
    ========================================================= */
 @media (max-width: 520px) {
   .btn {
-    /* ↓ plus petit que 1.05rem sur mobile */
-    font-size: clamp(0.94rem, 3.8vw, 1.02rem);
-    /* ↓ padding plus contenu */
-    padding: clamp(0.5rem, 3.2vw, 0.75rem) clamp(0.7rem, 5vw, 1.1rem);
-    /* ↓ largeur mini un peu réduite (optionnel) */
-    min-inline-size: min(11.5rem, 92vw);
+    min-inline-size: min(12rem, 92vw);
   }
 }
 body.page_home {
   font-family: "Raleway", sans-serif;
   color: #031837;
-  background-color: #fffffa;
+  background-color: #ffffff;
   line-height: 1.6;
   display: flex;
   flex-direction: column;
@@ -890,12 +994,46 @@ body.page_home a {
   color: currentColor;
   text-decoration-color: currentColor;
 }
+body.page_home h1 {
+  color: #031837;
+  font-family: "Raleway", sans-serif;
+  font-weight: 800;
+  font-size: clamp(2.2rem, 1.414rem + 2.095vw, 3.3rem);
+  text-align: center;
+  line-height: 1.18;
+  padding: clamp(0.5rem, 0.143rem + 0.952vw, 1rem);
+}
+body.page_home h2 {
+  font-family: "Raleway", sans-serif;
+  text-align: left;
+  font-size: clamp(1.85rem, 1.314rem + 1.429vw, 2.6rem);
+  color: #00a250;
+  margin-bottom: 1.5rem;
+  line-height: clamp(2.2rem, 5vw, 3rem);
+}
+body.page_home h3 {
+  font-family: "Raleway", sans-serif;
+  text-align: center;
+  width: min(1100px, 92vw);
+  margin: 0 auto;
+  font-size: clamp(1.55rem, 1.229rem + 0.857vw, 2rem);
+  color: #00a250;
+  line-height: clamp(2.2rem, 1.914rem + 0.762vw, 2.6rem);
+}
+@media (max-width: 768px) {
+  body.page_home h3 {
+    width: 95%;
+  }
+}
+body.page_home p {
+  text-align: justify;
+}
 
 /* Scope page */
 body.page-actus {
   font-family: "Raleway", sans-serif;
   color: #031837;
-  background-color: #fffffa;
+  background-color: #ffffff;
   line-height: 1.6;
   display: flex;
   flex-direction: column;
@@ -911,26 +1049,93 @@ body.page-actus a {
   text-decoration: none;
   color: inherit;
 }
-body.page-actus .actualites-section {
-  padding: 2.5rem 1rem;
-  background: #fffffa;
-  /* ====== Responsive (≤ 768px) ====== */
-}
-body.page-actus .actualites-section h2 {
-  margin: 0 0 1.25rem;
+body.page-actus h1 {
+  width: min(1100px, 92vw);
+  margin: 0 auto;
   color: #031837;
   font-family: "Raleway", sans-serif;
-  font-size: clamp(1.85rem, 4.4vw, 2.65rem);
+  font-weight: 800;
+  font-size: clamp(2.2rem, 1.414rem + 2.095vw, 3.3rem);
   text-align: center;
+  line-height: 1.18;
+  padding: clamp(0.5rem, 0.143rem + 0.952vw, 1rem);
 }
-body.page-actus .actualites-section .actu-list {
+body.page-actus h2 {
+  font-family: "Raleway", sans-serif;
+  font-size: clamp(1.85rem, 1.314rem + 1.429vw, 2.6rem);
+  color: #00a250;
+  margin-bottom: 1.5rem;
+  line-height: clamp(2.2rem, 5vw, 3rem);
+}
+body.page-actus p {
+  font-size: 1.1rem;
+  text-align: justify;
+  line-height: 1.8;
+  margin-bottom: 1.2rem;
+}
+body.page-actus main .intro {
+  padding: clamp(1rem, 0.286rem + 1.905vw, 2rem) 1rem clamp(2rem, 1.78rem + 1.356vw, 3rem);
+  color: #031837;
+}
+body.page-actus main .intro .intro-container {
+  width: min(1100px, 92vw);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+@media (max-width: 768px) {
+  body.page-actus main .intro .intro-container {
+    grid-template-columns: 1fr;
+  }
+}
+body.page-actus main .intro .intro-container .intro-text {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+body.page-actus main .intro .intro-container .intro-image {
+  display: flex;
+  justify-self: flex-end;
+}
+body.page-actus main .intro .intro-container .intro-image img {
+  width: clamp(17.5rem, 8.571rem + 23.81vw, 30rem);
+  border-radius: 0.4rem;
+  border-bottom-right-radius: 1rem;
+  border-top-left-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  display: block;
+  margin: 0 auto;
+}
+@media (max-width: 933px) {
+  body.page-actus main .intro .intro-container .intro-image {
+    padding-top: 1rem;
+    justify-self: center;
+  }
+}
+body.page-actus main .intro .intro-container .cta-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(0.8rem, 1.6vw, 1.2rem);
+  margin: clamp(1rem, 0.78rem + 1.356vw, 2rem) 0 1rem;
+}
+body.page-actus main .actualites-section {
+  padding: 2.5rem 1rem;
+  background: #ffffff;
+  /* ====== Responsive (≤ 768px) ====== */
+}
+body.page-actus main .actualites-section .actu-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 1rem;
   max-width: 1200px;
   margin: 0 auto;
 }
-body.page-actus .actualites-section .actu-card {
+body.page-actus main .actualites-section .actu-card {
   background: #fff;
   border-radius: 0.6rem;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
@@ -939,14 +1144,14 @@ body.page-actus .actualites-section .actu-card {
   grid-template-rows: auto 1fr;
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
-body.page-actus .actualites-section .actu-card:hover {
+body.page-actus main .actualites-section .actu-card:hover {
   transform: translateY(-2px);
   box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
 }
-body.page-actus .actualites-section .actu-media {
+body.page-actus main .actualites-section .actu-media {
   background: #f7f7f7;
 }
-body.page-actus .actualites-section .actu-media img {
+body.page-actus main .actualites-section .actu-media img {
   display: block;
   width: 100%;
   height: auto;
@@ -954,44 +1159,44 @@ body.page-actus .actualites-section .actu-media img {
   -o-object-fit: cover;
      object-fit: cover;
 }
-body.page-actus .actualites-section .actu-body {
+body.page-actus main .actualites-section .actu-body {
   padding: 1rem 1rem 1.1rem;
 }
-body.page-actus .actualites-section .actu-title {
+body.page-actus main .actualites-section .actu-title {
   margin: 0 0 0.35rem;
   color: #031837;
-  font-size: clamp(1.3rem, 3.1vw, 1.55rem);
+  font-size: clamp(1.3rem, 1.193rem + 0.286vw, 1.45rem);
   line-height: 1.25;
 }
-body.page-actus .actualites-section .actu-meta {
+body.page-actus main .actualites-section .actu-meta {
   margin: 0 0 0.6rem;
   color: #4B5563;
-  font-size: clamp(1.1rem, 1.65vw, 1.2rem);
+  font-size: 1.1rem;
   opacity: 0.9;
 }
-body.page-actus .actualites-section .actu-meta .tag {
+body.page-actus main .actualites-section .actu-meta .tag {
   display: inline-block;
   margin-left: 0.5rem;
   padding: 0.12rem 0.45rem;
   border-radius: 0.4rem;
   background: rgba(243, 111, 33, 0.14);
   color: #F36F21;
-  font-size: clamp(1.1rem, 1.65vw, 1.2rem);
+  font-size: 1.1rem;
   line-height: 1;
   vertical-align: baseline;
 }
-body.page-actus .actualites-section .actu-summary {
+body.page-actus main .actualites-section .actu-summary {
   margin: 0;
   color: #031837;
   opacity: 0.9;
-  font-size: clamp(1.1rem, 1.65vw, 1.2rem);
+  font-size: 1.1rem;
   line-height: 1.45;
 }
 @media (max-width: 768px) {
-  body.page-actus .actualites-section {
+  body.page-actus main .actualites-section {
     padding: 1.6rem 0.8rem;
   }
-  body.page-actus .actualites-section .actu-list {
+  body.page-actus main .actualites-section .actu-list {
     gap: 0.8rem;
   }
 }
@@ -1000,7 +1205,7 @@ body.page-actus .actualites-section .actu-summary {
 body.page-definition {
   font-family: "Raleway", sans-serif;
   color: #031837;
-  background-color: #fffffa;
+  background-color: #ffffff;
   line-height: 1.6;
   display: flex;
   flex-direction: column;
@@ -1016,27 +1221,36 @@ body.page-definition a {
   color: currentColor;
   text-decoration-color: currentColor;
 }
+body.page-definition h1 {
+  color: #031837;
+  font-family: "Raleway", sans-serif;
+  font-weight: 800;
+  font-size: clamp(2.2rem, 1.414rem + 2.095vw, 3.3rem);
+  text-align: center;
+  line-height: 1.18;
+  padding: clamp(0.5rem, 0.143rem + 0.952vw, 1rem);
+}
 body.page-definition h2 {
   font-family: "Raleway", sans-serif;
-  font-size: clamp(1.85rem, 4.4vw, 2.65rem);
+  font-size: clamp(1.85rem, 1.314rem + 1.429vw, 2.6rem);
   color: #00a250;
   margin-bottom: 1.5rem;
   text-align: left;
   line-height: clamp(2.2rem, 5vw, 3rem);
 }
 body.page-definition p {
-  font-size: clamp(1.1rem, 1.65vw, 1.2rem);
+  font-size: 1.1rem;
   line-height: 1.8;
   margin-bottom: 1.2rem;
 }
 body.page-definition main .intro {
-  padding: clamp(1rem, 5vw, 3rem) 1rem clamp(2rem, 5vw, 4rem);
+  padding: clamp(1rem, 0.286rem + 1.905vw, 2rem) 1rem clamp(2rem, 1.78rem + 1.356vw, 3rem);
   color: #031837;
   text-align: justify;
 }
 body.page-definition main .intro .intro-container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 2fr 1fr;
   gap: 2rem;
   align-items: center;
   max-width: 1100px;
@@ -1058,19 +1272,74 @@ body.page-definition main .intro .intro-container .intro-text .cta-buttons {
   display: flex;
   justify-content: center;
   gap: clamp(0.8rem, 1.6vw, 1.2rem);
-  margin-top: clamp(1.2rem, 2.4vw, 2rem);
+}
+body.page-definition main .intro .intro-container .intro-image {
+  display: flex;
+  justify-self: center;
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: inherit;
+  /* Pause au survol optionnelle */
+  /* Réécriture des frames avec les valeurs passées au mixin (portée locale via nesting) */
+  border-radius: 0.4rem;
+  border-top-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  width: clamp(12.5rem, 10.434rem + 12.712vw, 21.875rem);
+}
+body.page-definition main .intro .intro-container .intro-image > img, body.page-definition main .intro .intro-container .intro-image > picture > img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transform-origin: center;
+  will-change: transform;
+  /* on utilise animation + @property pour animer vers des valeurs custom via variables */
+  /* Fallback simple : on “fige” les frames avec une animation dédiée inline via shorthand */
+  animation-name: cpe-kb-zoom-pan;
+}
+@supports (transform: scale(1)) {
+  body.page-definition main .intro .intro-container .intro-image > img, body.page-definition main .intro .intro-container .intro-image > picture > img {
+    /* on injecte les valeurs finales via CSS vars et une transition calc */
+    --kb-scale-to: 1.05;
+    --kb-pan-x: -2%;
+    --kb-pan-y: -2%;
+    /* on sur-déclare les frames avec les valeurs */
+    /* (truc simple : on met une animation-name dédiée pour ne pas multiplier les keyframes) */
+    /* on utilise la propriété animation-timeline implicite (fallback simple ci-dessous) */
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    body.page-definition main .intro .intro-container .intro-image > img, body.page-definition main .intro .intro-container .intro-image > picture > img {
+      animation: cpe-kb-zoom-pan 8s ease-in-out infinite alternate;
+    }
+  }
+}
+@media (hover: hover) {
+  body.page-definition main .intro .intro-container .intro-image:hover > img, body.page-definition main .intro .intro-container .intro-image:hover > picture > img {
+    animation-play-state: paused;
+  }
+}
+@keyframes cpe-kb-zoom-pan {
+  from {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+  to {
+    transform: scale(1.05) translate3d(-2%, -2%, 0);
+  }
 }
 body.page-definition main .intro .intro-container .intro-image img {
-  width: clamp(12.5rem, 10.434rem + 12.712vw, 21.875rem);
-  border-radius: 0.4rem;
-  border-bottom-right-radius: 1rem;
-  border-top-left-radius: 1rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  width: 100%;
   display: block;
   margin: 0 auto;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: block;
 }
 body.page-definition main .definition {
-  padding: clamp(1rem, 5vw, 3rem) 1rem clamp(2rem, 5vw, 4rem);
+  padding: clamp(1rem, 0.286rem + 1.905vw, 2rem) 1rem clamp(2rem, 1.78rem + 1.356vw, 3rem);
   color: #031837;
   text-align: justify;
 }
@@ -1119,11 +1388,11 @@ body.page-definition main .definition .definition-container .info-card .ico {
 body.page-definition main .definition .definition-container .info-card strong {
   display: block;
   color: #031837;
-  font-size: clamp(1.1rem, 1.65vw, 1.2rem);
+  font-size: 1.1rem;
 }
 body.page-definition main .definition .definition-container .info-card small {
   color: #00a250;
-  font-size: clamp(1.1rem, 1.65vw, 1.2rem);
+  font-size: 1.1rem;
 }
 @media (max-width: 990px) {
   body.page-definition main .definition .definition-container .info-grid {
@@ -1151,7 +1420,7 @@ body.page-definition main .definition .definition-container .info-card small {
   }
 }
 body.page-definition main .cadre {
-  padding: clamp(1rem, 0.559rem + 2.712vw, 3rem) 1rem clamp(2rem, 1.78rem + 1.356vw, 3rem);
+  padding: clamp(1rem, 0.286rem + 1.905vw, 2rem) 1rem clamp(2rem, 1.78rem + 1.356vw, 3rem);
   color: #031837;
   text-align: justify;
 }
@@ -1178,7 +1447,7 @@ body.page-definition main .cadre .cadre-container .cadre-list li {
   border-radius: 0.4rem;
   border-bottom-right-radius: 1rem;
   border-top-left-radius: 1rem;
-  font-size: clamp(1.1rem, 1.65vw, 1.2rem);
+  font-size: 1.1rem;
   line-height: 1.5;
   display: flex;
   align-items: center;
@@ -1198,7 +1467,7 @@ body.page-definition main .cadre .cadre-container .cta-buttons {
   margin: clamp(2rem, 4vw, 5rem) 0rem clamp(1rem, 1.4vw, 1rem);
 }
 body.page-definition main .principe {
-  padding: clamp(2rem, 5vw, 4rem) 1rem;
+  padding: clamp(1rem, 0.286rem + 1.905vw, 2rem) 1rem clamp(0.5rem, 0.143rem + 0.952vw, 1rem);
   color: #031837;
   text-align: justify;
 }
@@ -1262,7 +1531,7 @@ body.page-definition main .principe .principe-container .principe-list > li.prin
   align-items: center;
   justify-content: center;
   background: #be097f;
-  color: #fffffa;
+  color: #ffffff;
   font-weight: 800;
   font-size: 1rem;
 }
@@ -1309,6 +1578,7 @@ body.page-definition main .principe .principe-container .flip-face {
   border-bottom-right-radius: 1rem;
   border-top-left-radius: 1rem;
   box-shadow: 4px 4px 5px rgba(3, 24, 55, 0.0549019608);
+  font-size: 1.1rem;
   /* ⬇️ hauteur fixée, responsive via clamp */
   height: clamp(6rem, 3vw, 8rem);
   padding: clamp(1rem, 2vw, 1.4rem);
@@ -1341,7 +1611,7 @@ body.page-definition main .principe .principe-container .flip-face.back {
   }
 }
 body.page-definition main .domaines {
-  padding: clamp(2rem, 5vw, 4rem) 1rem;
+  padding: clamp(1rem, 0.286rem + 1.905vw, 2rem) 1rem clamp(2rem, 1.78rem + 1.356vw, 3rem);
   color: #031837;
   text-align: center;
 }
@@ -1393,7 +1663,7 @@ body.page-definition main .domaines .domaine .card .band {
   text-align: left;
   padding: 0.6rem 0.8rem;
   background: rgba(3, 24, 55, 0.86);
-  color: #fffffa;
+  color: #ffffff;
   box-shadow: 0 -10px 18px rgba(0, 0, 0, 0.22) inset;
 }
 body.page-definition main .domaines .domaine .card .band .txt {
@@ -1404,12 +1674,12 @@ body.page-definition main .domaines .domaine .card .band .txt {
 body.page-definition main .domaines .domaine .card .band .txt em {
   font-style: normal;
   font-weight: 700;
-  color: #fffffa;
+  color: #ffffff;
   font-size: clamp(1rem, 1.7vw, 1.2rem);
 }
 body.page-definition main .domaines .domaine .card .band .txt small {
   font-size: clamp(0.85rem, 1.4vw, 0.95rem);
-  color: rgb(255, 255, 219.7);
+  color: rgb(239.7, 239.7, 239.7);
   opacity: 0.95;
   margin-top: 0.1rem;
 }
@@ -1491,7 +1761,7 @@ body.page-definition main .domaines .domaines-list > ul li {
   }
 }
 body.page-definition main .objectifs {
-  padding: clamp(2rem, 5vw, 4rem) 1rem clamp(2rem, 5vw, 4rem) 1rem;
+  padding: clamp(1rem, 0.286rem + 1.905vw, 2rem) 1rem clamp(2rem, 1.78rem + 1.356vw, 3rem);
   color: #031837;
   text-align: justify;
 }
@@ -1500,7 +1770,7 @@ body.page-definition main .objectifs .objectifs-container {
   margin: 0 auto;
 }
 body.page-definition main .objectifs .objectifs-container h5 {
-  font-size: clamp(1.2rem, 2.2vw, 1.3rem);
+  font-size: 1.2rem;
   margin-top: 2rem;
 }
 body.page-definition main .objectifs .objectifs-container .goals {
@@ -1539,7 +1809,7 @@ body.page-definition main .objectifs .objectifs-container .goals li:hover {
   background: linear-gradient(165deg, rgba(46, 204, 113, 0.24), rgba(135, 211, 167, 0.295));
 }
 body.page-definition main .comparatif {
-  padding: clamp(2rem, 5vw, 4rem) 1rem;
+  padding: clamp(1rem, 0.286rem + 1.905vw, 2rem) 1rem clamp(2rem, 1.78rem + 1.356vw, 3rem);
   color: #031837;
   text-align: center;
 }
@@ -1595,7 +1865,7 @@ body.page-definition main .comparatif .col-list li {
   justify-content: center;
   text-align: center;
   border-bottom: 1px solid rgba(3, 24, 55, 0.3);
-  background: #fffffa;
+  background: #ffffff;
 }
 body.page-definition main .comparatif .col-list li:last-child {
   border-bottom: 0;
@@ -1616,7 +1886,7 @@ body.page-definition main .comparatif #col-classic .col-list li {
 }
 @media (hover: hover) and (pointer: fine) {
   body.page-definition main .comparatif .col-list li:hover {
-    background: rgba(255, 255, 250, 0.6);
+    background: rgba(255, 255, 255, 0.6);
   }
   body.page-definition main .comparatif #col-cpe .col-list li:hover {
     background: rgba(63, 171, 53, 0.1);
@@ -1647,7 +1917,7 @@ body.page-definition main .comparatif #col-classic .col-list li {
     text-align: left;
     border-top: 2px solid rgba(0, 71, 30, 0.63);
     border-left: 4px solid rgb(0, 71, 30);
-    background: #fffffa;
+    background: #ffffff;
     padding: 0.8rem 1rem;
   }
   body.page-definition main .comparatif #objectif .col-list li::before {
@@ -1668,7 +1938,7 @@ body.page-definition main .comparatif #col-classic .col-list li {
   body.page-definition main .comparatif #objectif .col-list li {
     border-radius: 0.6rem 0.6rem 0 0;
     border-bottom: 0;
-    background: #fffffa;
+    background: #ffffff;
   }
   body.page-definition main .comparatif #col-cpe .col-list li {
     border-top: 2px solid rgb(56.7, 153.9, 47.7);
@@ -1728,50 +1998,9 @@ body.page-definition main .comparatif #col-classic .col-list li {
   }
 }
 body.page-definition main .expert-section {
-  padding: clamp(2rem, 5vw, 4rem) 1rem;
+  padding: clamp(1rem, 0.286rem + 1.905vw, 2rem) 1rem clamp(2rem, 1.78rem + 1.356vw, 3rem);
   color: #031837;
   text-align: justify;
-}
-body.page-definition main .expert-section .expert-content {
-  width: min(1100px, 92vw);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-@media (max-width: 768px) {
-  body.page-definition main .expert-section .expert-content {
-    grid-template-columns: 1fr;
-  }
-}
-body.page-definition main .expert-section .expert-content .expert-text {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 1rem 0;
-  height: 100%;
-  font-size: clamp(1.1rem, 1.65vw, 1.2rem);
-  line-height: 1.7;
-}
-body.page-definition main .expert-section .expert-content .expert-text p {
-  margin-bottom: 1rem;
-}
-body.page-definition main .expert-section .expert-content .expert-text .highlight {
-  font-weight: bold;
-  margin-top: 1.5rem;
-}
-body.page-definition main .expert-section .expert-content .expert-text .cta-buttons {
-  display: flex;
-  justify-content: center;
-  gap: clamp(0.8rem, 1.6vw, 1.2rem);
-  margin-top: clamp(1rem, 2.4vw, 2rem);
-  margin-bottom: clamp(1rem, 1.4vw, 1rem);
-}
-@media (max-width: 768px) {
-  body.page-definition main .expert-section .expert-content .expert-text {
-    align-items: center;
-  }
 }
 body.page-definition main .expert-section .expert-content .expert-text .h3-resume {
   color: #00a250;
@@ -1781,21 +2010,12 @@ body.page-definition main .expert-section .expert-content .expert-text .h3-resum
     align-items: center;
   }
 }
-body.page-definition main .expert-section .expert-content .expert-text .expert-image img {
-  width: clamp(12.5rem, 10.434rem + 12.712vw, 21.875rem);
-  border-radius: 0.4rem;
-  border-bottom-right-radius: 1rem;
-  border-top-left-radius: 1rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  display: block;
-  margin: 0 auto;
-}
 
 /* Scope page */
 body.page-fonctionnement {
   font-family: "Raleway", sans-serif;
   color: #031837;
-  background-color: #fffffa;
+  background-color: #ffffff;
   line-height: 1.6;
   display: flex;
   flex-direction: column;
@@ -1811,28 +2031,37 @@ body.page-fonctionnement a {
   text-decoration: none;
   color: inherit;
 }
+body.page-fonctionnement h1 {
+  color: #031837;
+  font-family: "Raleway", sans-serif;
+  font-weight: 800;
+  font-size: clamp(2.2rem, 1.414rem + 2.095vw, 3.3rem);
+  text-align: center;
+  line-height: 1.18;
+  padding: clamp(0.5rem, 0.143rem + 0.952vw, 1rem);
+}
 body.page-fonctionnement h2 {
   font-family: "Raleway", sans-serif;
-  font-size: clamp(1.85rem, 4.4vw, 2.65rem);
+  font-size: clamp(1.85rem, 1.314rem + 1.429vw, 2.6rem);
   color: #00a250;
   margin-bottom: 1.5rem;
-  text-align: left;
   line-height: clamp(2.2rem, 5vw, 3rem);
 }
 body.page-fonctionnement p {
-  font-size: clamp(1.1rem, 1.65vw, 1.2rem);
+  font-size: 1.1rem;
   line-height: 1.8;
   margin-bottom: 1.2rem;
+  text-align: justify;
 }
 body.page-fonctionnement main .intro {
-  padding: clamp(1rem, 5vw, 3rem) 1rem clamp(2rem, 1.78rem + 1.356vw, 3rem);
+  padding: clamp(1rem, 0.286rem + 1.905vw, 2rem) 1rem clamp(2rem, 1.78rem + 1.356vw, 3rem);
   color: #031837;
-  text-align: justify;
 }
 body.page-fonctionnement main .intro .intro-container {
   width: min(1100px, 92vw);
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
   align-items: center;
   max-width: 1100px;
   margin: 0 auto;
@@ -1846,9 +2075,8 @@ body.page-fonctionnement main .intro .intro-container .intro-text {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 1rem 0;
   height: 100%;
-  font-size: clamp(1.1rem, 1.65vw, 1.2rem);
+  font-size: 1.1rem;
   line-height: 1.7;
 }
 body.page-fonctionnement main .intro .intro-container .intro-text .cta-buttons {
@@ -1856,24 +2084,79 @@ body.page-fonctionnement main .intro .intro-container .intro-text .cta-buttons {
   justify-content: center;
   gap: clamp(0.8rem, 1.6vw, 1.2rem);
   margin-top: clamp(1rem, 2.4vw, 2rem);
-  margin-bottom: clamp(1rem, 1.4vw, 1rem);
 }
 @media (max-width: 768px) {
   body.page-fonctionnement main .intro .intro-container .intro-text {
     align-items: center;
   }
 }
-body.page-fonctionnement main .intro .intro-container .intro-image img {
-  width: clamp(12.5rem, 10.434rem + 12.712vw, 21.875rem);
+body.page-fonctionnement main .intro .intro-container .intro-image {
+  display: flex;
+  justify-self: center;
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: inherit;
+  /* Pause au survol optionnelle */
+  /* Réécriture des frames avec les valeurs passées au mixin (portée locale via nesting) */
   border-radius: 0.4rem;
-  border-bottom-right-radius: 1rem;
   border-top-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  overflow: hidden;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  width: clamp(12.5rem, 10.434rem + 12.712vw, 21.875rem);
+}
+body.page-fonctionnement main .intro .intro-container .intro-image > img, body.page-fonctionnement main .intro .intro-container .intro-image > picture > img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transform-origin: center;
+  will-change: transform;
+  /* on utilise animation + @property pour animer vers des valeurs custom via variables */
+  /* Fallback simple : on “fige” les frames avec une animation dédiée inline via shorthand */
+  animation-name: cpe-kb-zoom-pan;
+}
+@supports (transform: scale(1)) {
+  body.page-fonctionnement main .intro .intro-container .intro-image > img, body.page-fonctionnement main .intro .intro-container .intro-image > picture > img {
+    /* on injecte les valeurs finales via CSS vars et une transition calc */
+    --kb-scale-to: 1.05;
+    --kb-pan-x: -2%;
+    --kb-pan-y: -2%;
+    /* on sur-déclare les frames avec les valeurs */
+    /* (truc simple : on met une animation-name dédiée pour ne pas multiplier les keyframes) */
+    /* on utilise la propriété animation-timeline implicite (fallback simple ci-dessous) */
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    body.page-fonctionnement main .intro .intro-container .intro-image > img, body.page-fonctionnement main .intro .intro-container .intro-image > picture > img {
+      animation: cpe-kb-zoom-pan 8s ease-in-out infinite alternate;
+    }
+  }
+}
+@media (hover: hover) {
+  body.page-fonctionnement main .intro .intro-container .intro-image:hover > img, body.page-fonctionnement main .intro .intro-container .intro-image:hover > picture > img {
+    animation-play-state: paused;
+  }
+}
+@keyframes cpe-kb-zoom-pan {
+  from {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+  to {
+    transform: scale(1.05) translate3d(-2%, -2%, 0);
+  }
+}
+body.page-fonctionnement main .intro .intro-container .intro-image img {
+  width: 100%;
   display: block;
   margin: 0 auto;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: block;
 }
 body.page-fonctionnement main .etapes {
-  padding: clamp(2rem, 5vw, 2rem) 1rem;
+  padding: clamp(1rem, 0.286rem + 1.905vw, 2rem) 1rem clamp(2rem, 1.78rem + 1.356vw, 3rem);
   color: #031837;
   text-align: justify;
 }
@@ -1882,7 +2165,7 @@ body.page-fonctionnement main .etapes .etapes-container {
   margin: 0 auto;
 }
 body.page-fonctionnement main .etapes .etapes-container h4 {
-  font-size: clamp(1.3rem, 3.1vw, 1.55rem);
+  font-size: clamp(1.3rem, 1.193rem + 0.286vw, 1.45rem);
   color: #be097f;
 }
 body.page-fonctionnement main .etapes .etapes-container .etapes-list {
@@ -1924,6 +2207,8 @@ body.page-fonctionnement main .etapes .etapes-container .etape-text {
   text-align: left;
 }
 body.page-fonctionnement main .etapes .etapes-container .etape-media {
+  display: flex;
+  justify-self: center;
   width: clamp(12rem, 8.898rem + 6.78vw, 15rem);
   aspect-ratio: 2/3;
   border-radius: 0.4rem;
@@ -1942,13 +2227,13 @@ body.page-fonctionnement main .etapes .etapes-container .etape-media img {
      object-position: center;
 }
 body.page-fonctionnement main .etapes .etapes-container .etapes-list .etape-text > h5 {
-  font-size: clamp(1.2rem, 2.2vw, 1.3rem);
+  font-size: 1.2rem;
   display: flex;
   align-items: center;
   margin-bottom: 0.5rem;
 }
 body.page-fonctionnement main .etapes .etapes-container .etapes-list .etape-text > p {
-  font-size: clamp(1.1rem, 1.65vw, 1.2rem);
+  font-size: 1.1rem;
 }
 body.page-fonctionnement main .etapes .etapes-container li:last-child {
   padding-bottom: 0;
@@ -1979,7 +2264,7 @@ body.page-fonctionnement main .etapes .etapes-container .etapes-list .etape-text
   align-items: center;
   justify-content: center;
   background: #5bb887;
-  color: #fffffa;
+  color: #ffffff;
   font-weight: 800;
   font-size: 1rem;
   margin-right: 1rem;
@@ -1991,7 +2276,7 @@ body.page-fonctionnement main .etapes .etapes-container .etapes-list .etape-text
 }
 body.page-fonctionnement main .etapes .etapes-container .etapes-list .etape-text > ul li {
   margin: 0.35rem 0;
-  font-size: clamp(1.1rem, 1.65vw, 1.2rem);
+  font-size: 1.1rem;
   line-height: 1.6;
 }
 @media (max-width: 768px) {
@@ -2030,14 +2315,15 @@ body.page-fonctionnement main .etapes .etapes-container .etapes-list .etape-text
   }
 }
 body.page-fonctionnement main .ipmvp {
-  padding: clamp(2rem, 5vw, 4rem) 1rem;
+  padding: clamp(1rem, 0.286rem + 1.905vw, 2rem) 1rem clamp(2rem, 1.78rem + 1.356vw, 3rem);
   color: #031837;
   text-align: justify;
 }
 body.page-fonctionnement main .ipmvp .ipmvp-container {
   width: min(1100px, 92vw);
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
   align-items: center;
   max-width: 1100px;
   margin: 0 auto;
@@ -2052,7 +2338,7 @@ body.page-fonctionnement main .ipmvp .ipmvp-container .ipmvp-text {
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
-  font-size: clamp(1.1rem, 1.65vw, 1.2rem);
+  font-size: 1.1rem;
   line-height: 1.7;
 }
 body.page-fonctionnement main .ipmvp .ipmvp-container .ipmvp-text .ipmvp-p {
@@ -2073,6 +2359,10 @@ body.page-fonctionnement main .ipmvp .ipmvp-container .ipmvp-text .cta-buttons {
     align-items: center;
   }
 }
+body.page-fonctionnement main .ipmvp .ipmvp-container .ipmvp-image {
+  display: flex;
+  justify-self: center;
+}
 body.page-fonctionnement main .ipmvp .ipmvp-container .ipmvp-image img {
   width: clamp(12.5rem, 10.434rem + 12.712vw, 21.875rem);
   border-radius: 0.4rem;
@@ -2089,9 +2379,11 @@ body.page-fonctionnement main .ipmvp .ipmvp-container .ipmvp-image img {
 }
 body.page-fonctionnement main .roles {
   padding: clamp(1rem, 5vw, 3rem) 1rem clamp(2rem, 5vw, 4rem);
-  margin-bottom: 2rem;
   color: #031837;
   text-align: justify;
+  /* === Vignettes CENTRÉES comme ta version d'origine (flex) === */
+  /* === Flip sans JS : hover + focus/tap (mobile) === */
+  /* Overlay grid => hauteur AUTO = max(face, verso) */
 }
 body.page-fonctionnement main .roles .roles-container {
   width: min(1100px, 92vw);
@@ -2100,50 +2392,76 @@ body.page-fonctionnement main .roles .roles-container {
 body.page-fonctionnement main .roles .roles-grid {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center; /* centre toutes les lignes */
+  justify-content: center; /* centre chaque rangée */
   gap: 0.8rem;
   margin-top: 0.8rem;
 }
 body.page-fonctionnement main .roles .role-card {
-  flex: 0 1 clamp(280px, 30vw, 340px); /* largeur carte bornée */
+  flex: 0 1 clamp(280px, 30vw, 340px);
   max-inline-size: 340px;
   width: 100%;
+}
+body.page-fonctionnement main .roles .flip-card {
+  perspective: 1000px;
+  display: block;
+  outline: none;
+}
+body.page-fonctionnement main .roles .flip-inner {
+  display: grid;
+  transform-style: preserve-3d;
+  transition: transform 0.45s ease;
+}
+body.page-fonctionnement main .roles .flip-card:hover .flip-inner,
+body.page-fonctionnement main .roles .flip-card:focus-within .flip-inner {
+  transform: rotateY(180deg);
+}
+body.page-fonctionnement main .roles .flip-face {
+  grid-area: 1/1;
   background: linear-gradient(165deg, rgba(46, 204, 112, 0.164), rgba(67, 233, 139, 0.062));
-  border-top: 2px solid rgb(0, 71, 30);
+  border-top: 1px solid rgba(0, 71, 30, 0.63);
   border-left: 4px solid rgb(0, 71, 30);
-  box-shadow: 4px 4px 5px rgba(3, 24, 55, 0.0549019608);
   border-radius: 0.4rem;
   border-bottom-right-radius: 1rem;
   border-top-left-radius: 1rem;
-  padding: clamp(0.3rem, 1vw, 0.9rem) clamp(0.6rem, 1.3vw, 0.9rem);
+  box-shadow: 4px 4px 5px rgba(3, 24, 55, 0.0549019608);
+  /* IMPORTANT pour éviter l’écrasement */
+  height: auto; /* override de toute hauteur fixe résiduelle */
+  min-height: clamp(7.5rem, 11vw, 10.5rem);
+  padding: clamp(1rem, 2vw, 1.4rem);
+  display: grid;
+  place-items: center;
   text-align: center;
-  transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+  backface-visibility: hidden;
+  backface-visibility: hidden;
 }
-body.page-fonctionnement main .roles .role-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 14px 30px rgba(26, 46, 77, 0.178);
+body.page-fonctionnement main .roles .flip-face.back {
+  transform: rotateY(180deg);
   background: linear-gradient(165deg, rgba(46, 204, 113, 0.24), rgba(135, 211, 167, 0.295));
 }
-body.page-fonctionnement main .roles .role-card .role-icon {
-  display: block;
-  margin: 0 auto 0.25rem;
+body.page-fonctionnement main .roles .role-icon {
   inline-size: clamp(44px, 6.8vw, 60px);
-  block-size: auto;
+  aspect-ratio: 1/1;
+  -o-object-fit: contain;
+     object-fit: contain;
+  margin-bottom: 0.35rem;
   filter: invert(17%) sepia(100%) saturate(3540%) hue-rotate(308deg) brightness(86%) contrast(110%);
 }
-body.page-fonctionnement main .roles .role-card h3 {
-  color: #031837;
-  font-size: clamp(1.1rem, 1.65vw, 1.2rem);
-  margin-bottom: 0.25rem;
-  line-height: 1.2;
-}
-body.page-fonctionnement main .roles .role-card p {
+body.page-fonctionnement main .roles h3 {
   color: #00a250;
-  font-size: clamp(1.1rem, 1.65vw, 1.2rem);
-  line-height: 1.35;
+  font-size: 1.2rem;
+  line-height: 1.2;
   margin: 0;
 }
+body.page-fonctionnement main .roles p {
+  color: #031837;
+  font-size: 1.1rem;
+  line-height: 1.45;
+  margin: 0;
+  font-weight: 100;
+  text-align: center;
+}
 @media (max-width: 600px) {
+  body.page-fonctionnement main .roles { /* 1 par ligne, centrée */ }
   body.page-fonctionnement main .roles .role-card {
     flex-basis: 100%;
     max-inline-size: none;
@@ -2174,7 +2492,7 @@ body.page-fonctionnement main .pourquoi .pourquoi-container .pourquoi-list li {
   border-radius: 0.4rem;
   border-top-left-radius: 1rem;
   border-bottom-right-radius: 1rem;
-  font-size: clamp(1.1rem, 1.65vw, 1.2rem);
+  font-size: 1.1rem;
   line-height: 1.5;
   align-items: center;
   box-shadow: 4px 4px 5px rgba(3, 24, 55, 0.0549019608);
@@ -2238,10 +2556,10 @@ body.page-fonctionnement main .action .cta-inner {
 }
 body.page-fonctionnement main .action .cta-inner h3 {
   color: #be097f;
-  font-size: clamp(1.55rem, 3.85vw, 2rem);
+  font-size: clamp(1.55rem, 1.229rem + 0.857vw, 2rem);
 }
 body.page-fonctionnement main .action .cta-inner h5 {
-  font-size: clamp(1.2rem, 2.2vw, 1.3rem);
+  font-size: 1.2rem;
 }
 body.page-fonctionnement main .action .cta-inner .cta-buttons {
   display: flex;
@@ -2286,12 +2604,12 @@ body.page-fonctionnement main .action .cta-inner .cta-buttons {
 body.page-fonctionnement main .exemple {
   padding: clamp(1rem, 0.559rem + 2.712vw, 3rem) 1rem clamp(2rem, 1.78rem + 1.356vw, 3rem);
   color: #031837;
-  text-align: justify;
 }
 body.page-fonctionnement main .exemple .exemple-container {
   width: min(1100px, 92vw);
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 2fr 1fr;
+  gap: clamp(1rem, 0.286rem + 1.905vw, 2rem);
   align-items: center;
   max-width: 1100px;
   margin: 0 auto;
@@ -2306,7 +2624,7 @@ body.page-fonctionnement main .exemple .exemple-container .exemple-text {
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
-  font-size: clamp(1.1rem, 1.65vw, 1.2rem);
+  font-size: 1.1rem;
   line-height: 1.5;
 }
 body.page-fonctionnement main .exemple .exemple-container .exemple-text .exemple-p {
@@ -2318,21 +2636,81 @@ body.page-fonctionnement main .exemple .exemple-container .exemple-text .exemple
 body.page-fonctionnement main .exemple .exemple-container .exemple-text .exemple-ul li {
   margin-bottom: clamp(0.5rem, 0.39rem + 0.678vw, 1rem);
 }
-body.page-fonctionnement main .exemple .exemple-container .exemple-image img {
-  width: clamp(12.5rem, 10.434rem + 12.712vw, 21.875rem);
+body.page-fonctionnement main .exemple .exemple-container .exemple-image {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: inherit;
+  /* Pause au survol optionnelle */
+  /* Réécriture des frames avec les valeurs passées au mixin (portée locale via nesting) */
   border-radius: 0.4rem;
-  border-bottom-right-radius: 1rem;
   border-top-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  overflow: hidden;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  width: clamp(12.5rem, 10.434rem + 12.712vw, 21.875rem);
+}
+body.page-fonctionnement main .exemple .exemple-container .exemple-image > img, body.page-fonctionnement main .exemple .exemple-container .exemple-image > picture > img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transform-origin: center;
+  will-change: transform;
+  /* on utilise animation + @property pour animer vers des valeurs custom via variables */
+  /* Fallback simple : on “fige” les frames avec une animation dédiée inline via shorthand */
+  animation-name: cpe-kb-zoom-pan;
+}
+@supports (transform: scale(1)) {
+  body.page-fonctionnement main .exemple .exemple-container .exemple-image > img, body.page-fonctionnement main .exemple .exemple-container .exemple-image > picture > img {
+    /* on injecte les valeurs finales via CSS vars et une transition calc */
+    --kb-scale-to: 1.05;
+    --kb-pan-x: -2%;
+    --kb-pan-y: -2%;
+    /* on sur-déclare les frames avec les valeurs */
+    /* (truc simple : on met une animation-name dédiée pour ne pas multiplier les keyframes) */
+    /* on utilise la propriété animation-timeline implicite (fallback simple ci-dessous) */
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    body.page-fonctionnement main .exemple .exemple-container .exemple-image > img, body.page-fonctionnement main .exemple .exemple-container .exemple-image > picture > img {
+      animation: cpe-kb-zoom-pan 8s ease-in-out infinite alternate;
+    }
+  }
+}
+@media (hover: hover) {
+  body.page-fonctionnement main .exemple .exemple-container .exemple-image:hover > img, body.page-fonctionnement main .exemple .exemple-container .exemple-image:hover > picture > img {
+    animation-play-state: paused;
+  }
+}
+@keyframes cpe-kb-zoom-pan {
+  from {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+  to {
+    transform: scale(1.05) translate3d(-2%, -2%, 0);
+  }
+}
+body.page-fonctionnement main .exemple .exemple-container .exemple-image img {
+  width: 100%;
   display: block;
   margin: 0 auto;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: block;
+}
+@media (max-width: 933px) {
+  body.page-fonctionnement main .exemple .exemple-container .exemple-image {
+    justify-self: center;
+    margin-bottom: 1rem;
+  }
 }
 
 /* Scope page */
 body.page-typologies {
   font-family: "Raleway", sans-serif;
   color: #031837;
-  background-color: #fffffa;
+  background-color: #ffffff;
   line-height: 1.6;
   display: flex;
   flex-direction: column;
@@ -2348,28 +2726,37 @@ body.page-typologies a {
   text-decoration: none;
   color: inherit;
 }
+body.page-typologies h1 {
+  color: #031837;
+  font-family: "Raleway", sans-serif;
+  font-weight: 800;
+  font-size: clamp(2.2rem, 1.414rem + 2.095vw, 3.3rem);
+  text-align: center;
+  line-height: 1.18;
+  padding: clamp(0.5rem, 0.143rem + 0.952vw, 1rem);
+}
 body.page-typologies h2 {
   font-family: "Raleway", sans-serif;
-  font-size: clamp(1.85rem, 4.4vw, 2.65rem);
+  font-size: clamp(1.85rem, 1.314rem + 1.429vw, 2.6rem);
   color: #00a250;
   margin-bottom: 1.5rem;
-  text-align: left;
   line-height: clamp(2.2rem, 5vw, 3rem);
 }
 body.page-typologies p {
-  font-size: clamp(1.1rem, 1.65vw, 1.2rem);
+  font-size: 1.1rem;
+  text-align: justify;
   line-height: 1.8;
   margin-bottom: 1.2rem;
 }
 body.page-typologies main .intro {
-  padding: clamp(2rem, 5vw, 4rem) 1rem;
+  padding: clamp(1rem, 0.286rem + 1.905vw, 2rem) 1rem clamp(2rem, 1.78rem + 1.356vw, 3rem);
   color: #031837;
-  text-align: justify;
 }
 body.page-typologies main .intro .intro-container {
+  width: min(1100px, 92vw);
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
+  grid-template-columns: 2fr 1fr;
+  gap: clamp(1rem, 0.286rem + 1.905vw, 2rem);
   align-items: center;
   max-width: 1100px;
   margin: 0 auto;
@@ -2377,21 +2764,373 @@ body.page-typologies main .intro .intro-container {
 @media (max-width: 768px) {
   body.page-typologies main .intro .intro-container {
     grid-template-columns: 1fr;
-    text-align: center;
   }
 }
 body.page-typologies main .intro .intro-container .intro-text {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 1rem 0;
   height: 100%;
-  font-size: clamp(1.05rem, 1.6vw, 1.2rem);
-  line-height: 1.7;
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+body.page-typologies main .intro .intro-container .intro-ul {
+  margin-left: clamp(0.5rem, 0.169rem + 2.034vw, 2rem);
+}
+body.page-typologies main .intro .intro-container .intro-ul li {
+  margin-bottom: clamp(0rem, -0.357rem + 0.952vw, 0.5rem);
+}
+body.page-typologies main .intro .intro-container .intro-image {
+  display: flex;
+  justify-self: flex-end;
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: inherit;
+  /* Pause au survol optionnelle */
+  /* Réécriture des frames avec les valeurs passées au mixin (portée locale via nesting) */
+  border-radius: 0.4rem;
+  border-top-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  width: clamp(12.5rem, 0rem + 33.333vw, 30rem);
+}
+body.page-typologies main .intro .intro-container .intro-image > img, body.page-typologies main .intro .intro-container .intro-image > picture > img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transform-origin: center;
+  will-change: transform;
+  /* on utilise animation + @property pour animer vers des valeurs custom via variables */
+  /* Fallback simple : on “fige” les frames avec une animation dédiée inline via shorthand */
+  animation-name: cpe-kb-zoom-pan;
+}
+@supports (transform: scale(1)) {
+  body.page-typologies main .intro .intro-container .intro-image > img, body.page-typologies main .intro .intro-container .intro-image > picture > img {
+    /* on injecte les valeurs finales via CSS vars et une transition calc */
+    --kb-scale-to: 1.05;
+    --kb-pan-x: -2%;
+    --kb-pan-y: -2%;
+    /* on sur-déclare les frames avec les valeurs */
+    /* (truc simple : on met une animation-name dédiée pour ne pas multiplier les keyframes) */
+    /* on utilise la propriété animation-timeline implicite (fallback simple ci-dessous) */
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    body.page-typologies main .intro .intro-container .intro-image > img, body.page-typologies main .intro .intro-container .intro-image > picture > img {
+      animation: cpe-kb-zoom-pan 8s ease-in-out infinite alternate;
+    }
+  }
+}
+@media (hover: hover) {
+  body.page-typologies main .intro .intro-container .intro-image:hover > img, body.page-typologies main .intro .intro-container .intro-image:hover > picture > img {
+    animation-play-state: paused;
+  }
+}
+@keyframes cpe-kb-zoom-pan {
+  from {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+  to {
+    transform: scale(1.05) translate3d(-2%, -2%, 0);
+  }
 }
 body.page-typologies main .intro .intro-container .intro-image img {
   width: 100%;
-  max-width: 350px;
+  display: block;
+  margin: 0 auto;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: block;
+}
+@media (max-width: 933px) {
+  body.page-typologies main .intro .intro-container .intro-image {
+    justify-self: center;
+    margin-bottom: 1rem;
+  }
+}
+body.page-typologies main .intro .intro-container .cta-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(0.8rem, 1.6vw, 1.2rem);
+  margin: clamp(1rem, 0.78rem + 1.356vw, 2rem) 0 1rem;
+}
+body.page-typologies main .etapes {
+  padding: clamp(1rem, 0.286rem + 1.905vw, 2rem) 1rem clamp(2rem, 1.78rem + 1.356vw, 3rem);
+  color: #031837;
+  text-align: justify;
+}
+body.page-typologies main .etapes .etapes-container {
+  width: min(1100px, 92vw);
+  margin: 0 auto;
+}
+body.page-typologies main .etapes .etapes-container h4 {
+  font-size: clamp(1.3rem, 1.193rem + 0.286vw, 1.45rem);
+  color: #be097f;
+}
+body.page-typologies main .etapes .etapes-container .etapes-list {
+  counter-reset: principe;
+  list-style: none;
+  margin: 2rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 1.2rem;
+}
+body.page-typologies main .etapes .etapes-container .etapes-list > li {
+  margin: 0;
+  padding-bottom: 2rem;
+  display: grid;
+  gap: clamp(1rem, 3vw, 2rem);
+  align-items: start;
+  grid-auto-rows: auto;
+}
+@media (min-width: 768px) {
+  body.page-typologies main .etapes .etapes-container .etapes-list > li:nth-child(odd) {
+    grid-template-columns: 3fr 2fr;
+  }
+  body.page-typologies main .etapes .etapes-container .etapes-list > li:nth-child(odd) .etape-text {
+    grid-column: 1;
+    grid-row: 1/span 2;
+  }
+  body.page-typologies main .etapes .etapes-container .etapes-list > li:nth-child(odd) .etape-media {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  body.page-typologies main .etapes .etapes-container .etapes-list > li:nth-child(odd) .etape-limites {
+    grid-column: 2;
+    grid-row: 2;
+  }
+  body.page-typologies main .etapes .etapes-container .etapes-list > li:nth-child(even) {
+    grid-template-columns: 1fr 2fr;
+  }
+  body.page-typologies main .etapes .etapes-container .etapes-list > li:nth-child(even) .etape-media {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  body.page-typologies main .etapes .etapes-container .etapes-list > li:nth-child(even) .etape-limites {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  body.page-typologies main .etapes .etapes-container .etapes-list > li:nth-child(even) .etape-text {
+    grid-column: 2;
+    grid-row: 1/span 2;
+  }
+}
+body.page-typologies main .etapes .etapes-container .etape-text {
+  text-align: left;
+}
+body.page-typologies main .etapes .etapes-container .etape-media {
+  width: clamp(12.5rem, 3.571rem + 23.81vw, 25rem);
+  aspect-ratio: 2/3;
+  border-radius: 0.4rem;
+  border-top-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+body.page-typologies main .etapes .etapes-container .etape-media img {
+  width: clamp(12.5rem, 0rem + 33.333vw, 30rem);
+  height: 100%;
+  display: block;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+body.page-typologies main .etapes .etapes-container .etape-limites {
+  align-self: start;
+  padding: clamp(0.6rem, 1.4vw, 0.9rem);
+}
+body.page-typologies main .etapes .etapes-container .etape-limites p {
+  margin: 0 0 0.35rem;
+  font-size: 1.1rem;
+}
+body.page-typologies main .etapes .etapes-container .etape-limites ul {
+  margin: 0;
+  padding: 0;
+  list-style: disc inside;
+}
+body.page-typologies main .etapes .etapes-container .etape-limites ul li {
+  margin: 0.25rem 0;
+  font-size: 1.1rem;
+  line-height: 1.55;
+}
+body.page-typologies main .etapes .etapes-container .etapes-list .etape-text > h5 {
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+body.page-typologies main .etapes .etapes-container .etapes-list .etape-text > p {
+  font-size: 1.1rem;
+}
+body.page-typologies main .etapes .etapes-container li:last-child {
+  padding-bottom: 0;
+}
+body.page-typologies main .etapes .etapes-container .etapes-list .etape-text > h4 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  gap: 0.75rem;
+  margin: 0 0 0.5rem;
+  padding: 0;
+  font-size: clamp(1.2rem, 2vw, 1.4rem);
+  line-height: 1.35;
+  color: #031837;
+  text-align: center;
+}
+body.page-typologies main .etapes .etapes-container .etapes-list .etape-text > h5::before {
+  content: counter(principe);
+  counter-increment: principe;
+  flex: 0 0 auto;
+  aspect-ratio: 1/1;
+  width: 2.2rem;
+  min-width: 2.2rem;
+  height: auto;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #5bb887;
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 1rem;
+  margin-right: 1rem;
+}
+body.page-typologies main .etapes .etapes-container .etapes-list .etape-text > ul {
+  margin: 0.35rem auto 0.6rem;
+  padding: 0;
+  list-style: disc inside;
+}
+body.page-typologies main .etapes .etapes-container .etapes-list .etape-text > ul li {
+  margin: 0.35rem 0;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+@media (max-width: 768px) {
+  body.page-typologies main .etapes .etapes-container .etapes-list > li {
+    grid-template-columns: 1fr;
+    justify-items: stretch;
+    align-items: center;
+  }
+  body.page-typologies main .etapes .etapes-container .etapes-list > li .etape-text {
+    grid-column: 1;
+    grid-row: 1;
+    width: 100%;
+    max-width: none;
+  }
+  body.page-typologies main .etapes .etapes-container .etapes-list > li .etape-limites {
+    grid-column: 1;
+    grid-row: 2;
+    align-self: start;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    padding: 0;
+    margin-top: 0.35rem;
+  }
+  body.page-typologies main .etapes .etapes-container .etapes-list > li .etape-media {
+    justify-self: center;
+    grid-column: 1;
+    grid-row: 3;
+    max-width: none;
+  }
+  body.page-typologies main .etapes .etapes-container .etapes-list .etape-text > h5 {
+    flex-direction: column;
+    gap: 0.45rem;
+    justify-content: flex-start;
+    text-align: center;
+  }
+  body.page-typologies main .etapes .etapes-container .etapes-list .etape-text > h5::before {
+    width: clamp(1.8rem, 6vw, 2rem);
+    min-width: clamp(1.8rem, 6vw, 2rem);
+    font-size: 0.95rem;
+    margin-bottom: 0.1rem;
+    margin-right: 0;
+  }
+  body.page-typologies main .etapes .etapes-container .etapes-list .etape-text > ul {
+    margin-left: 0;
+  }
+}
+
+/* Scope page */
+body.page-avantages {
+  font-family: "Raleway", sans-serif;
+  color: #031837;
+  background-color: #ffffff;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+body.page-avantages img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+body.page-avantages a {
+  text-decoration: none;
+  color: inherit;
+}
+body.page-avantages h1 {
+  width: min(1100px, 92vw);
+  margin: 0 auto;
+  color: #031837;
+  font-family: "Raleway", sans-serif;
+  font-weight: 800;
+  font-size: clamp(2.2rem, 1.414rem + 2.095vw, 3.3rem);
+  text-align: center;
+  line-height: 1.18;
+  padding: clamp(0.5rem, 0.143rem + 0.952vw, 1rem);
+}
+body.page-avantages h2 {
+  font-family: "Raleway", sans-serif;
+  font-size: clamp(1.85rem, 1.314rem + 1.429vw, 2.6rem);
+  color: #00a250;
+  margin-bottom: 1.5rem;
+  line-height: clamp(2.2rem, 5vw, 3rem);
+}
+body.page-avantages p {
+  font-size: 1.1rem;
+  text-align: justify;
+  line-height: 1.8;
+  margin-bottom: 1.2rem;
+}
+body.page-avantages main .intro {
+  padding: clamp(1rem, 0.286rem + 1.905vw, 2rem) 1rem clamp(2rem, 1.78rem + 1.356vw, 3rem);
+  color: #031837;
+}
+body.page-avantages main .intro .intro-container {
+  width: min(1100px, 92vw);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+@media (max-width: 768px) {
+  body.page-avantages main .intro .intro-container {
+    grid-template-columns: 1fr;
+  }
+}
+body.page-avantages main .intro .intro-container .intro-text {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+body.page-avantages main .intro .intro-container .intro-image {
+  display: flex;
+  justify-self: flex-end;
+}
+body.page-avantages main .intro .intro-container .intro-image img {
+  width: clamp(17.5rem, 8.571rem + 23.81vw, 30rem);
   border-radius: 0.4rem;
   border-bottom-right-radius: 1rem;
   border-top-left-radius: 1rem;
@@ -2399,14 +3138,870 @@ body.page-typologies main .intro .intro-container .intro-image img {
   display: block;
   margin: 0 auto;
 }
-
-:root {
-  --ff-sans: "Raleway", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+@media (max-width: 933px) {
+  body.page-avantages main .intro .intro-container .intro-image {
+    padding-top: 1rem;
+    justify-self: center;
+  }
+}
+body.page-avantages main .intro .intro-container .cta-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(0.8rem, 1.6vw, 1.2rem);
+  margin: clamp(1rem, 0.78rem + 1.356vw, 2rem) 0 1rem;
 }
 
-/* ============================================
-   Skip link
-   ============================================ */
+/* Scope page */
+body.page-reglementation {
+  font-family: "Raleway", sans-serif;
+  color: #031837;
+  background-color: #ffffff;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+body.page-reglementation img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+body.page-reglementation a {
+  text-decoration: none;
+  color: inherit;
+}
+body.page-reglementation h1 {
+  color: #031837;
+  font-family: "Raleway", sans-serif;
+  font-weight: 800;
+  font-size: clamp(2.2rem, 1.414rem + 2.095vw, 3.3rem);
+  text-align: center;
+  line-height: 1.18;
+  padding: clamp(0.5rem, 0.143rem + 0.952vw, 1rem);
+}
+body.page-reglementation h2 {
+  font-family: "Raleway", sans-serif;
+  font-size: clamp(1.85rem, 1.314rem + 1.429vw, 2.6rem);
+  color: #00a250;
+  margin-bottom: 1.5rem;
+  line-height: clamp(2.2rem, 5vw, 3rem);
+}
+body.page-reglementation p {
+  font-size: 1.1rem;
+  text-align: justify;
+  line-height: 1.8;
+  margin-bottom: 1.2rem;
+}
+body.page-reglementation main .intro {
+  padding: clamp(1rem, 0.286rem + 1.905vw, 2rem) 1rem clamp(2rem, 1.78rem + 1.356vw, 3rem);
+  color: #031837;
+}
+body.page-reglementation main .intro .intro-container {
+  width: min(1100px, 92vw);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+@media (max-width: 768px) {
+  body.page-reglementation main .intro .intro-container {
+    grid-template-columns: 1fr;
+  }
+}
+body.page-reglementation main .intro .intro-container .intro-text {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+body.page-reglementation main .intro .intro-container .intro-image {
+  display: flex;
+  justify-self: flex-end;
+}
+body.page-reglementation main .intro .intro-container .intro-image img {
+  width: clamp(17.5rem, 8.571rem + 23.81vw, 30rem);
+  border-radius: 0.4rem;
+  border-bottom-right-radius: 1rem;
+  border-top-left-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  display: block;
+  margin: 0 auto;
+}
+@media (max-width: 933px) {
+  body.page-reglementation main .intro .intro-container .intro-image {
+    padding-top: 1rem;
+    justify-self: center;
+  }
+}
+body.page-reglementation main .intro .intro-container .cta-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(0.8rem, 1.6vw, 1.2rem);
+  margin: clamp(1rem, 0.78rem + 1.356vw, 2rem) 0 1rem;
+}
+
+/* Scope page */
+body.page-etapes {
+  font-family: "Raleway", sans-serif;
+  color: #031837;
+  background-color: #ffffff;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+body.page-etapes img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+body.page-etapes a {
+  text-decoration: none;
+  color: inherit;
+}
+body.page-etapes h1 {
+  width: min(1100px, 92vw);
+  margin: 0 auto;
+  color: #031837;
+  font-family: "Raleway", sans-serif;
+  font-weight: 800;
+  font-size: clamp(2.2rem, 1.414rem + 2.095vw, 3.3rem);
+  text-align: center;
+  line-height: 1.18;
+  padding: clamp(0.5rem, 0.143rem + 0.952vw, 1rem);
+}
+body.page-etapes h2 {
+  font-family: "Raleway", sans-serif;
+  font-size: clamp(1.85rem, 1.314rem + 1.429vw, 2.6rem);
+  color: #00a250;
+  margin-bottom: 1.5rem;
+  line-height: clamp(2.2rem, 5vw, 3rem);
+}
+body.page-etapes p {
+  font-size: 1.1rem;
+  text-align: justify;
+  line-height: 1.8;
+  margin-bottom: 1.2rem;
+}
+body.page-etapes main .intro {
+  padding: clamp(1rem, 0.286rem + 1.905vw, 2rem) 1rem clamp(2rem, 1.78rem + 1.356vw, 3rem);
+  color: #031837;
+}
+body.page-etapes main .intro .intro-container {
+  width: min(1100px, 92vw);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+@media (max-width: 768px) {
+  body.page-etapes main .intro .intro-container {
+    grid-template-columns: 1fr;
+  }
+}
+body.page-etapes main .intro .intro-container .intro-text {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+body.page-etapes main .intro .intro-container .intro-image {
+  display: flex;
+  justify-self: flex-end;
+}
+body.page-etapes main .intro .intro-container .intro-image img {
+  width: clamp(17.5rem, 8.571rem + 23.81vw, 30rem);
+  border-radius: 0.4rem;
+  border-bottom-right-radius: 1rem;
+  border-top-left-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  display: block;
+  margin: 0 auto;
+}
+@media (max-width: 933px) {
+  body.page-etapes main .intro .intro-container .intro-image {
+    padding-top: 1rem;
+    justify-self: center;
+  }
+}
+body.page-etapes main .intro .intro-container .cta-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(0.8rem, 1.6vw, 1.2rem);
+  margin: clamp(1rem, 0.78rem + 1.356vw, 2rem) 0 1rem;
+}
+
+/* Scope page */
+body.page-chiffres {
+  font-family: "Raleway", sans-serif;
+  color: #031837;
+  background-color: #ffffff;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+body.page-chiffres img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+body.page-chiffres a {
+  text-decoration: none;
+  color: inherit;
+}
+body.page-chiffres h1 {
+  width: min(1100px, 92vw);
+  margin: 0 auto;
+  color: #031837;
+  font-family: "Raleway", sans-serif;
+  font-weight: 800;
+  font-size: clamp(2.2rem, 1.414rem + 2.095vw, 3.3rem);
+  text-align: center;
+  line-height: 1.18;
+  padding: clamp(0.5rem, 0.143rem + 0.952vw, 1rem);
+}
+body.page-chiffres h2 {
+  font-family: "Raleway", sans-serif;
+  font-size: clamp(1.85rem, 1.314rem + 1.429vw, 2.6rem);
+  color: #00a250;
+  margin-bottom: 1.5rem;
+  line-height: clamp(2.2rem, 5vw, 3rem);
+}
+body.page-chiffres p {
+  font-size: 1.1rem;
+  text-align: justify;
+  line-height: 1.8;
+  margin-bottom: 1.2rem;
+}
+body.page-chiffres main .intro {
+  padding: clamp(1rem, 0.286rem + 1.905vw, 2rem) 1rem clamp(2rem, 1.78rem + 1.356vw, 3rem);
+  color: #031837;
+}
+body.page-chiffres main .intro .intro-container {
+  width: min(1100px, 92vw);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+@media (max-width: 768px) {
+  body.page-chiffres main .intro .intro-container {
+    grid-template-columns: 1fr;
+  }
+}
+body.page-chiffres main .intro .intro-container .intro-text {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+body.page-chiffres main .intro .intro-container .intro-image {
+  display: flex;
+  justify-self: flex-end;
+}
+body.page-chiffres main .intro .intro-container .intro-image img {
+  width: clamp(17.5rem, 8.571rem + 23.81vw, 30rem);
+  border-radius: 0.4rem;
+  border-bottom-right-radius: 1rem;
+  border-top-left-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  display: block;
+  margin: 0 auto;
+}
+@media (max-width: 933px) {
+  body.page-chiffres main .intro .intro-container .intro-image {
+    padding-top: 1rem;
+    justify-self: center;
+  }
+}
+body.page-chiffres main .intro .intro-container .cta-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(0.8rem, 1.6vw, 1.2rem);
+  margin: clamp(1rem, 0.78rem + 1.356vw, 2rem) 0 1rem;
+}
+
+/* Scope page */
+body.page-financement {
+  font-family: "Raleway", sans-serif;
+  color: #031837;
+  background-color: #ffffff;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+body.page-financement img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+body.page-financement a {
+  text-decoration: none;
+  color: inherit;
+}
+body.page-financement h1 {
+  width: min(1100px, 92vw);
+  margin: 0 auto;
+  color: #031837;
+  font-family: "Raleway", sans-serif;
+  font-weight: 800;
+  font-size: clamp(2.2rem, 1.414rem + 2.095vw, 3.3rem);
+  text-align: center;
+  line-height: 1.18;
+  padding: clamp(0.5rem, 0.143rem + 0.952vw, 1rem);
+}
+body.page-financement h2 {
+  font-family: "Raleway", sans-serif;
+  font-size: clamp(1.85rem, 1.314rem + 1.429vw, 2.6rem);
+  color: #00a250;
+  margin-bottom: 1.5rem;
+  line-height: clamp(2.2rem, 5vw, 3rem);
+}
+body.page-financement p {
+  font-size: 1.1rem;
+  text-align: justify;
+  line-height: 1.8;
+  margin-bottom: 1.2rem;
+}
+body.page-financement main .intro {
+  padding: clamp(1rem, 0.286rem + 1.905vw, 2rem) 1rem clamp(2rem, 1.78rem + 1.356vw, 3rem);
+  color: #031837;
+}
+body.page-financement main .intro .intro-container {
+  width: min(1100px, 92vw);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+@media (max-width: 768px) {
+  body.page-financement main .intro .intro-container {
+    grid-template-columns: 1fr;
+  }
+}
+body.page-financement main .intro .intro-container .intro-text {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+body.page-financement main .intro .intro-container .intro-image {
+  display: flex;
+  justify-self: flex-end;
+}
+body.page-financement main .intro .intro-container .intro-image img {
+  width: clamp(17.5rem, 8.571rem + 23.81vw, 30rem);
+  border-radius: 0.4rem;
+  border-bottom-right-radius: 1rem;
+  border-top-left-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  display: block;
+  margin: 0 auto;
+}
+@media (max-width: 933px) {
+  body.page-financement main .intro .intro-container .intro-image {
+    padding-top: 1rem;
+    justify-self: center;
+  }
+}
+body.page-financement main .intro .intro-container .cta-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(0.8rem, 1.6vw, 1.2rem);
+  margin: clamp(1rem, 0.78rem + 1.356vw, 2rem) 0 1rem;
+}
+
+/* Scope page */
+body.page-recommandations {
+  font-family: "Raleway", sans-serif;
+  color: #031837;
+  background-color: #ffffff;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+body.page-recommandations img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+body.page-recommandations a {
+  text-decoration: none;
+  color: inherit;
+}
+body.page-recommandations h1 {
+  width: min(1100px, 92vw);
+  margin: 0 auto;
+  color: #031837;
+  font-family: "Raleway", sans-serif;
+  font-weight: 800;
+  font-size: clamp(2.2rem, 1.414rem + 2.095vw, 3.3rem);
+  text-align: center;
+  line-height: 1.18;
+  padding: clamp(0.5rem, 0.143rem + 0.952vw, 1rem);
+}
+body.page-recommandations h2 {
+  font-family: "Raleway", sans-serif;
+  font-size: clamp(1.85rem, 1.314rem + 1.429vw, 2.6rem);
+  color: #00a250;
+  margin-bottom: 1.5rem;
+  line-height: clamp(2.2rem, 5vw, 3rem);
+}
+body.page-recommandations p {
+  font-size: 1.1rem;
+  text-align: justify;
+  line-height: 1.8;
+  margin-bottom: 1.2rem;
+}
+body.page-recommandations main .intro {
+  padding: clamp(1rem, 0.286rem + 1.905vw, 2rem) 1rem clamp(2rem, 1.78rem + 1.356vw, 3rem);
+  color: #031837;
+}
+body.page-recommandations main .intro .intro-container {
+  width: min(1100px, 92vw);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+@media (max-width: 768px) {
+  body.page-recommandations main .intro .intro-container {
+    grid-template-columns: 1fr;
+  }
+}
+body.page-recommandations main .intro .intro-container .intro-text {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+body.page-recommandations main .intro .intro-container .intro-image {
+  display: flex;
+  justify-self: flex-end;
+}
+body.page-recommandations main .intro .intro-container .intro-image img {
+  width: clamp(17.5rem, 8.571rem + 23.81vw, 30rem);
+  border-radius: 0.4rem;
+  border-bottom-right-radius: 1rem;
+  border-top-left-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  display: block;
+  margin: 0 auto;
+}
+@media (max-width: 933px) {
+  body.page-recommandations main .intro .intro-container .intro-image {
+    padding-top: 1rem;
+    justify-self: center;
+  }
+}
+body.page-recommandations main .intro .intro-container .cta-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(0.8rem, 1.6vw, 1.2rem);
+  margin: clamp(1rem, 0.78rem + 1.356vw, 2rem) 0 1rem;
+}
+
+/* Scope page */
+body.page-glossaire {
+  font-family: "Raleway", sans-serif;
+  color: #031837;
+  background-color: #ffffff;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+body.page-glossaire img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+body.page-glossaire a {
+  text-decoration: none;
+  color: inherit;
+}
+body.page-glossaire h1 {
+  width: min(1100px, 92vw);
+  margin: 0 auto;
+  color: #031837;
+  font-family: "Raleway", sans-serif;
+  font-weight: 800;
+  font-size: clamp(2.2rem, 1.414rem + 2.095vw, 3.3rem);
+  text-align: center;
+  line-height: 1.18;
+  padding: clamp(0.5rem, 0.143rem + 0.952vw, 1rem);
+}
+body.page-glossaire h2 {
+  font-family: "Raleway", sans-serif;
+  font-size: clamp(1.85rem, 1.314rem + 1.429vw, 2.6rem);
+  color: #00a250;
+  margin-bottom: 1.5rem;
+  line-height: clamp(2.2rem, 5vw, 3rem);
+}
+body.page-glossaire p {
+  font-size: 1.1rem;
+  text-align: justify;
+  line-height: 1.8;
+  margin-bottom: 1.2rem;
+}
+body.page-glossaire main .intro {
+  padding: clamp(1rem, 0.286rem + 1.905vw, 2rem) 1rem clamp(2rem, 1.78rem + 1.356vw, 3rem);
+  color: #031837;
+}
+body.page-glossaire main .intro .intro-container {
+  width: min(1100px, 92vw);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+@media (max-width: 768px) {
+  body.page-glossaire main .intro .intro-container {
+    grid-template-columns: 1fr;
+  }
+}
+body.page-glossaire main .intro .intro-container .intro-text {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+body.page-glossaire main .intro .intro-container .intro-image {
+  display: flex;
+  justify-self: flex-end;
+}
+body.page-glossaire main .intro .intro-container .intro-image img {
+  width: clamp(17.5rem, 8.571rem + 23.81vw, 30rem);
+  border-radius: 0.4rem;
+  border-bottom-right-radius: 1rem;
+  border-top-left-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  display: block;
+  margin: 0 auto;
+}
+@media (max-width: 933px) {
+  body.page-glossaire main .intro .intro-container .intro-image {
+    padding-top: 1rem;
+    justify-self: center;
+  }
+}
+body.page-glossaire main .intro .intro-container .cta-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(0.8rem, 1.6vw, 1.2rem);
+  margin: clamp(1rem, 0.78rem + 1.356vw, 2rem) 0 1rem;
+}
+
+/* Scope page */
+body.page-cgu {
+  font-family: "Raleway", sans-serif;
+  color: #031837;
+  background-color: #ffffff;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+body.page-cgu img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+body.page-cgu a {
+  text-decoration: none;
+  color: inherit;
+}
+body.page-cgu h1 {
+  color: #031837;
+  font-family: "Raleway", sans-serif;
+  font-weight: 800;
+  font-size: clamp(2.2rem, 1.414rem + 2.095vw, 3.3rem);
+  text-align: center;
+  line-height: 1.18;
+  padding: clamp(0.5rem, 0.143rem + 0.952vw, 1rem);
+}
+body.page-cgu h2 {
+  font-family: "Raleway", sans-serif;
+  font-size: clamp(1.85rem, 1.314rem + 1.429vw, 2.6rem);
+  color: #00a250;
+  margin-bottom: 1.5rem;
+  line-height: clamp(2.2rem, 5vw, 3rem);
+}
+body.page-cgu p {
+  font-size: 1.1rem;
+  text-align: justify;
+  line-height: 1.8;
+  margin-bottom: 1.2rem;
+}
+body.page-cgu main .intro {
+  padding: clamp(1rem, 0.286rem + 1.905vw, 2rem) 1rem clamp(2rem, 1.78rem + 1.356vw, 3rem);
+  color: #031837;
+}
+body.page-cgu main .intro .intro-container {
+  width: min(1100px, 92vw);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+@media (max-width: 768px) {
+  body.page-cgu main .intro .intro-container {
+    grid-template-columns: 1fr;
+  }
+}
+body.page-cgu main .intro .intro-container .intro-text {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+body.page-cgu main .intro .intro-container .intro-image {
+  display: flex;
+  justify-self: flex-end;
+}
+body.page-cgu main .intro .intro-container .intro-image img {
+  width: clamp(17.5rem, 8.571rem + 23.81vw, 30rem);
+  border-radius: 0.4rem;
+  border-bottom-right-radius: 1rem;
+  border-top-left-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  display: block;
+  margin: 0 auto;
+}
+@media (max-width: 933px) {
+  body.page-cgu main .intro .intro-container .intro-image {
+    padding-top: 1rem;
+    justify-self: center;
+  }
+}
+body.page-cgu main .intro .intro-container .cta-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(0.8rem, 1.6vw, 1.2rem);
+  margin: clamp(1rem, 0.78rem + 1.356vw, 2rem) 0 1rem;
+}
+
+/* Scope page */
+body.page-mentions {
+  font-family: "Raleway", sans-serif;
+  color: #031837;
+  background-color: #ffffff;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+body.page-mentions img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+body.page-mentions a {
+  text-decoration: none;
+  color: inherit;
+}
+body.page-mentions h1 {
+  color: #031837;
+  font-family: "Raleway", sans-serif;
+  font-weight: 800;
+  font-size: clamp(2.2rem, 1.414rem + 2.095vw, 3.3rem);
+  text-align: center;
+  line-height: 1.18;
+  padding: clamp(0.5rem, 0.143rem + 0.952vw, 1rem);
+}
+body.page-mentions h2 {
+  font-family: "Raleway", sans-serif;
+  font-size: clamp(1.85rem, 1.314rem + 1.429vw, 2.6rem);
+  color: #00a250;
+  margin-bottom: 1.5rem;
+  line-height: clamp(2.2rem, 5vw, 3rem);
+}
+body.page-mentions p {
+  font-size: 1.1rem;
+  text-align: justify;
+  line-height: 1.8;
+  margin-bottom: 1.2rem;
+}
+body.page-mentions main .intro {
+  padding: clamp(1rem, 0.286rem + 1.905vw, 2rem) 1rem clamp(2rem, 1.78rem + 1.356vw, 3rem);
+  color: #031837;
+}
+body.page-mentions main .intro .intro-container {
+  width: min(1100px, 92vw);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+@media (max-width: 768px) {
+  body.page-mentions main .intro .intro-container {
+    grid-template-columns: 1fr;
+  }
+}
+body.page-mentions main .intro .intro-container .intro-text {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+body.page-mentions main .intro .intro-container .intro-image {
+  display: flex;
+  justify-self: flex-end;
+}
+body.page-mentions main .intro .intro-container .intro-image img {
+  width: clamp(17.5rem, 8.571rem + 23.81vw, 30rem);
+  border-radius: 0.4rem;
+  border-bottom-right-radius: 1rem;
+  border-top-left-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  display: block;
+  margin: 0 auto;
+}
+@media (max-width: 933px) {
+  body.page-mentions main .intro .intro-container .intro-image {
+    padding-top: 1rem;
+    justify-self: center;
+  }
+}
+body.page-mentions main .intro .intro-container .cta-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(0.8rem, 1.6vw, 1.2rem);
+  margin: clamp(1rem, 0.78rem + 1.356vw, 2rem) 0 1rem;
+}
+
+/* Scope page */
+body.page-contact {
+  font-family: "Raleway", sans-serif;
+  color: #031837;
+  background-color: #ffffff;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+body.page-contact img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+body.page-contact a {
+  text-decoration: none;
+  color: inherit;
+}
+body.page-contact h1 {
+  width: min(1100px, 92vw);
+  margin: 0 auto;
+  color: #031837;
+  font-family: "Raleway", sans-serif;
+  font-weight: 800;
+  font-size: clamp(2.2rem, 1.414rem + 2.095vw, 3.3rem);
+  text-align: center;
+  line-height: 1.18;
+  padding: clamp(0.5rem, 0.143rem + 0.952vw, 1rem);
+}
+body.page-contact h2 {
+  font-family: "Raleway", sans-serif;
+  font-size: clamp(1.85rem, 1.314rem + 1.429vw, 2.6rem);
+  color: #00a250;
+  margin-bottom: 1.5rem;
+  line-height: clamp(2.2rem, 5vw, 3rem);
+}
+body.page-contact p {
+  font-size: 1.1rem;
+  text-align: justify;
+  line-height: 1.8;
+  margin-bottom: 1.2rem;
+}
+body.page-contact main .intro {
+  padding: clamp(1rem, 0.286rem + 1.905vw, 2rem) 1rem clamp(2rem, 1.78rem + 1.356vw, 3rem);
+  color: #031837;
+}
+body.page-contact main .intro .intro-container {
+  width: min(1100px, 92vw);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+@media (max-width: 768px) {
+  body.page-contact main .intro .intro-container {
+    grid-template-columns: 1fr;
+  }
+}
+body.page-contact main .intro .intro-container .intro-text {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+body.page-contact main .intro .intro-container .intro-image {
+  display: flex;
+  justify-self: flex-end;
+}
+body.page-contact main .intro .intro-container .intro-image img {
+  width: clamp(17.5rem, 8.571rem + 23.81vw, 30rem);
+  border-radius: 0.4rem;
+  border-bottom-right-radius: 1rem;
+  border-top-left-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  display: block;
+  margin: 0 auto;
+}
+@media (max-width: 933px) {
+  body.page-contact main .intro .intro-container .intro-image {
+    padding-top: 1rem;
+    justify-self: center;
+  }
+}
+body.page-contact main .intro .intro-container .cta-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(0.8rem, 1.6vw, 1.2rem);
+  margin: clamp(1rem, 0.78rem + 1.356vw, 2rem) 0 1rem;
+}
+
+/* Skip link : totalement caché sauf au focus */
 .skip-link {
   position: absolute;
   left: -9999px;
@@ -2414,6 +4009,9 @@ body.page-typologies main .intro .intro-container .intro-image img {
   width: 1px;
   height: 1px;
   overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
 .skip-link:focus {
@@ -2422,6 +4020,10 @@ body.page-typologies main .intro .intro-container .intro-image img {
   top: 1rem;
   width: auto;
   height: auto;
+  overflow: visible;
+  clip: auto;
+  clip-path: none;
+  white-space: normal;
   padding: 0.5rem 0.75rem;
   background: #000;
   color: #fff;
@@ -2429,54 +4031,33 @@ body.page-typologies main .intro .intro-container .intro-image img {
   border-radius: 0.25rem;
 }
 
-/* ============================================
-   Header
-   ============================================ */
+/* Header (desktop/tablette par défaut) */
 .site-header {
-  position: static;
-  top: auto;
   z-index: 1100;
-  background: linear-gradient(135deg, rgba(3, 24, 55, 0.9058823529), rgba(8, 49, 110, 0.9058823529));
-  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-  -webkit-backdrop-filter: saturate(1.2) blur(4px);
-          backdrop-filter: saturate(1.2) blur(4px);
-  box-shadow: 0px 5px 8px #031837;
-}
-
-.site-header .header-inner {
+  background: #fff;
   width: 100%;
   margin: 0 auto;
-  padding: 0.75rem 1rem;
+  padding: 1rem 2rem 0.5rem;
+  box-shadow: 4px 4px 5px rgba(3, 24, 55, 0.0549019608);
+  position: static;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  flex-wrap: wrap;
+  padding-left: 10rem; /* version desktop */
+  padding-right: 5rem; /* version desktop */
 }
 
-.site-header .header-inner .brand-title {
-  color: #fffffa;
-  font-family: "Raleway", sans-serif;
-  font-size: clamp(2.2rem, 5.5vw, 3.3rem);
-  text-align: center;
-  line-height: 1.18;
-  max-width: 48ch;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: normal;
-  flex: 1 1 280px;
-}
-
-.site-header .header-inner .brand {
+.site-header .brand {
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
   flex: 0 1 auto;
 }
 
-.site-header .header-inner .brand .brand-logo {
+.site-header .brand .brand-logo {
   display: inline-block;
-  height: clamp(64px, 8vw, 90px);
+  height: clamp(64px, 8vw, 80px);
   aspect-ratio: 833/301;
   background-color: #3fab35;
   -webkit-mask: url("../images/logo_cpe/logo_cpe_blanc.png") no-repeat center/contain;
@@ -2486,73 +4067,61 @@ body.page-typologies main .intro .intro-container .intro-image img {
   line-height: 0;
 }
 
-.site-header .header-inner .brand .brand-logo::before,
-.site-header .header-inner .brand .brand-logo::after {
-  content: none !important;
-}
-
 @supports not ((-webkit-mask: url()) or (mask: url())) {
-  .site-header .header-inner .brand .brand-logo {
+  .site-header .brand .brand-logo {
     width: clamp(120px, 30vw, 270px);
     background: url("../images/logo_cpe/logo_cpe_blanc.png") no-repeat center/contain;
     background-color: transparent;
   }
 }
-/* ============================================
-   CTA zone — LAYOUT UNIQUEMENT
-   (les .btn gardent leur style global)
-   ============================================ */
-.site-header .header-inner .cta-buttons {
-  display: flex;
-  flex-direction: column; /* empilé partout */
-  align-items: center;
-  justify-content: center;
-  gap: clamp(0.8rem, 1.6vw, 1.2rem);
-  flex-wrap: nowrap; /* pas de wrap, colonne forcée */
-  height: auto;
-  align-content: center;
-  flex: 0 1 auto;
-}
-
-.site-header .header-inner .cta-buttons > * {
-  align-self: center;
-  flex: 0 0 auto;
-  height: auto;
-  max-width: 100%;
-}
-
-/* ============================================
-   Responsif
-   ============================================ */
-@media (min-width: 993px) {
+/* Desktop sticky si souhaité */
+@media (min-width: 768px) {
   .site-header {
     position: sticky;
     top: 0;
   }
 }
-@media (max-width: 992px) {
-  .site-header .header-inner {
-    padding: 0.6rem 0.8rem;
-    justify-content: center;
-    gap: 0.8rem;
+@media (max-width: 1024px) {
+  .site-header {
+    padding-left: 4rem;
+    padding-right: 4rem;
   }
-  .site-header .header-inner .brand {
-    width: 100%;
-    justify-content: center;
-    text-align: center;
+}
+/* ===== Mobile uniquement (≤ 767px) ===== */
+@media (max-width: 767px) {
+  .site-header {
+    padding-left: 1rem; /* padding gauche classique */
+    padding-right: 1rem;
+    gap: 0.6rem;
+    /* Empilement: logo au-dessus, puis les 2 boutons */
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas: "brand" "btn1" "btn2";
+    row-gap: 0.5rem;
+    justify-items: center; /* centrage propre */
+    align-items: center;
   }
-  .site-header .header-inner .brand-title {
-    text-align: center;
-    font-size: clamp(2.2rem, 5.5vw, 3.3rem);
-    flex: 1 1 auto;
+  /* Mapping selon ton HTML: btn — brand — btn */
+  .site-header > a.brand {
+    grid-area: brand;
+  }
+  .site-header > a.btn:first-of-type {
+    grid-area: btn1;
+  }
+  .site-header > a.btn:last-of-type {
+    grid-area: btn2;
+  }
+  /* Sécurité anti-débordement */
+  .site-header > a.btn {
+    max-width: 100%;
   }
 }
 .side-wrapper {
   position: fixed;
-  top: 180px;
+  top: 20px;
   left: 20px;
   width: 60px;
-  z-index: 1000;
+  z-index: 1101;
   box-shadow: 3px 3px 5px #031837;
   border-radius: 0.3rem;
   border-bottom-right-radius: 1rem;
@@ -2638,7 +4207,7 @@ body.page-typologies main .intro .intro-container .intro-image img {
   padding: 0.6rem 1rem;
   font-weight: 400;
   line-height: 1.2;
-  color: #fffffa;
+  color: #ffffff;
   font-size: 1rem;
   text-decoration: none;
 }
@@ -2760,7 +4329,7 @@ body.page-typologies main .intro .intro-container .intro-image img {
     border-bottom-right-radius: 0.75rem;
     background-color: rgba(255, 255, 255, 0.14);
     border: 1px solid rgba(255, 255, 255, 0.28);
-    color: #fffffa;
+    color: #ffffff;
     line-height: 1.3;
     white-space: normal;
     overflow-wrap: anywhere;
@@ -2802,7 +4371,7 @@ body.page-typologies main .intro .intro-container .intro-image img {
 }
 .site-footer {
   background: linear-gradient(135deg, #031837, #08316e);
-  color: #fffffa;
+  color: #ffffff;
   padding: clamp(14px, 2vw, 24px) clamp(16px, 4vw, 48px);
   box-shadow: 0 -2px 3px rgba(0, 0, 0, 0.9);
 }
@@ -2873,12 +4442,12 @@ body.page-typologies main .intro .intro-container .intro-image img {
   -moz-column-break-inside: avoid;
        break-inside: avoid-column; /* évite les coupures moches */
   padding: 2px 0;
-  color: #fffffa; /* défaut */
+  color: #ffffff; /* défaut */
   text-decoration: none;
 }
 
 .site-footer .legal a:visited {
-  color: #fffffa;
+  color: #ffffff;
 }
 
 /* Survol/focus des liens (on exclut Accueil qui est .is-active permanente) */
@@ -2950,8 +4519,8 @@ body.page-typologies main .intro .intro-container .intro-image img {
     width: 100%;
     margin-top: 0.5rem;
     /* === Séparateur entre colonnes (responsive only) === */
-    -moz-column-rule: 1px solid rgba(255, 255, 250, 0.25);
-         column-rule: 1px solid rgba(255, 255, 250, 0.25);
+    -moz-column-rule: 1px solid rgba(255, 255, 255, 0.25);
+         column-rule: 1px solid rgba(255, 255, 255, 0.25);
     /* un peu d’air pour éviter que le trait colle aux liens */
     padding-inline: 4px;
     -moz-column-gap: clamp(12px, 3vw, 24px);
@@ -2968,8 +4537,8 @@ body.page-typologies main .intro .intro-container .intro-image img {
     -moz-column-gap: 14px;
          column-gap: 14px;
     /* Séparateur un poil plus léger en très étroit */
-    -moz-column-rule: 1px solid rgba(255, 255, 250, 0.18);
-         column-rule: 1px solid rgba(255, 255, 250, 0.18);
+    -moz-column-rule: 1px solid rgba(255, 255, 255, 0.18);
+         column-rule: 1px solid rgba(255, 255, 255, 0.18);
   }
 }
 .next-cta {
@@ -3026,7 +4595,7 @@ body.page-typologies main .intro .intro-container .intro-image img {
 .next-cta .btn.btn-next {
   background-image: linear-gradient(-180deg, rgb(0, 213, 105.1851851852) 0%, #00a250 100%);
   border: 1px solid rgb(34.5, 255, 143.3888888889);
-  color: #fffffa;
+  color: #ffffff;
 }
 .next-cta .btn.btn-next:hover {
   background-color: rgb(0, 121.2, 59.8518518519);

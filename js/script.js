@@ -660,39 +660,3 @@ document.addEventListener('DOMContentLoaded', () => {
 //   });
 // })();
 
-
-
-
-
-
-
-
-
-
-
-
-// Sauvegarde la position du scroll avant refresh
-(function () {
-  const KEY = "scrollPosition";
-
-  // Sauvegarde continue de la position
-  window.addEventListener("scroll", () => {
-    localStorage.setItem(KEY, window.scrollY);
-  });
-
-  // Sauvegarde aussi à la fermeture (fallback desktop)
-  window.addEventListener("beforeunload", () => {
-    localStorage.setItem(KEY, window.scrollY);
-  });
-
-  // Restaure la position après chargement
-  window.addEventListener("load", () => {
-    const scrollPosition = localStorage.getItem(KEY);
-    if (scrollPosition) {
-      // tempo pour éviter que le reflow mobile écrase le scroll
-      setTimeout(() => {
-        window.scrollTo(0, parseInt(scrollPosition, 10));
-      }, 150); // ajuste si nécessaire (100–300ms)
-    }
-  });
-})();

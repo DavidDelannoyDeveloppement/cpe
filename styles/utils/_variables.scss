@@ -10,7 +10,7 @@ $vert3: #5bb887; // vert tertiaire
 $rouge: #ff0000;
 $blanc_pied: #fffff2;
 // Secondaires (existantes)
-$creme: #fffffa; // fond clair
+$creme: #ffffff; // modif rapide par couluer, pour éviter reprise de chaque utilisation
 $saumon: #f6ab78;
 $violet: #be097f;
 
@@ -28,20 +28,19 @@ $bleu-fond: rgba(26, 46, 77);
 $vert-gradient:linear-gradient(165deg, rgba(46, 204, 113, 0.24), rgba(135, 211, 167, 0.295));
 $vert-border:rgb(0, 71, 30);
 $vert-border-top: rgba(0, 71, 30, 0.63);
-
+ 
 
 // ========================
 // ====== TYPOGRAPHIE =====
 // ========================
 $raleway : 'Raleway', sans-serif;
 
-$h1-size: clamp(2.20rem, 5.50vw, 3.30rem);
-$h2-size: clamp(1.85rem, 4.40vw, 2.65rem);
-$h3-size: clamp(1.55rem, 3.85vw, 2.00rem);
-$h4-size: clamp(1.30rem, 3.10vw, 1.55rem);
-$h5-size: clamp(1.20rem, 2.20vw, 1.30rem);
-$p-size : clamp(1.10rem, 1.65vw, 1.20rem);
-
+$h1-size: clamp(2.2rem, 1.414rem + 2.095vw, 3.3rem);
+$h2-size: clamp(1.85rem, 1.314rem + 1.429vw, 2.6rem);
+$h3-size: clamp(1.55rem, 1.229rem + 0.857vw, 2rem);
+$h4-size: clamp(1.3rem, 1.193rem + 0.286vw, 1.45rem);
+$h5-size: 1.20rem;
+$p-size : 1.1rem;
 
 
 $font-titles: $raleway; // Titres/menus
@@ -49,6 +48,8 @@ $font-body: $raleway; // Paragraphes/labels
 $font-ui: $raleway; // Boutons, badges, formulaires
 
 // /largeur image par défaut
+$witdh-img-500: clamp(12.5rem, 0rem + 33.333vw, 30rem);
+$witdh-img-400: clamp(12.5rem, 3.571rem + 23.81vw, 25rem);
 $witdh-img-defaut: clamp(12.5rem, 10.434rem + 12.712vw, 21.875rem);
 
 // ========================
@@ -66,6 +67,7 @@ $shadow-photo :0 4px 12px rgba(0, 0, 0, 0.2);
 // ========================
 // ===  DESIGN BTN/IMG  ===
 // ========================
+$padding-marge-section : clamp(1rem, 0.286rem + 1.905vw, 2rem) 1rem clamp(2rem, 1.78rem + 1.356vw, 3rem);
 $padding-btn: clamp(0.45rem, 1.25vw, 0.70rem) clamp(0.60rem, 1.90vw, 1.20rem);
 
 
