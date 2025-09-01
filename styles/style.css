@@ -2879,45 +2879,14 @@ body.page-typologies main .etapes .etapes-container .etapes-list {
   display: grid;
   gap: 1.2rem;
 }
-body.page-typologies main .etapes .etapes-container .etapes-list > li {
+body.page-typologies main .etapes .etapes-container .etapes-list > .etape {
   margin: 0;
   padding-bottom: 2rem;
   display: grid;
   gap: clamp(1rem, 3vw, 2rem);
   align-items: start;
   grid-auto-rows: auto;
-}
-@media (min-width: 768px) {
-  body.page-typologies main .etapes .etapes-container .etapes-list > li:nth-child(odd) {
-    grid-template-columns: 3fr 2fr;
-  }
-  body.page-typologies main .etapes .etapes-container .etapes-list > li:nth-child(odd) .etape-text {
-    grid-column: 1;
-    grid-row: 1/span 2;
-  }
-  body.page-typologies main .etapes .etapes-container .etapes-list > li:nth-child(odd) .etape-media {
-    grid-column: 2;
-    grid-row: 1;
-  }
-  body.page-typologies main .etapes .etapes-container .etapes-list > li:nth-child(odd) .etape-limites {
-    grid-column: 2;
-    grid-row: 2;
-  }
-  body.page-typologies main .etapes .etapes-container .etapes-list > li:nth-child(even) {
-    grid-template-columns: 1fr 2fr;
-  }
-  body.page-typologies main .etapes .etapes-container .etapes-list > li:nth-child(even) .etape-media {
-    grid-column: 1;
-    grid-row: 1;
-  }
-  body.page-typologies main .etapes .etapes-container .etapes-list > li:nth-child(even) .etape-limites {
-    grid-column: 1;
-    grid-row: 2;
-  }
-  body.page-typologies main .etapes .etapes-container .etapes-list > li:nth-child(even) .etape-text {
-    grid-column: 2;
-    grid-row: 1/span 2;
-  }
+  grid-template-columns: 1fr; /* mobile default */
 }
 body.page-typologies main .etapes .etapes-container .etape-text {
   text-align: left;
@@ -2940,57 +2909,19 @@ body.page-typologies main .etapes .etapes-container .etape-media img {
   -o-object-position: center;
      object-position: center;
 }
-body.page-typologies main .etapes .etapes-container .etape-limites {
-  align-self: start;
-  padding: clamp(0.6rem, 1.4vw, 0.9rem);
-}
-body.page-typologies main .etapes .etapes-container .etape-limites p {
-  margin: 0 0 0.35rem;
-  font-size: 1.1rem;
-}
-body.page-typologies main .etapes .etapes-container .etape-limites ul {
-  margin: 0;
-  padding: 0;
-  list-style: disc inside;
-}
-body.page-typologies main .etapes .etapes-container .etape-limites ul li {
-  margin: 0.25rem 0;
-  font-size: 1.1rem;
-  line-height: 1.55;
-}
-body.page-typologies main .etapes .etapes-container .etapes-list .etape-text > h5 {
+body.page-typologies main .etapes .etapes-container .etape-text > h5 {
   font-size: 1.2rem;
   display: flex;
   align-items: center;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
 }
-body.page-typologies main .etapes .etapes-container .etapes-list .etape-text > p {
-  font-size: 1.1rem;
-}
-body.page-typologies main .etapes .etapes-container li:last-child {
-  padding-bottom: 0;
-}
-body.page-typologies main .etapes .etapes-container .etapes-list .etape-text > h4 {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: nowrap;
-  gap: 0.75rem;
-  margin: 0 0 0.5rem;
-  padding: 0;
-  font-size: clamp(1.2rem, 2vw, 1.4rem);
-  line-height: 1.35;
-  color: #031837;
-  text-align: center;
-}
-body.page-typologies main .etapes .etapes-container .etapes-list .etape-text > h5::before {
+body.page-typologies main .etapes .etapes-container .etape-text > h5::before {
   content: counter(principe);
   counter-increment: principe;
   flex: 0 0 auto;
   aspect-ratio: 1/1;
   width: 2.2rem;
   min-width: 2.2rem;
-  height: auto;
   border-radius: 50%;
   display: inline-flex;
   align-items: center;
@@ -3001,59 +2932,70 @@ body.page-typologies main .etapes .etapes-container .etapes-list .etape-text > h
   font-size: 1rem;
   margin-right: 1rem;
 }
-body.page-typologies main .etapes .etapes-container .etapes-list .etape-text > ul {
-  margin: 0.35rem auto 0.6rem;
+body.page-typologies main .etapes .etapes-container .etape-text .bloc p {
+  margin: 0 0 0.35rem;
+  font-size: 1.1rem;
+}
+body.page-typologies main .etapes .etapes-container .etape-text .bloc ul {
+  margin: 0;
   padding: 0;
   list-style: disc inside;
 }
-body.page-typologies main .etapes .etapes-container .etapes-list .etape-text > ul li {
-  margin: 0.35rem 0;
+body.page-typologies main .etapes .etapes-container .etape-text .bloc ul li {
+  margin: 0.25rem 0;
   font-size: 1.1rem;
-  line-height: 1.6;
+  line-height: 1.55;
+}
+@media (min-width: 992px) {
+  body.page-typologies main .etapes .etapes-container .etapes-list > .etape {
+    grid-template-columns: 1fr 1fr 0.9fr; /* 2 colonnes texte + 1 visuel */
+  }
+  body.page-typologies main .etapes .etapes-container .etape-text {
+    grid-column: 1/span 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 colonnes pour les 6 sous-étapes */
+    gap: clamp(0.8rem, 2vw, 1.2rem);
+    align-items: start;
+  }
+  body.page-typologies main .etapes .etapes-container .etape-media {
+    grid-column: 3;
+    grid-row: 1/span 2;
+    justify-self: center;
+  }
 }
 @media (max-width: 768px) {
-  body.page-typologies main .etapes .etapes-container .etapes-list > li {
+  body.page-typologies main .etapes .etapes-container .etapes-list > .etape {
     grid-template-columns: 1fr;
     justify-items: stretch;
     align-items: center;
   }
-  body.page-typologies main .etapes .etapes-container .etapes-list > li .etape-text {
+  body.page-typologies main .etapes .etapes-container .etape-text {
     grid-column: 1;
     grid-row: 1;
     width: 100%;
     max-width: none;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
   }
-  body.page-typologies main .etapes .etapes-container .etapes-list > li .etape-limites {
-    grid-column: 1;
-    grid-row: 2;
-    align-self: start;
-    background: transparent;
-    border: 0;
-    box-shadow: none;
-    padding: 0;
-    margin-top: 0.35rem;
-  }
-  body.page-typologies main .etapes .etapes-container .etapes-list > li .etape-media {
+  body.page-typologies main .etapes .etapes-container .etape-media {
     justify-self: center;
     grid-column: 1;
-    grid-row: 3;
+    grid-row: 2;
     max-width: none;
   }
-  body.page-typologies main .etapes .etapes-container .etapes-list .etape-text > h5 {
+  body.page-typologies main .etapes .etapes-container .etape-text > h5 {
     flex-direction: column;
     gap: 0.45rem;
     justify-content: flex-start;
     text-align: center;
   }
-  body.page-typologies main .etapes .etapes-container .etapes-list .etape-text > h5::before {
+  body.page-typologies main .etapes .etapes-container .etape-text > h5::before {
     width: clamp(1.8rem, 6vw, 2rem);
     min-width: clamp(1.8rem, 6vw, 2rem);
     font-size: 0.95rem;
     margin-bottom: 0.1rem;
     margin-right: 0;
-  }
-  body.page-typologies main .etapes .etapes-container .etapes-list .etape-text > ul {
-    margin-left: 0;
   }
 }
 
@@ -3950,50 +3892,11 @@ body.page-contact p {
   line-height: 1.8;
   margin-bottom: 1.2rem;
 }
-body.page-contact main .intro {
-  padding: clamp(1rem, 0.286rem + 1.905vw, 2rem) 1rem clamp(2rem, 1.78rem + 1.356vw, 3rem);
-  color: #031837;
+body.page-contact main .expert-section .expert-content .expert-text ul {
+  margin-bottom: clamp(1rem, 0.286rem + 1.905vw, 2rem);
+  margin-left: clamp(1rem, 0.286rem + 1.905vw, 2rem);
 }
-body.page-contact main .intro .intro-container {
-  width: min(1100px, 92vw);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-@media (max-width: 768px) {
-  body.page-contact main .intro .intro-container {
-    grid-template-columns: 1fr;
-  }
-}
-body.page-contact main .intro .intro-container .intro-text {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  font-size: 1.1rem;
-  line-height: 1.5;
-}
-body.page-contact main .intro .intro-container .intro-image {
-  display: flex;
-  justify-self: flex-end;
-}
-body.page-contact main .intro .intro-container .intro-image img {
-  width: clamp(17.5rem, 8.571rem + 23.81vw, 30rem);
-  border-radius: 0.4rem;
-  border-bottom-right-radius: 1rem;
-  border-top-left-radius: 1rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  display: block;
-  margin: 0 auto;
-}
-@media (max-width: 933px) {
-  body.page-contact main .intro .intro-container .intro-image {
-    padding-top: 1rem;
-    justify-self: center;
-  }
-}
-body.page-contact main .intro .intro-container .cta-buttons {
+body.page-contact main .expert-section .expert-content .cta-buttons {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;

@@ -141,25 +141,14 @@ body.page-typologies {
                 gap: 1.2rem;
                 }
 
-                .etapes-list > li {
+                .etapes-list > .etape {
                 margin: 0;
                 padding-bottom: 2rem;
                 display: grid;
                 gap: clamp(1rem, 3vw, 2rem);
                 align-items: start;
                 grid-auto-rows: auto;
-                }
-
-                @media (min-width: 768px) {
-                .etapes-list > li:nth-child(odd) { grid-template-columns: 3fr 2fr; }
-                .etapes-list > li:nth-child(odd) .etape-text    { grid-column: 1; grid-row: 1 / span 2; }
-                .etapes-list > li:nth-child(odd) .etape-media   { grid-column: 2; grid-row: 1; }
-                .etapes-list > li:nth-child(odd) .etape-limites { grid-column: 2; grid-row: 2; }
-
-                .etapes-list > li:nth-child(even) { grid-template-columns: 1fr 2fr; }
-                .etapes-list > li:nth-child(even) .etape-media   { grid-column: 1; grid-row: 1; }
-                .etapes-list > li:nth-child(even) .etape-limites { grid-column: 1; grid-row: 2; }
-                .etapes-list > li:nth-child(even) .etape-text    { grid-column: 2; grid-row: 1 / span 2; }
+                grid-template-columns: 1fr; /* mobile default */
                 }
 
                 .etape-text { text-align: left; }
@@ -180,56 +169,20 @@ body.page-typologies {
                 }
                 }
 
-                .etape-limites {
-                align-self: start;
-                // background: rgba(26,46,77,0.035);
-                // border: 1px solid rgba(26,46,77,0.08);
-                // border-radius: 0.5rem;
-                padding: clamp(0.6rem, 1.4vw, 0.9rem);
-                // box-shadow: 0 2px 6px rgba(0,0,0,0.04);
-
-                p { margin: 0 0 0.35rem; font-size: $p-size; }
-                ul {
-                    margin: 0;
-                    padding: 0;
-                    list-style: disc inside;
-                    li { margin: .25rem 0; font-size: $p-size; line-height: 1.55; }
-                }
-                }
-
-                .etapes-list .etape-text > h5 {
+                .etape-text > h5 {
                 font-size: $h5-size;
                 display: flex;
                 align-items: center;
-                margin-bottom: 0.5rem;
+                margin-bottom: 0.75rem;
                 }
 
-                .etapes-list .etape-text > p { font-size: $p-size; }
-
-                li:last-child { padding-bottom: 0; }
-
-                .etapes-list .etape-text > h4 {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                flex-wrap: nowrap;
-                gap: .75rem;
-                margin: 0 0 .5rem;
-                padding: 0;
-                font-size: clamp(1.2rem, 2vw, 1.4rem);
-                line-height: 1.35;
-                color: $bleu;
-                text-align: center;
-                }
-
-                .etapes-list .etape-text > h5::before {
+                .etape-text > h5::before {
                 content: counter(principe);
                 counter-increment: principe;
                 flex: 0 0 auto;
                 aspect-ratio: 1 / 1;
                 width: 2.2rem;
                 min-width: 2.2rem;
-                height: auto;
                 border-radius: 50%;
                 display: inline-flex;
                 align-items: center;
@@ -241,71 +194,75 @@ body.page-typologies {
                 margin-right: 1rem;
                 }
 
-                .etapes-list .etape-text > ul {
-                margin: .35rem auto 0.6rem;
-                padding: 0;
-                list-style: disc inside;
+                .etape-text .bloc { 
+                p { margin: 0 0 .35rem; font-size: $p-size; }
+                ul { margin: 0; padding: 0; list-style: disc inside; 
+                    li { margin: .25rem 0; font-size: $p-size; line-height: 1.55; }
+                }
                 }
 
-                .etapes-list .etape-text > ul li {
-                margin: .35rem 0;
-                font-size: $p-size;
-                line-height: 1.6;
+                @media (min-width: 992px) {
+                .etapes-list > .etape {
+                    grid-template-columns: 1fr 1fr 0.9fr; /* 2 colonnes texte + 1 visuel */
+                }
+
+                .etape-text {
+                    grid-column: 1 / span 2;
+                    display: grid;
+                    grid-template-columns: 1fr 1fr; /* 2 colonnes pour les 6 sous-étapes */
+                    gap: clamp(0.8rem, 2vw, 1.2rem);
+                    align-items: start;
+                }
+
+                .etape-media {
+                    grid-column: 3;
+                    grid-row: 1 / span 2;
+                    justify-self: center;
+                }
                 }
 
                 @media (max-width: 768px) {
-                .etapes-list > li {
+                .etapes-list > .etape {
                     grid-template-columns: 1fr;
                     justify-items: stretch;
                     align-items: center;
                 }
-                .etapes-list > li .etape-text {
+                .etape-text {
                     grid-column: 1;
                     grid-row: 1;
                     width: 100%;
                     max-width: none;
+                    display: grid;
+                    grid-template-columns: 1fr;
+                    gap: .75rem;
                 }
-                .etapes-list > li .etape-limites {
-                    grid-column: 1;
-                    grid-row: 2;
-                    align-self: start;
-                    background: transparent;
-                    border: 0;
-                    box-shadow: none;
-                    padding: 0;
-                    margin-top: .35rem;
-                }
-                .etapes-list > li .etape-media {
+                .etape-media {
                     justify-self: center;
                     grid-column: 1;
-                    grid-row: 3;
+                    grid-row: 2;
                     max-width: none;
                 }
-                .etapes-list .etape-text > h5 {
+                .etape-text > h5 {
                     flex-direction: column;
                     gap: .45rem;
                     justify-content: flex-start;
                     text-align: center;
                 }
-                .etapes-list .etape-text > h5::before {
+                .etape-text > h5::before {
                     width: clamp(1.8rem, 6vw, 2rem);
                     min-width: clamp(1.8rem, 6vw, 2rem);
                     font-size: .95rem;
                     margin-bottom: .1rem;
                     margin-right: 0;
                 }
-                .etapes-list .etape-text > ul { margin-left: 0; }
                 }
             }
         }
 
-        
-
 
 
 
         
-
         
     }
 }
