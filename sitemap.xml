@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- Accueil -->
   <url><loc>https://daviddelannoydeveloppement.github.io/cpe/</loc></url>
-
-  <!-- Contenu principal -->
   <url><loc>https://daviddelannoydeveloppement.github.io/cpe/definition.html</loc></url>
   <url><loc>https://daviddelannoydeveloppement.github.io/cpe/fonctionnement.html</loc></url>
   <url><loc>https://daviddelannoydeveloppement.github.io/cpe/typologies.html</loc></url>
@@ -15,8 +12,6 @@
   <url><loc>https://daviddelannoydeveloppement.github.io/cpe/recommandations.html</loc></url>
   <url><loc>https://daviddelannoydeveloppement.github.io/cpe/actualites.html</loc></url>
   <url><loc>https://daviddelannoydeveloppement.github.io/cpe/glossaire.html</loc></url>
-
-  <!-- Pages légales & contact -->
   <url><loc>https://daviddelannoydeveloppement.github.io/cpe/contact.html</loc></url>
   <url><loc>https://daviddelannoydeveloppement.github.io/cpe/cgu.html</loc></url>
   <url><loc>https://daviddelannoydeveloppement.github.io/cpe/mentions-legales.html</loc></url>
