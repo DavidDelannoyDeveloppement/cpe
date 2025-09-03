@@ -62,21 +62,388 @@ body.page-avantages {
 
 
         .avantages {
-            // background-color: $creme;
             padding: $padding-marge-section;
             color: $bleu;
             text-align: justify;
-        
-            .intro-container {
+
+            .avantages-container {
                 width: min(1100px, 92vw);
                 margin: 0 auto;
 
-               h5 {
+                h5 {
                 font-size: $h5-size;
                 }
-                
+
+                .avantages-list {
+                counter-reset: avantage;
+                list-style: none;
+                margin: 2rem 0 0;
+                padding: 0;
+                display: grid;
+                gap: 1.2rem;
+                }
+
+                .avantages-list > li {
+                margin: 0;
+                padding-bottom: 2rem;
+                display: grid;
+                gap: clamp(1rem, 3vw, 2rem);
+                align-items: start;
+                }
+
+                @media (min-width: 768px) {
+                .avantages-list > li:nth-child(odd) { grid-template-columns: 2fr 1fr; }
+                .avantages-list > li:nth-child(odd) .avantage-text { grid-column: 1; }
+                .avantages-list > li:nth-child(odd) .avantage-media { grid-column: 2; }
+
+                .avantages-list > li:nth-child(even) { grid-template-columns: 1fr 2fr; }
+                .avantages-list > li:nth-child(even) .avantage-media { grid-column: 1; }
+                .avantages-list > li:nth-child(even) .avantage-text { grid-column: 2; }
+                }
+
+                .avantage-text { text-align: left; }
+
+                .avantage-media {
+                display: flex;
+                justify-self: center;
+                width: clamp(12rem, 8.898rem + 6.78vw, 15rem);
+                // aspect-ratio: 1/1;
+                @include radius-cpe;
+                overflow: hidden;
+                box-shadow: $shadow-photo;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    display: block;
+                    object-fit: cover;
+                    object-position: center;
+                }
+                }
+
+                .avantages-list .avantage-text > h5 {
+                font-size: $h5-size;
+                display: flex;
+                align-items: center;
+                margin-bottom: 0.5rem;
+                }
+
+                .avantages-list .avantage-text > p { font-size: $p-size; }
+
+                li:last-child { padding-bottom: 0; }
+
+                .avantages-list .avantage-text > h4 {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-wrap: nowrap;
+                gap: .75rem;
+                margin: 0 0 .5rem;
+                padding: 0;
+                font-size: clamp(1.2rem, 2vw, 1.4rem);
+                line-height: 1.35;
+                color: $bleu;
+                text-align: center;
+                }
+
+                .avantages-list .avantage-text > h5::before {
+                content: counter(avantage);
+                counter-increment: avantage;
+                flex: 0 0 auto;
+                aspect-ratio: 1 / 1;
+                width: 2.2rem;
+                min-width: 2.2rem;
+                height: auto;
+                border-radius: 50%;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                background: $vert3;
+                color: $color-bg;
+                font-weight: 800;
+                font-size: 1rem;
+                margin-right: 1rem;
+                }
+
+                .avantages-list .avantage-text > ul {
+                margin: .35rem auto 0.6rem;
+                padding: 0;
+                list-style: disc inside;
+                }
+
+                .avantages-list .avantage-text > ul li {
+                margin: .35rem 0;
+                font-size: $p-size;
+                line-height: 1.6;
+                }
+
+                @media (max-width: 768px) {
+                .avantages-list > li {
+                    grid-template-columns: 1fr;
+                    justify-items: stretch;
+                    align-items: center;
+                }
+                .avantages-list > li .avantage-text {
+                    grid-column: 1;
+                    grid-row: 1;
+                    width: 100%;
+                    max-width: none;
+                }
+                .avantages-list > li .avantage-media {
+                    justify-self: center;
+                    grid-column: 1;
+                    grid-row: 2;
+                    max-width: none;
+                }
+                .avantages-list .avantage-text > h5 {
+                    flex-direction: column;
+                    gap: .45rem;
+                    justify-content: flex-start;
+                    text-align: center;
+                }
+                .avantages-list .avantage-text > h5::before {
+                    width: clamp(1.8rem, 6vw, 2rem);
+                    min-width: clamp(1.8rem, 6vw, 2rem);
+                    font-size: .95rem;
+                    margin-bottom: .1rem;
+                    margin-right: 0;
+                }
+                .avantages-list .avantage-text > ul { margin-left: 0; }
+                }
             }
         }
+
+
+        .balance {
+            padding: $padding-marge-section;
+            color: $bleu;
+            text-align: justify;
+
+            h2 {
+                width: min(1100px, 92vw);
+                margin: 0 auto clamp(1rem, 0.78rem + 1.356vw, 2rem);
+            }
+
+            .balance-container {
+                width: min(1100px, 92vw);
+                margin: 0 auto;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 0;
+                @include radius-cpe;
+                border-top: $border-top-vert-2px;
+                border-left: $border-left-vert;
+                box-shadow: $shadow-photo;
+                overflow: hidden;
+
+                .colonne {
+                display: grid;
+                grid-template-rows: auto 1fr;
+                align-content: start;
+                }
+
+                .h4-colonne {
+                margin: 0;
+                padding: .6rem 1rem;
+                background: rgba($saumon, .6);
+                color: $bleu;
+                font-weight: 700;
+                line-height: 1.25;
+                border-bottom: 1px solid rgba($bleu, .6);
+                text-align: center;
+                border-left: 0;
+                border-right: 0;
+                }
+
+                #avantages .h4-colonne { border-right: 1px solid rgba($bleu, .5); }
+
+                .col-list {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+
+                li {
+                    margin: 0;
+                    padding: .75rem .9rem;
+                    min-height: 2.75rem;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    text-align: center;
+                    border-bottom: 1px solid rgba($bleu, .30);
+                    background: $creme;
+                    border-left: 0;
+                    border-right: 0;
+                }
+
+                li:last-child { border-bottom: 0; }
+                }
+
+                #avantages .col-list li {
+                background: rgba($vert3, .10);
+                color: color.scale($bleu, $lightness: -5%);
+                border-right: 1px solid rgba($bleu, .5);
+                }
+
+                #limites .col-list li {
+                background: rgba($violet, .10);
+                color: color.scale($bleu, $lightness: -10%);
+                }
+
+                @media (hover: hover) and (pointer: fine) {
+                .col-list li:hover { background: color.change($creme, $alpha: .6); }
+                #avantages .col-list li:hover { background: color.change($vert3, $alpha: .15); }
+                #limites  .col-list li:hover { background: color.change($violet, $alpha: .15); }
+                }
+            }
+
+            @media (max-width: 1060px) {
+                .h4-colonne { display: none; }
+
+                .balance-container {
+                display: flex;
+                flex-wrap: wrap;
+                border: 0;
+                box-shadow: none;
+                overflow: visible;
+                background: transparent;
+                }
+
+                .balance-container .colonne,
+                .balance-container .colonne > .col-list { display: contents; }
+
+                .balance-container .col-list li {
+                flex: 1 1 100%;
+                display: grid;
+                grid-template-columns: auto 1fr;
+                align-items: start;
+                gap: .6rem;
+                text-align: left;
+                padding: .8rem 1rem;
+                background: $creme;
+                border-bottom: 0;
+                border-left: $border-left-vert;
+                border-right: 0;
+                }
+
+                #avantages .col-list li {
+                background: rgba($vert3, .10);
+                border-right: 1px solid rgba($bleu, .5);
+                }
+
+                #limites .col-list li {
+                background: rgba($violet, .10);
+                border-right: 1px solid rgba($bleu, .5);
+                }
+
+                #avantages .col-list li::before {
+                content: "Avantages";
+                font-weight: 700;
+                color: color.scale($vert3, $lightness: -10%);
+                }
+
+                #limites .col-list li::before {
+                content: "Limites";
+                font-weight: 700;
+                color: color.scale($violet, $lightness: -10%);
+                }
+
+                #avantages .col-list li {
+                border-top: $border-top-vert-2px;
+                border-radius: .6rem .6rem 0 0;
+                }
+
+                #limites .col-list li {
+                border-top: 1px solid rgba($bleu, .30);
+                border-bottom: 2px solid color.scale($vert2, $lightness: -10%);
+                border-radius: 0 0 .6rem .6rem;
+                margin-bottom: .8rem;
+                }
+
+                #avantages .col-list li:nth-child(1) { order: 1; }  #limites .col-list li:nth-child(1) { order: 2; }
+                #avantages .col-list li:nth-child(2) { order: 3; }  #limites .col-list li:nth-child(2) { order: 4; }
+                #avantages .col-list li:nth-child(3) { order: 5; }  #limites .col-list li:nth-child(3) { order: 6; }
+                #avantages .col-list li:nth-child(4) { order: 7; }  #limites .col-list li:nth-child(4) { order: 8; }
+                #avantages .col-list li:nth-child(5) { order: 9; }  #limites .col-list li:nth-child(5) { order:10; }
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+                .col-list li { transition: none !important; }
+            }
+        }
+
+        .conclusion {
+            padding: clamp(1rem, 0.559rem + 2.712vw, 3rem) 1rem clamp(2rem, 1.78rem + 1.356vw, 3rem);
+            color: $bleu;
+        
+            .conclusion-container {
+                width: min(1100px, 92vw);
+                display: grid;
+                grid-template-columns: 2fr 1fr;
+                gap: clamp(1rem, 0.286rem + 1.905vw, 2rem);
+                align-items: center;
+                max-width: 1100px;
+                margin: 0 auto;
+
+                @media (max-width: 768px) {
+                grid-template-columns: 1fr;
+                }
+                
+                .conclusion-text {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: start;
+                    height: 100%;
+                    font-size: $p-size;
+                    line-height: 1.5;
+
+                    .conclusion-p {
+                        margin-bottom: clamp(0.5rem, 0.143rem + 0.952vw, 1rem);
+                    }
+
+                    .conclusion-ul {
+                        margin-left: clamp(0.5rem, -0.929rem + 3.81vw, 2.5rem);
+                    }
+
+                    .conclusion-ul li {
+                        margin-bottom: clamp(0.5rem, 0.143rem + 0.952vw, 1rem);
+                    }
+
+                    .cta-buttons {
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: center;
+                        gap: clamp(0.8rem, 1.6vw, 1.2rem);
+                        margin: clamp(1rem, 0.78rem + 1.356vw, 2rem) 0 0;
+                    }
+                }
+        
+                .conclusion-image {
+                    @include cpe-zoom-frame(8s, ease-in-out, true, 1.05, -2%, -2%);
+                    @include radius-cpe;
+                    overflow: hidden;
+                    box-shadow: $shadow-photo;
+                    width: $witdh-img-defaut;
+
+                    img {
+                    width: 100%;
+                    display: block;
+                    margin: 0 auto;
+                    height: 100%;
+                    object-fit: cover;
+                    display: block;
+                    }
+                }
+                @media (max-width:933px){
+                    .conclusion-image {
+                        justify-self: center;
+                        margin-top: 1rem;
+                        margin-bottom: 1rem;
+                    }
+                }
+            }
+        }
+
 
     }
 }

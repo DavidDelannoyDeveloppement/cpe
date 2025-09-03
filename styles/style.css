@@ -3573,12 +3573,446 @@ body.page-avantages main .avantages {
   color: #031837;
   text-align: justify;
 }
-body.page-avantages main .avantages .intro-container {
+body.page-avantages main .avantages .avantages-container {
   width: min(1100px, 92vw);
   margin: 0 auto;
 }
-body.page-avantages main .avantages .intro-container h5 {
+body.page-avantages main .avantages .avantages-container h5 {
   font-size: 1.2rem;
+}
+body.page-avantages main .avantages .avantages-container .avantages-list {
+  counter-reset: avantage;
+  list-style: none;
+  margin: 2rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 1.2rem;
+}
+body.page-avantages main .avantages .avantages-container .avantages-list > li {
+  margin: 0;
+  padding-bottom: 2rem;
+  display: grid;
+  gap: clamp(1rem, 3vw, 2rem);
+  align-items: start;
+}
+@media (min-width: 768px) {
+  body.page-avantages main .avantages .avantages-container .avantages-list > li:nth-child(odd) {
+    grid-template-columns: 2fr 1fr;
+  }
+  body.page-avantages main .avantages .avantages-container .avantages-list > li:nth-child(odd) .avantage-text {
+    grid-column: 1;
+  }
+  body.page-avantages main .avantages .avantages-container .avantages-list > li:nth-child(odd) .avantage-media {
+    grid-column: 2;
+  }
+  body.page-avantages main .avantages .avantages-container .avantages-list > li:nth-child(even) {
+    grid-template-columns: 1fr 2fr;
+  }
+  body.page-avantages main .avantages .avantages-container .avantages-list > li:nth-child(even) .avantage-media {
+    grid-column: 1;
+  }
+  body.page-avantages main .avantages .avantages-container .avantages-list > li:nth-child(even) .avantage-text {
+    grid-column: 2;
+  }
+}
+body.page-avantages main .avantages .avantages-container .avantage-text {
+  text-align: left;
+}
+body.page-avantages main .avantages .avantages-container .avantage-media {
+  display: flex;
+  justify-self: center;
+  width: clamp(12rem, 8.898rem + 6.78vw, 15rem);
+  border-radius: 0.4rem;
+  border-top-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+body.page-avantages main .avantages .avantages-container .avantage-media img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+body.page-avantages main .avantages .avantages-container .avantages-list .avantage-text > h5 {
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+body.page-avantages main .avantages .avantages-container .avantages-list .avantage-text > p {
+  font-size: 1.1rem;
+}
+body.page-avantages main .avantages .avantages-container li:last-child {
+  padding-bottom: 0;
+}
+body.page-avantages main .avantages .avantages-container .avantages-list .avantage-text > h4 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  gap: 0.75rem;
+  margin: 0 0 0.5rem;
+  padding: 0;
+  font-size: clamp(1.2rem, 2vw, 1.4rem);
+  line-height: 1.35;
+  color: #031837;
+  text-align: center;
+}
+body.page-avantages main .avantages .avantages-container .avantages-list .avantage-text > h5::before {
+  content: counter(avantage);
+  counter-increment: avantage;
+  flex: 0 0 auto;
+  aspect-ratio: 1/1;
+  width: 2.2rem;
+  min-width: 2.2rem;
+  height: auto;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #5bb887;
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 1rem;
+  margin-right: 1rem;
+}
+body.page-avantages main .avantages .avantages-container .avantages-list .avantage-text > ul {
+  margin: 0.35rem auto 0.6rem;
+  padding: 0;
+  list-style: disc inside;
+}
+body.page-avantages main .avantages .avantages-container .avantages-list .avantage-text > ul li {
+  margin: 0.35rem 0;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+@media (max-width: 768px) {
+  body.page-avantages main .avantages .avantages-container .avantages-list > li {
+    grid-template-columns: 1fr;
+    justify-items: stretch;
+    align-items: center;
+  }
+  body.page-avantages main .avantages .avantages-container .avantages-list > li .avantage-text {
+    grid-column: 1;
+    grid-row: 1;
+    width: 100%;
+    max-width: none;
+  }
+  body.page-avantages main .avantages .avantages-container .avantages-list > li .avantage-media {
+    justify-self: center;
+    grid-column: 1;
+    grid-row: 2;
+    max-width: none;
+  }
+  body.page-avantages main .avantages .avantages-container .avantages-list .avantage-text > h5 {
+    flex-direction: column;
+    gap: 0.45rem;
+    justify-content: flex-start;
+    text-align: center;
+  }
+  body.page-avantages main .avantages .avantages-container .avantages-list .avantage-text > h5::before {
+    width: clamp(1.8rem, 6vw, 2rem);
+    min-width: clamp(1.8rem, 6vw, 2rem);
+    font-size: 0.95rem;
+    margin-bottom: 0.1rem;
+    margin-right: 0;
+  }
+  body.page-avantages main .avantages .avantages-container .avantages-list .avantage-text > ul {
+    margin-left: 0;
+  }
+}
+body.page-avantages main .balance {
+  padding: clamp(1rem, 0.286rem + 1.905vw, 2rem) 1rem clamp(2rem, 1.78rem + 1.356vw, 3rem);
+  color: #031837;
+  text-align: justify;
+}
+body.page-avantages main .balance h2 {
+  width: min(1100px, 92vw);
+  margin: 0 auto clamp(1rem, 0.78rem + 1.356vw, 2rem);
+}
+body.page-avantages main .balance .balance-container {
+  width: min(1100px, 92vw);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border-radius: 0.4rem;
+  border-top-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  border-top: 2px solid rgba(0, 71, 30, 0.63);
+  border-left: 4px solid rgb(0, 71, 30);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+body.page-avantages main .balance .balance-container .colonne {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  align-content: start;
+}
+body.page-avantages main .balance .balance-container .h4-colonne {
+  margin: 0;
+  padding: 0.6rem 1rem;
+  background: rgba(246, 171, 120, 0.6);
+  color: #031837;
+  font-weight: 700;
+  line-height: 1.25;
+  border-bottom: 1px solid rgba(3, 24, 55, 0.6);
+  text-align: center;
+  border-left: 0;
+  border-right: 0;
+}
+body.page-avantages main .balance .balance-container #avantages .h4-colonne {
+  border-right: 1px solid rgba(3, 24, 55, 0.5);
+}
+body.page-avantages main .balance .balance-container .col-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+body.page-avantages main .balance .balance-container .col-list li {
+  margin: 0;
+  padding: 0.75rem 0.9rem;
+  min-height: 2.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-bottom: 1px solid rgba(3, 24, 55, 0.3);
+  background: #ffffff;
+  border-left: 0;
+  border-right: 0;
+}
+body.page-avantages main .balance .balance-container .col-list li:last-child {
+  border-bottom: 0;
+}
+body.page-avantages main .balance .balance-container #avantages .col-list li {
+  background: rgba(91, 184, 135, 0.1);
+  color: rgb(2.85, 22.8, 52.25);
+  border-right: 1px solid rgba(3, 24, 55, 0.5);
+}
+body.page-avantages main .balance .balance-container #limites .col-list li {
+  background: rgba(190, 9, 127, 0.1);
+  color: rgb(2.7, 21.6, 49.5);
+}
+@media (hover: hover) and (pointer: fine) {
+  body.page-avantages main .balance .balance-container .col-list li:hover {
+    background: rgba(255, 255, 255, 0.6);
+  }
+  body.page-avantages main .balance .balance-container #avantages .col-list li:hover {
+    background: rgba(91, 184, 135, 0.15);
+  }
+  body.page-avantages main .balance .balance-container #limites .col-list li:hover {
+    background: rgba(190, 9, 127, 0.15);
+  }
+}
+@media (max-width: 1060px) {
+  body.page-avantages main .balance .h4-colonne {
+    display: none;
+  }
+  body.page-avantages main .balance .balance-container {
+    display: flex;
+    flex-wrap: wrap;
+    border: 0;
+    box-shadow: none;
+    overflow: visible;
+    background: transparent;
+  }
+  body.page-avantages main .balance .balance-container .colonne,
+  body.page-avantages main .balance .balance-container .colonne > .col-list {
+    display: contents;
+  }
+  body.page-avantages main .balance .balance-container .col-list li {
+    flex: 1 1 100%;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: start;
+    gap: 0.6rem;
+    text-align: left;
+    padding: 0.8rem 1rem;
+    background: #ffffff;
+    border-bottom: 0;
+    border-left: 4px solid rgb(0, 71, 30);
+    border-right: 0;
+  }
+  body.page-avantages main .balance #avantages .col-list li {
+    background: rgba(91, 184, 135, 0.1);
+    border-right: 1px solid rgba(3, 24, 55, 0.5);
+  }
+  body.page-avantages main .balance #limites .col-list li {
+    background: rgba(190, 9, 127, 0.1);
+    border-right: 1px solid rgba(3, 24, 55, 0.5);
+  }
+  body.page-avantages main .balance #avantages .col-list li::before {
+    content: "Avantages";
+    font-weight: 700;
+    color: rgb(74.7765957447, 172.7234042553, 121.1170212766);
+  }
+  body.page-avantages main .balance #limites .col-list li::before {
+    content: "Limites";
+    font-weight: 700;
+    color: rgb(171, 8.1, 114.3);
+  }
+  body.page-avantages main .balance #avantages .col-list li {
+    border-top: 2px solid rgba(0, 71, 30, 0.63);
+    border-radius: 0.6rem 0.6rem 0 0;
+  }
+  body.page-avantages main .balance #limites .col-list li {
+    border-top: 1px solid rgba(3, 24, 55, 0.3);
+    border-bottom: 2px solid rgb(56.7, 153.9, 47.7);
+    border-radius: 0 0 0.6rem 0.6rem;
+    margin-bottom: 0.8rem;
+  }
+  body.page-avantages main .balance #avantages .col-list li:nth-child(1) {
+    order: 1;
+  }
+  body.page-avantages main .balance #limites .col-list li:nth-child(1) {
+    order: 2;
+  }
+  body.page-avantages main .balance #avantages .col-list li:nth-child(2) {
+    order: 3;
+  }
+  body.page-avantages main .balance #limites .col-list li:nth-child(2) {
+    order: 4;
+  }
+  body.page-avantages main .balance #avantages .col-list li:nth-child(3) {
+    order: 5;
+  }
+  body.page-avantages main .balance #limites .col-list li:nth-child(3) {
+    order: 6;
+  }
+  body.page-avantages main .balance #avantages .col-list li:nth-child(4) {
+    order: 7;
+  }
+  body.page-avantages main .balance #limites .col-list li:nth-child(4) {
+    order: 8;
+  }
+  body.page-avantages main .balance #avantages .col-list li:nth-child(5) {
+    order: 9;
+  }
+  body.page-avantages main .balance #limites .col-list li:nth-child(5) {
+    order: 10;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  body.page-avantages main .balance .col-list li {
+    transition: none !important;
+  }
+}
+body.page-avantages main .conclusion {
+  padding: clamp(1rem, 0.559rem + 2.712vw, 3rem) 1rem clamp(2rem, 1.78rem + 1.356vw, 3rem);
+  color: #031837;
+}
+body.page-avantages main .conclusion .conclusion-container {
+  width: min(1100px, 92vw);
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: clamp(1rem, 0.286rem + 1.905vw, 2rem);
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+@media (max-width: 768px) {
+  body.page-avantages main .conclusion .conclusion-container {
+    grid-template-columns: 1fr;
+  }
+}
+body.page-avantages main .conclusion .conclusion-container .conclusion-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  height: 100%;
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+body.page-avantages main .conclusion .conclusion-container .conclusion-text .conclusion-p {
+  margin-bottom: clamp(0.5rem, 0.143rem + 0.952vw, 1rem);
+}
+body.page-avantages main .conclusion .conclusion-container .conclusion-text .conclusion-ul {
+  margin-left: clamp(0.5rem, -0.929rem + 3.81vw, 2.5rem);
+}
+body.page-avantages main .conclusion .conclusion-container .conclusion-text .conclusion-ul li {
+  margin-bottom: clamp(0.5rem, 0.143rem + 0.952vw, 1rem);
+}
+body.page-avantages main .conclusion .conclusion-container .conclusion-text .cta-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(0.8rem, 1.6vw, 1.2rem);
+  margin: clamp(1rem, 0.78rem + 1.356vw, 2rem) 0 0;
+}
+body.page-avantages main .conclusion .conclusion-container .conclusion-image {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: inherit;
+  /* Pause au survol optionnelle */
+  /* Réécriture des frames avec les valeurs passées au mixin (portée locale via nesting) */
+  border-radius: 0.4rem;
+  border-top-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  width: clamp(17.5rem, 14.375rem + 8.333vw, 21.875rem);
+}
+body.page-avantages main .conclusion .conclusion-container .conclusion-image > img, body.page-avantages main .conclusion .conclusion-container .conclusion-image > picture > img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transform-origin: center;
+  will-change: transform;
+  /* on utilise animation + @property pour animer vers des valeurs custom via variables */
+  /* Fallback simple : on “fige” les frames avec une animation dédiée inline via shorthand */
+  animation-name: cpe-kb-zoom-pan;
+}
+@supports (transform: scale(1)) {
+  body.page-avantages main .conclusion .conclusion-container .conclusion-image > img, body.page-avantages main .conclusion .conclusion-container .conclusion-image > picture > img {
+    /* on injecte les valeurs finales via CSS vars et une transition calc */
+    --kb-scale-to: 1.05;
+    --kb-pan-x: -2%;
+    --kb-pan-y: -2%;
+    /* on sur-déclare les frames avec les valeurs */
+    /* (truc simple : on met une animation-name dédiée pour ne pas multiplier les keyframes) */
+    /* on utilise la propriété animation-timeline implicite (fallback simple ci-dessous) */
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    body.page-avantages main .conclusion .conclusion-container .conclusion-image > img, body.page-avantages main .conclusion .conclusion-container .conclusion-image > picture > img {
+      animation: cpe-kb-zoom-pan 8s ease-in-out infinite alternate;
+    }
+  }
+}
+@media (hover: hover) {
+  body.page-avantages main .conclusion .conclusion-container .conclusion-image:hover > img, body.page-avantages main .conclusion .conclusion-container .conclusion-image:hover > picture > img {
+    animation-play-state: paused;
+  }
+}
+@keyframes cpe-kb-zoom-pan {
+  from {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+  to {
+    transform: scale(1.05) translate3d(-2%, -2%, 0);
+  }
+}
+body.page-avantages main .conclusion .conclusion-container .conclusion-image img {
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: block;
+}
+@media (max-width: 933px) {
+  body.page-avantages main .conclusion .conclusion-container .conclusion-image {
+    justify-self: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
 }
 
 /* Scope page */
