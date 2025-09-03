@@ -351,7 +351,7 @@ body.page-fonctionnement {
                 display: flex;
                 flex-wrap: wrap;
                 justify-content: center;   /* centre chaque rangée */
-                gap: .8rem;
+                gap: clamp(0.8rem, -0.057rem + 2.286vw, 2rem);
                 margin-top: .8rem;
             }
 
@@ -380,7 +380,7 @@ body.page-fonctionnement {
 
                 /* IMPORTANT pour éviter l’écrasement */
                 height: auto;                 /* override de toute hauteur fixe résiduelle */
-                min-height: clamp(7.5rem, 11vw, 10.5rem);
+                min-height: clamp(7.5rem, 6.429rem + 2.857vw, 9rem);
 
                 padding: clamp(1rem, 2vw, 1.4rem);
                 display: grid;

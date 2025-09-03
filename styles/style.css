@@ -2393,7 +2393,7 @@ body.page-fonctionnement main .roles .roles-grid {
   display: flex;
   flex-wrap: wrap;
   justify-content: center; /* centre chaque rangée */
-  gap: 0.8rem;
+  gap: clamp(0.8rem, -0.057rem + 2.286vw, 2rem);
   margin-top: 0.8rem;
 }
 body.page-fonctionnement main .roles .role-card {
@@ -2426,7 +2426,7 @@ body.page-fonctionnement main .roles .flip-face {
   box-shadow: 4px 4px 5px rgba(3, 24, 55, 0.0549019608);
   /* IMPORTANT pour éviter l’écrasement */
   height: auto; /* override de toute hauteur fixe résiduelle */
-  min-height: clamp(7.5rem, 11vw, 10.5rem);
+  min-height: clamp(7.5rem, 6.429rem + 2.857vw, 9rem);
   padding: clamp(1rem, 2vw, 1.4rem);
   display: grid;
   place-items: center;
@@ -2860,6 +2860,7 @@ body.page-typologies main .intro .intro-container .cta-buttons {
 }
 body.page-typologies main .etapes {
   padding: clamp(1rem, 0.286rem + 1.905vw, 2rem) 1rem clamp(2rem, 1.78rem + 1.356vw, 3rem);
+  padding-bottom: clamp(1.25rem, 2.5vw, 2rem);
   color: #031837;
   text-align: justify;
 }
@@ -2874,25 +2875,28 @@ body.page-typologies main .etapes .etapes-container h4 {
 body.page-typologies main .etapes .etapes-container .etapes-list {
   counter-reset: principe;
   list-style: none;
-  margin: 2rem 0 0;
+  margin: 1.2rem 0 0;
   padding: 0;
   display: grid;
-  gap: 1.2rem;
+  gap: 0.9rem;
 }
 body.page-typologies main .etapes .etapes-container .etapes-list > .etape {
   margin: 0;
-  padding-bottom: 2rem;
+  padding-bottom: 1.2rem;
   display: grid;
-  gap: clamp(1rem, 3vw, 2rem);
+  gap: clamp(0.75rem, -0.2rem + 3vw, 2rem);
   align-items: start;
   grid-auto-rows: auto;
-  grid-template-columns: 1fr; /* mobile default */
+  grid-template-columns: 1fr;
+}
+body.page-typologies main .etapes .etapes-container .etapes-list > .etape:last-child {
+  padding-bottom: 0;
 }
 body.page-typologies main .etapes .etapes-container .etape-text {
   text-align: left;
 }
 body.page-typologies main .etapes .etapes-container .etape-media {
-  width: clamp(17.5rem, 12.143rem + 14.286vw, 25rem);
+  width: clamp(17.5rem, 14.375rem + 8.333vw, 21.875rem);
   aspect-ratio: 2/3;
   border-radius: 0.4rem;
   border-top-left-radius: 1rem;
@@ -2913,7 +2917,7 @@ body.page-typologies main .etapes .etapes-container .etape-text > h5 {
   font-size: 1.2rem;
   display: flex;
   align-items: center;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
 }
 body.page-typologies main .etapes .etapes-container .etape-text > h5::before {
   content: counter(principe);
@@ -2932,35 +2936,79 @@ body.page-typologies main .etapes .etapes-container .etape-text > h5::before {
   font-size: 1rem;
   margin-right: 1rem;
 }
-body.page-typologies main .etapes .etapes-container .etape-text .bloc p {
-  margin: 0 0 0.35rem;
+body.page-typologies main .etapes .etapes-container .bloc-flow {
+  -moz-column-count: 1;
+       column-count: 1;
+  -moz-column-gap: clamp(0.8rem, 2vw, 1.2rem);
+       column-gap: clamp(0.8rem, 2vw, 1.2rem);
+}
+body.page-typologies main .etapes .etapes-container .bloc-flow .bloc {
+  -moz-column-break-inside: avoid;
+       break-inside: avoid;
+  page-break-inside: avoid;
+  margin: 0 0 clamp(0.6rem, 1.5vw, 1rem);
+}
+body.page-typologies main .etapes .etapes-container .bloc-flow .bloc p {
+  margin: 0 0 0.3rem clamp(1rem, 0.286rem + 1.905vw, 2rem);
   font-size: 1.1rem;
 }
-body.page-typologies main .etapes .etapes-container .etape-text .bloc ul {
-  margin: 0;
+body.page-typologies main .etapes .etapes-container .bloc-flow .bloc ul {
+  margin-left: clamp(1rem, 0.286rem + 1.905vw, 2rem);
   padding: 0;
   list-style: disc inside;
 }
-body.page-typologies main .etapes .etapes-container .etape-text .bloc ul li {
-  margin: 0.25rem 0;
+body.page-typologies main .etapes .etapes-container .bloc-flow .bloc ul li {
+  margin: 0.2rem 0;
   font-size: 1.1rem;
   line-height: 1.55;
 }
+body.page-typologies main .etapes .etapes-container .bloc-flow .bloc:last-child {
+  margin-bottom: 0;
+}
 @media (min-width: 992px) {
   body.page-typologies main .etapes .etapes-container .etapes-list > .etape {
-    grid-template-columns: 1fr 1fr 0.9fr; /* 2 colonnes texte + 1 visuel */
+    grid-template-columns: 1fr 1fr 0.9fr;
   }
   body.page-typologies main .etapes .etapes-container .etape-text {
     grid-column: 1/span 2;
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* 2 colonnes pour les 6 sous-étapes */
-    gap: clamp(0.8rem, 2vw, 1.2rem);
-    align-items: start;
   }
   body.page-typologies main .etapes .etapes-container .etape-media {
     grid-column: 3;
     grid-row: 1/span 2;
     justify-self: center;
+  }
+  body.page-typologies main .etapes .etapes-container .etapes-list > .etape:nth-child(even) {
+    grid-template-columns: 0.9fr 1fr 1fr;
+  }
+  body.page-typologies main .etapes .etapes-container .etapes-list > .etape:nth-child(even) .etape-media {
+    grid-column: 1;
+    grid-row: 1/span 2;
+    justify-self: center;
+  }
+  body.page-typologies main .etapes .etapes-container .etapes-list > .etape:nth-child(even) .etape-text {
+    grid-column: 2/span 2;
+  }
+  body.page-typologies main .etapes .etapes-container .bloc-flow {
+    -moz-column-count: 2;
+         column-count: 2;
+  }
+}
+@media (min-width: 769px) and (max-width: 991px) {
+  body.page-typologies main .etapes .etapes-container .etapes-list > .etape {
+    grid-template-columns: 1fr;
+  }
+  body.page-typologies main .etapes .etapes-container .etape-text {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  body.page-typologies main .etapes .etapes-container .etape-media {
+    grid-column: 1;
+    grid-row: 2;
+    justify-self: center;
+  }
+  body.page-typologies main .etapes .etapes-container .bloc-flow {
+    -moz-column-count: 2;
+         column-count: 2;
   }
 }
 @media (max-width: 768px) {
@@ -2968,15 +3016,17 @@ body.page-typologies main .etapes .etapes-container .etape-text .bloc ul li {
     grid-template-columns: 1fr;
     justify-items: stretch;
     align-items: center;
+    gap: clamp(0.6rem, 2.5vw, 1rem);
+    padding-bottom: 1rem;
+  }
+  body.page-typologies main .etapes .etapes-container .etapes-list > .etape:last-child {
+    padding-bottom: 0;
   }
   body.page-typologies main .etapes .etapes-container .etape-text {
     grid-column: 1;
     grid-row: 1;
     width: 100%;
     max-width: none;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 0.75rem;
   }
   body.page-typologies main .etapes .etapes-container .etape-media {
     justify-self: center;
@@ -2986,7 +3036,7 @@ body.page-typologies main .etapes .etapes-container .etape-text .bloc ul li {
   }
   body.page-typologies main .etapes .etapes-container .etape-text > h5 {
     flex-direction: column;
-    gap: 0.45rem;
+    gap: 0.4rem;
     justify-content: flex-start;
     text-align: center;
   }
@@ -2996,6 +3046,481 @@ body.page-typologies main .etapes .etapes-container .etape-text .bloc ul li {
     font-size: 0.95rem;
     margin-bottom: 0.1rem;
     margin-right: 0;
+  }
+  body.page-typologies main .etapes .etapes-container .bloc-flow {
+    -moz-column-count: 1;
+         column-count: 1;
+  }
+}
+body.page-typologies main .specificites {
+  padding: clamp(1rem, 0.286rem + 1.905vw, 2rem) 1rem clamp(2rem, 1.78rem + 1.356vw, 3rem);
+  color: #031837;
+  text-align: justify;
+  /* === Flip sans JS : hover + focus/tap (mobile) === */
+  /* Overlay grid => hauteur AUTO = max(face, verso) */
+}
+body.page-typologies main .specificites .specificites-container {
+  width: min(1100px, 92vw);
+  margin: 0 auto;
+}
+body.page-typologies main .specificites .roles-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* centre chaque rangée */
+  gap: clamp(0.8rem, -0.057rem + 2.286vw, 2rem);
+  padding: clamp(1rem, 0.286rem + 1.905vw, 2rem);
+}
+body.page-typologies main .specificites .role-card {
+  flex: 0 1 clamp(280px, 30vw, 340px);
+  max-inline-size: 340px;
+  width: 100%;
+}
+body.page-typologies main .specificites .flip-card {
+  perspective: 1000px;
+  display: block;
+  outline: none;
+}
+body.page-typologies main .specificites .flip-inner {
+  display: grid;
+  transform-style: preserve-3d;
+  transition: transform 0.45s ease;
+}
+body.page-typologies main .specificites .flip-card:hover .flip-inner,
+body.page-typologies main .specificites .flip-card:focus-within .flip-inner {
+  transform: rotateY(180deg);
+}
+body.page-typologies main .specificites .flip-face {
+  grid-area: 1/1;
+  background: linear-gradient(165deg, rgba(46, 204, 112, 0.164), rgba(67, 233, 139, 0.062));
+  border-top: 1px solid rgba(0, 71, 30, 0.63);
+  border-left: 4px solid rgb(0, 71, 30);
+  border-radius: 0.4rem;
+  border-bottom-right-radius: 1rem;
+  border-top-left-radius: 1rem;
+  box-shadow: 4px 4px 5px rgba(3, 24, 55, 0.0549019608);
+  /* IMPORTANT pour éviter l’écrasement */
+  height: auto; /* override de toute hauteur fixe résiduelle */
+  min-height: clamp(5rem, 2.857rem + 5.714vw, 8rem);
+  padding: 0.2rem;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+body.page-typologies main .specificites .flip-face.back {
+  transform: rotateY(180deg);
+  background: linear-gradient(165deg, rgba(46, 204, 113, 0.24), rgba(135, 211, 167, 0.295));
+}
+body.page-typologies main .specificites h3 {
+  font-size: clamp(1.3rem, 1.193rem + 0.286vw, 1.45rem);
+  line-height: 1.2;
+  margin: 0;
+}
+body.page-typologies main .specificites h4 {
+  font-size: 1.1rem;
+  line-height: 1.2;
+  margin-top: 0.5rem;
+  color: #00a250;
+}
+body.page-typologies main .specificites p {
+  margin-bottom: 0;
+  text-align: center;
+}
+body.page-typologies main .specificites .p-specificites {
+  text-align: left;
+}
+@media (max-width: 600px) {
+  body.page-typologies main .specificites { /* 1 par ligne, centrée */ }
+  body.page-typologies main .specificites .role-card {
+    flex-basis: 100%;
+    max-inline-size: none;
+  }
+}
+body.page-typologies main .choix-typologie {
+  padding: clamp(1rem, 0.286rem + 1.905vw, 2rem) 1rem clamp(2rem, 1.78rem + 1.356vw, 3rem);
+  color: #031837;
+  text-align: justify;
+  /* Responsive ≤900px : mini-tableaux par ligne */
+}
+body.page-typologies main .choix-typologie h2 {
+  width: min(1100px, 92vw);
+  margin: 0 auto clamp(1rem, 0.78rem + 1.356vw, 2rem);
+}
+body.page-typologies main .choix-typologie .choix-typologie-container {
+  width: min(1100px, 92vw);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 0;
+  border-radius: 0.4rem;
+  border-top-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  border-top: 2px solid rgba(0, 71, 30, 0.63);
+  border-left: 4px solid rgb(0, 71, 30);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  /* Fonds / couleurs par colonne */
+  /* Bordures latérales (desktop) — TOUT EN BORDURE DROITE, sauf la dernière colonne */
+  /* #tiers : pas de bordure droite ajoutée (le conteneur fournit le bord droit externe) */
+}
+body.page-typologies main .choix-typologie .choix-typologie-container .colonne {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  align-content: start;
+}
+body.page-typologies main .choix-typologie .choix-typologie-container .h4-colonne {
+  margin: 0;
+  padding: 0.6rem 1rem;
+  background: rgba(246, 171, 120, 0.6);
+  color: #031837;
+  font-weight: 700;
+  line-height: 1.25;
+  border-bottom: 1px solid rgba(3, 24, 55, 0.6);
+  text-align: center;
+  border-left: 0;
+  border-right: 0;
+}
+body.page-typologies main .choix-typologie .choix-typologie-container .colonne:not(:first-child) {
+  border-inline-start: 0;
+}
+body.page-typologies main .choix-typologie .choix-typologie-container .col-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+body.page-typologies main .choix-typologie .choix-typologie-container .col-list li {
+  margin: 0;
+  padding: 0.75rem 0.9rem;
+  min-height: 2.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-bottom: 1px solid rgba(3, 24, 55, 0.3);
+  background: #ffffff;
+  border-left: 0;
+  border-right: 0;
+}
+body.page-typologies main .choix-typologie .choix-typologie-container .col-list li:last-child {
+  border-bottom: 0;
+}
+body.page-typologies main .choix-typologie .choix-typologie-container #services .col-list li {
+  background: rgba(190, 9, 127, 0.1);
+  color: rgb(2.85, 22.8, 52.25);
+}
+body.page-typologies main .choix-typologie .choix-typologie-container #travaux .col-list li {
+  background: rgba(91, 184, 135, 0.1);
+  color: rgb(2.85, 22.8, 52.25);
+}
+body.page-typologies main .choix-typologie .choix-typologie-container #tiers .col-list li {
+  background: rgba(3, 24, 55, 0.1);
+  color: rgb(2.7, 21.6, 49.5);
+}
+body.page-typologies main .choix-typologie .choix-typologie-container #critere .h4-colonne,
+body.page-typologies main .choix-typologie .choix-typologie-container #services .h4-colonne,
+body.page-typologies main .choix-typologie .choix-typologie-container #travaux .h4-colonne {
+  border-right: 1px solid rgba(3, 24, 55, 0.5);
+}
+body.page-typologies main .choix-typologie .choix-typologie-container #critere .col-list li,
+body.page-typologies main .choix-typologie .choix-typologie-container #services .col-list li,
+body.page-typologies main .choix-typologie .choix-typologie-container #travaux .col-list li {
+  border-right: 1px solid rgba(3, 24, 55, 0.5);
+}
+@media (hover: hover) and (pointer: fine) {
+  body.page-typologies main .choix-typologie .choix-typologie-container .col-list li:hover {
+    background: rgba(255, 255, 255, 0.6);
+  }
+  body.page-typologies main .choix-typologie .choix-typologie-container #services .col-list li:hover {
+    background: rgba(190, 9, 127, 0.15);
+  }
+  body.page-typologies main .choix-typologie .choix-typologie-container #travaux .col-list li:hover {
+    background: rgba(91, 184, 135, 0.15);
+  }
+  body.page-typologies main .choix-typologie .choix-typologie-container #tiers .col-list li:hover {
+    background: rgba(3, 24, 55, 0.15);
+  }
+}
+@media (max-width: 1060px) {
+  body.page-typologies main .choix-typologie {
+    /* Libellés */
+    /* Fonds (mobile) */
+    /* Latérales UNIFORMES (mobile)
+    - gauche du mini-tableau : border-left sur Critère
+    - séparateurs internes : border-right sur Critère/Services/Travaux
+    - droite du mini-tableau : border-right sur Tiers
+    */
+    /* Un seul cadre par mini-tableau */
+    /* Ordonnancement (6 lignes) */
+  }
+  body.page-typologies main .choix-typologie .h4-colonne {
+    display: none;
+  }
+  body.page-typologies main .choix-typologie .choix-typologie-container {
+    display: flex;
+    flex-wrap: wrap;
+    border: 0;
+    box-shadow: none;
+    overflow: visible;
+    background: transparent;
+  }
+  body.page-typologies main .choix-typologie .choix-typologie-container .colonne,
+  body.page-typologies main .choix-typologie .choix-typologie-container .colonne > .col-list {
+    display: contents;
+  }
+  body.page-typologies main .choix-typologie .choix-typologie-container .col-list li {
+    flex: 1 1 100%;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: start;
+    gap: 0.6rem;
+    text-align: left;
+    padding: 0.8rem 1rem;
+    background: #ffffff;
+    border-bottom: 0;
+    border-left: 4px solid rgb(0, 71, 30);
+    border-right: 0;
+  }
+  body.page-typologies main .choix-typologie #critere .col-list li::before {
+    content: "Critère";
+    font-weight: 700;
+    color: #031837;
+  }
+  body.page-typologies main .choix-typologie #services .col-list li::before {
+    content: "Services";
+    font-weight: 700;
+    color: rgb(171, 8.1, 114.3);
+  }
+  body.page-typologies main .choix-typologie #travaux .col-list li::before {
+    content: "Travaux";
+    font-weight: 700;
+    color: rgb(74.7765957447, 172.7234042553, 121.1170212766);
+  }
+  body.page-typologies main .choix-typologie #tiers .col-list li::before {
+    content: "Tiers";
+    font-weight: 700;
+    color: rgb(2.7, 21.6, 49.5);
+  }
+  body.page-typologies main .choix-typologie #services .col-list li {
+    background: rgba(190, 9, 127, 0.1);
+  }
+  body.page-typologies main .choix-typologie #travaux .col-list li {
+    background: rgba(91, 184, 135, 0.1);
+  }
+  body.page-typologies main .choix-typologie #tiers .col-list li {
+    background: rgba(3, 24, 55, 0.1);
+  }
+  body.page-typologies main .choix-typologie #critere .col-list li {
+    border-left: 4px solid rgb(0, 71, 30);
+    border-right: 1px solid rgba(3, 24, 55, 0.5);
+  }
+  body.page-typologies main .choix-typologie #services .col-list li {
+    border-right: 1px solid rgba(3, 24, 55, 0.5);
+  }
+  body.page-typologies main .choix-typologie #travaux .col-list li {
+    border-right: 1px solid rgba(3, 24, 55, 0.5);
+  }
+  body.page-typologies main .choix-typologie #tiers .col-list li {
+    border-right: 1px solid rgba(3, 24, 55, 0.5);
+  }
+  body.page-typologies main .choix-typologie #critere .col-list li {
+    border-top: 2px solid rgba(0, 71, 30, 0.63);
+    border-radius: 0.6rem 0.6rem 0 0;
+  }
+  body.page-typologies main .choix-typologie #services .col-list li {
+    border-top: 1px solid rgba(3, 24, 55, 0.3);
+  }
+  body.page-typologies main .choix-typologie #travaux .col-list li {
+    border-top: 1px solid rgba(3, 24, 55, 0.3);
+  }
+  body.page-typologies main .choix-typologie #tiers .col-list li {
+    border-top: 1px solid rgba(3, 24, 55, 0.3);
+    border-bottom: 2px solid rgb(56.7, 153.9, 47.7);
+    border-radius: 0 0 0.6rem 0.6rem;
+    margin-bottom: 0.8rem;
+  }
+  body.page-typologies main .choix-typologie #critere .col-list li:nth-child(1) {
+    order: 1;
+  }
+  body.page-typologies main .choix-typologie #services .col-list li:nth-child(1) {
+    order: 2;
+  }
+  body.page-typologies main .choix-typologie #travaux .col-list li:nth-child(1) {
+    order: 3;
+  }
+  body.page-typologies main .choix-typologie #tiers .col-list li:nth-child(1) {
+    order: 4;
+  }
+  body.page-typologies main .choix-typologie #critere .col-list li:nth-child(2) {
+    order: 5;
+  }
+  body.page-typologies main .choix-typologie #services .col-list li:nth-child(2) {
+    order: 6;
+  }
+  body.page-typologies main .choix-typologie #travaux .col-list li:nth-child(2) {
+    order: 7;
+  }
+  body.page-typologies main .choix-typologie #tiers .col-list li:nth-child(2) {
+    order: 8;
+  }
+  body.page-typologies main .choix-typologie #critere .col-list li:nth-child(3) {
+    order: 9;
+  }
+  body.page-typologies main .choix-typologie #services .col-list li:nth-child(3) {
+    order: 10;
+  }
+  body.page-typologies main .choix-typologie #travaux .col-list li:nth-child(3) {
+    order: 11;
+  }
+  body.page-typologies main .choix-typologie #tiers .col-list li:nth-child(3) {
+    order: 12;
+  }
+  body.page-typologies main .choix-typologie #critere .col-list li:nth-child(4) {
+    order: 13;
+  }
+  body.page-typologies main .choix-typologie #services .col-list li:nth-child(4) {
+    order: 14;
+  }
+  body.page-typologies main .choix-typologie #travaux .col-list li:nth-child(4) {
+    order: 15;
+  }
+  body.page-typologies main .choix-typologie #tiers .col-list li:nth-child(4) {
+    order: 16;
+  }
+  body.page-typologies main .choix-typologie #critere .col-list li:nth-child(5) {
+    order: 17;
+  }
+  body.page-typologies main .choix-typologie #services .col-list li:nth-child(5) {
+    order: 18;
+  }
+  body.page-typologies main .choix-typologie #travaux .col-list li:nth-child(5) {
+    order: 19;
+  }
+  body.page-typologies main .choix-typologie #tiers .col-list li:nth-child(5) {
+    order: 20;
+  }
+  body.page-typologies main .choix-typologie #critere .col-list li:nth-child(6) {
+    order: 21;
+  }
+  body.page-typologies main .choix-typologie #services .col-list li:nth-child(6) {
+    order: 22;
+  }
+  body.page-typologies main .choix-typologie #travaux .col-list li:nth-child(6) {
+    order: 23;
+  }
+  body.page-typologies main .choix-typologie #tiers .col-list li:nth-child(6) {
+    order: 24;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  body.page-typologies main .choix-typologie .col-list li {
+    transition: none !important;
+  }
+}
+body.page-typologies main .conseil {
+  padding: clamp(1rem, 0.286rem + 1.905vw, 2rem) 1rem clamp(2rem, 1.78rem + 1.356vw, 3rem);
+  color: #031837;
+  text-align: justify;
+}
+body.page-typologies main .conseil .conseil-container {
+  width: min(1100px, 92vw);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+@media (max-width: 768px) {
+  body.page-typologies main .conseil .conseil-container {
+    grid-template-columns: 1fr;
+  }
+}
+body.page-typologies main .conseil .conseil-container .conseil-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  padding: 1rem 0;
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+body.page-typologies main .conseil .conseil-container .conseil-text .cta-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(0.8rem, 1.6vw, 1.2rem);
+  margin: clamp(1rem, 0.78rem + 1.356vw, 2rem) 0 0;
+}
+body.page-typologies main .conseil .conseil-container .conseil-image {
+  display: flex;
+  justify-self: flex-end;
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: inherit;
+  /* Pause au survol optionnelle */
+  /* Réécriture des frames avec les valeurs passées au mixin (portée locale via nesting) */
+  border-radius: 0.4rem;
+  border-top-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  width: clamp(17.5rem, 8.571rem + 23.81vw, 30rem);
+}
+body.page-typologies main .conseil .conseil-container .conseil-image > img, body.page-typologies main .conseil .conseil-container .conseil-image > picture > img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transform-origin: center;
+  will-change: transform;
+  /* on utilise animation + @property pour animer vers des valeurs custom via variables */
+  /* Fallback simple : on “fige” les frames avec une animation dédiée inline via shorthand */
+  animation-name: cpe-kb-zoom-pan;
+}
+@supports (transform: scale(1)) {
+  body.page-typologies main .conseil .conseil-container .conseil-image > img, body.page-typologies main .conseil .conseil-container .conseil-image > picture > img {
+    /* on injecte les valeurs finales via CSS vars et une transition calc */
+    --kb-scale-to: 1.05;
+    --kb-pan-x: -2%;
+    --kb-pan-y: -2%;
+    /* on sur-déclare les frames avec les valeurs */
+    /* (truc simple : on met une animation-name dédiée pour ne pas multiplier les keyframes) */
+    /* on utilise la propriété animation-timeline implicite (fallback simple ci-dessous) */
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    body.page-typologies main .conseil .conseil-container .conseil-image > img, body.page-typologies main .conseil .conseil-container .conseil-image > picture > img {
+      animation: cpe-kb-zoom-pan 8s ease-in-out infinite alternate;
+    }
+  }
+}
+@media (hover: hover) {
+  body.page-typologies main .conseil .conseil-container .conseil-image:hover > img, body.page-typologies main .conseil .conseil-container .conseil-image:hover > picture > img {
+    animation-play-state: paused;
+  }
+}
+@keyframes cpe-kb-zoom-pan {
+  from {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+  to {
+    transform: scale(1.05) translate3d(-2%, -2%, 0);
+  }
+}
+body.page-typologies main .conseil .conseil-container .conseil-image img {
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: block;
+}
+@media (max-width: 933px) {
+  body.page-typologies main .conseil .conseil-container .conseil-image {
+    justify-self: center;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
   }
 }
 
@@ -3043,55 +3568,17 @@ body.page-avantages p {
   line-height: 1.8;
   margin-bottom: 1.2rem;
 }
-body.page-avantages main .intro {
+body.page-avantages main .avantages {
   padding: clamp(1rem, 0.286rem + 1.905vw, 2rem) 1rem clamp(2rem, 1.78rem + 1.356vw, 3rem);
   color: #031837;
+  text-align: justify;
 }
-body.page-avantages main .intro .intro-container {
+body.page-avantages main .avantages .intro-container {
   width: min(1100px, 92vw);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-  max-width: 1100px;
   margin: 0 auto;
 }
-@media (max-width: 768px) {
-  body.page-avantages main .intro .intro-container {
-    grid-template-columns: 1fr;
-  }
-}
-body.page-avantages main .intro .intro-container .intro-text {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  font-size: 1.1rem;
-  line-height: 1.5;
-}
-body.page-avantages main .intro .intro-container .intro-image {
-  display: flex;
-  justify-self: flex-end;
-}
-body.page-avantages main .intro .intro-container .intro-image img {
-  width: clamp(17.5rem, 8.571rem + 23.81vw, 30rem);
-  border-radius: 0.4rem;
-  border-bottom-right-radius: 1rem;
-  border-top-left-radius: 1rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  display: block;
-  margin: 0 auto;
-}
-@media (max-width: 933px) {
-  body.page-avantages main .intro .intro-container .intro-image {
-    padding-top: 1rem;
-    justify-self: center;
-  }
-}
-body.page-avantages main .intro .intro-container .cta-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: clamp(0.8rem, 1.6vw, 1.2rem);
-  margin: clamp(1rem, 0.78rem + 1.356vw, 2rem) 0 1rem;
+body.page-avantages main .avantages .intro-container h5 {
+  font-size: 1.2rem;
 }
 
 /* Scope page */
