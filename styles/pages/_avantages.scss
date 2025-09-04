@@ -373,7 +373,7 @@ body.page-avantages {
         }
 
         .conclusion {
-            padding: clamp(1rem, 0.559rem + 2.712vw, 3rem) 1rem clamp(2rem, 1.78rem + 1.356vw, 3rem);
+            padding: $padding-marge-section;
             color: $bleu;
         
             .conclusion-container {

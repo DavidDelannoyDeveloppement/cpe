@@ -441,139 +441,139 @@ body.page-fonctionnement {
                 text-align: left;
                 margin: clamp(1.02rem, 2.04vw, 1.7rem) 0;
 
-                li {
-                    background: $background-vert-blanc;
-                    border-left: $border-left-vert;
-                    border-top: $border-top-vert;
-                    padding: 1rem;
-                    margin-bottom: 1rem;
-                    @include radius-cpe;
-                    font-size: $p-size;
-                    line-height: 1.5;
-                    // display: flex;
-                    align-items: center;
-                    box-shadow: $shadow-defaut;
-                    gap: 0.5rem;
-                    transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+                    li {
+                        background: $background-vert-blanc;
+                        border-left: $border-left-vert;
+                        border-top: $border-top-vert;
+                        padding: 1rem;
+                        margin-bottom: 1rem;
+                        @include radius-cpe;
+                        font-size: $p-size;
+                        line-height: 1.5;
+                        // display: flex;
+                        align-items: center;
+                        box-shadow: $shadow-defaut;
+                        gap: 0.5rem;
+                        transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
 
-                    &:hover {
-                    background: $background-vert-blanc-hover;
-                    transform: translateX(5px);
-                    box-shadow: $shadow-hover;
+                        &:hover {
+                        background: $background-vert-blanc-hover;
+                        transform: translateX(5px);
+                        box-shadow: $shadow-hover;
+                        }
                     }
-                }
                 }
 
                 @media (max-width: 768px) {
-                .page-fonctionnement .pourquoi {
-                    text-align: left;
-                }
+                    .page-fonctionnement .pourquoi {
+                        text-align: left;
+                    }
 
-                .page-fonctionnement .pourquoi .pourquoi-container {
-                    columns: initial !important;
-                    -webkit-columns: initial !important;
-                    -moz-columns: initial !important;
-                    column-count: 1 !important;
-                    -webkit-column-count: 1 !important;
-                    -moz-column-count: 1 !important;
-                }
+                    .page-fonctionnement .pourquoi .pourquoi-container {
+                        columns: initial !important;
+                        -webkit-columns: initial !important;
+                        -moz-columns: initial !important;
+                        column-count: 1 !important;
+                        -webkit-column-count: 1 !important;
+                        -moz-column-count: 1 !important;
+                    }
 
-                .page-fonctionnement .pourquoi .pourquoi-container .pourquoi-list {
-                    display: block !important;
-                    columns: auto !important;
-                    -webkit-columns: auto !important;
-                    -moz-columns: auto !important;
-                    column-count: 1 !important;
-                    -webkit-column-count: 1 !important;
-                    -moz-column-count: 1 !important;
-                    column-width: auto !important;
-                }
+                    .page-fonctionnement .pourquoi .pourquoi-container .pourquoi-list {
+                        display: block !important;
+                        columns: auto !important;
+                        -webkit-columns: auto !important;
+                        -moz-columns: auto !important;
+                        column-count: 1 !important;
+                        -webkit-column-count: 1 !important;
+                        -moz-column-count: 1 !important;
+                        column-width: auto !important;
+                    }
 
-                .page-fonctionnement .pourquoi .pourquoi-container .pourquoi-list > li {
-                    break-inside: avoid;
-                    -webkit-column-break-inside: avoid;
-                    page-break-inside: avoid;
-                    display: flex;
-                    align-items: flex-start;
-                    gap: 0.5rem;
-                    line-height: 1.6;
-                }
+                    .page-fonctionnement .pourquoi .pourquoi-container .pourquoi-list > li {
+                        break-inside: avoid;
+                        -webkit-column-break-inside: avoid;
+                        page-break-inside: avoid;
+                        display: flex;
+                        align-items: flex-start;
+                        gap: 0.5rem;
+                        line-height: 1.6;
+                    }
                 }
             }
-            }
+        
 
             .action {
-            width: 100%;
-            display: block;
-            padding-top: clamp(0.8rem, 2vw, 1.2rem);
-            text-align: center;
-            color: $bleu;
-            box-sizing: border-box;
-
-            .cta-inner {
-                max-width: 1100px;
                 width: 100%;
-                margin: 0 auto;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                gap: 0.8rem;
-
-                h3 {
-                color: $violet;
-                font-size: $h3-size;
-                }
-
-                h5 {
-                font-size: $h5-size;
-                }
-
-                .cta-buttons {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: clamp(0.8rem, 1.6vw, 1.2rem);
-                margin: clamp(1rem, 0.78rem + 1.356vw, 2rem) 0 0;
-                }
-            }
-
-            @media (max-width: 720px) {
-                .action .cta-inner > .btn,
-                .action .cta-inner > * > .btn,
-                .action .cta-inner > * > * > .btn {
                 display: block;
-                box-sizing: border-box;
-                flex: 1 1 100%;
-                width: 100%;
-                max-inline-size: 92vw;
-                min-inline-size: 12rem;
-                margin: 0 auto;
-                white-space: nowrap;
-                overflow-wrap: normal;
-                word-break: keep-all;
-                line-height: 1.2;
-                min-height: 44px;
+                padding-top: clamp(0.8rem, 2vw, 1.2rem);
                 text-align: center;
-                padding-inline: clamp(14px, 3.5vw, 18px);
+                color: $bleu;
+                box-sizing: border-box;
+
+                .cta-inner {
+                    max-width: 1100px;
+                    width: 100%;
+                    margin: 0 auto;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 0.8rem;
+
+                    h3 {
+                    color: $violet;
+                    font-size: $h3-size;
+                    }
+
+                    h5 {
+                    font-size: $h5-size;
+                    }
+
+                    .cta-buttons {
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: center;
+                    gap: clamp(0.8rem, 1.6vw, 1.2rem);
+                    margin: clamp(1rem, 0.78rem + 1.356vw, 2rem) 0 0;
+                    }
                 }
 
-                .action .cta-inner > *:has(> .btn) {
-                display: flex !important;
-                flex-direction: column !important;
-                align-items: center;
-                gap: 0.8rem;
-                flex-wrap: nowrap !important;
-                width: 100%;
-                }
+                @media (max-width: 720px) {
+                    .action .cta-inner > .btn,
+                    .action .cta-inner > * > .btn,
+                    .action .cta-inner > * > * > .btn {
+                    display: block;
+                    box-sizing: border-box;
+                    flex: 1 1 100%;
+                    width: 100%;
+                    max-inline-size: 92vw;
+                    min-inline-size: 12rem;
+                    margin: 0 auto;
+                    white-space: nowrap;
+                    overflow-wrap: normal;
+                    word-break: keep-all;
+                    line-height: 1.2;
+                    min-height: 44px;
+                    text-align: center;
+                    padding-inline: clamp(14px, 3.5vw, 18px);
+                    }
 
-                .action .cta-inner > .btn + .btn,
-                .action .cta-inner > * > .btn + .btn,
-                .action .cta-inner > * > * > .btn + .btn {
-                margin-top: 0.8rem;
+                    .action .cta-inner > *:has(> .btn) {
+                    display: flex !important;
+                    flex-direction: column !important;
+                    align-items: center;
+                    gap: 0.8rem;
+                    flex-wrap: nowrap !important;
+                    width: 100%;
+                    }
+
+                    .action .cta-inner > .btn + .btn,
+                    .action .cta-inner > * > .btn + .btn,
+                    .action .cta-inner > * > * > .btn + .btn {
+                    margin-top: 0.8rem;
+                    }
                 }
             }
         }
-
 
 
         .exemple {
@@ -602,7 +602,7 @@ body.page-fonctionnement {
                     line-height: 1.5;
 
                     .exemple-p {
-                        margin-bottom: 0;
+                        margin-bottom: 1rem;
                     }
 
                     .exemple-ul {

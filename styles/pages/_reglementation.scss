@@ -41,22 +41,21 @@ body.page-reglementation {
         font-size: $p-size;
         text-align: justify;
         line-height: 1.8; 
-        margin-bottom: 1.2rem; 
     }
 
 
 
     main {
         
-        .intro {
-            // background-color: $creme;
+        .reglementation {
             padding: $padding-marge-section;
             color: $bleu;
         
-            .intro-container {
+            .reglementation-container {
                 width: min(1100px, 92vw);
                 display: grid;
-                grid-template-columns: 1fr 1fr;
+                grid-template-columns: 2fr 1fr;
+                gap: clamp(1rem, 0.286rem + 1.905vw, 2rem);
                 align-items: center;
                 max-width: 1100px;
                 margin: 0 auto;
@@ -65,47 +64,376 @@ body.page-reglementation {
                 grid-template-columns: 1fr;
                 }
                 
-                .intro-text {
+                .reglementation-text {
                     display: flex;
                     flex-direction: column;
-                    // justify-content: space-between;
+                    justify-content: start;
                     height: 100%;
                     font-size: $p-size;
                     line-height: 1.5;
+
+                    .reglementation-p {
+                        max-width: 600px;
+                        margin-bottom: clamp(0.5rem, 0.143rem + 0.952vw, 1rem);
+                        margin-top: clamp(0.5rem, 0.143rem + 0.952vw, 1rem);
+
+                    }
+
+                    .reglementation-ul {
+                        margin-left: clamp(0.5rem, -0.929rem + 3.81vw, 2.5rem);
+                    }
+
+                    .reglementation-ul li {
+                        margin-bottom: clamp(0.5rem, 0.143rem + 0.952vw, 1rem);
+                    }
+                    .reglementation-ul li:hover {
+                        color: $vert1
+                    }
+
                 }
         
-                .intro-image {
-                    display: flex;
-                    justify-self: flex-end;
+                .reglementation-image {
+                    @include cpe-zoom-frame(8s, ease-in-out, true, 1.05, -2%, -2%);
+                    @include radius-cpe;
+                    overflow: hidden;
+                    box-shadow: $shadow-photo;
+                    width: $witdh-img-defaut;
 
                     img {
-                    width: clamp(17.5rem, 8.571rem + 23.81vw, 30rem);                    
-                    border-radius: 0.4rem; 
-                    border-bottom-right-radius: 1rem;
-                    border-top-left-radius: 1rem;
-                    box-shadow: $shadow-photo;
+                    width: 100%;
                     display: block;
                     margin: 0 auto;
+                    height: 100%;
+                    object-fit: cover;
+                    display: block;
                     }
                 }
                 @media (max-width:933px){
-                    .intro-image {
-                        padding-top: 1rem;
+                    .reglementation-image {
                         justify-self: center;
+                        margin-top: 1rem;
+                        margin-bottom: 1rem;
                     }
-                }
-
-                .cta-buttons {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: clamp(0.8rem, 1.6vw, 1.2rem);
-                margin: clamp(1rem, 0.78rem + 1.356vw, 2rem) 0 1rem;
                 }
             }
         }
 
+
+        .cadre {
+            padding: $padding-marge-section;
+            color: $bleu;
+        
+            .cadre-container {
+                width: min(1100px, 92vw);
+                margin: 0 auto;
+
+                h4 {
+                    font-size: $h4-size;
+                    margin-top: clamp(1rem, -0.429rem + 3.81vw, 3rem);
+                }
+                h4:hover {
+                    color: $violet;
+                }
+
+                .cadre-p {
+                    margin-top: 1rem;
+                }
+
+                .cadre-list {
+                    list-style: none;
+                    padding: 0;
+                    max-width: 900px;
+                    text-align: left;
+                    padding: 1rem 0;
+
+
+
+                    li {
+                        background: $background-vert-blanc;
+                        border-left: $border-left-vert;
+                        border-top: $border-top-vert;
+                        padding: 1rem;
+                        margin-bottom: 1rem;
+                        margin-left: clamp(0.2rem, -1.443rem + 4.381vw, 2.5rem);
+                        @include radius-cpe;
+                        font-size: $p-size;
+                        line-height: 1.5;
+                        // display: flex;
+                        align-items: center;
+                        box-shadow: $shadow-defaut;
+                        gap: 0.5rem;
+                        transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+
+                        &:hover {
+                        background: $background-vert-blanc-hover;
+                        transform: translateX(5px);
+                        box-shadow: $shadow-hover;
+                        }
+                    }
+                }
+
+                @media (max-width: 768px) {
+                    .cadre .cadre-container .cadre-list {
+                        display: block !important;
+                        columns: auto !important;
+                        -webkit-columns: auto !important;
+                        -moz-columns: auto !important;
+                        column-count: 1 !important;
+                        -webkit-column-count: 1 !important;
+                        -moz-column-count: 1 !important;
+                        column-width: auto !important;
+                    }
+
+                    .cadre .cadre-container .cadre-list > li {
+                        break-inside: avoid;
+                        -webkit-column-break-inside: avoid;
+                        page-break-inside: avoid;
+                        display: flex;
+                        align-items: flex-start;
+                        gap: 0.5rem;
+                        line-height: 1.6;
+                    }
+                }
+
+
+                // tableau 1 contrat/description
+                .balance-container {
+                    width: min(1100px, 92vw);
+                    margin: 0 auto;
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    gap: 0;
+                    @include radius-cpe;
+                    border-top: $border-top-vert-2px;
+                    border-left: $border-left-vert;
+                    box-shadow: $shadow-photo;
+                    overflow: hidden;
+
+                    .colonne {
+                    display: grid;
+                    grid-template-rows: auto 1fr;
+                    align-content: start;
+                    }
+
+                    .h4-colonne {
+                    font-size: $p-size;
+                    margin: 0;
+                    padding: .6rem 1rem;
+                    background: rgba($saumon, .6);
+                    color: $bleu;
+                    font-weight: 700;
+                    line-height: 1.25;
+                    border-bottom: 1px solid rgba($bleu, .6);
+                    text-align: center;
+                    border-left: 0;
+                    border-right: 0;
+                    }
+
+                    #contrat .h4-colonne { border-right: 1px solid rgba($bleu, .5); }
+
+                    .col-list {
+                    list-style: none;
+                    margin: 0;
+                    padding: 0;
+
+                    li {
+                        margin: 0;
+                        padding: .75rem .9rem;
+                        min-height: 2.75rem;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        text-align: center;
+                        border-bottom: 1px solid rgba($bleu, .30);
+                        background: $creme;
+                        border-left: 0;
+                        border-right: 0;
+                    }
+
+                    li:last-child { border-bottom: 0; }
+                    }
+
+                    #contrat .col-list li {
+                    background: rgba($vert3, .10);
+                    color: color.scale($bleu, $lightness: -5%);
+                    border-right: 1px solid rgba($bleu, .5);
+                    }
+
+                    #description .col-list li {
+                    background: rgba($violet, .10);
+                    color: color.scale($bleu, $lightness: -10%);
+                    }
+
+                    @media (hover: hover) and (pointer: fine) {
+                    .col-list li:hover { background: color.change($creme, $alpha: .6); }
+                    #contrat .col-list li:hover { background: color.change($vert3, $alpha: .15); }
+                    #description  .col-list li:hover { background: color.change($violet, $alpha: .15); }
+                    }
+                }
+
+                @media (max-width: 1060px) {
+                    .h4-colonne { display: none; }
+
+                    .balance-container {
+                    display: flex;
+                    flex-wrap: wrap;
+                    border: 0;
+                    box-shadow: none;
+                    overflow: visible;
+                    background: transparent;
+                    }
+
+                    .balance-container .colonne,
+                    .balance-container .colonne > .col-list { display: contents; }
+
+                    .balance-container .col-list li {
+                    flex: 1 1 100%;
+                    display: grid;
+                    grid-template-columns: auto 1fr;
+                    align-items: start;
+                    gap: .6rem;
+                    text-align: left;
+                    padding: .8rem 1rem;
+                    background: $creme;
+                    border-bottom: 0;
+                    border-left: $border-left-vert;
+                    border-right: 0;
+                    }
+
+                    #contrat .col-list li {
+                    background: rgba($vert3, .10);
+                    border-right: 1px solid rgba($bleu, .5);
+                    }
+
+                    #description .col-list li {
+                    background: rgba($violet, .10);
+                    border-right: 1px solid rgba($bleu, .5);
+                    }
+
+                    #contrat .col-list li::before {
+                    content: "Type de contrat";
+                    font-weight: 700;
+                    color: color.scale($vert3, $lightness: -10%);
+                    }
+
+                    #description .col-list li::before {
+                    content: "Description";
+                    font-weight: 700;
+                    color: color.scale($violet, $lightness: -10%);
+                    }
+
+                    #contrat .col-list li {
+                    border-top: $border-top-vert-2px;
+                    border-radius: .6rem .6rem 0 0;
+                    }
+
+                    #description .col-list li {
+                    border-top: 1px solid rgba($bleu, .30);
+                    border-bottom: 2px solid color.scale($vert2, $lightness: -10%);
+                    border-radius: 0 0 .6rem .6rem;
+                    margin-bottom: .8rem;
+                    }
+
+                    #contrat .col-list li:nth-child(1) { order: 1; }  #description .col-list li:nth-child(1) { order: 2; }
+                    #contrat .col-list li:nth-child(2) { order: 3; }  #description .col-list li:nth-child(2) { order: 4; }
+                    #contrat .col-list li:nth-child(3) { order: 5; }  #description .col-list li:nth-child(3) { order: 6; }
+                    #contrat .col-list li:nth-child(4) { order: 7; }  #description .col-list li:nth-child(4) { order: 8; }
+                    #contrat .col-list li:nth-child(5) { order: 9; }  #description .col-list li:nth-child(5) { order:10; }
+                }
+                @media (prefers-reduced-motion: reduce) {
+                    .col-list li { transition: none !important; }
+                }
+
+
+                // tableau 2 secteur/obligations
+                .balance-container {
+                    
+                    #secteur .h4-colonne { border-right: 1px solid rgba($bleu, .5); }
+
+                    .col-list {
+                        list-style: none;
+                        margin: 0;
+                        padding: 0;
+
+                        li {
+                            margin: 0;
+                            padding: .75rem .9rem;
+                            min-height: 2.75rem;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            text-align: center;
+                            border-bottom: 1px solid rgba($bleu, .30);
+                            background: $creme;
+                            border-left: 0;
+                            border-right: 0;
+                        }
+
+                        li:last-child { border-bottom: 0; }
+                        }
+
+                    #secteur .col-list li {
+                        background: rgba($vert3, .10);
+                        color: color.scale($bleu, $lightness: -5%);
+                        border-right: 1px solid rgba($bleu, .5);
+                    }
+
+                    #obligations .col-list li {
+                        background: rgba($violet, .10);
+                        color: color.scale($bleu, $lightness: -10%);
+                    }
+
+                    @media (hover: hover) and (pointer: fine) {
+                    #secteur .col-list li:hover { background: color.change($vert3, $alpha: .15); }
+                    #obligations  .col-list li:hover { background: color.change($violet, $alpha: .15); }
+                    }
+                }
+                @media (max-width: 1060px) {
+
+                    #secteur .col-list li {
+                    background: rgba($vert3, .10);
+                    border-right: 1px solid rgba($bleu, .5);
+                    }
+
+                    #obligations .col-list li {
+                    background: rgba($violet, .10);
+                    border-right: 1px solid rgba($bleu, .5);
+                    }
+
+                    #secteur .col-list li::before {
+                    content: "Secteur";
+                    font-weight: 700;
+                    color: color.scale($vert3, $lightness: -10%);
+                    }
+
+                    #obligations .col-list li::before {
+                    content: "Obligations réglementaires associées";
+                    font-weight: 700;
+                    color: color.scale($violet, $lightness: -10%);
+                    }
+
+                    #secteur .col-list li {
+                    border-top: $border-top-vert-2px;
+                    border-radius: .6rem .6rem 0 0;
+                    }
+
+                    #obligations .col-list li {
+                    border-top: 1px solid rgba($bleu, .30);
+                    border-bottom: 2px solid color.scale($vert2, $lightness: -10%);
+                    border-radius: 0 0 .6rem .6rem;
+                    margin-bottom: .8rem;
+                    }
+
+                    #secteur .col-list li:nth-child(1) { order: 1; }  #obligations .col-list li:nth-child(1) { order: 2; }
+                    #secteur .col-list li:nth-child(2) { order: 3; }  #obligations .col-list li:nth-child(2) { order: 4; }
+                    #secteur .col-list li:nth-child(3) { order: 5; }  #obligations .col-list li:nth-child(3) { order: 6; }
+                    #secteur .col-list li:nth-child(4) { order: 7; }  #obligations .col-list li:nth-child(4) { order: 8; }
+                    #secteur .col-list li:nth-child(5) { order: 9; }  #obligations .col-list li:nth-child(5) { order:10; }
+                }
+            }
+        }
     }
 }
+
 
 

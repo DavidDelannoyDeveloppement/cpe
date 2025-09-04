@@ -2537,7 +2537,7 @@ body.page-fonctionnement main .pourquoi .pourquoi-container .pourquoi-list li:ho
     line-height: 1.6;
   }
 }
-body.page-fonctionnement main .action {
+body.page-fonctionnement main .pourquoi .action {
   width: 100%;
   display: block;
   padding-top: clamp(0.8rem, 2vw, 1.2rem);
@@ -2545,7 +2545,7 @@ body.page-fonctionnement main .action {
   color: #031837;
   box-sizing: border-box;
 }
-body.page-fonctionnement main .action .cta-inner {
+body.page-fonctionnement main .pourquoi .action .cta-inner {
   max-width: 1100px;
   width: 100%;
   margin: 0 auto;
@@ -2554,14 +2554,14 @@ body.page-fonctionnement main .action .cta-inner {
   align-items: center;
   gap: 0.8rem;
 }
-body.page-fonctionnement main .action .cta-inner h3 {
+body.page-fonctionnement main .pourquoi .action .cta-inner h3 {
   color: #be097f;
   font-size: clamp(1.55rem, 1.229rem + 0.857vw, 2rem);
 }
-body.page-fonctionnement main .action .cta-inner h5 {
+body.page-fonctionnement main .pourquoi .action .cta-inner h5 {
   font-size: 1.2rem;
 }
-body.page-fonctionnement main .action .cta-inner .cta-buttons {
+body.page-fonctionnement main .pourquoi .action .cta-inner .cta-buttons {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -2569,9 +2569,9 @@ body.page-fonctionnement main .action .cta-inner .cta-buttons {
   margin: clamp(1rem, 0.78rem + 1.356vw, 2rem) 0 0;
 }
 @media (max-width: 720px) {
-  body.page-fonctionnement main .action .action .cta-inner > .btn,
-  body.page-fonctionnement main .action .action .cta-inner > * > .btn,
-  body.page-fonctionnement main .action .action .cta-inner > * > * > .btn {
+  body.page-fonctionnement main .pourquoi .action .action .cta-inner > .btn,
+  body.page-fonctionnement main .pourquoi .action .action .cta-inner > * > .btn,
+  body.page-fonctionnement main .pourquoi .action .action .cta-inner > * > * > .btn {
     display: block;
     box-sizing: border-box;
     flex: 1 1 100%;
@@ -2587,7 +2587,7 @@ body.page-fonctionnement main .action .cta-inner .cta-buttons {
     text-align: center;
     padding-inline: clamp(14px, 3.5vw, 18px);
   }
-  body.page-fonctionnement main .action .action .cta-inner > *:has(> .btn) {
+  body.page-fonctionnement main .pourquoi .action .action .cta-inner > *:has(> .btn) {
     display: flex !important;
     flex-direction: column !important;
     align-items: center;
@@ -2595,9 +2595,9 @@ body.page-fonctionnement main .action .cta-inner .cta-buttons {
     flex-wrap: nowrap !important;
     width: 100%;
   }
-  body.page-fonctionnement main .action .action .cta-inner > .btn + .btn,
-  body.page-fonctionnement main .action .action .cta-inner > * > .btn + .btn,
-  body.page-fonctionnement main .action .action .cta-inner > * > * > .btn + .btn {
+  body.page-fonctionnement main .pourquoi .action .action .cta-inner > .btn + .btn,
+  body.page-fonctionnement main .pourquoi .action .action .cta-inner > * > .btn + .btn,
+  body.page-fonctionnement main .pourquoi .action .action .cta-inner > * > * > .btn + .btn {
     margin-top: 0.8rem;
   }
 }
@@ -2628,7 +2628,7 @@ body.page-fonctionnement main .exemple .exemple-container .exemple-text {
   line-height: 1.5;
 }
 body.page-fonctionnement main .exemple .exemple-container .exemple-text .exemple-p {
-  margin-bottom: 0;
+  margin-bottom: 1rem;
 }
 body.page-fonctionnement main .exemple .exemple-container .exemple-text .exemple-ul {
   margin-left: clamp(0.5rem, 0.169rem + 2.034vw, 2rem);
@@ -3903,7 +3903,7 @@ body.page-avantages main .balance .balance-container #limites .col-list li {
   }
 }
 body.page-avantages main .conclusion {
-  padding: clamp(1rem, 0.559rem + 2.712vw, 3rem) 1rem clamp(2rem, 1.78rem + 1.356vw, 3rem);
+  padding: clamp(1rem, 0.286rem + 1.905vw, 2rem) 1rem clamp(2rem, 1.78rem + 1.356vw, 3rem);
   color: #031837;
 }
 body.page-avantages main .conclusion .conclusion-container {
@@ -4055,57 +4055,455 @@ body.page-reglementation p {
   font-size: 1.1rem;
   text-align: justify;
   line-height: 1.8;
-  margin-bottom: 1.2rem;
 }
-body.page-reglementation main .intro {
+body.page-reglementation main .reglementation {
   padding: clamp(1rem, 0.286rem + 1.905vw, 2rem) 1rem clamp(2rem, 1.78rem + 1.356vw, 3rem);
   color: #031837;
 }
-body.page-reglementation main .intro .intro-container {
+body.page-reglementation main .reglementation .reglementation-container {
   width: min(1100px, 92vw);
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 2fr 1fr;
+  gap: clamp(1rem, 0.286rem + 1.905vw, 2rem);
   align-items: center;
   max-width: 1100px;
   margin: 0 auto;
 }
 @media (max-width: 768px) {
-  body.page-reglementation main .intro .intro-container {
+  body.page-reglementation main .reglementation .reglementation-container {
     grid-template-columns: 1fr;
   }
 }
-body.page-reglementation main .intro .intro-container .intro-text {
+body.page-reglementation main .reglementation .reglementation-container .reglementation-text {
   display: flex;
   flex-direction: column;
+  justify-content: start;
   height: 100%;
   font-size: 1.1rem;
   line-height: 1.5;
 }
-body.page-reglementation main .intro .intro-container .intro-image {
-  display: flex;
-  justify-self: flex-end;
+body.page-reglementation main .reglementation .reglementation-container .reglementation-text .reglementation-p {
+  max-width: 600px;
+  margin-bottom: clamp(0.5rem, 0.143rem + 0.952vw, 1rem);
+  margin-top: clamp(0.5rem, 0.143rem + 0.952vw, 1rem);
 }
-body.page-reglementation main .intro .intro-container .intro-image img {
-  width: clamp(17.5rem, 8.571rem + 23.81vw, 30rem);
-  border-radius: 0.4rem;
-  border-bottom-right-radius: 1rem;
-  border-top-left-radius: 1rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+body.page-reglementation main .reglementation .reglementation-container .reglementation-text .reglementation-ul {
+  margin-left: clamp(0.5rem, -0.929rem + 3.81vw, 2.5rem);
+}
+body.page-reglementation main .reglementation .reglementation-container .reglementation-text .reglementation-ul li {
+  margin-bottom: clamp(0.5rem, 0.143rem + 0.952vw, 1rem);
+}
+body.page-reglementation main .reglementation .reglementation-container .reglementation-text .reglementation-ul li:hover {
+  color: #00a250;
+}
+body.page-reglementation main .reglementation .reglementation-container .reglementation-image {
+  position: relative;
   display: block;
-  margin: 0 auto;
+  overflow: hidden;
+  border-radius: inherit;
+  /* Pause au survol optionnelle */
+  /* Réécriture des frames avec les valeurs passées au mixin (portée locale via nesting) */
+  border-radius: 0.4rem;
+  border-top-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  width: clamp(17.5rem, 14.375rem + 8.333vw, 21.875rem);
 }
-@media (max-width: 933px) {
-  body.page-reglementation main .intro .intro-container .intro-image {
-    padding-top: 1rem;
-    justify-self: center;
+body.page-reglementation main .reglementation .reglementation-container .reglementation-image > img, body.page-reglementation main .reglementation .reglementation-container .reglementation-image > picture > img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transform-origin: center;
+  will-change: transform;
+  /* on utilise animation + @property pour animer vers des valeurs custom via variables */
+  /* Fallback simple : on “fige” les frames avec une animation dédiée inline via shorthand */
+  animation-name: cpe-kb-zoom-pan;
+}
+@supports (transform: scale(1)) {
+  body.page-reglementation main .reglementation .reglementation-container .reglementation-image > img, body.page-reglementation main .reglementation .reglementation-container .reglementation-image > picture > img {
+    /* on injecte les valeurs finales via CSS vars et une transition calc */
+    --kb-scale-to: 1.05;
+    --kb-pan-x: -2%;
+    --kb-pan-y: -2%;
+    /* on sur-déclare les frames avec les valeurs */
+    /* (truc simple : on met une animation-name dédiée pour ne pas multiplier les keyframes) */
+    /* on utilise la propriété animation-timeline implicite (fallback simple ci-dessous) */
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    body.page-reglementation main .reglementation .reglementation-container .reglementation-image > img, body.page-reglementation main .reglementation .reglementation-container .reglementation-image > picture > img {
+      animation: cpe-kb-zoom-pan 8s ease-in-out infinite alternate;
+    }
   }
 }
-body.page-reglementation main .intro .intro-container .cta-buttons {
+@media (hover: hover) {
+  body.page-reglementation main .reglementation .reglementation-container .reglementation-image:hover > img, body.page-reglementation main .reglementation .reglementation-container .reglementation-image:hover > picture > img {
+    animation-play-state: paused;
+  }
+}
+@keyframes cpe-kb-zoom-pan {
+  from {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+  to {
+    transform: scale(1.05) translate3d(-2%, -2%, 0);
+  }
+}
+body.page-reglementation main .reglementation .reglementation-container .reglementation-image img {
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: block;
+}
+@media (max-width: 933px) {
+  body.page-reglementation main .reglementation .reglementation-container .reglementation-image {
+    justify-self: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+}
+body.page-reglementation main .cadre {
+  padding: clamp(1rem, 0.286rem + 1.905vw, 2rem) 1rem clamp(2rem, 1.78rem + 1.356vw, 3rem);
+  color: #031837;
+}
+body.page-reglementation main .cadre .cadre-container {
+  width: min(1100px, 92vw);
+  margin: 0 auto;
+}
+body.page-reglementation main .cadre .cadre-container h4 {
+  font-size: clamp(1.3rem, 1.193rem + 0.286vw, 1.45rem);
+  margin-top: clamp(1rem, -0.429rem + 3.81vw, 3rem);
+}
+body.page-reglementation main .cadre .cadre-container h4:hover {
+  color: #be097f;
+}
+body.page-reglementation main .cadre .cadre-container .cadre-p {
+  margin-top: 1rem;
+}
+body.page-reglementation main .cadre .cadre-container .cadre-list {
+  list-style: none;
+  padding: 0;
+  max-width: 900px;
+  text-align: left;
+  padding: 1rem 0;
+}
+body.page-reglementation main .cadre .cadre-container .cadre-list li {
+  background: linear-gradient(165deg, rgba(46, 204, 112, 0.164), rgba(67, 233, 139, 0.062));
+  border-left: 4px solid rgb(0, 71, 30);
+  border-top: 1px solid rgba(0, 71, 30, 0.63);
+  padding: 1rem;
+  margin-bottom: 1rem;
+  margin-left: clamp(0.2rem, -1.443rem + 4.381vw, 2.5rem);
+  border-radius: 0.4rem;
+  border-top-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  align-items: center;
+  box-shadow: 4px 4px 5px rgba(3, 24, 55, 0.0549019608);
+  gap: 0.5rem;
+  transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+body.page-reglementation main .cadre .cadre-container .cadre-list li:hover {
+  background: linear-gradient(165deg, rgba(46, 204, 113, 0.24), rgba(135, 211, 167, 0.295));
+  transform: translateX(5px);
+  box-shadow: 0 14px 30px rgba(26, 46, 77, 0.178);
+}
+@media (max-width: 768px) {
+  body.page-reglementation main .cadre .cadre-container .cadre .cadre-container .cadre-list {
+    display: block !important;
+    columns: auto !important;
+    -webkit-columns: auto !important;
+    -moz-columns: auto !important;
+    column-count: 1 !important;
+    -webkit-column-count: 1 !important;
+    -moz-column-count: 1 !important;
+    -moz-column-width: auto !important;
+         column-width: auto !important;
+  }
+  body.page-reglementation main .cadre .cadre-container .cadre .cadre-container .cadre-list > li {
+    -moz-column-break-inside: avoid;
+         break-inside: avoid;
+    page-break-inside: avoid;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    line-height: 1.6;
+  }
+}
+body.page-reglementation main .cadre .cadre-container .balance-container {
+  width: min(1100px, 92vw);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border-radius: 0.4rem;
+  border-top-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  border-top: 2px solid rgba(0, 71, 30, 0.63);
+  border-left: 4px solid rgb(0, 71, 30);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+body.page-reglementation main .cadre .cadre-container .balance-container .colonne {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  align-content: start;
+}
+body.page-reglementation main .cadre .cadre-container .balance-container .h4-colonne {
+  font-size: 1.1rem;
+  margin: 0;
+  padding: 0.6rem 1rem;
+  background: rgba(246, 171, 120, 0.6);
+  color: #031837;
+  font-weight: 700;
+  line-height: 1.25;
+  border-bottom: 1px solid rgba(3, 24, 55, 0.6);
+  text-align: center;
+  border-left: 0;
+  border-right: 0;
+}
+body.page-reglementation main .cadre .cadre-container .balance-container #contrat .h4-colonne {
+  border-right: 1px solid rgba(3, 24, 55, 0.5);
+}
+body.page-reglementation main .cadre .cadre-container .balance-container .col-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+body.page-reglementation main .cadre .cadre-container .balance-container .col-list li {
+  margin: 0;
+  padding: 0.75rem 0.9rem;
+  min-height: 2.75rem;
   display: flex;
-  flex-wrap: wrap;
+  align-items: center;
   justify-content: center;
-  gap: clamp(0.8rem, 1.6vw, 1.2rem);
-  margin: clamp(1rem, 0.78rem + 1.356vw, 2rem) 0 1rem;
+  text-align: center;
+  border-bottom: 1px solid rgba(3, 24, 55, 0.3);
+  background: #ffffff;
+  border-left: 0;
+  border-right: 0;
+}
+body.page-reglementation main .cadre .cadre-container .balance-container .col-list li:last-child {
+  border-bottom: 0;
+}
+body.page-reglementation main .cadre .cadre-container .balance-container #contrat .col-list li {
+  background: rgba(91, 184, 135, 0.1);
+  color: rgb(2.85, 22.8, 52.25);
+  border-right: 1px solid rgba(3, 24, 55, 0.5);
+}
+body.page-reglementation main .cadre .cadre-container .balance-container #description .col-list li {
+  background: rgba(190, 9, 127, 0.1);
+  color: rgb(2.7, 21.6, 49.5);
+}
+@media (hover: hover) and (pointer: fine) {
+  body.page-reglementation main .cadre .cadre-container .balance-container .col-list li:hover {
+    background: rgba(255, 255, 255, 0.6);
+  }
+  body.page-reglementation main .cadre .cadre-container .balance-container #contrat .col-list li:hover {
+    background: rgba(91, 184, 135, 0.15);
+  }
+  body.page-reglementation main .cadre .cadre-container .balance-container #description .col-list li:hover {
+    background: rgba(190, 9, 127, 0.15);
+  }
+}
+@media (max-width: 1060px) {
+  body.page-reglementation main .cadre .cadre-container .h4-colonne {
+    display: none;
+  }
+  body.page-reglementation main .cadre .cadre-container .balance-container {
+    display: flex;
+    flex-wrap: wrap;
+    border: 0;
+    box-shadow: none;
+    overflow: visible;
+    background: transparent;
+  }
+  body.page-reglementation main .cadre .cadre-container .balance-container .colonne,
+  body.page-reglementation main .cadre .cadre-container .balance-container .colonne > .col-list {
+    display: contents;
+  }
+  body.page-reglementation main .cadre .cadre-container .balance-container .col-list li {
+    flex: 1 1 100%;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: start;
+    gap: 0.6rem;
+    text-align: left;
+    padding: 0.8rem 1rem;
+    background: #ffffff;
+    border-bottom: 0;
+    border-left: 4px solid rgb(0, 71, 30);
+    border-right: 0;
+  }
+  body.page-reglementation main .cadre .cadre-container #contrat .col-list li {
+    background: rgba(91, 184, 135, 0.1);
+    border-right: 1px solid rgba(3, 24, 55, 0.5);
+  }
+  body.page-reglementation main .cadre .cadre-container #description .col-list li {
+    background: rgba(190, 9, 127, 0.1);
+    border-right: 1px solid rgba(3, 24, 55, 0.5);
+  }
+  body.page-reglementation main .cadre .cadre-container #contrat .col-list li::before {
+    content: "Type de contrat";
+    font-weight: 700;
+    color: rgb(74.7765957447, 172.7234042553, 121.1170212766);
+  }
+  body.page-reglementation main .cadre .cadre-container #description .col-list li::before {
+    content: "Description";
+    font-weight: 700;
+    color: rgb(171, 8.1, 114.3);
+  }
+  body.page-reglementation main .cadre .cadre-container #contrat .col-list li {
+    border-top: 2px solid rgba(0, 71, 30, 0.63);
+    border-radius: 0.6rem 0.6rem 0 0;
+  }
+  body.page-reglementation main .cadre .cadre-container #description .col-list li {
+    border-top: 1px solid rgba(3, 24, 55, 0.3);
+    border-bottom: 2px solid rgb(56.7, 153.9, 47.7);
+    border-radius: 0 0 0.6rem 0.6rem;
+    margin-bottom: 0.8rem;
+  }
+  body.page-reglementation main .cadre .cadre-container #contrat .col-list li:nth-child(1) {
+    order: 1;
+  }
+  body.page-reglementation main .cadre .cadre-container #description .col-list li:nth-child(1) {
+    order: 2;
+  }
+  body.page-reglementation main .cadre .cadre-container #contrat .col-list li:nth-child(2) {
+    order: 3;
+  }
+  body.page-reglementation main .cadre .cadre-container #description .col-list li:nth-child(2) {
+    order: 4;
+  }
+  body.page-reglementation main .cadre .cadre-container #contrat .col-list li:nth-child(3) {
+    order: 5;
+  }
+  body.page-reglementation main .cadre .cadre-container #description .col-list li:nth-child(3) {
+    order: 6;
+  }
+  body.page-reglementation main .cadre .cadre-container #contrat .col-list li:nth-child(4) {
+    order: 7;
+  }
+  body.page-reglementation main .cadre .cadre-container #description .col-list li:nth-child(4) {
+    order: 8;
+  }
+  body.page-reglementation main .cadre .cadre-container #contrat .col-list li:nth-child(5) {
+    order: 9;
+  }
+  body.page-reglementation main .cadre .cadre-container #description .col-list li:nth-child(5) {
+    order: 10;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  body.page-reglementation main .cadre .cadre-container .col-list li {
+    transition: none !important;
+  }
+}
+body.page-reglementation main .cadre .cadre-container .balance-container #secteur .h4-colonne {
+  border-right: 1px solid rgba(3, 24, 55, 0.5);
+}
+body.page-reglementation main .cadre .cadre-container .balance-container .col-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+body.page-reglementation main .cadre .cadre-container .balance-container .col-list li {
+  margin: 0;
+  padding: 0.75rem 0.9rem;
+  min-height: 2.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-bottom: 1px solid rgba(3, 24, 55, 0.3);
+  background: #ffffff;
+  border-left: 0;
+  border-right: 0;
+}
+body.page-reglementation main .cadre .cadre-container .balance-container .col-list li:last-child {
+  border-bottom: 0;
+}
+body.page-reglementation main .cadre .cadre-container .balance-container #secteur .col-list li {
+  background: rgba(91, 184, 135, 0.1);
+  color: rgb(2.85, 22.8, 52.25);
+  border-right: 1px solid rgba(3, 24, 55, 0.5);
+}
+body.page-reglementation main .cadre .cadre-container .balance-container #obligations .col-list li {
+  background: rgba(190, 9, 127, 0.1);
+  color: rgb(2.7, 21.6, 49.5);
+}
+@media (hover: hover) and (pointer: fine) {
+  body.page-reglementation main .cadre .cadre-container .balance-container #secteur .col-list li:hover {
+    background: rgba(91, 184, 135, 0.15);
+  }
+  body.page-reglementation main .cadre .cadre-container .balance-container #obligations .col-list li:hover {
+    background: rgba(190, 9, 127, 0.15);
+  }
+}
+@media (max-width: 1060px) {
+  body.page-reglementation main .cadre .cadre-container #secteur .col-list li {
+    background: rgba(91, 184, 135, 0.1);
+    border-right: 1px solid rgba(3, 24, 55, 0.5);
+  }
+  body.page-reglementation main .cadre .cadre-container #obligations .col-list li {
+    background: rgba(190, 9, 127, 0.1);
+    border-right: 1px solid rgba(3, 24, 55, 0.5);
+  }
+  body.page-reglementation main .cadre .cadre-container #secteur .col-list li::before {
+    content: "Secteur";
+    font-weight: 700;
+    color: rgb(74.7765957447, 172.7234042553, 121.1170212766);
+  }
+  body.page-reglementation main .cadre .cadre-container #obligations .col-list li::before {
+    content: "Obligations réglementaires associées";
+    font-weight: 700;
+    color: rgb(171, 8.1, 114.3);
+  }
+  body.page-reglementation main .cadre .cadre-container #secteur .col-list li {
+    border-top: 2px solid rgba(0, 71, 30, 0.63);
+    border-radius: 0.6rem 0.6rem 0 0;
+  }
+  body.page-reglementation main .cadre .cadre-container #obligations .col-list li {
+    border-top: 1px solid rgba(3, 24, 55, 0.3);
+    border-bottom: 2px solid rgb(56.7, 153.9, 47.7);
+    border-radius: 0 0 0.6rem 0.6rem;
+    margin-bottom: 0.8rem;
+  }
+  body.page-reglementation main .cadre .cadre-container #secteur .col-list li:nth-child(1) {
+    order: 1;
+  }
+  body.page-reglementation main .cadre .cadre-container #obligations .col-list li:nth-child(1) {
+    order: 2;
+  }
+  body.page-reglementation main .cadre .cadre-container #secteur .col-list li:nth-child(2) {
+    order: 3;
+  }
+  body.page-reglementation main .cadre .cadre-container #obligations .col-list li:nth-child(2) {
+    order: 4;
+  }
+  body.page-reglementation main .cadre .cadre-container #secteur .col-list li:nth-child(3) {
+    order: 5;
+  }
+  body.page-reglementation main .cadre .cadre-container #obligations .col-list li:nth-child(3) {
+    order: 6;
+  }
+  body.page-reglementation main .cadre .cadre-container #secteur .col-list li:nth-child(4) {
+    order: 7;
+  }
+  body.page-reglementation main .cadre .cadre-container #obligations .col-list li:nth-child(4) {
+    order: 8;
+  }
+  body.page-reglementation main .cadre .cadre-container #secteur .col-list li:nth-child(5) {
+    order: 9;
+  }
+  body.page-reglementation main .cadre .cadre-container #obligations .col-list li:nth-child(5) {
+    order: 10;
+  }
 }
 
 /* Scope page */
