@@ -4772,7 +4772,18 @@ body.page-etapes main .etapes-cadre .etapes-cadre-container .etapes-cadre-list l
     line-height: 1.6;
   }
 }
-body.page-etapes main .etapes-cadre .etapes-cadre-container .etapes-balance-container {
+body.page-etapes main .etapes-duree {
+  padding: clamp(1rem, 0.286rem + 1.905vw, 2rem) 1rem clamp(2rem, 1.78rem + 1.356vw, 3rem);
+  color: #031837;
+}
+body.page-etapes main .etapes-duree .etapes-duree-container {
+  width: min(1100px, 92vw);
+  margin: 0 auto;
+}
+body.page-etapes main .etapes-duree .etapes-duree-container .etapes-duree-p {
+  margin-top: 1rem;
+}
+body.page-etapes main .etapes-duree .etapes-duree-container .etapes-duree-tableau {
   width: min(1100px, 92vw);
   margin: 0 auto;
   display: grid;
@@ -4786,12 +4797,12 @@ body.page-etapes main .etapes-cadre .etapes-cadre-container .etapes-balance-cont
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   overflow: hidden;
 }
-body.page-etapes main .etapes-cadre .etapes-cadre-container .etapes-balance-container .colonne {
+body.page-etapes main .etapes-duree .etapes-duree-container .etapes-duree-tableau .colonne {
   display: grid;
   grid-template-rows: auto 1fr;
   align-content: start;
 }
-body.page-etapes main .etapes-cadre .etapes-cadre-container .etapes-balance-container .h4-colonne {
+body.page-etapes main .etapes-duree .etapes-duree-container .etapes-duree-tableau .h4-colonne {
   font-size: 1.1rem;
   margin: 0;
   padding: 0.6rem 1rem;
@@ -4804,15 +4815,15 @@ body.page-etapes main .etapes-cadre .etapes-cadre-container .etapes-balance-cont
   border-left: 0;
   border-right: 0;
 }
-body.page-etapes main .etapes-cadre .etapes-cadre-container .etapes-balance-container #contrat .h4-colonne {
+body.page-etapes main .etapes-duree .etapes-duree-container .etapes-duree-tableau #Phase .h4-colonne {
   border-right: 1px solid rgba(3, 24, 55, 0.5);
 }
-body.page-etapes main .etapes-cadre .etapes-cadre-container .etapes-balance-container .col-list {
+body.page-etapes main .etapes-duree .etapes-duree-container .etapes-duree-tableau .col-list {
   list-style: none;
   margin: 0;
   padding: 0;
 }
-body.page-etapes main .etapes-cadre .etapes-cadre-container .etapes-balance-container .col-list li {
+body.page-etapes main .etapes-duree .etapes-duree-container .etapes-duree-tableau .col-list li {
   margin: 0;
   padding: 0.75rem 0.9rem;
   min-height: 2.75rem;
@@ -4825,34 +4836,34 @@ body.page-etapes main .etapes-cadre .etapes-cadre-container .etapes-balance-cont
   border-left: 0;
   border-right: 0;
 }
-body.page-etapes main .etapes-cadre .etapes-cadre-container .etapes-balance-container .col-list li:last-child {
+body.page-etapes main .etapes-duree .etapes-duree-container .etapes-duree-tableau .col-list li:last-child {
   border-bottom: 0;
 }
-body.page-etapes main .etapes-cadre .etapes-cadre-container .etapes-balance-container #contrat .col-list li {
+body.page-etapes main .etapes-duree .etapes-duree-container .etapes-duree-tableau #Phase .col-list li {
   background: rgba(91, 184, 135, 0.1);
   color: rgb(2.85, 22.8, 52.25);
   border-right: 1px solid rgba(3, 24, 55, 0.5);
 }
-body.page-etapes main .etapes-cadre .etapes-cadre-container .etapes-balance-container #description .col-list li {
+body.page-etapes main .etapes-duree .etapes-duree-container .etapes-duree-tableau #Durée .col-list li {
   background: rgba(190, 9, 127, 0.1);
   color: rgb(2.7, 21.6, 49.5);
 }
 @media (hover: hover) and (pointer: fine) {
-  body.page-etapes main .etapes-cadre .etapes-cadre-container .etapes-balance-container .col-list li:hover {
+  body.page-etapes main .etapes-duree .etapes-duree-container .etapes-duree-tableau .col-list li:hover {
     background: rgba(255, 255, 255, 0.6);
   }
-  body.page-etapes main .etapes-cadre .etapes-cadre-container .etapes-balance-container #contrat .col-list li:hover {
+  body.page-etapes main .etapes-duree .etapes-duree-container .etapes-duree-tableau #Phase .col-list li:hover {
     background: rgba(91, 184, 135, 0.15);
   }
-  body.page-etapes main .etapes-cadre .etapes-cadre-container .etapes-balance-container #description .col-list li:hover {
+  body.page-etapes main .etapes-duree .etapes-duree-container .etapes-duree-tableau #Durée .col-list li:hover {
     background: rgba(190, 9, 127, 0.15);
   }
 }
 @media (max-width: 1060px) {
-  body.page-etapes main .etapes-cadre .etapes-cadre-container .h4-colonne {
+  body.page-etapes main .etapes-duree .etapes-duree-container .h4-colonne {
     display: none;
   }
-  body.page-etapes main .etapes-cadre .etapes-cadre-container .etapes-balance-container {
+  body.page-etapes main .etapes-duree .etapes-duree-container .etapes-duree-tableau {
     display: flex;
     flex-wrap: wrap;
     border: 0;
@@ -4860,11 +4871,11 @@ body.page-etapes main .etapes-cadre .etapes-cadre-container .etapes-balance-cont
     overflow: visible;
     background: transparent;
   }
-  body.page-etapes main .etapes-cadre .etapes-cadre-container .etapes-balance-container .colonne,
-  body.page-etapes main .etapes-cadre .etapes-cadre-container .etapes-balance-container .colonne > .col-list {
+  body.page-etapes main .etapes-duree .etapes-duree-container .etapes-duree-tableau .colonne,
+  body.page-etapes main .etapes-duree .etapes-duree-container .etapes-duree-tableau .colonne > .col-list {
     display: contents;
   }
-  body.page-etapes main .etapes-cadre .etapes-cadre-container .etapes-balance-container .col-list li {
+  body.page-etapes main .etapes-duree .etapes-duree-container .etapes-duree-tableau .col-list li {
     flex: 1 1 100%;
     display: grid;
     grid-template-columns: auto 1fr;
@@ -4877,79 +4888,123 @@ body.page-etapes main .etapes-cadre .etapes-cadre-container .etapes-balance-cont
     border-left: 4px solid rgb(0, 71, 30);
     border-right: 0;
   }
-  body.page-etapes main .etapes-cadre .etapes-cadre-container #contrat .col-list li {
+  body.page-etapes main .etapes-duree .etapes-duree-container #Phase .col-list li {
     background: rgba(91, 184, 135, 0.1);
     border-right: 1px solid rgba(3, 24, 55, 0.5);
   }
-  body.page-etapes main .etapes-cadre .etapes-cadre-container #description .col-list li {
+  body.page-etapes main .etapes-duree .etapes-duree-container #Durée .col-list li {
     background: rgba(190, 9, 127, 0.1);
     border-right: 1px solid rgba(3, 24, 55, 0.5);
   }
-  body.page-etapes main .etapes-cadre .etapes-cadre-container #contrat .col-list li::before {
-    content: "Type de contrat";
+  body.page-etapes main .etapes-duree .etapes-duree-container #Phase .col-list li::before {
+    content: "Phase";
     font-weight: 700;
     color: rgb(74.7765957447, 172.7234042553, 121.1170212766);
   }
-  body.page-etapes main .etapes-cadre .etapes-cadre-container #description .col-list li::before {
-    content: "Description";
+  body.page-etapes main .etapes-duree .etapes-duree-container #Durée .col-list li::before {
+    content: "Durée";
     font-weight: 700;
     color: rgb(171, 8.1, 114.3);
   }
-  body.page-etapes main .etapes-cadre .etapes-cadre-container #contrat .col-list li {
+  body.page-etapes main .etapes-duree .etapes-duree-container #Phase .col-list li {
     border-top: 2px solid rgba(0, 71, 30, 0.63);
     border-radius: 0.6rem 0.6rem 0 0;
   }
-  body.page-etapes main .etapes-cadre .etapes-cadre-container #description .col-list li {
+  body.page-etapes main .etapes-duree .etapes-duree-container #Durée .col-list li {
     border-top: 1px solid rgba(3, 24, 55, 0.3);
     border-bottom: 2px solid rgb(56.7, 153.9, 47.7);
     border-radius: 0 0 0.6rem 0.6rem;
     margin-bottom: 0.8rem;
   }
-  body.page-etapes main .etapes-cadre .etapes-cadre-container #contrat .col-list li:nth-child(1) {
+  body.page-etapes main .etapes-duree .etapes-duree-container #Phase .col-list li:nth-child(1) {
     order: 1;
   }
-  body.page-etapes main .etapes-cadre .etapes-cadre-container #description .col-list li:nth-child(1) {
+  body.page-etapes main .etapes-duree .etapes-duree-container #Durée .col-list li:nth-child(1) {
     order: 2;
   }
-  body.page-etapes main .etapes-cadre .etapes-cadre-container #contrat .col-list li:nth-child(2) {
+  body.page-etapes main .etapes-duree .etapes-duree-container #Phase .col-list li:nth-child(2) {
     order: 3;
   }
-  body.page-etapes main .etapes-cadre .etapes-cadre-container #description .col-list li:nth-child(2) {
+  body.page-etapes main .etapes-duree .etapes-duree-container #Durée .col-list li:nth-child(2) {
     order: 4;
   }
-  body.page-etapes main .etapes-cadre .etapes-cadre-container #contrat .col-list li:nth-child(3) {
+  body.page-etapes main .etapes-duree .etapes-duree-container #Phase .col-list li:nth-child(3) {
     order: 5;
   }
-  body.page-etapes main .etapes-cadre .etapes-cadre-container #description .col-list li:nth-child(3) {
+  body.page-etapes main .etapes-duree .etapes-duree-container #Durée .col-list li:nth-child(3) {
     order: 6;
   }
-  body.page-etapes main .etapes-cadre .etapes-cadre-container #contrat .col-list li:nth-child(4) {
+  body.page-etapes main .etapes-duree .etapes-duree-container #Phase .col-list li:nth-child(4) {
     order: 7;
   }
-  body.page-etapes main .etapes-cadre .etapes-cadre-container #description .col-list li:nth-child(4) {
+  body.page-etapes main .etapes-duree .etapes-duree-container #Durée .col-list li:nth-child(4) {
     order: 8;
   }
-  body.page-etapes main .etapes-cadre .etapes-cadre-container #contrat .col-list li:nth-child(5) {
+  body.page-etapes main .etapes-duree .etapes-duree-container #Phase .col-list li:nth-child(5) {
     order: 9;
   }
-  body.page-etapes main .etapes-cadre .etapes-cadre-container #description .col-list li:nth-child(5) {
+  body.page-etapes main .etapes-duree .etapes-duree-container #Durée .col-list li:nth-child(5) {
     order: 10;
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  body.page-etapes main .etapes-cadre .etapes-cadre-container .col-list li {
+  body.page-etapes main .etapes-duree .etapes-duree-container .col-list li {
     transition: none !important;
   }
 }
-body.page-etapes main .etapes-cadre .etapes-cadre-container .etapes-balance-container #secteur .h4-colonne {
+body.page-etapes main .etapes-mesure {
+  padding: clamp(1rem, 0.286rem + 1.905vw, 2rem) 1rem clamp(2rem, 1.78rem + 1.356vw, 3rem);
+  color: #031837;
+}
+body.page-etapes main .etapes-mesure .etapes-mesure-container {
+  width: min(1100px, 92vw);
+  margin: 0 auto;
+}
+body.page-etapes main .etapes-mesure .etapes-mesure-container .etapes-mesure-p {
+  margin-top: 1rem;
+}
+body.page-etapes main .etapes-mesure .etapes-mesure-container .etapes-mesure-tableau {
+  width: min(1100px, 92vw);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.3fr 1.3fr;
+  gap: 0;
+  border-radius: 0.4rem;
+  border-top-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  border-top: 2px solid rgba(0, 71, 30, 0.63);
+  border-left: 4px solid rgb(0, 71, 30);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+body.page-etapes main .etapes-mesure .etapes-mesure-container .etapes-mesure-tableau .colonne {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  align-content: start;
+}
+body.page-etapes main .etapes-mesure .etapes-mesure-container .etapes-mesure-tableau .h4-colonne {
+  font-size: 1.1rem;
+  margin: 0;
+  padding: 0.6rem 1rem;
+  background: rgba(246, 171, 120, 0.6);
+  color: #031837;
+  font-weight: 700;
+  line-height: 1.25;
+  border-bottom: 1px solid rgba(3, 24, 55, 0.6);
+  text-align: center;
+  border-left: 0;
+  border-right: 0;
+}
+body.page-etapes main .etapes-mesure .etapes-mesure-container .etapes-mesure-tableau #Option .h4-colonne,
+body.page-etapes main .etapes-mesure .etapes-mesure-container .etapes-mesure-tableau #Description .h4-colonne {
   border-right: 1px solid rgba(3, 24, 55, 0.5);
 }
-body.page-etapes main .etapes-cadre .etapes-cadre-container .etapes-balance-container .col-list {
+body.page-etapes main .etapes-mesure .etapes-mesure-container .etapes-mesure-tableau .col-list {
   list-style: none;
   margin: 0;
   padding: 0;
 }
-body.page-etapes main .etapes-cadre .etapes-cadre-container .etapes-balance-container .col-list li {
+body.page-etapes main .etapes-mesure .etapes-mesure-container .etapes-mesure-tableau .col-list li {
   margin: 0;
   padding: 0.75rem 0.9rem;
   min-height: 2.75rem;
@@ -4962,84 +5017,422 @@ body.page-etapes main .etapes-cadre .etapes-cadre-container .etapes-balance-cont
   border-left: 0;
   border-right: 0;
 }
-body.page-etapes main .etapes-cadre .etapes-cadre-container .etapes-balance-container .col-list li:last-child {
+body.page-etapes main .etapes-mesure .etapes-mesure-container .etapes-mesure-tableau .col-list li:last-child {
   border-bottom: 0;
 }
-body.page-etapes main .etapes-cadre .etapes-cadre-container .etapes-balance-container #secteur .col-list li {
+body.page-etapes main .etapes-mesure .etapes-mesure-container .etapes-mesure-tableau #Option .col-list li {
   background: rgba(91, 184, 135, 0.1);
   color: rgb(2.85, 22.8, 52.25);
   border-right: 1px solid rgba(3, 24, 55, 0.5);
 }
-body.page-etapes main .etapes-cadre .etapes-cadre-container .etapes-balance-container #obligations .col-list li {
+body.page-etapes main .etapes-mesure .etapes-mesure-container .etapes-mesure-tableau #Description .col-list li {
   background: rgba(190, 9, 127, 0.1);
   color: rgb(2.7, 21.6, 49.5);
+  border-right: 1px solid rgba(3, 24, 55, 0.5);
+}
+body.page-etapes main .etapes-mesure .etapes-mesure-container .etapes-mesure-tableau #Usage .col-list li {
+  background: rgba(3, 24, 55, 0.12);
+  color: rgb(2.76, 22.08, 50.6);
 }
 @media (hover: hover) and (pointer: fine) {
-  body.page-etapes main .etapes-cadre .etapes-cadre-container .etapes-balance-container #secteur .col-list li:hover {
+  body.page-etapes main .etapes-mesure .etapes-mesure-container .etapes-mesure-tableau .col-list li:hover {
+    background: rgba(255, 255, 255, 0.6);
+  }
+  body.page-etapes main .etapes-mesure .etapes-mesure-container .etapes-mesure-tableau #Option .col-list li:hover {
     background: rgba(91, 184, 135, 0.15);
   }
-  body.page-etapes main .etapes-cadre .etapes-cadre-container .etapes-balance-container #obligations .col-list li:hover {
+  body.page-etapes main .etapes-mesure .etapes-mesure-container .etapes-mesure-tableau #Description .col-list li:hover {
     background: rgba(190, 9, 127, 0.15);
+  }
+  body.page-etapes main .etapes-mesure .etapes-mesure-container .etapes-mesure-tableau #Usage .col-list li:hover {
+    background: rgba(3, 24, 55, 0.18);
   }
 }
 @media (max-width: 1060px) {
-  body.page-etapes main .etapes-cadre .etapes-cadre-container #secteur .col-list li {
+  body.page-etapes main .etapes-mesure .etapes-mesure-container .h4-colonne {
+    display: none;
+  }
+  body.page-etapes main .etapes-mesure .etapes-mesure-container .etapes-mesure-tableau {
+    display: flex;
+    flex-wrap: wrap;
+    border: 0;
+    box-shadow: none;
+    overflow: visible;
+    background: transparent;
+  }
+  body.page-etapes main .etapes-mesure .etapes-mesure-container .etapes-mesure-tableau .colonne,
+  body.page-etapes main .etapes-mesure .etapes-mesure-container .etapes-mesure-tableau .colonne > .col-list {
+    display: contents;
+  }
+  body.page-etapes main .etapes-mesure .etapes-mesure-container .etapes-mesure-tableau .col-list li {
+    flex: 1 1 100%;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: start;
+    gap: 0.6rem;
+    text-align: left;
+    padding: 0.8rem 1rem;
+    background: #ffffff;
+    border-bottom: 0;
+    border-left: 4px solid rgb(0, 71, 30);
+    border-right: 0;
+  }
+  body.page-etapes main .etapes-mesure .etapes-mesure-container #Option .col-list li {
     background: rgba(91, 184, 135, 0.1);
+    border-top: 2px solid rgba(0, 71, 30, 0.63);
+    border-radius: 0.6rem 0.6rem 0 0;
     border-right: 1px solid rgba(3, 24, 55, 0.5);
   }
-  body.page-etapes main .etapes-cadre .etapes-cadre-container #obligations .col-list li {
+  body.page-etapes main .etapes-mesure .etapes-mesure-container #Description .col-list li {
     background: rgba(190, 9, 127, 0.1);
     border-right: 1px solid rgba(3, 24, 55, 0.5);
   }
-  body.page-etapes main .etapes-cadre .etapes-cadre-container #secteur .col-list li::before {
-    content: "Secteur";
-    font-weight: 700;
-    color: rgb(74.7765957447, 172.7234042553, 121.1170212766);
-  }
-  body.page-etapes main .etapes-cadre .etapes-cadre-container #obligations .col-list li::before {
-    content: "Obligations réglementaires associées";
-    font-weight: 700;
-    color: rgb(171, 8.1, 114.3);
-  }
-  body.page-etapes main .etapes-cadre .etapes-cadre-container #secteur .col-list li {
-    border-top: 2px solid rgba(0, 71, 30, 0.63);
-    border-radius: 0.6rem 0.6rem 0 0;
-  }
-  body.page-etapes main .etapes-cadre .etapes-cadre-container #obligations .col-list li {
-    border-top: 1px solid rgba(3, 24, 55, 0.3);
+  body.page-etapes main .etapes-mesure .etapes-mesure-container #Usage .col-list li {
+    background: rgba(3, 24, 55, 0.12);
+    border-right: 1px solid rgba(3, 24, 55, 0.5);
     border-bottom: 2px solid rgb(56.7, 153.9, 47.7);
     border-radius: 0 0 0.6rem 0.6rem;
     margin-bottom: 0.8rem;
   }
-  body.page-etapes main .etapes-cadre .etapes-cadre-container #secteur .col-list li:nth-child(1) {
+  body.page-etapes main .etapes-mesure .etapes-mesure-container #Option .col-list li::before {
+    content: "Option IPMVP";
+    font-weight: 700;
+    color: rgb(74.7765957447, 172.7234042553, 121.1170212766);
+  }
+  body.page-etapes main .etapes-mesure .etapes-mesure-container #Description .col-list li::before {
+    content: "Description";
+    font-weight: 700;
+    color: rgb(171, 8.1, 114.3);
+  }
+  body.page-etapes main .etapes-mesure .etapes-mesure-container #Usage .col-list li::before {
+    content: "Usage conseillé";
+    font-weight: 700;
+    color: rgb(2.7, 21.6, 49.5);
+  }
+  body.page-etapes main .etapes-mesure .etapes-mesure-container #Option .col-list li:nth-child(1) {
     order: 1;
   }
-  body.page-etapes main .etapes-cadre .etapes-cadre-container #obligations .col-list li:nth-child(1) {
+  body.page-etapes main .etapes-mesure .etapes-mesure-container #Description .col-list li:nth-child(1) {
     order: 2;
   }
-  body.page-etapes main .etapes-cadre .etapes-cadre-container #secteur .col-list li:nth-child(2) {
+  body.page-etapes main .etapes-mesure .etapes-mesure-container #Usage .col-list li:nth-child(1) {
     order: 3;
   }
-  body.page-etapes main .etapes-cadre .etapes-cadre-container #obligations .col-list li:nth-child(2) {
+  body.page-etapes main .etapes-mesure .etapes-mesure-container #Option .col-list li:nth-child(2) {
     order: 4;
   }
-  body.page-etapes main .etapes-cadre .etapes-cadre-container #secteur .col-list li:nth-child(3) {
+  body.page-etapes main .etapes-mesure .etapes-mesure-container #Description .col-list li:nth-child(2) {
     order: 5;
   }
-  body.page-etapes main .etapes-cadre .etapes-cadre-container #obligations .col-list li:nth-child(3) {
+  body.page-etapes main .etapes-mesure .etapes-mesure-container #Usage .col-list li:nth-child(2) {
     order: 6;
   }
-  body.page-etapes main .etapes-cadre .etapes-cadre-container #secteur .col-list li:nth-child(4) {
+  body.page-etapes main .etapes-mesure .etapes-mesure-container #Option .col-list li:nth-child(3) {
     order: 7;
   }
-  body.page-etapes main .etapes-cadre .etapes-cadre-container #obligations .col-list li:nth-child(4) {
+  body.page-etapes main .etapes-mesure .etapes-mesure-container #Description .col-list li:nth-child(3) {
     order: 8;
   }
-  body.page-etapes main .etapes-cadre .etapes-cadre-container #secteur .col-list li:nth-child(5) {
+  body.page-etapes main .etapes-mesure .etapes-mesure-container #Usage .col-list li:nth-child(3) {
     order: 9;
   }
-  body.page-etapes main .etapes-cadre .etapes-cadre-container #obligations .col-list li:nth-child(5) {
+  body.page-etapes main .etapes-mesure .etapes-mesure-container #Option .col-list li:nth-child(4) {
     order: 10;
+  }
+  body.page-etapes main .etapes-mesure .etapes-mesure-container #Description .col-list li:nth-child(4) {
+    order: 11;
+  }
+  body.page-etapes main .etapes-mesure .etapes-mesure-container #Usage .col-list li:nth-child(4) {
+    order: 12;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  body.page-etapes main .etapes-mesure .etapes-mesure-container .col-list li {
+    transition: none !important;
+  }
+}
+body.page-etapes main .etapes-controle {
+  padding: clamp(1rem, 0.286rem + 1.905vw, 2rem) 1rem clamp(2rem, 1.78rem + 1.356vw, 3rem);
+  color: #031837;
+}
+body.page-etapes main .etapes-controle .etapes-controle-container {
+  width: min(1100px, 92vw);
+  margin: 0 auto;
+}
+body.page-etapes main .etapes-controle .etapes-controle-container .etapes-controle-tableau {
+  width: min(1100px, 92vw);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 0;
+  border-radius: 0.4rem;
+  border-top-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  border-top: 2px solid rgba(0, 71, 30, 0.63);
+  border-left: 4px solid rgb(0, 71, 30);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+body.page-etapes main .etapes-controle .etapes-controle-container .etapes-controle-tableau .colonne {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  align-content: start;
+}
+body.page-etapes main .etapes-controle .etapes-controle-container .etapes-controle-tableau .h4-colonne {
+  font-size: 1.1rem;
+  margin: 0;
+  padding: 0.6rem 1rem;
+  background: rgba(246, 171, 120, 0.6);
+  color: #031837;
+  font-weight: 700;
+  line-height: 1.25;
+  border-bottom: 1px solid rgba(3, 24, 55, 0.6);
+  text-align: center;
+  border-left: 0;
+  border-right: 0;
+}
+body.page-etapes main .etapes-controle .etapes-controle-container .etapes-controle-tableau #Acteur .h4-colonne {
+  border-right: 1px solid rgba(3, 24, 55, 0.5);
+}
+body.page-etapes main .etapes-controle .etapes-controle-container .etapes-controle-tableau .col-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+body.page-etapes main .etapes-controle .etapes-controle-container .etapes-controle-tableau .col-list li {
+  margin: 0;
+  padding: 0.75rem 0.9rem;
+  min-height: 2.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-bottom: 1px solid rgba(3, 24, 55, 0.3);
+  background: #ffffff;
+  border-left: 0;
+  border-right: 0;
+}
+body.page-etapes main .etapes-controle .etapes-controle-container .etapes-controle-tableau .col-list li:last-child {
+  border-bottom: 0;
+}
+body.page-etapes main .etapes-controle .etapes-controle-container .etapes-controle-tableau #Acteur .col-list li {
+  background: rgba(91, 184, 135, 0.1);
+  color: rgb(2.85, 22.8, 52.25);
+  border-right: 1px solid rgba(3, 24, 55, 0.5);
+}
+body.page-etapes main .etapes-controle .etapes-controle-container .etapes-controle-tableau #Role .col-list li {
+  background: rgba(190, 9, 127, 0.1);
+  color: rgb(2.7, 21.6, 49.5);
+}
+@media (hover: hover) and (pointer: fine) {
+  body.page-etapes main .etapes-controle .etapes-controle-container .etapes-controle-tableau .col-list li:hover {
+    background: rgba(255, 255, 255, 0.6);
+  }
+  body.page-etapes main .etapes-controle .etapes-controle-container .etapes-controle-tableau #Acteur .col-list li:hover {
+    background: rgba(91, 184, 135, 0.15);
+  }
+  body.page-etapes main .etapes-controle .etapes-controle-container .etapes-controle-tableau #Role .col-list li:hover {
+    background: rgba(190, 9, 127, 0.15);
+  }
+}
+@media (max-width: 1060px) {
+  body.page-etapes main .etapes-controle .etapes-controle-container .h4-colonne {
+    display: none;
+  }
+  body.page-etapes main .etapes-controle .etapes-controle-container .etapes-controle-tableau {
+    display: flex;
+    flex-wrap: wrap;
+    border: 0;
+    box-shadow: none;
+    overflow: visible;
+    background: transparent;
+  }
+  body.page-etapes main .etapes-controle .etapes-controle-container .etapes-controle-tableau .colonne,
+  body.page-etapes main .etapes-controle .etapes-controle-container .etapes-controle-tableau .colonne > .col-list {
+    display: contents;
+  }
+  body.page-etapes main .etapes-controle .etapes-controle-container .etapes-controle-tableau .col-list li {
+    flex: 1 1 100%;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: start;
+    gap: 0.6rem;
+    text-align: left;
+    padding: 0.8rem 1rem;
+    background: #ffffff;
+    border-bottom: 0;
+    border-left: 4px solid rgb(0, 71, 30);
+    border-right: 0;
+  }
+  body.page-etapes main .etapes-controle .etapes-controle-container #Acteur .col-list li {
+    background: rgba(91, 184, 135, 0.1);
+    border-top: 2px solid rgba(0, 71, 30, 0.63);
+    border-radius: 0.6rem 0.6rem 0 0;
+    border-right: 1px solid rgba(3, 24, 55, 0.5);
+  }
+  body.page-etapes main .etapes-controle .etapes-controle-container #Role .col-list li {
+    background: rgba(190, 9, 127, 0.1);
+    border-right: 1px solid rgba(3, 24, 55, 0.5);
+    border-bottom: 2px solid rgb(56.7, 153.9, 47.7);
+    border-radius: 0 0 0.6rem 0.6rem;
+    margin-bottom: 0.8rem;
+  }
+  body.page-etapes main .etapes-controle .etapes-controle-container #Acteur .col-list li::before {
+    content: "Acteur";
+    font-weight: 700;
+    color: rgb(74.7765957447, 172.7234042553, 121.1170212766);
+  }
+  body.page-etapes main .etapes-controle .etapes-controle-container #Role .col-list li::before {
+    content: "Rôle pendant le CPE";
+    font-weight: 700;
+    color: rgb(171, 8.1, 114.3);
+  }
+  body.page-etapes main .etapes-controle .etapes-controle-container #Acteur .col-list li:nth-child(1) {
+    order: 1;
+  }
+  body.page-etapes main .etapes-controle .etapes-controle-container #Role .col-list li:nth-child(1) {
+    order: 2;
+  }
+  body.page-etapes main .etapes-controle .etapes-controle-container #Acteur .col-list li:nth-child(2) {
+    order: 3;
+  }
+  body.page-etapes main .etapes-controle .etapes-controle-container #Role .col-list li:nth-child(2) {
+    order: 4;
+  }
+  body.page-etapes main .etapes-controle .etapes-controle-container #Acteur .col-list li:nth-child(3) {
+    order: 5;
+  }
+  body.page-etapes main .etapes-controle .etapes-controle-container #Role .col-list li:nth-child(3) {
+    order: 6;
+  }
+  body.page-etapes main .etapes-controle .etapes-controle-container #Acteur .col-list li:nth-child(4) {
+    order: 7;
+  }
+  body.page-etapes main .etapes-controle .etapes-controle-container #Role .col-list li:nth-child(4) {
+    order: 8;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  body.page-etapes main .etapes-controle .etapes-controle-container .col-list li {
+    transition: none !important;
+  }
+}
+body.page-etapes main .etapes-conclusion {
+  padding: clamp(1rem, 0.286rem + 1.905vw, 2rem) 1rem clamp(2rem, 1.78rem + 1.356vw, 3rem);
+  color: #031837;
+}
+body.page-etapes main .etapes-conclusion .etapes-conclusion-container {
+  width: min(1100px, 92vw);
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: clamp(1rem, 0.286rem + 1.905vw, 2rem);
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+@media (max-width: 768px) {
+  body.page-etapes main .etapes-conclusion .etapes-conclusion-container {
+    grid-template-columns: 1fr;
+  }
+}
+body.page-etapes main .etapes-conclusion .etapes-conclusion-container .etapes-conclusion-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  height: 100%;
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+body.page-etapes main .etapes-conclusion .etapes-conclusion-container .etapes-conclusion-text .etapes-conclusion-p {
+  max-width: 600px;
+  margin-bottom: clamp(0.5rem, 0.143rem + 0.952vw, 1rem);
+  margin-top: clamp(0.5rem, 0.143rem + 0.952vw, 1rem);
+}
+body.page-etapes main .etapes-conclusion .etapes-conclusion-container .etapes-conclusion-text .etapes-conclusion-ul {
+  margin-left: clamp(0.5rem, -0.929rem + 3.81vw, 2.5rem);
+}
+body.page-etapes main .etapes-conclusion .etapes-conclusion-container .etapes-conclusion-text .etapes-conclusion-ul li {
+  font-style: italic;
+  margin-bottom: clamp(0.5rem, 0.143rem + 0.952vw, 1rem);
+}
+body.page-etapes main .etapes-conclusion .etapes-conclusion-container .etapes-conclusion-text .etapes-conclusion-ul li:hover {
+  color: #00a250;
+}
+body.page-etapes main .etapes-conclusion .etapes-conclusion-container .etapes-conclusion-text .cta-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(0.8rem, 1.6vw, 1.2rem);
+  margin: clamp(1rem, 0.78rem + 1.356vw, 2rem) 0 0;
+}
+body.page-etapes main .etapes-conclusion .etapes-conclusion-container .etapes-conclusion-image {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: inherit;
+  /* Pause au survol optionnelle */
+  /* Réécriture des frames avec les valeurs passées au mixin (portée locale via nesting) */
+  border-radius: 0.4rem;
+  border-top-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  width: clamp(17.5rem, 14.375rem + 8.333vw, 21.875rem);
+}
+body.page-etapes main .etapes-conclusion .etapes-conclusion-container .etapes-conclusion-image > img, body.page-etapes main .etapes-conclusion .etapes-conclusion-container .etapes-conclusion-image > picture > img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transform-origin: center;
+  will-change: transform;
+  /* on utilise animation + @property pour animer vers des valeurs custom via variables */
+  /* Fallback simple : on “fige” les frames avec une animation dédiée inline via shorthand */
+  animation-name: cpe-kb-zoom-pan;
+}
+@supports (transform: scale(1)) {
+  body.page-etapes main .etapes-conclusion .etapes-conclusion-container .etapes-conclusion-image > img, body.page-etapes main .etapes-conclusion .etapes-conclusion-container .etapes-conclusion-image > picture > img {
+    /* on injecte les valeurs finales via CSS vars et une transition calc */
+    --kb-scale-to: 1.05;
+    --kb-pan-x: -2%;
+    --kb-pan-y: -2%;
+    /* on sur-déclare les frames avec les valeurs */
+    /* (truc simple : on met une animation-name dédiée pour ne pas multiplier les keyframes) */
+    /* on utilise la propriété animation-timeline implicite (fallback simple ci-dessous) */
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    body.page-etapes main .etapes-conclusion .etapes-conclusion-container .etapes-conclusion-image > img, body.page-etapes main .etapes-conclusion .etapes-conclusion-container .etapes-conclusion-image > picture > img {
+      animation: cpe-kb-zoom-pan 8s ease-in-out infinite alternate;
+    }
+  }
+}
+@media (hover: hover) {
+  body.page-etapes main .etapes-conclusion .etapes-conclusion-container .etapes-conclusion-image:hover > img, body.page-etapes main .etapes-conclusion .etapes-conclusion-container .etapes-conclusion-image:hover > picture > img {
+    animation-play-state: paused;
+  }
+}
+@keyframes cpe-kb-zoom-pan {
+  from {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+  to {
+    transform: scale(1.05) translate3d(-2%, -2%, 0);
+  }
+}
+body.page-etapes main .etapes-conclusion .etapes-conclusion-container .etapes-conclusion-image img {
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: block;
+}
+@media (max-width: 933px) {
+  body.page-etapes main .etapes-conclusion .etapes-conclusion-container .etapes-conclusion-image {
+    justify-self: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
   }
 }
 
