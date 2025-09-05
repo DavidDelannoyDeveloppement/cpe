@@ -20,6 +20,9 @@ $background-vert-blanc-hover: linear-gradient(165deg, rgba(46, 204, 113, 0.24), 
 $background-bleu-vert1 : linear-gradient(135deg, $bleu, $vert1);
 $background-bleu-bleu : linear-gradient(135deg, $bleu, #08316e);
 $background-bleu-bleu-transparence : linear-gradient(135deg, #031837e7, #08316ee7);
+$background-saumon-blanc : linear-gradient(165deg, rgba($saumon, 0.164), rgba($saumon, 0.062));
+$background-saumon-blanc-hover: linear-gradient(165deg, rgba($saumon, 0.24), rgba($saumon, 0.295));
+
 
 $bleu-fond: rgba(26, 46, 77);
 
@@ -27,7 +30,9 @@ $bleu-fond: rgba(26, 46, 77);
 // Vert foncé (prestataire)
 $vert-gradient:linear-gradient(165deg, rgba(46, 204, 113, 0.24), rgba(135, 211, 167, 0.295));
 $vert-border:rgb(0, 71, 30);
+$saumon-border:#96420a;
 $vert-border-top: rgba(0, 71, 30, 0.63);
+$saumon-border-top: #96420aa8;
  
 
 // ========================
@@ -56,9 +61,13 @@ $witdh-img-defaut: clamp(17.5rem, 14.375rem + 8.333vw, 21.875rem);
 // ===== DESIGN TOKENS ====
 // ========================
 $border-left-vert : 4px solid $vert-border;
+$border-left-saumon : 4px solid $saumon-border;
 $border-top-vert: 1px solid $vert-border-top;
+$border-top-saumon: 1px solid $saumon-border-top;
 $border-top-vert-2px: 2px solid $vert-border-top;
+$border-top-saumon-2px: 2px solid $saumon-border-top;
 $border-top-vert-3px: 3px solid $vert-border-top;
+$border-top-saumon-3px: 3px solid $saumon-border-top;
 $shadow-defaut: 4px 4px 5px #0318370e;
 $shadow-hover: 0 14px 30px rgba(26, 46, 77, 0.178);
 $shadow-photo :0 4px 12px rgba(0, 0, 0, 0.2);

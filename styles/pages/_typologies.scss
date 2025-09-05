@@ -80,8 +80,12 @@ body.page-typologies {
                 }
 
                 .intro-ul li {
-                        margin-bottom: clamp(0rem, -0.357rem + 0.952vw, 0.5rem);
-                    }
+                    margin-bottom: clamp(0rem, -0.357rem + 0.952vw, 0.5rem);
+                }
+
+                .intro-ul li:hover {
+                    color: $vert1;
+                }
         
                 .intro-image {
                     display: flex;
@@ -175,23 +179,27 @@ body.page-typologies {
                 align-items: center;
                 margin-bottom: 0.5rem;
 
-                &::before {
-                    content: counter(principe);
-                    counter-increment: principe;
-                    flex: 0 0 auto;
-                    aspect-ratio: 1 / 1;
-                    width: 2.2rem;
-                    min-width: 2.2rem;
-                    border-radius: 50%;
-                    display: inline-flex;
-                    align-items: center;
-                    justify-content: center;
-                    background: $vert3;
-                    color: $color-bg;
-                    font-weight: 800;
-                    font-size: 1rem;
-                    margin-right: 1rem;
+                    &::before {
+                        content: counter(principe);
+                        counter-increment: principe;
+                        flex: 0 0 auto;
+                        aspect-ratio: 1 / 1;
+                        width: 2.2rem;
+                        min-width: 2.2rem;
+                        border-radius: 50%;
+                        display: inline-flex;
+                        align-items: center;
+                        justify-content: center;
+                        background: $vert3;
+                        color: $color-bg;
+                        font-weight: 800;
+                        font-size: 1rem;
+                        margin-right: 1rem;
+                    }
                 }
+
+                .etape-text > h5:hover {
+                    color: $violet;
                 }
 
                 .bloc-flow {
@@ -208,7 +216,9 @@ body.page-typologies {
                     ul {
                     margin-left: clamp(1rem, 0.286rem + 1.905vw, 2rem); padding: 0; list-style: disc inside;
                     li { margin: .2rem 0; font-size: $p-size; line-height: 1.55; }
+                    li:hover { color: $vert1; }
                     }
+                    
                 }
 
                 .bloc:last-child { margin-bottom: 0; }
@@ -314,9 +324,9 @@ body.page-typologies {
             /* Overlay grid => hauteur AUTO = max(face, verso) */
             .flip-face {
                 grid-area: 1 / 1;
-                background: $background-vert-blanc;
-                border-top: $border-top-vert;
-                border-left: $border-left-vert;
+                background: $background-saumon-blanc;
+                border-top: $border-top-saumon;
+                border-left: $border-left-saumon;
                 border-radius: .4rem;
                 border-bottom-right-radius: 1rem;
                 border-top-left-radius: 1rem;
@@ -336,7 +346,7 @@ body.page-typologies {
 
             .flip-face.back {
                 transform: rotateY(180deg);
-                background: $background-vert-blanc-hover;
+                background: $background-saumon-blanc-hover;
 
             }
 

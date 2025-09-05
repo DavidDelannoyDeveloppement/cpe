@@ -177,6 +177,10 @@ body.page-fonctionnement {
                 margin-bottom: 0.5rem;
                 }
 
+                .etapes-list .etape-text > h5:hover {
+                    color: $violet;
+                }
+
                 .etapes-list .etape-text > p { font-size: $p-size; }
 
                 li:last-child { padding-bottom: 0; }
@@ -224,6 +228,10 @@ body.page-fonctionnement {
                 margin: .35rem 0;
                 font-size: $p-size;
                 line-height: 1.6;
+                }
+
+                .etapes-list .etape-text > ul li:hover {
+                color: $vert1;
                 }
 
                 @media (max-width: 768px) {
@@ -298,7 +306,16 @@ body.page-fonctionnement {
 
                     .ipmvp-ul {
                         margin-left: clamp(0rem, -0.441rem + 2.712vw, 2rem);
-                        // margin-bottom: clamp(0rem, -0.441rem + 2.712vw, 2rem);
+                    }
+
+                    .ipmvp-ul> li {
+                        margin: .35rem 0;
+                        font-size: $p-size;
+                        line-height: 1.6;
+                    }
+
+                    .ipmvp-ul> li:hover {
+                        color: $vert1;
                     }
 
                     .cta-buttons {
@@ -442,9 +459,9 @@ body.page-fonctionnement {
                 margin: clamp(1.02rem, 2.04vw, 1.7rem) 0;
 
                     li {
-                        background: $background-vert-blanc;
-                        border-left: $border-left-vert;
-                        border-top: $border-top-vert;
+                        background: $background-saumon-blanc;
+                        border-left: $border-left-saumon;
+                        border-top: $border-top-saumon;
                         padding: 1rem;
                         margin-bottom: 1rem;
                         @include radius-cpe;
@@ -457,7 +474,7 @@ body.page-fonctionnement {
                         transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
 
                         &:hover {
-                        background: $background-vert-blanc-hover;
+                        background: $background-saumon-blanc-hover;
                         transform: translateX(5px);
                         box-shadow: $shadow-hover;
                         }
@@ -611,6 +628,10 @@ body.page-fonctionnement {
 
                     .exemple-ul li {
                         margin-bottom: clamp(0.5rem, 0.39rem + 0.678vw, 1rem);
+                    }
+
+                    .exemple-ul li:hover {
+                        color: $vert1
                     }
                 }
         

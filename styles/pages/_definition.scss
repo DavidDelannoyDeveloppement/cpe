@@ -209,9 +209,9 @@ body.page-definition {
 
 
                     li {
-                        background: $background-vert-blanc;
-                        border-left: 4px solid $vert-border;
-                        border-top: 1px solid $vert-border-top;
+                        background: $background-saumon-blanc;
+                        border-left: 4px solid $saumon-border;
+                        border-top: 1px solid $saumon-border-top;
                         padding: 1rem;
                         margin-bottom: 1rem;
                         border-radius: 0.4rem; 
@@ -228,7 +228,7 @@ body.page-definition {
                                     box-shadow 0.25s ease;
 
                         &:hover {
-                            background: $background-vert-blanc-hover;
+                            background: $background-saumon-blanc-hover;
                             transform: translateX(5px);
                             box-shadow: $shadow-hover;
                         }
@@ -302,6 +302,10 @@ body.page-definition {
                 color: $bleu;
                 }
 
+                .principe-list > li.principe-item > .principe-item__texte > h4:hover {
+                    color: $violet;
+                }
+
                 .principe-list > li.principe-item > .principe-item__texte > h4::before {
                 content: counter(principe);
                 flex: 0 0 auto;
@@ -330,6 +334,9 @@ body.page-definition {
                 margin: .35rem 0;
                 font-size: clamp(1.02rem, 1.6vw, 1.12rem);
                 line-height: 1.6;
+                }
+                .principe-list > li.principe-item > .principe-item__texte > ul li:hover {
+                    color: $vert1;
                 }
 
                 /* ====== Carte (flip) – hauteur FIXE ====== */
@@ -560,6 +567,10 @@ body.page-definition {
                 margin: .35rem 0;
                 font-size: clamp(1.02rem, 1.6vw, 1.12rem);
                 line-height: 1.6;
+            }
+
+            .domaines-list > ul li:hover {
+                color: $vert1;
             }
 
             @media (max-width: 990px) {

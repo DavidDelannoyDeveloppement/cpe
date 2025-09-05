@@ -49,18 +49,6 @@ body.page-avantages {
 
     main {
 
-
-        //==========================================================//
-        //==========================================================//
-        //==========================================================//
-        //  GRID, Justify-items et Include Zoom Image Pas en place  // 
-        //==========================================================//
-        //==========================================================//
-        //==========================================================//
-
-
-
-
         .avantages {
             padding: $padding-marge-section;
             color: $bleu;
@@ -128,6 +116,10 @@ body.page-avantages {
                 margin-bottom: 0.5rem;
                 }
 
+                .avantages-list .avantage-text > h5:hover {
+                    color: $violet;
+                }
+
                 .avantages-list .avantage-text > p { font-size: $p-size; }
 
                 li:last-child { padding-bottom: 0; }
@@ -175,6 +167,10 @@ body.page-avantages {
                 margin: .35rem 0;
                 font-size: $p-size;
                 line-height: 1.6;
+                }
+
+                .avantages-list .avantage-text > ul li:hover {
+                    color: $vert1;
                 }
 
                 @media (max-width: 768px) {
@@ -372,6 +368,7 @@ body.page-avantages {
             }
         }
 
+
         .conclusion {
             padding: $padding-marge-section;
             color: $bleu;
@@ -407,6 +404,10 @@ body.page-avantages {
 
                     .conclusion-ul li {
                         margin-bottom: clamp(0.5rem, 0.143rem + 0.952vw, 1rem);
+                    }
+
+                    .conclusion-ul li:hover {
+                        color: $vert1;
                     }
 
                     .cta-buttons {
