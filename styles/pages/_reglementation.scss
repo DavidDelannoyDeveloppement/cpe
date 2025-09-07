@@ -311,13 +311,13 @@ body.page-reglementation {
                     }
 
                     #contrat .col-list li::before {
-                    content: "Type de contrat";
+                    content: "Type de contrat : ";
                     font-weight: 700;
                     color: color.scale($vert3, $lightness: -10%);
                     }
 
                     #description .col-list li::before {
-                    content: "Description";
+                    content: "Description : ";
                     font-weight: 700;
                     color: color.scale($violet, $lightness: -10%);
                     }
@@ -401,13 +401,13 @@ body.page-reglementation {
                     }
 
                     #secteur .col-list li::before {
-                    content: "Secteur";
+                    content: "Secteur : ";
                     font-weight: 700;
                     color: color.scale($vert3, $lightness: -10%);
                     }
 
                     #obligations .col-list li::before {
-                    content: "Obligations réglementaires associées";
+                    content: "Obligations réglementaires associées : ";
                     font-weight: 700;
                     color: color.scale($violet, $lightness: -10%);
                     }

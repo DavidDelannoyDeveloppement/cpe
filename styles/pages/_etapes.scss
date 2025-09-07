@@ -94,6 +94,17 @@ body.page-etapes {
                         color: $vert1
                     }
 
+                    .cta-buttons {
+                        display: flex;
+                        justify-content: center;
+                        gap: clamp(0.8rem, 1.6vw, 1.2rem);
+                        margin-top: clamp(1rem, 2.4vw, 2rem);
+                        // margin-bottom: clamp(1rem, 1.4vw, 1rem);
+                    }
+                    @media (max-width: 768px) {
+                    align-items: center;
+                    }
+
                 }
         
                 .etapes-intro-image {
@@ -200,6 +211,7 @@ body.page-etapes {
                 }
             }
         }
+
 
         .etapes-duree {
             padding: $padding-marge-section;
@@ -325,13 +337,13 @@ body.page-etapes {
                     }
 
                     #Phase .col-list li::before {
-                    content: "Phase";
+                    content: "Phase : ";
                     font-weight: 700;
                     color: color.scale($vert3, $lightness: -10%);
                     }
 
                     #Durée .col-list li::before {
-                    content: "Durée";
+                    content: "Durée : ";
                     font-weight: 700;
                     color: color.scale($violet, $lightness: -10%);
                     }
@@ -503,19 +515,19 @@ body.page-etapes {
                 }
 
                 #Option .col-list li::before {
-                    content: "Option IPMVP";
+                    content: "Option IPMVP : ";
                     font-weight: 700;
                     color: color.scale($vert3, $lightness: -10%);
                 }
 
                 #Description .col-list li::before {
-                    content: "Description";
+                    content: "Description : ";
                     font-weight: 700;
                     color: color.scale($violet, $lightness: -10%);
                 }
 
                 #Usage .col-list li::before {
-                    content: "Usage conseillé";
+                    content: "Usage conseillé : ";
                     font-weight: 700;
                     color: color.scale($bleu, $lightness: -10%);
                 }
@@ -672,12 +684,12 @@ body.page-etapes {
 
                 // Labels automatiques
                 #Acteur .col-list li::before {
-                    content: "Acteur";
+                    content: "Acteur : ";
                     font-weight: 700;
                     color: color.scale($vert3, $lightness: -10%);
                 }
                 #Role .col-list li::before {
-                    content: "Rôle pendant le CPE";
+                    content: "Rôle pendant le CPE : ";
                     font-weight: 700;
                     color: color.scale($violet, $lightness: -10%);
                 }

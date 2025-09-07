@@ -1930,17 +1930,17 @@ body.page-definition main .comparatif #col-classic .col-list li {
     padding: 0.8rem 1rem;
   }
   body.page-definition main .comparatif #objectif .col-list li::before {
-    content: "Objectif";
+    content: "Objectif : ";
     font-weight: 700;
     color: #031837;
   }
   body.page-definition main .comparatif #col-cpe .col-list li::before {
-    content: "CPE";
+    content: "CPE : ";
     font-weight: 700;
     color: rgb(50.4, 136.8, 42.4);
   }
   body.page-definition main .comparatif #col-classic .col-list li::before {
-    content: "Contrat classique";
+    content: "Contrat classique : ";
     font-weight: 700;
     color: rgb(2.7, 21.6, 49.5);
   }
@@ -3317,22 +3317,22 @@ body.page-typologies main .choix-typologie .choix-typologie-container #travaux .
     border-right: 0;
   }
   body.page-typologies main .choix-typologie #critere .col-list li::before {
-    content: "Critère";
+    content: "Critère : ";
     font-weight: 700;
     color: #031837;
   }
   body.page-typologies main .choix-typologie #services .col-list li::before {
-    content: "Services";
+    content: "Services : ";
     font-weight: 700;
     color: rgb(171, 8.1, 114.3);
   }
   body.page-typologies main .choix-typologie #travaux .col-list li::before {
-    content: "Travaux";
+    content: "Travaux : ";
     font-weight: 700;
     color: rgb(74.7765957447, 172.7234042553, 121.1170212766);
   }
   body.page-typologies main .choix-typologie #tiers .col-list li::before {
-    content: "Tiers";
+    content: "Tiers : ";
     font-weight: 700;
     color: rgb(2.7, 21.6, 49.5);
   }
@@ -3888,12 +3888,12 @@ body.page-avantages main .balance .balance-container #limites .col-list li {
     border-right: 1px solid rgba(3, 24, 55, 0.5);
   }
   body.page-avantages main .balance #avantages .col-list li::before {
-    content: "Avantages";
+    content: "Avantages : ";
     font-weight: 700;
     color: rgb(74.7765957447, 172.7234042553, 121.1170212766);
   }
   body.page-avantages main .balance #limites .col-list li::before {
-    content: "Limites";
+    content: "Limites : ";
     font-weight: 700;
     color: rgb(171, 8.1, 114.3);
   }
@@ -4393,12 +4393,12 @@ body.page-reglementation main .cadre .cadre-container .balance-container #descri
     border-right: 1px solid rgba(3, 24, 55, 0.5);
   }
   body.page-reglementation main .cadre .cadre-container #contrat .col-list li::before {
-    content: "Type de contrat";
+    content: "Type de contrat : ";
     font-weight: 700;
     color: rgb(74.7765957447, 172.7234042553, 121.1170212766);
   }
   body.page-reglementation main .cadre .cadre-container #description .col-list li::before {
-    content: "Description";
+    content: "Description : ";
     font-weight: 700;
     color: rgb(171, 8.1, 114.3);
   }
@@ -4499,12 +4499,12 @@ body.page-reglementation main .cadre .cadre-container .balance-container #obliga
     border-right: 1px solid rgba(3, 24, 55, 0.5);
   }
   body.page-reglementation main .cadre .cadre-container #secteur .col-list li::before {
-    content: "Secteur";
+    content: "Secteur : ";
     font-weight: 700;
     color: rgb(74.7765957447, 172.7234042553, 121.1170212766);
   }
   body.page-reglementation main .cadre .cadre-container #obligations .col-list li::before {
-    content: "Obligations réglementaires associées";
+    content: "Obligations réglementaires associées : ";
     font-weight: 700;
     color: rgb(171, 8.1, 114.3);
   }
@@ -4632,6 +4632,17 @@ body.page-etapes main .etapes-intro .etapes-intro-container .etapes-intro-text .
 }
 body.page-etapes main .etapes-intro .etapes-intro-container .etapes-intro-text .etapes-intro-ul li:hover {
   color: #00a250;
+}
+body.page-etapes main .etapes-intro .etapes-intro-container .etapes-intro-text .cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: clamp(0.8rem, 1.6vw, 1.2rem);
+  margin-top: clamp(1rem, 2.4vw, 2rem);
+}
+@media (max-width: 768px) {
+  body.page-etapes main .etapes-intro .etapes-intro-container .etapes-intro-text {
+    align-items: center;
+  }
 }
 body.page-etapes main .etapes-intro .etapes-intro-container .etapes-intro-image {
   position: relative;
@@ -4897,12 +4908,12 @@ body.page-etapes main .etapes-duree .etapes-duree-container .etapes-duree-tablea
     border-right: 1px solid rgba(3, 24, 55, 0.5);
   }
   body.page-etapes main .etapes-duree .etapes-duree-container #Phase .col-list li::before {
-    content: "Phase";
+    content: "Phase : ";
     font-weight: 700;
     color: rgb(74.7765957447, 172.7234042553, 121.1170212766);
   }
   body.page-etapes main .etapes-duree .etapes-duree-container #Durée .col-list li::before {
-    content: "Durée";
+    content: "Durée : ";
     font-weight: 700;
     color: rgb(171, 8.1, 114.3);
   }
@@ -5095,17 +5106,17 @@ body.page-etapes main .etapes-mesure .etapes-mesure-container .etapes-mesure-tab
     margin-bottom: 0.8rem;
   }
   body.page-etapes main .etapes-mesure .etapes-mesure-container #Option .col-list li::before {
-    content: "Option IPMVP";
+    content: "Option IPMVP : ";
     font-weight: 700;
     color: rgb(74.7765957447, 172.7234042553, 121.1170212766);
   }
   body.page-etapes main .etapes-mesure .etapes-mesure-container #Description .col-list li::before {
-    content: "Description";
+    content: "Description : ";
     font-weight: 700;
     color: rgb(171, 8.1, 114.3);
   }
   body.page-etapes main .etapes-mesure .etapes-mesure-container #Usage .col-list li::before {
-    content: "Usage conseillé";
+    content: "Usage conseillé : ";
     font-weight: 700;
     color: rgb(2.7, 21.6, 49.5);
   }
@@ -5278,12 +5289,12 @@ body.page-etapes main .etapes-controle .etapes-controle-container .etapes-contro
     margin-bottom: 0.8rem;
   }
   body.page-etapes main .etapes-controle .etapes-controle-container #Acteur .col-list li::before {
-    content: "Acteur";
+    content: "Acteur : ";
     font-weight: 700;
     color: rgb(74.7765957447, 172.7234042553, 121.1170212766);
   }
   body.page-etapes main .etapes-controle .etapes-controle-container #Role .col-list li::before {
-    content: "Rôle pendant le CPE";
+    content: "Rôle pendant le CPE : ";
     font-weight: 700;
     color: rgb(171, 8.1, 114.3);
   }
@@ -5474,17 +5485,739 @@ body.page-chiffres h2 {
   margin-bottom: 1.5rem;
   line-height: clamp(2.2rem, 5vw, 3rem);
 }
+body.page-chiffres h3 {
+  font-family: "Raleway", sans-serif;
+  font-size: clamp(1.55rem, 1.229rem + 0.857vw, 2rem);
+  color: #be097f;
+  line-height: clamp(2.2rem, 5vw, 3rem);
+  margin-bottom: 1rem;
+}
 body.page-chiffres p {
   font-size: 1.1rem;
   text-align: justify;
   line-height: 1.8;
-  margin-bottom: 1.2rem;
 }
-body.page-chiffres main .intro {
+body.page-chiffres main .chiffres-intro {
   padding: clamp(1rem, 0.286rem + 1.905vw, 2rem) 1rem clamp(2rem, 1.78rem + 1.356vw, 3rem);
   color: #031837;
 }
-body.page-chiffres main .intro .intro-container {
+body.page-chiffres main .chiffres-intro .chiffres-intro-container {
+  width: min(1100px, 92vw);
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: clamp(1rem, 0.286rem + 1.905vw, 2rem);
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+@media (max-width: 768px) {
+  body.page-chiffres main .chiffres-intro .chiffres-intro-container {
+    grid-template-columns: 1fr;
+  }
+}
+body.page-chiffres main .chiffres-intro .chiffres-intro-container .chiffres-intro-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  height: 100%;
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+body.page-chiffres main .chiffres-intro .chiffres-intro-container .chiffres-intro-text .chiffres-intro-p {
+  max-width: 600px;
+  margin-bottom: clamp(0.5rem, 0.143rem + 0.952vw, 1rem);
+  margin-top: clamp(0.5rem, 0.143rem + 0.952vw, 1rem);
+}
+body.page-chiffres main .chiffres-intro .chiffres-intro-container .chiffres-intro-text .chiffres-intro-ul {
+  margin-left: clamp(0.5rem, -0.929rem + 3.81vw, 2.5rem);
+}
+body.page-chiffres main .chiffres-intro .chiffres-intro-container .chiffres-intro-text .chiffres-intro-ul li {
+  margin-bottom: clamp(0.5rem, 0.143rem + 0.952vw, 1rem);
+}
+body.page-chiffres main .chiffres-intro .chiffres-intro-container .chiffres-intro-text .chiffres-intro-ul li:hover {
+  color: #00a250;
+}
+body.page-chiffres main .chiffres-intro .chiffres-intro-container .chiffres-intro-image {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: inherit;
+  /* Pause au survol optionnelle */
+  /* Réécriture des frames avec les valeurs passées au mixin (portée locale via nesting) */
+  border-radius: 0.4rem;
+  border-top-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  width: clamp(17.5rem, 14.375rem + 8.333vw, 21.875rem);
+}
+body.page-chiffres main .chiffres-intro .chiffres-intro-container .chiffres-intro-image > img, body.page-chiffres main .chiffres-intro .chiffres-intro-container .chiffres-intro-image > picture > img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transform-origin: center;
+  will-change: transform;
+  /* on utilise animation + @property pour animer vers des valeurs custom via variables */
+  /* Fallback simple : on “fige” les frames avec une animation dédiée inline via shorthand */
+  animation-name: cpe-kb-zoom-pan;
+}
+@supports (transform: scale(1)) {
+  body.page-chiffres main .chiffres-intro .chiffres-intro-container .chiffres-intro-image > img, body.page-chiffres main .chiffres-intro .chiffres-intro-container .chiffres-intro-image > picture > img {
+    /* on injecte les valeurs finales via CSS vars et une transition calc */
+    --kb-scale-to: 1.05;
+    --kb-pan-x: -2%;
+    --kb-pan-y: -2%;
+    /* on sur-déclare les frames avec les valeurs */
+    /* (truc simple : on met une animation-name dédiée pour ne pas multiplier les keyframes) */
+    /* on utilise la propriété animation-timeline implicite (fallback simple ci-dessous) */
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    body.page-chiffres main .chiffres-intro .chiffres-intro-container .chiffres-intro-image > img, body.page-chiffres main .chiffres-intro .chiffres-intro-container .chiffres-intro-image > picture > img {
+      animation: cpe-kb-zoom-pan 8s ease-in-out infinite alternate;
+    }
+  }
+}
+@media (hover: hover) {
+  body.page-chiffres main .chiffres-intro .chiffres-intro-container .chiffres-intro-image:hover > img, body.page-chiffres main .chiffres-intro .chiffres-intro-container .chiffres-intro-image:hover > picture > img {
+    animation-play-state: paused;
+  }
+}
+@keyframes cpe-kb-zoom-pan {
+  from {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+  to {
+    transform: scale(1.05) translate3d(-2%, -2%, 0);
+  }
+}
+body.page-chiffres main .chiffres-intro .chiffres-intro-container .chiffres-intro-image img {
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: block;
+}
+@media (max-width: 933px) {
+  body.page-chiffres main .chiffres-intro .chiffres-intro-container .chiffres-intro-image {
+    justify-self: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+}
+body.page-chiffres main .chiffres-typologie {
+  padding: clamp(1rem, 0.286rem + 1.905vw, 2rem) 1rem clamp(2rem, 1.78rem + 1.356vw, 3rem);
+  color: #031837;
+}
+body.page-chiffres main .chiffres-typologie .chiffres-typologie-container {
+  width: min(1100px, 92vw);
+  margin: 0 auto;
+}
+body.page-chiffres main .chiffres-typologie .chiffres-typologie-container .chiffres-typologie-tableau {
+  width: min(1100px, 92vw);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0;
+  border-radius: 0.4rem;
+  border-top-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  border-top: 2px solid rgba(0, 71, 30, 0.63);
+  border-left: 4px solid rgb(0, 71, 30);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+body.page-chiffres main .chiffres-typologie .chiffres-typologie-container .chiffres-typologie-tableau .colonne {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  align-content: start;
+}
+body.page-chiffres main .chiffres-typologie .chiffres-typologie-container .chiffres-typologie-tableau .h4-colonne {
+  font-size: 1.1rem;
+  margin: 0;
+  padding: 0.6rem 1rem;
+  background: rgba(246, 171, 120, 0.6);
+  color: #031837;
+  font-weight: 700;
+  line-height: 1.25;
+  border-bottom: 1px solid rgba(3, 24, 55, 0.6);
+  text-align: center;
+  border-left: 0;
+  border-right: 0;
+}
+body.page-chiffres main .chiffres-typologie .chiffres-typologie-container .chiffres-typologie-tableau #secteur .h4-colonne,
+body.page-chiffres main .chiffres-typologie .chiffres-typologie-container .chiffres-typologie-tableau #exemple .h4-colonne {
+  border-right: 1px solid rgba(3, 24, 55, 0.5);
+}
+body.page-chiffres main .chiffres-typologie .chiffres-typologie-container .chiffres-typologie-tableau .col-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+body.page-chiffres main .chiffres-typologie .chiffres-typologie-container .chiffres-typologie-tableau .col-list li {
+  margin: 0;
+  padding: 0.75rem 0.9rem;
+  min-height: 2.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-bottom: 1px solid rgba(3, 24, 55, 0.3);
+  background: #ffffff;
+  border-left: 0;
+  border-right: 0;
+}
+body.page-chiffres main .chiffres-typologie .chiffres-typologie-container .chiffres-typologie-tableau .col-list li:last-child {
+  border-bottom: 0;
+}
+body.page-chiffres main .chiffres-typologie .chiffres-typologie-container .chiffres-typologie-tableau #secteur .col-list li {
+  background: rgba(91, 184, 135, 0.1);
+  color: rgb(2.85, 22.8, 52.25);
+  border-right: 1px solid rgba(3, 24, 55, 0.5);
+}
+body.page-chiffres main .chiffres-typologie .chiffres-typologie-container .chiffres-typologie-tableau #exemple .col-list li {
+  background: rgba(190, 9, 127, 0.1);
+  color: rgb(2.7, 21.6, 49.5);
+  border-right: 1px solid rgba(3, 24, 55, 0.5);
+}
+body.page-chiffres main .chiffres-typologie .chiffres-typologie-container .chiffres-typologie-tableau #specificites .col-list li {
+  background: rgba(3, 24, 55, 0.12);
+  color: rgb(2.76, 22.08, 50.6);
+}
+@media (hover: hover) and (pointer: fine) {
+  body.page-chiffres main .chiffres-typologie .chiffres-typologie-container .chiffres-typologie-tableau .col-list li:hover {
+    background: rgba(255, 255, 255, 0.6);
+  }
+  body.page-chiffres main .chiffres-typologie .chiffres-typologie-container .chiffres-typologie-tableau #secteur .col-list li:hover {
+    background: rgba(91, 184, 135, 0.15);
+  }
+  body.page-chiffres main .chiffres-typologie .chiffres-typologie-container .chiffres-typologie-tableau #exemple .col-list li:hover {
+    background: rgba(190, 9, 127, 0.15);
+  }
+  body.page-chiffres main .chiffres-typologie .chiffres-typologie-container .chiffres-typologie-tableau #specificites .col-list li:hover {
+    background: rgba(3, 24, 55, 0.18);
+  }
+}
+@media (max-width: 1060px) {
+  body.page-chiffres main .chiffres-typologie .chiffres-typologie-container .h4-colonne {
+    display: none;
+  }
+  body.page-chiffres main .chiffres-typologie .chiffres-typologie-container .chiffres-typologie-tableau {
+    display: flex;
+    flex-wrap: wrap;
+    border: 0;
+    box-shadow: none;
+    overflow: visible;
+    background: transparent;
+  }
+  body.page-chiffres main .chiffres-typologie .chiffres-typologie-container .chiffres-typologie-tableau .colonne,
+  body.page-chiffres main .chiffres-typologie .chiffres-typologie-container .chiffres-typologie-tableau .colonne > .col-list {
+    display: contents;
+  }
+  body.page-chiffres main .chiffres-typologie .chiffres-typologie-container .chiffres-typologie-tableau .col-list li {
+    flex: 1 1 100%;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: start;
+    gap: 0.6rem;
+    text-align: left;
+    padding: 0.8rem 1rem;
+    background: #ffffff;
+    border-bottom: 0;
+    border-left: 4px solid rgb(0, 71, 30);
+    border-right: 0;
+  }
+  body.page-chiffres main .chiffres-typologie .chiffres-typologie-container #secteur .col-list li {
+    background: rgba(91, 184, 135, 0.1);
+    border-top: 2px solid rgba(0, 71, 30, 0.63);
+    border-radius: 0.6rem 0.6rem 0 0;
+    border-right: 1px solid rgba(3, 24, 55, 0.5);
+  }
+  body.page-chiffres main .chiffres-typologie .chiffres-typologie-container #exemple .col-list li {
+    background: rgba(190, 9, 127, 0.1);
+    border-right: 1px solid rgba(3, 24, 55, 0.5);
+  }
+  body.page-chiffres main .chiffres-typologie .chiffres-typologie-container #specificites .col-list li {
+    background: rgba(3, 24, 55, 0.12);
+    border-right: 1px solid rgba(3, 24, 55, 0.5);
+    border-bottom: 2px solid rgb(56.7, 153.9, 47.7);
+    border-radius: 0 0 0.6rem 0.6rem;
+    margin-bottom: 0.8rem;
+  }
+  body.page-chiffres main .chiffres-typologie .chiffres-typologie-container #secteur .col-list li::before {
+    content: "Secteur : ";
+    font-weight: 700;
+    color: rgb(74.7765957447, 172.7234042553, 121.1170212766);
+  }
+  body.page-chiffres main .chiffres-typologie .chiffres-typologie-container #exemple .col-list li::before {
+    content: "Exemple de bâtiment : ";
+    font-weight: 700;
+    color: rgb(171, 8.1, 114.3);
+  }
+  body.page-chiffres main .chiffres-typologie .chiffres-typologie-container #specificites .col-list li::before {
+    content: "Spécificités CPE : ";
+    font-weight: 700;
+    color: rgb(2.4, 19.2, 44);
+  }
+  body.page-chiffres main .chiffres-typologie .chiffres-typologie-container #secteur .col-list li:nth-child(1) {
+    order: 1;
+  }
+  body.page-chiffres main .chiffres-typologie .chiffres-typologie-container #exemple .col-list li:nth-child(1) {
+    order: 2;
+  }
+  body.page-chiffres main .chiffres-typologie .chiffres-typologie-container #specificites .col-list li:nth-child(1) {
+    order: 3;
+  }
+  body.page-chiffres main .chiffres-typologie .chiffres-typologie-container #secteur .col-list li:nth-child(2) {
+    order: 4;
+  }
+  body.page-chiffres main .chiffres-typologie .chiffres-typologie-container #exemple .col-list li:nth-child(2) {
+    order: 5;
+  }
+  body.page-chiffres main .chiffres-typologie .chiffres-typologie-container #specificites .col-list li:nth-child(2) {
+    order: 6;
+  }
+  body.page-chiffres main .chiffres-typologie .chiffres-typologie-container #secteur .col-list li:nth-child(3) {
+    order: 7;
+  }
+  body.page-chiffres main .chiffres-typologie .chiffres-typologie-container #exemple .col-list li:nth-child(3) {
+    order: 8;
+  }
+  body.page-chiffres main .chiffres-typologie .chiffres-typologie-container #specificites .col-list li:nth-child(3) {
+    order: 9;
+  }
+  body.page-chiffres main .chiffres-typologie .chiffres-typologie-container #secteur .col-list li:nth-child(4) {
+    order: 10;
+  }
+  body.page-chiffres main .chiffres-typologie .chiffres-typologie-container #exemple .col-list li:nth-child(4) {
+    order: 11;
+  }
+  body.page-chiffres main .chiffres-typologie .chiffres-typologie-container #specificites .col-list li:nth-child(4) {
+    order: 12;
+  }
+  body.page-chiffres main .chiffres-typologie .chiffres-typologie-container #secteur .col-list li:nth-child(5) {
+    order: 13;
+  }
+  body.page-chiffres main .chiffres-typologie .chiffres-typologie-container #exemple .col-list li:nth-child(5) {
+    order: 14;
+  }
+  body.page-chiffres main .chiffres-typologie .chiffres-typologie-container #specificites .col-list li:nth-child(5) {
+    order: 15;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  body.page-chiffres main .chiffres-typologie .chiffres-typologie-container .col-list li {
+    transition: none !important;
+  }
+}
+body.page-chiffres main .chiffres-retour {
+  padding: clamp(1rem, 0.286rem + 1.905vw, 2rem) 1rem clamp(2rem, 1.78rem + 1.356vw, 3rem);
+  color: #031837;
+}
+body.page-chiffres main .chiffres-retour .chiffres-retour-container {
+  width: min(1100px, 92vw);
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: clamp(1rem, 0.286rem + 1.905vw, 2rem);
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+@media (max-width: 768px) {
+  body.page-chiffres main .chiffres-retour .chiffres-retour-container {
+    grid-template-columns: 1fr;
+  }
+}
+body.page-chiffres main .chiffres-retour .chiffres-retour-container .chiffres-retour-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  height: 100%;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  /* Sous-listes (ul à l’intérieur d’un li) */
+  /* Couleur des puces des sous-listes */
+}
+body.page-chiffres main .chiffres-retour .chiffres-retour-container .chiffres-retour-text .chiffres-retour-p {
+  max-width: 600px;
+  margin-bottom: clamp(0.5rem, 0.143rem + 0.952vw, 1rem);
+  margin-top: clamp(0.5rem, 0.143rem + 0.952vw, 1rem);
+}
+body.page-chiffres main .chiffres-retour .chiffres-retour-container .chiffres-retour-text .chiffres-retour-ul {
+  margin-left: clamp(0.5rem, -0.929rem + 3.81vw, 2.5rem);
+}
+body.page-chiffres main .chiffres-retour .chiffres-retour-container .chiffres-retour-text .chiffres-retour-ul li {
+  margin-bottom: clamp(0.5rem, 0.143rem + 0.952vw, 1rem);
+}
+body.page-chiffres main .chiffres-retour .chiffres-retour-container .chiffres-retour-text .chiffres-retour-ul li:hover {
+  color: #00a250;
+}
+body.page-chiffres main .chiffres-retour .chiffres-retour-container .chiffres-retour-text .chiffres-retour-ul ul {
+  margin: 0.4rem 0 0.6rem clamp(1rem, 0.45rem + 1.4vw, 1.6rem);
+  list-style: disc;
+}
+body.page-chiffres main .chiffres-retour .chiffres-retour-container .chiffres-retour-text .chiffres-retour-ul ul li {
+  margin: 0.25rem 0;
+}
+body.page-chiffres main .chiffres-retour .chiffres-retour-container .chiffres-retour-text .chiffres-retour-ul ul li::marker {
+  color: #00a250;
+}
+body.page-chiffres main .chiffres-retour .chiffres-retour-container .chiffres-retour-text .chiffres-retour-ul ul li:hover {
+  color: inherit;
+}
+body.page-chiffres main .chiffres-retour .chiffres-retour-container .chiffres-retour-image {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: inherit;
+  /* Pause au survol optionnelle */
+  /* Réécriture des frames avec les valeurs passées au mixin (portée locale via nesting) */
+  border-radius: 0.4rem;
+  border-top-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  width: clamp(17.5rem, 12.143rem + 14.286vw, 25rem);
+}
+body.page-chiffres main .chiffres-retour .chiffres-retour-container .chiffres-retour-image > img, body.page-chiffres main .chiffres-retour .chiffres-retour-container .chiffres-retour-image > picture > img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transform-origin: center;
+  will-change: transform;
+  /* on utilise animation + @property pour animer vers des valeurs custom via variables */
+  /* Fallback simple : on “fige” les frames avec une animation dédiée inline via shorthand */
+  animation-name: cpe-kb-zoom-pan;
+}
+@supports (transform: scale(1)) {
+  body.page-chiffres main .chiffres-retour .chiffres-retour-container .chiffres-retour-image > img, body.page-chiffres main .chiffres-retour .chiffres-retour-container .chiffres-retour-image > picture > img {
+    /* on injecte les valeurs finales via CSS vars et une transition calc */
+    --kb-scale-to: 1.05;
+    --kb-pan-x: -2%;
+    --kb-pan-y: -2%;
+    /* on sur-déclare les frames avec les valeurs */
+    /* (truc simple : on met une animation-name dédiée pour ne pas multiplier les keyframes) */
+    /* on utilise la propriété animation-timeline implicite (fallback simple ci-dessous) */
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    body.page-chiffres main .chiffres-retour .chiffres-retour-container .chiffres-retour-image > img, body.page-chiffres main .chiffres-retour .chiffres-retour-container .chiffres-retour-image > picture > img {
+      animation: cpe-kb-zoom-pan 8s ease-in-out infinite alternate;
+    }
+  }
+}
+@media (hover: hover) {
+  body.page-chiffres main .chiffres-retour .chiffres-retour-container .chiffres-retour-image:hover > img, body.page-chiffres main .chiffres-retour .chiffres-retour-container .chiffres-retour-image:hover > picture > img {
+    animation-play-state: paused;
+  }
+}
+@keyframes cpe-kb-zoom-pan {
+  from {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+  to {
+    transform: scale(1.05) translate3d(-2%, -2%, 0);
+  }
+}
+body.page-chiffres main .chiffres-retour .chiffres-retour-container .chiffres-retour-image img {
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: block;
+}
+@media (max-width: 933px) {
+  body.page-chiffres main .chiffres-retour .chiffres-retour-container .chiffres-retour-image {
+    justify-self: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+}
+body.page-chiffres main .chiffres-comment {
+  padding: clamp(1rem, 0.286rem + 1.905vw, 2rem) 1rem clamp(2rem, 1.78rem + 1.356vw, 3rem);
+  color: #031837;
+}
+body.page-chiffres main .chiffres-comment .chiffres-comment-container {
+  width: min(1100px, 92vw);
+  margin: 0 auto;
+}
+body.page-chiffres main .chiffres-comment .chiffres-comment-container .temo-carousel {
+  position: relative;
+  width: min(90%, 92vw);
+  margin: 0 auto;
+  background: transparent;
+  color: #031837;
+  text-align: center;
+  margin-top: clamp(1rem, -0.071rem + 2.857vw, 2.5rem);
+}
+body.page-chiffres main .chiffres-comment .chiffres-comment-container .temo-carousel .temo-secteurs {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: clamp(0.6rem, 0.3rem + 0.8vw, 1rem);
+}
+body.page-chiffres main .chiffres-comment .chiffres-comment-container .temo-carousel .temo-secteur {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border: 1px solid rgba(3, 24, 55, 0.25);
+  background: transparent;
+  color: #031837;
+  cursor: pointer;
+  padding: 0.35rem 0.7rem;
+  border-radius: 0.6rem;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+body.page-chiffres main .chiffres-comment .chiffres-comment-container .temo-carousel .temo-secteur.is-active,
+body.page-chiffres main .chiffres-comment .chiffres-comment-container .temo-carousel .temo-secteur[aria-selected=true] {
+  border-color: rgb(56.7, 153.9, 47.7);
+  box-shadow: inset 0 0 0 1px rgb(56.7, 153.9, 47.7);
+  color: rgb(2.7, 21.6, 49.5);
+}
+body.page-chiffres main .chiffres-comment .chiffres-comment-container .temo-carousel .temo-slides {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  justify-items: center;
+  align-items: start;
+}
+body.page-chiffres main .chiffres-comment .chiffres-comment-container .temo-carousel .temo-slide {
+  display: none;
+  width: 80%;
+  margin-inline: auto;
+}
+body.page-chiffres main .chiffres-comment .chiffres-comment-container .temo-carousel .temo-slide.is-active {
+  display: block;
+}
+body.page-chiffres main .chiffres-comment .chiffres-comment-container .temo-carousel .temo-quote {
+  font-size: clamp(1.3rem, 1.193rem + 0.286vw, 1.45rem);
+  line-height: 1.5;
+  margin: 0 0 0.6rem 0;
+  font-weight: 600;
+}
+body.page-chiffres main .chiffres-comment .chiffres-comment-container .temo-carousel .temo-meta {
+  font-size: 1.1rem;
+  color: rgb(2.7, 21.6, 49.5);
+  margin: 0;
+  text-align: center;
+}
+body.page-chiffres main .chiffres-comment .chiffres-comment-container .temo-carousel .temo-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  line-height: 0;
+  color: rgb(180.5, 8.55, 120.65);
+  padding: 0.25rem;
+}
+body.page-chiffres main .chiffres-comment .chiffres-comment-container .temo-carousel .temo-nav.prev {
+  left: -2.2rem;
+}
+body.page-chiffres main .chiffres-comment .chiffres-comment-container .temo-carousel .temo-nav.next {
+  right: -2.2rem;
+}
+@media (hover: hover) and (pointer: fine) {
+  body.page-chiffres main .chiffres-comment .chiffres-comment-container .temo-carousel .temo-nav:hover {
+    color: #3fab35;
+  }
+}
+@media (max-width: 640px) {
+  body.page-chiffres main .chiffres-comment .chiffres-comment-container .temo-carousel .temo-nav.prev {
+    left: -2.25rem;
+  }
+  body.page-chiffres main .chiffres-comment .chiffres-comment-container .temo-carousel .temo-nav.next {
+    right: -2.25rem;
+  }
+  body.page-chiffres main .chiffres-comment .chiffres-comment-container .temo-carousel .temo-slide {
+    width: 100%;
+  }
+}
+body.page-chiffres main .chiffres-facteurs {
+  padding: clamp(1rem, 0.286rem + 1.905vw, 2rem) 1rem clamp(2rem, 1.78rem + 1.356vw, 3rem);
+  color: #031837;
+}
+body.page-chiffres main .chiffres-facteurs .chiffres-facteurs-container {
+  width: min(1100px, 92vw);
+  margin: 0 auto;
+}
+body.page-chiffres main .chiffres-facteurs .chiffres-facteurs-container .chiffres-facteurs-tableau {
+  width: min(1100px, 92vw);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border-radius: 0.4rem;
+  border-top-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  border-top: 2px solid rgba(0, 71, 30, 0.63);
+  border-left: 4px solid rgb(0, 71, 30);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+body.page-chiffres main .chiffres-facteurs .chiffres-facteurs-container .chiffres-facteurs-tableau .colonne {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  align-content: start;
+}
+body.page-chiffres main .chiffres-facteurs .chiffres-facteurs-container .chiffres-facteurs-tableau .h4-colonne {
+  font-size: 1.1rem;
+  margin: 0;
+  padding: 0.6rem 1rem;
+  background: rgba(246, 171, 120, 0.6);
+  color: #031837;
+  font-weight: 700;
+  line-height: 1.25;
+  border-bottom: 1px solid rgba(3, 24, 55, 0.6);
+  text-align: center;
+  border-left: 0;
+  border-right: 0;
+}
+body.page-chiffres main .chiffres-facteurs .chiffres-facteurs-container .chiffres-facteurs-tableau #facteur .h4-colonne {
+  border-right: 1px solid rgba(3, 24, 55, 0.5);
+}
+body.page-chiffres main .chiffres-facteurs .chiffres-facteurs-container .chiffres-facteurs-tableau .col-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+body.page-chiffres main .chiffres-facteurs .chiffres-facteurs-container .chiffres-facteurs-tableau .col-list li {
+  margin: 0;
+  padding: 0.75rem 0.9rem;
+  min-height: 2.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-bottom: 1px solid rgba(3, 24, 55, 0.3);
+  background: #ffffff;
+  border-left: 0;
+  border-right: 0;
+}
+body.page-chiffres main .chiffres-facteurs .chiffres-facteurs-container .chiffres-facteurs-tableau .col-list li:last-child {
+  border-bottom: 0;
+}
+body.page-chiffres main .chiffres-facteurs .chiffres-facteurs-container .chiffres-facteurs-tableau #facteur .col-list li {
+  background: rgba(91, 184, 135, 0.1);
+  color: rgb(2.85, 22.8, 52.25);
+  border-right: 1px solid rgba(3, 24, 55, 0.5);
+}
+body.page-chiffres main .chiffres-facteurs .chiffres-facteurs-container .chiffres-facteurs-tableau #risques .col-list li {
+  background: rgba(190, 9, 127, 0.1);
+  color: rgb(2.7, 21.6, 49.5);
+}
+@media (hover: hover) and (pointer: fine) {
+  body.page-chiffres main .chiffres-facteurs .chiffres-facteurs-container .chiffres-facteurs-tableau .col-list li:hover {
+    background: rgba(255, 255, 255, 0.6);
+  }
+  body.page-chiffres main .chiffres-facteurs .chiffres-facteurs-container .chiffres-facteurs-tableau #facteur .col-list li:hover {
+    background: rgba(91, 184, 135, 0.15);
+  }
+  body.page-chiffres main .chiffres-facteurs .chiffres-facteurs-container .chiffres-facteurs-tableau #risques .col-list li:hover {
+    background: rgba(190, 9, 127, 0.15);
+  }
+}
+@media (max-width: 1060px) {
+  body.page-chiffres main .chiffres-facteurs .chiffres-facteurs-container .h4-colonne {
+    display: none;
+  }
+  body.page-chiffres main .chiffres-facteurs .chiffres-facteurs-container .chiffres-facteurs-tableau {
+    display: flex;
+    flex-wrap: wrap;
+    border: 0;
+    box-shadow: none;
+    overflow: visible;
+    background: transparent;
+  }
+  body.page-chiffres main .chiffres-facteurs .chiffres-facteurs-container .chiffres-facteurs-tableau .colonne,
+  body.page-chiffres main .chiffres-facteurs .chiffres-facteurs-container .chiffres-facteurs-tableau .colonne > .col-list {
+    display: contents;
+  }
+  body.page-chiffres main .chiffres-facteurs .chiffres-facteurs-container .chiffres-facteurs-tableau .col-list li {
+    flex: 1 1 100%;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: start;
+    gap: 0.6rem;
+    text-align: left;
+    padding: 0.8rem 1rem;
+    background: #ffffff;
+    border-bottom: 0;
+    border-left: 4px solid rgb(0, 71, 30);
+    border-right: 0;
+  }
+  body.page-chiffres main .chiffres-facteurs .chiffres-facteurs-container #facteur .col-list li {
+    background: rgba(91, 184, 135, 0.1);
+    border-top: 2px solid rgba(0, 71, 30, 0.63);
+    border-radius: 0.6rem 0.6rem 0 0;
+    border-right: 1px solid rgba(3, 24, 55, 0.5);
+  }
+  body.page-chiffres main .chiffres-facteurs .chiffres-facteurs-container #risques .col-list li {
+    background: rgba(190, 9, 127, 0.1);
+    border-right: 1px solid rgba(3, 24, 55, 0.5);
+    border-bottom: 2px solid rgb(56.7, 153.9, 47.7);
+    border-radius: 0 0 0.6rem 0.6rem;
+    margin-bottom: 0.8rem;
+  }
+  body.page-chiffres main .chiffres-facteurs .chiffres-facteurs-container #facteur .col-list li::before {
+    content: "Facteur clé : ";
+    font-weight: 700;
+    color: rgb(74.7765957447, 172.7234042553, 121.1170212766);
+  }
+  body.page-chiffres main .chiffres-facteurs .chiffres-facteurs-container #risques .col-list li::before {
+    content: "Risque à éviter : ";
+    font-weight: 700;
+    color: rgb(171, 8.1, 114.3);
+  }
+  body.page-chiffres main .chiffres-facteurs .chiffres-facteurs-container #facteur .col-list li:nth-child(1) {
+    order: 1;
+  }
+  body.page-chiffres main .chiffres-facteurs .chiffres-facteurs-container #risques .col-list li:nth-child(1) {
+    order: 2;
+  }
+  body.page-chiffres main .chiffres-facteurs .chiffres-facteurs-container #facteur .col-list li:nth-child(2) {
+    order: 3;
+  }
+  body.page-chiffres main .chiffres-facteurs .chiffres-facteurs-container #risques .col-list li:nth-child(2) {
+    order: 4;
+  }
+  body.page-chiffres main .chiffres-facteurs .chiffres-facteurs-container #facteur .col-list li:nth-child(3) {
+    order: 5;
+  }
+  body.page-chiffres main .chiffres-facteurs .chiffres-facteurs-container #risques .col-list li:nth-child(3) {
+    order: 6;
+  }
+  body.page-chiffres main .chiffres-facteurs .chiffres-facteurs-container #facteur .col-list li:nth-child(4) {
+    order: 7;
+  }
+  body.page-chiffres main .chiffres-facteurs .chiffres-facteurs-container #risques .col-list li:nth-child(4) {
+    order: 8;
+  }
+  body.page-chiffres main .chiffres-facteurs .chiffres-facteurs-container #facteur .col-list li:nth-child(5) {
+    order: 9;
+  }
+  body.page-chiffres main .chiffres-facteurs .chiffres-facteurs-container #risques .col-list li:nth-child(5) {
+    order: 10;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  body.page-chiffres main .chiffres-facteurs .chiffres-facteurs-container .col-list li {
+    transition: none !important;
+  }
+}
+body.page-chiffres main .chiffres-conclusion {
+  padding: clamp(1rem, 0.286rem + 1.905vw, 2rem) 1rem clamp(2rem, 1.78rem + 1.356vw, 3rem);
+  color: #031837;
+  text-align: justify;
+}
+body.page-chiffres main .chiffres-conclusion .chiffres-conclusion-container {
   width: min(1100px, 92vw);
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -5493,42 +6226,97 @@ body.page-chiffres main .intro .intro-container {
   margin: 0 auto;
 }
 @media (max-width: 768px) {
-  body.page-chiffres main .intro .intro-container {
+  body.page-chiffres main .chiffres-conclusion .chiffres-conclusion-container {
     grid-template-columns: 1fr;
   }
 }
-body.page-chiffres main .intro .intro-container .intro-text {
+body.page-chiffres main .chiffres-conclusion .chiffres-conclusion-container .chiffres-conclusion-text {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   height: 100%;
+  padding: 1rem 0;
   font-size: 1.1rem;
   line-height: 1.5;
 }
-body.page-chiffres main .intro .intro-container .intro-image {
-  display: flex;
-  justify-self: flex-end;
-}
-body.page-chiffres main .intro .intro-container .intro-image img {
-  width: clamp(17.5rem, 8.571rem + 23.81vw, 30rem);
-  border-radius: 0.4rem;
-  border-bottom-right-radius: 1rem;
-  border-top-left-radius: 1rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  display: block;
-  margin: 0 auto;
-}
-@media (max-width: 933px) {
-  body.page-chiffres main .intro .intro-container .intro-image {
-    padding-top: 1rem;
-    justify-self: center;
-  }
-}
-body.page-chiffres main .intro .intro-container .cta-buttons {
+body.page-chiffres main .chiffres-conclusion .chiffres-conclusion-container .chiffres-conclusion-text .cta-buttons {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: clamp(0.8rem, 1.6vw, 1.2rem);
-  margin: clamp(1rem, 0.78rem + 1.356vw, 2rem) 0 1rem;
+  margin: clamp(1rem, 0.78rem + 1.356vw, 2rem) 0 0;
+}
+body.page-chiffres main .chiffres-conclusion .chiffres-conclusion-container .chiffres-conclusion-image {
+  display: flex;
+  justify-self: flex-end;
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: inherit;
+  /* Pause au survol optionnelle */
+  /* Réécriture des frames avec les valeurs passées au mixin (portée locale via nesting) */
+  border-radius: 0.4rem;
+  border-top-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  width: clamp(17.5rem, 14.375rem + 8.333vw, 21.875rem);
+}
+body.page-chiffres main .chiffres-conclusion .chiffres-conclusion-container .chiffres-conclusion-image > img, body.page-chiffres main .chiffres-conclusion .chiffres-conclusion-container .chiffres-conclusion-image > picture > img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transform-origin: center;
+  will-change: transform;
+  /* on utilise animation + @property pour animer vers des valeurs custom via variables */
+  /* Fallback simple : on “fige” les frames avec une animation dédiée inline via shorthand */
+  animation-name: cpe-kb-zoom-pan;
+}
+@supports (transform: scale(1)) {
+  body.page-chiffres main .chiffres-conclusion .chiffres-conclusion-container .chiffres-conclusion-image > img, body.page-chiffres main .chiffres-conclusion .chiffres-conclusion-container .chiffres-conclusion-image > picture > img {
+    /* on injecte les valeurs finales via CSS vars et une transition calc */
+    --kb-scale-to: 1.05;
+    --kb-pan-x: -2%;
+    --kb-pan-y: -2%;
+    /* on sur-déclare les frames avec les valeurs */
+    /* (truc simple : on met une animation-name dédiée pour ne pas multiplier les keyframes) */
+    /* on utilise la propriété animation-timeline implicite (fallback simple ci-dessous) */
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    body.page-chiffres main .chiffres-conclusion .chiffres-conclusion-container .chiffres-conclusion-image > img, body.page-chiffres main .chiffres-conclusion .chiffres-conclusion-container .chiffres-conclusion-image > picture > img {
+      animation: cpe-kb-zoom-pan 8s ease-in-out infinite alternate;
+    }
+  }
+}
+@media (hover: hover) {
+  body.page-chiffres main .chiffres-conclusion .chiffres-conclusion-container .chiffres-conclusion-image:hover > img, body.page-chiffres main .chiffres-conclusion .chiffres-conclusion-container .chiffres-conclusion-image:hover > picture > img {
+    animation-play-state: paused;
+  }
+}
+@keyframes cpe-kb-zoom-pan {
+  from {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+  to {
+    transform: scale(1.05) translate3d(-2%, -2%, 0);
+  }
+}
+body.page-chiffres main .chiffres-conclusion .chiffres-conclusion-container .chiffres-conclusion-image img {
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: block;
+}
+@media (max-width: 933px) {
+  body.page-chiffres main .chiffres-conclusion .chiffres-conclusion-container .chiffres-conclusion-image {
+    justify-self: center;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+  }
 }
 
 /* Scope page */

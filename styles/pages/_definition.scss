@@ -746,17 +746,17 @@ body.page-definition {
                 }
 
                 #objectif .col-list li::before {
-                content: "Objectif";
+                content: "Objectif : ";
                 font-weight: 700;
                 color: $bleu;
                 }
                 #col-cpe .col-list li::before {
-                content: "CPE";
+                content: "CPE : ";
                 font-weight: 700;
                 color: color.scale($vert2, $lightness: -20%);
                 }
                 #col-classic .col-list li::before {
-                content: "Contrat classique";
+                content: "Contrat classique : ";
                 font-weight: 700;
                 color: color.scale($bleu, $lightness: -10%);
                 }

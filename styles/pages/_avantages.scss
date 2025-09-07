@@ -333,13 +333,13 @@ body.page-avantages {
                 }
 
                 #avantages .col-list li::before {
-                content: "Avantages";
+                content: "Avantages : ";
                 font-weight: 700;
                 color: color.scale($vert3, $lightness: -10%);
                 }
 
                 #limites .col-list li::before {
-                content: "Limites";
+                content: "Limites : ";
                 font-weight: 700;
                 color: color.scale($violet, $lightness: -10%);
                 }

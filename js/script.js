@@ -660,3 +660,117 @@ document.addEventListener('DOMContentLoaded', () => {
 //   });
 // })();
 
+
+
+
+// ==================================
+// Carrousel Commentaires (chiffres)
+(() => {
+  const root = document.querySelector('.temo-carousel--secteurs');
+  if (!root) return;
+
+  const allSlides  = Array.from(root.querySelectorAll('.temo-slide'));
+  const sectorBtns = Array.from(root.querySelectorAll('.temo-secteur'));
+  const prev       = root.querySelector('.temo-nav.prev');
+  const next       = root.querySelector('.temo-nav.next');
+  const INTERVAL   = 10000; 
+  // Ordre des secteurs = ordre des onglets
+  const sectors = sectorBtns.map(b => b.dataset.sector);
+
+  let activeSector = sectors[0];
+  let sectorIdx    = 0;          // index dans `sectors`
+  let slides       = [];         // slides du secteur actif
+  let i            = 0;          // index du slide courant
+  let timer;
+
+  function filterSlides(sector) {
+    return allSlides.filter(s => s.dataset.sector === sector);
+  }
+
+  function setActiveSector(sector, { startAt = 0 } = {}) {
+    activeSector = sector;
+    sectorIdx = sectors.indexOf(sector);
+
+    // Onglets (état visuel + ARIA)
+    sectorBtns.forEach(b => {
+      const on = b.dataset.sector === sector;
+      b.classList.toggle('is-active', on);
+      b.setAttribute('aria-selected', on ? 'true' : 'false');
+    });
+
+    // Masquer tout, afficher le slide cible du secteur
+    allSlides.forEach(s => s.classList.remove('is-active'));
+    slides = filterSlides(activeSector);
+
+    if (!slides.length) {
+      // Si ce secteur est vide, passer directement au suivant
+      goToNextSector();
+      return;
+    }
+
+    i = Math.max(0, Math.min(startAt, slides.length - 1));
+    slides[i].classList.add('is-active');
+
+    start(); // relance l'auto-lecture sur le nouveau secteur
+  }
+
+  function show(idx) {
+    if (!slides.length) return;
+    slides[i].classList.remove('is-active');
+    i = (idx + slides.length) % slides.length;
+    slides[i].classList.add('is-active');
+  }
+
+  // ——— Navigation “suivant” : passe au secteur suivant si on est sur le dernier slide
+  function showNext() {
+    if (!slides.length) return;
+    if (i < slides.length - 1) {
+      show(i + 1);
+    } else {
+      goToNextSector(); // fin du secteur → secteur suivant (slide 1)
+    }
+  }
+
+  // ——— Navigation “précédent” : si on est au début, revient au secteur précédent (dernier slide)
+  function showPrev() {
+    if (!slides.length) return;
+    if (i > 0) {
+      show(i - 1);
+    } else {
+      goToPrevSector(); // début du secteur → secteur précédent (dernier slide)
+    }
+  }
+
+  function goToNextSector() {
+    const nextIdx = (sectorIdx + 1) % sectors.length;
+    setActiveSector(sectors[nextIdx], { startAt: 0 });
+  }
+
+  function goToPrevSector() {
+    const prevIdx = (sectorIdx - 1 + sectors.length) % sectors.length;
+    const targetSector = sectors[prevIdx];
+    const targetSlides = filterSlides(targetSector);
+    setActiveSector(targetSector, { startAt: Math.max(0, targetSlides.length - 1) });
+  }
+
+  function start() { stop(); timer = setInterval(showNext, INTERVAL); }
+  function stop()  { if (timer) clearInterval(timer); }
+
+  // Événements
+  prev.addEventListener('click', () => { showPrev(); start(); });
+  next.addEventListener('click', () => { showNext(); start(); });
+  sectorBtns.forEach(btn => btn.addEventListener('click', () => {
+    setActiveSector(btn.dataset.sector, { startAt: 0 });
+  }));
+
+  // Clavier (gauche/droite)
+  root.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft')  { e.preventDefault(); showPrev(); start(); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); showNext(); start(); }
+  });
+  root.setAttribute('tabindex', '0');
+
+  // Init
+  setActiveSector(sectors[0]);
+})();
+

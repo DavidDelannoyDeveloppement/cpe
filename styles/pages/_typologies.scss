@@ -506,10 +506,10 @@ body.page-typologies {
                 }
 
                 /* Libellés */
-                #critere  .col-list li::before { content: "Critère";  font-weight: 700; color: $bleu; }
-                #services .col-list li::before { content: "Services"; font-weight: 700; color: color.scale($violet, $lightness: -10%); }
-                #travaux  .col-list li::before { content: "Travaux";  font-weight: 700; color: color.scale($vert3,  $lightness: -10%); }
-                #tiers    .col-list li::before { content: "Tiers";    font-weight: 700; color: color.scale($bleu,  $lightness: -10%); }
+                #critere  .col-list li::before { content: "Critère : ";  font-weight: 700; color: $bleu; }
+                #services .col-list li::before { content: "Services : "; font-weight: 700; color: color.scale($violet, $lightness: -10%); }
+                #travaux  .col-list li::before { content: "Travaux : ";  font-weight: 700; color: color.scale($vert3,  $lightness: -10%); }
+                #tiers    .col-list li::before { content: "Tiers : ";    font-weight: 700; color: color.scale($bleu,  $lightness: -10%); }
 
                 /* Fonds (mobile) */
                 #services .col-list li { background: rgba($violet, .10); }
