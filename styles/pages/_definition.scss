@@ -589,42 +589,68 @@ body.page-definition {
                 width: min(1100px, 92vw); 
                 margin: 0 auto;
                 
-                h5{
-                    font-size: $h5-size;
-                    margin-top: 2rem;
+                h4 {
+                    font-size: $h4-size;
+                    margin-top: clamp(1rem, -0.429rem + 3.81vw, 3rem);
+                }
+                h4:hover {
+                    color: $violet;
                 }
                 
                 .goals {
                     list-style: none;
-                    margin: .8rem 0 1rem;
                     padding: 0;
-                    display: grid;
-                    grid-template-columns: repeat(3, minmax(0, 1fr));
-                    gap: .8rem;
+                    max-width: 900px;
+                    text-align: left;
+                    padding: 1rem 0;
 
-                    @media (max-width: 1024px) {
-                        grid-template-columns: repeat(2, 1fr);
-                    }
-                    @media (max-width: 600px) {
-                        grid-template-columns: 1fr;
+
+
+                    li {
+                        background: $background-vert-blanc;
+                        border-left: $border-left-vert;
+                        border-top: $border-top-vert;
+                        padding: 1rem;
+                        margin-bottom: 1rem;
+                        margin-left: clamp(0.2rem, -1.443rem + 4.381vw, 2.5rem);
+                        @include radius-cpe;
+                        font-size: $p-size;
+                        line-height: 1.5;
+                        // display: flex;
+                        align-items: center;
+                        box-shadow: $shadow-defaut;
+                        gap: 0.5rem;
+                        transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+
+                        &:hover {
+                        background: $background-vert-blanc-hover;
+                        transform: translateX(5px);
+                        box-shadow: $shadow-hover;
+                        }
                     }
                 }
 
-                .goals li {
-                background: $background-vert-blanc;
-                border-left: $border-left-vert;
-                border-top: $border-top-vert;
-                @include radius-cpe;
-                box-shadow: $shadow-defaut;
-                padding: .9rem;
-                text-align: center;
-                transition: transform .12s ease, box-shadow .12s ease;
-                }
+                @media (max-width: 768px) {
+                    .goals {
+                        display: block !important;
+                        columns: auto !important;
+                        -webkit-columns: auto !important;
+                        -moz-columns: auto !important;
+                        column-count: 1 !important;
+                        -webkit-column-count: 1 !important;
+                        -moz-column-count: 1 !important;
+                        column-width: auto !important;
+                    }
 
-                .goals li:hover {
-                transform: translateY(-6px);
-                box-shadow: $shadow-hover;
-                background: $background-vert-blanc-hover;
+                    .goals > li {
+                        break-inside: avoid;
+                        -webkit-column-break-inside: avoid;
+                        page-break-inside: avoid;
+                        display: flex;
+                        align-items: flex-start;
+                        gap: 0.5rem;
+                        line-height: 1.6;
+                    }
                 }
             }
         }
