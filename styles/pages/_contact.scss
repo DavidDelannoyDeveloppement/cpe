@@ -55,9 +55,21 @@ body.page-contact {
                 
                 .expert-text {
 
+                    p {
+                        font-size: $p-size;
+                        line-height: 2rem;
+                    }
+
                     ul {
                         margin-bottom: clamp(1rem, 0.286rem + 1.905vw, 2rem);
                         margin-left: clamp(1rem, 0.286rem + 1.905vw, 2rem);
+
+                        li {
+                            margin-bottom: clamp(0.5rem, 0.143rem + 0.952vw, 1rem);
+                        }
+                        li:hover {
+                            color: $vert1;
+                        }
                     }
                 }
 

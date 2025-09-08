@@ -48,8 +48,10 @@
   .menu-icone {
     display: inline-block;
     padding: 0.25rem;
-    filter: invert(92%) sepia(23%) saturate(6582%) hue-rotate(311deg) brightness(108%) contrast(93%);
+    filter: invert(39%) sepia(71%) saturate(1197%) hue-rotate(118deg) brightness(94%) contrast(101%);
+    // filter: invert(92%) sepia(23%) saturate(6582%) hue-rotate(311deg) brightness(108%) contrast(93%);
     // filter: invert(94%) sepia(7%) saturate(472%) hue-rotate(33deg) brightness(107%) contrast(106%);
+
   }
   &:focus-visible {
     outline: 2px dashed rgba($saumon, .65);

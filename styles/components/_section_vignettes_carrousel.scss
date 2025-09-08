@@ -53,7 +53,7 @@
   .vc-viewport {
     overflow: hidden;
     position: relative;
-    width: 100%;
+    width: 100%; 
   }
 
   .vc-track {
@@ -126,7 +126,7 @@
     gap: .25rem;
   }
   .vc-back, .vc-back * { font-size: var(--back-fs); }
-  .vc-back p { margin: 0 0 .35rem 0; font-weight: 200; }
+  .vc-back p { margin: 0 0 .35rem 0; font-weight: 200;    text-align: center; }
 
   /* Flip */
   .vc-card:hover,

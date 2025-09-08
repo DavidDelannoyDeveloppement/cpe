@@ -34,7 +34,7 @@ body.page_home {
     font-size: $h1-size;
     text-align: center;
     line-height: 1.18;
-    padding: clamp(0.5rem, 0.143rem + 0.952vw, 1rem);
+    padding: clamp(0.5rem, -0.214rem + 1.905vw, 1.5rem) 0 clamp(0.5rem, -0.929rem + 3.81vw, 2.5rem);
   }
   h2 {
     font-family: $font-titles;
