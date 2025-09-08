@@ -49,26 +49,16 @@ body.page-financement {
 
 
     main {
-
-        //==========================================================//
-        //==========================================================//
-        //==========================================================//
-        //  GRID, Justify-items et Include Zoom Image Pas en place  // 
-        //==========================================================//
-        //==========================================================//
-        //==========================================================//
-
-
         
-        .intro {
-            // background-color: $creme;
+        .financement-intro {
             padding: $padding-marge-section;
             color: $bleu;
         
-            .intro-container {
+            .financement-intro-container {
                 width: min(1100px, 92vw);
                 display: grid;
-                grid-template-columns: 1fr 1fr;
+                grid-template-columns: 2fr 1fr;
+                gap: clamp(1rem, 0.286rem + 1.905vw, 2rem);
                 align-items: center;
                 max-width: 1100px;
                 margin: 0 auto;
@@ -77,45 +67,618 @@ body.page-financement {
                 grid-template-columns: 1fr;
                 }
                 
-                .intro-text {
+                .financement-intro-text {
                     display: flex;
                     flex-direction: column;
-                    // justify-content: space-between;
+                    justify-content: start;
                     height: 100%;
                     font-size: $p-size;
                     line-height: 1.5;
+
+                    .financement-intro-p {
+                        max-width: 600px;
+                        margin-bottom: clamp(0.5rem, 0.143rem + 0.952vw, 1rem);
+                        margin-top: clamp(0.5rem, 0.143rem + 0.952vw, 1rem);
+
+                    }
+
+                    .financement-intro-ul {
+                        margin-left: clamp(0.5rem, -0.929rem + 3.81vw, 2.5rem);
+                    }
+
+                    .financement-intro-ul li {
+                        margin-bottom: clamp(0.5rem, 0.143rem + 0.952vw, 1rem);
+                    }
+                    .financement-intro-ul li:hover {
+                        color: $vert1
+                    }
+
+                    .cta-buttons {
+                        display: flex;
+                        justify-content: center;
+                        gap: clamp(0.8rem, 1.6vw, 1.2rem);
+                        margin-top: clamp(1rem, 2.4vw, 2rem);
+                        // margin-bottom: clamp(1rem, 1.4vw, 1rem);
+                    }
+                    @media (max-width: 768px) {
+                    align-items: center;
+                    }
+
                 }
         
-                .intro-image {
-                    display: flex;
-                    justify-self: flex-end;
+                .financement-intro-image {
+                    @include cpe-zoom-frame(8s, ease-in-out, true, 1.05, -2%, -2%);
+                    @include radius-cpe;
+                    overflow: hidden;
+                    box-shadow: $shadow-photo;
+                    width: $witdh-img-defaut;
 
                     img {
-                    width: clamp(17.5rem, 8.571rem + 23.81vw, 30rem);                    
-                    border-radius: 0.4rem; 
-                    border-bottom-right-radius: 1rem;
-                    border-top-left-radius: 1rem;
-                    box-shadow: $shadow-photo;
+                    width: 100%;
                     display: block;
                     margin: 0 auto;
+                    height: 100%;
+                    object-fit: cover;
+                    display: block;
                     }
                 }
                 @media (max-width:933px){
-                    .intro-image {
-                        padding-top: 1rem;
+                    .financement-intro-image {
                         justify-self: center;
+                        margin-top: 1rem;
+                        margin-bottom: 1rem;
                     }
-                }
-
-                .cta-buttons {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: clamp(0.8rem, 1.6vw, 1.2rem);
-                margin: clamp(1rem, 0.78rem + 1.356vw, 2rem) 0 1rem;
                 }
             }
         }
+
+
+        .financement-aides {
+            padding: $padding-marge-section;
+            color: $bleu;
+        
+            .financement-aides-container {
+                width: min(1100px, 92vw);
+                margin: 0 auto;
+
+                h4 {
+                    font-size: $h4-size;
+                    margin-top: clamp(1rem, -0.429rem + 3.81vw, 3rem);
+                }
+                h4:hover {
+                    color: $violet;
+                }
+
+                .financement-aides-p {
+                    margin-top: 1rem;
+                }
+
+                .financement-aides-list {
+                    list-style: none;
+                    padding: 0;
+                    max-width: 900px;
+                    text-align: left;
+                    padding: 1rem 0;
+
+
+
+                    li {
+                        background: $background-vert-blanc;
+                        border-left: $border-left-vert;
+                        border-top: $border-top-vert;
+                        padding: 1rem;
+                        margin-bottom: 1rem;
+                        margin-left: clamp(0.2rem, -1.443rem + 4.381vw, 2.5rem);
+                        @include radius-cpe;
+                        font-size: $p-size;
+                        line-height: 1.5;
+                        // display: flex;
+                        align-items: center;
+                        box-shadow: $shadow-defaut;
+                        gap: 0.5rem;
+                        transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+
+                        &:hover {
+                        background: $background-vert-blanc-hover;
+                        transform: translateX(5px);
+                        box-shadow: $shadow-hover;
+                        }
+                    }
+                }
+
+                @media (max-width: 768px) {
+                    .financement-aides .financement-aides-container .financement-aides-list {
+                        display: block !important;
+                        columns: auto !important;
+                        -webkit-columns: auto !important;
+                        -moz-columns: auto !important;
+                        column-count: 1 !important;
+                        -webkit-column-count: 1 !important;
+                        -moz-column-count: 1 !important;
+                        column-width: auto !important;
+                    }
+
+                    .financement-aides .financement-aides-container .financement-aides-list > li {
+                        break-inside: avoid;
+                        -webkit-column-break-inside: avoid;
+                        page-break-inside: avoid;
+                        display: flex;
+                        align-items: flex-start;
+                        gap: 0.5rem;
+                        line-height: 1.6;
+                    }
+                }
+
+            }
+        }
+
+
+        .financement-tiers {
+            padding: $padding-marge-section;
+            color: $bleu;
+        
+            .financement-tiers-container {
+                width: min(1100px, 92vw);
+                margin: 0 auto;
+
+                h4 {
+                    font-size: $h4-size;
+                    margin-top: clamp(1rem, -0.429rem + 3.81vw, 3rem);
+                }
+                h4:hover {
+                    color: $violet;
+                }
+
+                .financement-tiers-p {
+                    margin-top: 1rem;
+                }
+
+                .financement-tiers-list {
+                    list-style: none;
+                    padding: 0;
+                    max-width: 900px;
+                    text-align: left;
+                    padding: 1rem 0;
+
+
+
+                    li {
+                        background: $background-saumon-blanc;
+                        border-left: $border-left-saumon;
+                        border-top: $border-top-saumon;
+                        padding: 1rem;
+                        margin-bottom: 1rem;
+                        margin-left: clamp(0.2rem, -1.443rem + 4.381vw, 2.5rem);
+                        @include radius-cpe;
+                        font-size: $p-size;
+                        line-height: 1.5;
+                        // display: flex;
+                        align-items: center;
+                        box-shadow: $shadow-defaut;
+                        gap: 0.5rem;
+                        transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+
+                        &:hover {
+                        background: $background-saumon-blanc-hover;
+                        transform: translateX(5px);
+                        box-shadow: $shadow-hover;
+                        }
+                    }
+                }
+
+                @media (max-width: 768px) {
+                    .financement-tiers .financement-tiers-container .financement-tiers-list {
+                        display: block !important;
+                        columns: auto !important;
+                        -webkit-columns: auto !important;
+                        -moz-columns: auto !important;
+                        column-count: 1 !important;
+                        -webkit-column-count: 1 !important;
+                        -moz-column-count: 1 !important;
+                        column-width: auto !important;
+                    }
+
+                    .financement-tiers .financement-tiers-container .financement-tiers-list > li {
+                        break-inside: avoid;
+                        -webkit-column-break-inside: avoid;
+                        page-break-inside: avoid;
+                        display: flex;
+                        align-items: flex-start;
+                        gap: 0.5rem;
+                        line-height: 1.6;
+                    }
+                }
+            }
+        }
+
+
+        .financement-monter {
+            padding: $padding-marge-section;
+            color: $bleu;
+        
+            .financement-monter-container {
+                width: min(1100px, 92vw);
+                margin: 0 auto;
+
+                h4 {
+                    font-size: $h4-size;
+                    margin-top: clamp(1rem, -0.429rem + 3.81vw, 3rem);
+                }
+                h4:hover {
+                    color: $violet;
+                }
+
+                .financement-monter-p {
+                    margin-top: 1rem;
+                }
+
+                .financement-monter-bonne {
+                    list-style: none;
+                    padding: 0;
+                    max-width: 900px;
+                    text-align: left;
+                    padding: 1rem 0;
+
+
+
+                    li {
+                        background: $background-vert-blanc;
+                        border-left: $border-left-vert;
+                        border-top: $border-top-vert;
+                        padding: 1rem;
+                        margin-bottom: 1rem;
+                        margin-left: clamp(0.2rem, -1.443rem + 4.381vw, 2.5rem);
+                        @include radius-cpe;
+                        font-size: $p-size;
+                        line-height: 1.5;
+                        // display: flex;
+                        align-items: center;
+                        box-shadow: $shadow-defaut;
+                        gap: 0.5rem;
+                        transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+
+                        &:hover {
+                        background: $background-vert-blanc-hover;
+                        transform: translateX(5px);
+                        box-shadow: $shadow-hover;
+                        }
+                    }
+                }
+                .financement-monter-vigilance {
+                    list-style: none;
+                    padding: 0;
+                    max-width: 900px;
+                    text-align: left;
+                    padding: 1rem 0;
+
+
+
+                    li {
+                        background: $background-violet-blanc;
+                        border-left: $border-left-violet;
+                        border-top: $border-top-violet;
+                        padding: 1rem;
+                        margin-bottom: 1rem;
+                        margin-left: clamp(0.2rem, -1.443rem + 4.381vw, 2.5rem);
+                        @include radius-cpe;
+                        font-size: $p-size;
+                        line-height: 1.5;
+                        // display: flex;
+                        align-items: center;
+                        box-shadow: $shadow-defaut;
+                        gap: 0.5rem;
+                        transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+
+                        &:hover {
+                        background: $background-violet-blanc-hover;
+                        transform: translateX(5px);
+                        box-shadow: $shadow-hover;
+                        }
+                    }
+                }
+
+                @media (max-width: 768px) {
+                    .financement-monter .financement-monter-container .financement-monter-bonne {
+                        display: block !important;
+                        columns: auto !important;
+                        -webkit-columns: auto !important;
+                        -moz-columns: auto !important;
+                        column-count: 1 !important;
+                        -webkit-column-count: 1 !important;
+                        -moz-column-count: 1 !important;
+                        column-width: auto !important;
+                    }
+                    .financement-monter .financement-monter-container .financement-monter-vigilance {
+                        display: block !important;
+                        columns: auto !important;
+                        -webkit-columns: auto !important;
+                        -moz-columns: auto !important;
+                        column-count: 1 !important;
+                        -webkit-column-count: 1 !important;
+                        -moz-column-count: 1 !important;
+                        column-width: auto !important;
+                    }
+
+                    .financement-monter .financement-monter-container .financement-monter-bonne > li {
+                        break-inside: avoid;
+                        -webkit-column-break-inside: avoid;
+                        page-break-inside: avoid;
+                        display: flex;
+                        align-items: flex-start;
+                        gap: 0.5rem;
+                        line-height: 1.6;
+                    }
+                    .financement-monter .financement-monter-container .financement-monter-vigilance > li {
+                        break-inside: avoid;
+                        -webkit-column-break-inside: avoid;
+                        page-break-inside: avoid;
+                        display: flex;
+                        align-items: flex-start;
+                        gap: 0.5rem;
+                        line-height: 1.6;
+                    }
+                }
+
+                //financement-monter-tableau
+                $col1-id: "source";
+                $col2-id: "montant";
+                $col3-id: "pourcentage";
+                
+                $label-col1: "Source de financement : ";
+                $label-col2: "Montant : ";
+                $label-col3: "Pourcentage : ";
+                .financement-monter-tableau {
+                width: min(1100px, 92vw);
+                margin: 0 auto;
+                margin-top: 1rem;
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                gap: 0;
+                @include radius-cpe;
+                border-top: $border-top-vert-2px;
+                border-left: $border-left-vert;
+                box-shadow: $shadow-photo;
+                overflow: hidden;
+
+                .colonne {
+                    display: grid;
+                    grid-template-rows: auto 1fr;
+                    align-content: start;
+                }
+
+                .h4-colonne {
+                    font-size: $p-size;
+                    margin: 0;
+                    padding: .6rem 1rem;
+                    background: rgba($saumon, .6);
+                    color: $bleu;
+                    font-weight: 700;
+                    line-height: 1.25;
+                    border-bottom: 1px solid rgba($bleu, .6);
+                    text-align: center;
+                    border-left: 0;
+                    border-right: 0;
+                }
+
+                // traits verticaux (desktop)
+                ##{$col1-id} .h4-colonne,
+                ##{$col2-id} .h4-colonne { border-right: 1px solid rgba($bleu, .5); }
+
+                .col-list {
+                    list-style: none;
+                    margin: 0; padding: 0;
+
+                    li {
+                    margin: 0;
+                    padding: .75rem .9rem;
+                    min-height: 2.75rem;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    text-align: center;
+                    border-bottom: 1px solid rgba($bleu, .30);
+                    background: $creme;
+                    border-left: 0;
+                    border-right: 0;
+                    }
+                    li:last-child { border-bottom: 0; }
+                }
+
+                // Teintes par colonne (desktop)
+                ##{$col1-id} .col-list li {
+                    background: rgba($vert3, .10);
+                    color: color.scale($bleu, $lightness: -5%);
+                    border-right: 1px solid rgba($bleu, .5);
+                }
+                ##{$col2-id} .col-list li {
+                    background: rgba($saumon, .10);
+                    color: color.scale($bleu, $lightness: -10%);
+                    border-right: 1px solid rgba($bleu, .5);
+                }
+                ##{$col3-id} .col-list li {
+                    background: rgba($bleu, .12);
+                    color: color.scale($bleu, $lightness: -8%);
+                }
+
+                @media (hover: hover) and (pointer: fine) {
+                    .col-list li:hover { background: color.change($creme, $alpha: .6); }
+                    ##{$col1-id} .col-list li:hover { background: color.change($vert3, $alpha: .15); }
+                    ##{$col2-id} .col-list li:hover { background: color.change($saumon, $alpha: .15); }
+                    ##{$col3-id} .col-list li:hover { background: color.change($bleu, $alpha: .18); }
+                }
+                }
+
+                // —— Responsive —— //
+                @media (max-width: 1060px) {
+                .h4-colonne { display: none; }
+
+                .financement-monter-tableau {
+                    display: flex;
+                    flex-wrap: wrap;
+                    border: 0; box-shadow: none;
+                    overflow: visible; background: transparent;
+                }
+
+                .financement-monter-tableau .colonne,
+                .financement-monter-tableau .colonne > .col-list { display: contents; }
+
+                .financement-monter-tableau .col-list li {
+                    flex: 1 1 100%;
+                    display: grid;
+                    grid-template-columns: auto 1fr;
+                    align-items: start;
+                    gap: .6rem;
+                    text-align: left;
+                    padding: .8rem 1rem;
+                    background: $creme;
+                    border-bottom: 0;
+                    border-left: $border-left-vert;
+                    border-right: 0;
+                }
+
+                // Teintes + contours mobiles
+                ##{$col1-id} .col-list li {
+                    background: rgba($vert3, .10);
+                    border-top: $border-top-vert-2px;
+                    border-radius: .6rem .6rem 0 0;
+                    border-right: 1px solid rgba($bleu, .5);
+                }
+                ##{$col2-id} .col-list li {
+                    background: rgba($saumon, .10);
+                    border-right: 1px solid rgba($bleu, .5);
+                }
+                ##{$col3-id} .col-list li {
+                    background: rgba($bleu, .12);
+                    border-right: 1px solid rgba($bleu, .5);
+                    border-bottom: 2px solid color.scale($vert2, $lightness: -10%);
+                    border-radius: 0 0 .6rem .6rem;
+                    margin-bottom: .8rem;
+                }
+
+                // Labels mobiles automatiques
+                ##{$col1-id} .col-list li::before {
+                    content: $label-col1;
+                    font-weight: 700;
+                    color: color.scale($vert3, $lightness: -10%);
+                }
+                ##{$col2-id} .col-list li::before {
+                    content: $label-col2;
+                    font-weight: 700;
+                    color: color.scale($saumon, $lightness: -10%);
+                }
+                ##{$col3-id} .col-list li::before {
+                    content: $label-col3;
+                    font-weight: 700;
+                    color: color.scale($bleu, $lightness: -20%);
+                }
+
+                // Ordre d’empilement (5 lignes → 15 items)
+                ##{$col1-id} .col-list li:nth-child(1) { order: 1; }
+                ##{$col2-id} .col-list li:nth-child(1) { order: 2; }
+                ##{$col3-id} .col-list li:nth-child(1) { order: 3; }
+
+                ##{$col1-id} .col-list li:nth-child(2) { order: 4; }
+                ##{$col2-id} .col-list li:nth-child(2) { order: 5; }
+                ##{$col3-id} .col-list li:nth-child(2) { order: 6; }
+
+                ##{$col1-id} .col-list li:nth-child(3) { order: 7; }
+                ##{$col2-id} .col-list li:nth-child(3) { order: 8; }
+                ##{$col3-id} .col-list li:nth-child(3) { order: 9; }
+
+                ##{$col1-id} .col-list li:nth-child(4) { order: 10; }
+                ##{$col2-id} .col-list li:nth-child(4) { order: 11; }
+                ##{$col3-id} .col-list li:nth-child(4) { order: 12; }
+
+                ##{$col1-id} .col-list li:nth-child(5) { order: 13; }
+                ##{$col2-id} .col-list li:nth-child(5) { order: 14; }
+                ##{$col3-id} .col-list li:nth-child(5) { order: 15; }
+                }
+
+                @media (prefers-reduced-motion: reduce) {
+                .col-list li { transition: none !important; }
+                }
+            }
+        }
+
+
+        .financement-conclusion {
+            padding: $padding-marge-section;
+            color: $bleu;
+        
+            .financement-conclusion-container {
+                width: min(1100px, 92vw);
+                display: grid;
+                grid-template-columns: 2fr 1fr;
+                gap: clamp(1rem, 0.286rem + 1.905vw, 2rem);
+                align-items: center;
+                max-width: 1100px;
+                margin: 0 auto;
+
+                @media (max-width: 768px) {
+                grid-template-columns: 1fr;
+                }
+                
+                .financement-conclusion-text {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: start;
+                    height: 100%;
+                    font-size: $p-size;
+                    line-height: 1.5;
+
+                    .financement-conclusion-p {
+                        max-width: 600px;
+                        margin-bottom: clamp(0.5rem, 0.143rem + 0.952vw, 1rem);
+                        margin-top: clamp(0.5rem, 0.143rem + 0.952vw, 1rem);
+                    }
+
+                    .financement-conclusion-ul {
+                        margin-left: clamp(0.5rem, -0.929rem + 3.81vw, 2.5rem);
+                    }
+
+                    .financement-conclusion-ul li {
+                        margin-bottom: clamp(0.5rem, 0.143rem + 0.952vw, 1rem);
+                    }
+                    .financement-conclusion-ul li:hover {
+                        color: $vert1
+                    }
+
+                    .cta-buttons {
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: center;
+                        gap: clamp(0.8rem, 1.6vw, 1.2rem);
+                        margin: clamp(1rem, 0.78rem + 1.356vw, 2rem) 0 0;
+                    }
+
+                }
+        
+                .financement-conclusion-image {
+                    @include cpe-zoom-frame(8s, ease-in-out, true, 1.05, -2%, -2%);
+                    @include radius-cpe;
+                    overflow: hidden;
+                    box-shadow: $shadow-photo;
+                    width: $witdh-img-defaut;
+
+                    img {
+                    width: 100%;
+                    display: block;
+                    margin: 0 auto;
+                    height: 100%;
+                    object-fit: cover;
+                    display: block;
+                    }
+                }
+                @media (max-width:933px){
+                    .financement-conclusion-image {
+                        justify-self: center;
+                        margin-top: 1rem;
+                        margin-bottom: 1rem;
+                    }
+                }
+            }
+        }
+
 
     }
 }

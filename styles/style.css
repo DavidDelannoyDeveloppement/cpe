@@ -6363,55 +6363,697 @@ body.page-financement p {
   line-height: 1.8;
   margin-bottom: 1.2rem;
 }
-body.page-financement main .intro {
+body.page-financement main .financement-intro {
   padding: clamp(1rem, 0.286rem + 1.905vw, 2rem) 1rem clamp(2rem, 1.78rem + 1.356vw, 3rem);
   color: #031837;
 }
-body.page-financement main .intro .intro-container {
+body.page-financement main .financement-intro .financement-intro-container {
   width: min(1100px, 92vw);
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 2fr 1fr;
+  gap: clamp(1rem, 0.286rem + 1.905vw, 2rem);
   align-items: center;
   max-width: 1100px;
   margin: 0 auto;
 }
 @media (max-width: 768px) {
-  body.page-financement main .intro .intro-container {
+  body.page-financement main .financement-intro .financement-intro-container {
     grid-template-columns: 1fr;
   }
 }
-body.page-financement main .intro .intro-container .intro-text {
+body.page-financement main .financement-intro .financement-intro-container .financement-intro-text {
   display: flex;
   flex-direction: column;
+  justify-content: start;
   height: 100%;
   font-size: 1.1rem;
   line-height: 1.5;
 }
-body.page-financement main .intro .intro-container .intro-image {
+body.page-financement main .financement-intro .financement-intro-container .financement-intro-text .financement-intro-p {
+  max-width: 600px;
+  margin-bottom: clamp(0.5rem, 0.143rem + 0.952vw, 1rem);
+  margin-top: clamp(0.5rem, 0.143rem + 0.952vw, 1rem);
+}
+body.page-financement main .financement-intro .financement-intro-container .financement-intro-text .financement-intro-ul {
+  margin-left: clamp(0.5rem, -0.929rem + 3.81vw, 2.5rem);
+}
+body.page-financement main .financement-intro .financement-intro-container .financement-intro-text .financement-intro-ul li {
+  margin-bottom: clamp(0.5rem, 0.143rem + 0.952vw, 1rem);
+}
+body.page-financement main .financement-intro .financement-intro-container .financement-intro-text .financement-intro-ul li:hover {
+  color: #00a250;
+}
+body.page-financement main .financement-intro .financement-intro-container .financement-intro-text .cta-buttons {
   display: flex;
-  justify-self: flex-end;
+  justify-content: center;
+  gap: clamp(0.8rem, 1.6vw, 1.2rem);
+  margin-top: clamp(1rem, 2.4vw, 2rem);
 }
-body.page-financement main .intro .intro-container .intro-image img {
-  width: clamp(17.5rem, 8.571rem + 23.81vw, 30rem);
-  border-radius: 0.4rem;
-  border-bottom-right-radius: 1rem;
-  border-top-left-radius: 1rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  display: block;
-  margin: 0 auto;
-}
-@media (max-width: 933px) {
-  body.page-financement main .intro .intro-container .intro-image {
-    padding-top: 1rem;
-    justify-self: center;
+@media (max-width: 768px) {
+  body.page-financement main .financement-intro .financement-intro-container .financement-intro-text {
+    align-items: center;
   }
 }
-body.page-financement main .intro .intro-container .cta-buttons {
+body.page-financement main .financement-intro .financement-intro-container .financement-intro-image {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: inherit;
+  /* Pause au survol optionnelle */
+  /* Réécriture des frames avec les valeurs passées au mixin (portée locale via nesting) */
+  border-radius: 0.4rem;
+  border-top-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  width: clamp(17.5rem, 14.375rem + 8.333vw, 21.875rem);
+}
+body.page-financement main .financement-intro .financement-intro-container .financement-intro-image > img, body.page-financement main .financement-intro .financement-intro-container .financement-intro-image > picture > img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transform-origin: center;
+  will-change: transform;
+  /* on utilise animation + @property pour animer vers des valeurs custom via variables */
+  /* Fallback simple : on “fige” les frames avec une animation dédiée inline via shorthand */
+  animation-name: cpe-kb-zoom-pan;
+}
+@supports (transform: scale(1)) {
+  body.page-financement main .financement-intro .financement-intro-container .financement-intro-image > img, body.page-financement main .financement-intro .financement-intro-container .financement-intro-image > picture > img {
+    /* on injecte les valeurs finales via CSS vars et une transition calc */
+    --kb-scale-to: 1.05;
+    --kb-pan-x: -2%;
+    --kb-pan-y: -2%;
+    /* on sur-déclare les frames avec les valeurs */
+    /* (truc simple : on met une animation-name dédiée pour ne pas multiplier les keyframes) */
+    /* on utilise la propriété animation-timeline implicite (fallback simple ci-dessous) */
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    body.page-financement main .financement-intro .financement-intro-container .financement-intro-image > img, body.page-financement main .financement-intro .financement-intro-container .financement-intro-image > picture > img {
+      animation: cpe-kb-zoom-pan 8s ease-in-out infinite alternate;
+    }
+  }
+}
+@media (hover: hover) {
+  body.page-financement main .financement-intro .financement-intro-container .financement-intro-image:hover > img, body.page-financement main .financement-intro .financement-intro-container .financement-intro-image:hover > picture > img {
+    animation-play-state: paused;
+  }
+}
+@keyframes cpe-kb-zoom-pan {
+  from {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+  to {
+    transform: scale(1.05) translate3d(-2%, -2%, 0);
+  }
+}
+body.page-financement main .financement-intro .financement-intro-container .financement-intro-image img {
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: block;
+}
+@media (max-width: 933px) {
+  body.page-financement main .financement-intro .financement-intro-container .financement-intro-image {
+    justify-self: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+}
+body.page-financement main .financement-aides {
+  padding: clamp(1rem, 0.286rem + 1.905vw, 2rem) 1rem clamp(2rem, 1.78rem + 1.356vw, 3rem);
+  color: #031837;
+}
+body.page-financement main .financement-aides .financement-aides-container {
+  width: min(1100px, 92vw);
+  margin: 0 auto;
+}
+body.page-financement main .financement-aides .financement-aides-container h4 {
+  font-size: clamp(1.3rem, 1.193rem + 0.286vw, 1.45rem);
+  margin-top: clamp(1rem, -0.429rem + 3.81vw, 3rem);
+}
+body.page-financement main .financement-aides .financement-aides-container h4:hover {
+  color: #be097f;
+}
+body.page-financement main .financement-aides .financement-aides-container .financement-aides-p {
+  margin-top: 1rem;
+}
+body.page-financement main .financement-aides .financement-aides-container .financement-aides-list {
+  list-style: none;
+  padding: 0;
+  max-width: 900px;
+  text-align: left;
+  padding: 1rem 0;
+}
+body.page-financement main .financement-aides .financement-aides-container .financement-aides-list li {
+  background: linear-gradient(165deg, rgba(46, 204, 112, 0.164), rgba(67, 233, 139, 0.062));
+  border-left: 4px solid rgb(0, 71, 30);
+  border-top: 1px solid rgba(0, 71, 30, 0.63);
+  padding: 1rem;
+  margin-bottom: 1rem;
+  margin-left: clamp(0.2rem, -1.443rem + 4.381vw, 2.5rem);
+  border-radius: 0.4rem;
+  border-top-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  align-items: center;
+  box-shadow: 4px 4px 5px rgba(3, 24, 55, 0.0549019608);
+  gap: 0.5rem;
+  transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+body.page-financement main .financement-aides .financement-aides-container .financement-aides-list li:hover {
+  background: linear-gradient(165deg, rgba(46, 204, 113, 0.24), rgba(135, 211, 167, 0.295));
+  transform: translateX(5px);
+  box-shadow: 0 14px 30px rgba(26, 46, 77, 0.178);
+}
+@media (max-width: 768px) {
+  body.page-financement main .financement-aides .financement-aides-container .financement-aides .financement-aides-container .financement-aides-list {
+    display: block !important;
+    columns: auto !important;
+    -webkit-columns: auto !important;
+    -moz-columns: auto !important;
+    column-count: 1 !important;
+    -webkit-column-count: 1 !important;
+    -moz-column-count: 1 !important;
+    -moz-column-width: auto !important;
+         column-width: auto !important;
+  }
+  body.page-financement main .financement-aides .financement-aides-container .financement-aides .financement-aides-container .financement-aides-list > li {
+    -moz-column-break-inside: avoid;
+         break-inside: avoid;
+    page-break-inside: avoid;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    line-height: 1.6;
+  }
+}
+body.page-financement main .financement-tiers {
+  padding: clamp(1rem, 0.286rem + 1.905vw, 2rem) 1rem clamp(2rem, 1.78rem + 1.356vw, 3rem);
+  color: #031837;
+}
+body.page-financement main .financement-tiers .financement-tiers-container {
+  width: min(1100px, 92vw);
+  margin: 0 auto;
+}
+body.page-financement main .financement-tiers .financement-tiers-container h4 {
+  font-size: clamp(1.3rem, 1.193rem + 0.286vw, 1.45rem);
+  margin-top: clamp(1rem, -0.429rem + 3.81vw, 3rem);
+}
+body.page-financement main .financement-tiers .financement-tiers-container h4:hover {
+  color: #be097f;
+}
+body.page-financement main .financement-tiers .financement-tiers-container .financement-tiers-p {
+  margin-top: 1rem;
+}
+body.page-financement main .financement-tiers .financement-tiers-container .financement-tiers-list {
+  list-style: none;
+  padding: 0;
+  max-width: 900px;
+  text-align: left;
+  padding: 1rem 0;
+}
+body.page-financement main .financement-tiers .financement-tiers-container .financement-tiers-list li {
+  background: linear-gradient(165deg, rgba(246, 171, 120, 0.164), rgba(246, 171, 120, 0.062));
+  border-left: 4px solid #96420a;
+  border-top: 1px solid rgba(150, 66, 10, 0.6588235294);
+  padding: 1rem;
+  margin-bottom: 1rem;
+  margin-left: clamp(0.2rem, -1.443rem + 4.381vw, 2.5rem);
+  border-radius: 0.4rem;
+  border-top-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  align-items: center;
+  box-shadow: 4px 4px 5px rgba(3, 24, 55, 0.0549019608);
+  gap: 0.5rem;
+  transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+body.page-financement main .financement-tiers .financement-tiers-container .financement-tiers-list li:hover {
+  background: linear-gradient(165deg, rgba(246, 171, 120, 0.24), rgba(246, 171, 120, 0.295));
+  transform: translateX(5px);
+  box-shadow: 0 14px 30px rgba(26, 46, 77, 0.178);
+}
+@media (max-width: 768px) {
+  body.page-financement main .financement-tiers .financement-tiers-container .financement-tiers .financement-tiers-container .financement-tiers-list {
+    display: block !important;
+    columns: auto !important;
+    -webkit-columns: auto !important;
+    -moz-columns: auto !important;
+    column-count: 1 !important;
+    -webkit-column-count: 1 !important;
+    -moz-column-count: 1 !important;
+    -moz-column-width: auto !important;
+         column-width: auto !important;
+  }
+  body.page-financement main .financement-tiers .financement-tiers-container .financement-tiers .financement-tiers-container .financement-tiers-list > li {
+    -moz-column-break-inside: avoid;
+         break-inside: avoid;
+    page-break-inside: avoid;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    line-height: 1.6;
+  }
+}
+body.page-financement main .financement-monter {
+  padding: clamp(1rem, 0.286rem + 1.905vw, 2rem) 1rem clamp(2rem, 1.78rem + 1.356vw, 3rem);
+  color: #031837;
+}
+body.page-financement main .financement-monter .financement-monter-container {
+  width: min(1100px, 92vw);
+  margin: 0 auto;
+}
+body.page-financement main .financement-monter .financement-monter-container h4 {
+  font-size: clamp(1.3rem, 1.193rem + 0.286vw, 1.45rem);
+  margin-top: clamp(1rem, -0.429rem + 3.81vw, 3rem);
+}
+body.page-financement main .financement-monter .financement-monter-container h4:hover {
+  color: #be097f;
+}
+body.page-financement main .financement-monter .financement-monter-container .financement-monter-p {
+  margin-top: 1rem;
+}
+body.page-financement main .financement-monter .financement-monter-container .financement-monter-bonne {
+  list-style: none;
+  padding: 0;
+  max-width: 900px;
+  text-align: left;
+  padding: 1rem 0;
+}
+body.page-financement main .financement-monter .financement-monter-container .financement-monter-bonne li {
+  background: linear-gradient(165deg, rgba(46, 204, 112, 0.164), rgba(67, 233, 139, 0.062));
+  border-left: 4px solid rgb(0, 71, 30);
+  border-top: 1px solid rgba(0, 71, 30, 0.63);
+  padding: 1rem;
+  margin-bottom: 1rem;
+  margin-left: clamp(0.2rem, -1.443rem + 4.381vw, 2.5rem);
+  border-radius: 0.4rem;
+  border-top-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  align-items: center;
+  box-shadow: 4px 4px 5px rgba(3, 24, 55, 0.0549019608);
+  gap: 0.5rem;
+  transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+body.page-financement main .financement-monter .financement-monter-container .financement-monter-bonne li:hover {
+  background: linear-gradient(165deg, rgba(46, 204, 113, 0.24), rgba(135, 211, 167, 0.295));
+  transform: translateX(5px);
+  box-shadow: 0 14px 30px rgba(26, 46, 77, 0.178);
+}
+body.page-financement main .financement-monter .financement-monter-container .financement-monter-vigilance {
+  list-style: none;
+  padding: 0;
+  max-width: 900px;
+  text-align: left;
+  padding: 1rem 0;
+}
+body.page-financement main .financement-monter .financement-monter-container .financement-monter-vigilance li {
+  background: linear-gradient(165deg, rgba(190, 9, 127, 0.164), rgba(190, 9, 127, 0.062));
+  border-left: 4px solid rgb(124, 0, 114);
+  border-top: 1px solid rgba(124, 0, 114, 0.63);
+  padding: 1rem;
+  margin-bottom: 1rem;
+  margin-left: clamp(0.2rem, -1.443rem + 4.381vw, 2.5rem);
+  border-radius: 0.4rem;
+  border-top-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  align-items: center;
+  box-shadow: 4px 4px 5px rgba(3, 24, 55, 0.0549019608);
+  gap: 0.5rem;
+  transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+body.page-financement main .financement-monter .financement-monter-container .financement-monter-vigilance li:hover {
+  background: linear-gradient(165deg, rgba(190, 9, 127, 0.24), rgba(190, 9, 127, 0.295));
+  transform: translateX(5px);
+  box-shadow: 0 14px 30px rgba(26, 46, 77, 0.178);
+}
+@media (max-width: 768px) {
+  body.page-financement main .financement-monter .financement-monter-container .financement-monter .financement-monter-container .financement-monter-bonne {
+    display: block !important;
+    columns: auto !important;
+    -webkit-columns: auto !important;
+    -moz-columns: auto !important;
+    column-count: 1 !important;
+    -webkit-column-count: 1 !important;
+    -moz-column-count: 1 !important;
+    -moz-column-width: auto !important;
+         column-width: auto !important;
+  }
+  body.page-financement main .financement-monter .financement-monter-container .financement-monter .financement-monter-container .financement-monter-vigilance {
+    display: block !important;
+    columns: auto !important;
+    -webkit-columns: auto !important;
+    -moz-columns: auto !important;
+    column-count: 1 !important;
+    -webkit-column-count: 1 !important;
+    -moz-column-count: 1 !important;
+    -moz-column-width: auto !important;
+         column-width: auto !important;
+  }
+  body.page-financement main .financement-monter .financement-monter-container .financement-monter .financement-monter-container .financement-monter-bonne > li {
+    -moz-column-break-inside: avoid;
+         break-inside: avoid;
+    page-break-inside: avoid;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    line-height: 1.6;
+  }
+  body.page-financement main .financement-monter .financement-monter-container .financement-monter .financement-monter-container .financement-monter-vigilance > li {
+    -moz-column-break-inside: avoid;
+         break-inside: avoid;
+    page-break-inside: avoid;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    line-height: 1.6;
+  }
+}
+body.page-financement main .financement-monter .financement-monter-container .financement-monter-tableau {
+  width: min(1100px, 92vw);
+  margin: 0 auto;
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0;
+  border-radius: 0.4rem;
+  border-top-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  border-top: 2px solid rgba(0, 71, 30, 0.63);
+  border-left: 4px solid rgb(0, 71, 30);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+body.page-financement main .financement-monter .financement-monter-container .financement-monter-tableau .colonne {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  align-content: start;
+}
+body.page-financement main .financement-monter .financement-monter-container .financement-monter-tableau .h4-colonne {
+  font-size: 1.1rem;
+  margin: 0;
+  padding: 0.6rem 1rem;
+  background: rgba(246, 171, 120, 0.6);
+  color: #031837;
+  font-weight: 700;
+  line-height: 1.25;
+  border-bottom: 1px solid rgba(3, 24, 55, 0.6);
+  text-align: center;
+  border-left: 0;
+  border-right: 0;
+}
+body.page-financement main .financement-monter .financement-monter-container .financement-monter-tableau #source .h4-colonne,
+body.page-financement main .financement-monter .financement-monter-container .financement-monter-tableau #montant .h4-colonne {
+  border-right: 1px solid rgba(3, 24, 55, 0.5);
+}
+body.page-financement main .financement-monter .financement-monter-container .financement-monter-tableau .col-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+body.page-financement main .financement-monter .financement-monter-container .financement-monter-tableau .col-list li {
+  margin: 0;
+  padding: 0.75rem 0.9rem;
+  min-height: 2.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-bottom: 1px solid rgba(3, 24, 55, 0.3);
+  background: #ffffff;
+  border-left: 0;
+  border-right: 0;
+}
+body.page-financement main .financement-monter .financement-monter-container .financement-monter-tableau .col-list li:last-child {
+  border-bottom: 0;
+}
+body.page-financement main .financement-monter .financement-monter-container .financement-monter-tableau #source .col-list li {
+  background: rgba(91, 184, 135, 0.1);
+  color: rgb(2.85, 22.8, 52.25);
+  border-right: 1px solid rgba(3, 24, 55, 0.5);
+}
+body.page-financement main .financement-monter .financement-monter-container .financement-monter-tableau #montant .col-list li {
+  background: rgba(246, 171, 120, 0.1);
+  color: rgb(2.7, 21.6, 49.5);
+  border-right: 1px solid rgba(3, 24, 55, 0.5);
+}
+body.page-financement main .financement-monter .financement-monter-container .financement-monter-tableau #pourcentage .col-list li {
+  background: rgba(3, 24, 55, 0.12);
+  color: rgb(2.76, 22.08, 50.6);
+}
+@media (hover: hover) and (pointer: fine) {
+  body.page-financement main .financement-monter .financement-monter-container .financement-monter-tableau .col-list li:hover {
+    background: rgba(255, 255, 255, 0.6);
+  }
+  body.page-financement main .financement-monter .financement-monter-container .financement-monter-tableau #source .col-list li:hover {
+    background: rgba(91, 184, 135, 0.15);
+  }
+  body.page-financement main .financement-monter .financement-monter-container .financement-monter-tableau #montant .col-list li:hover {
+    background: rgba(246, 171, 120, 0.15);
+  }
+  body.page-financement main .financement-monter .financement-monter-container .financement-monter-tableau #pourcentage .col-list li:hover {
+    background: rgba(3, 24, 55, 0.18);
+  }
+}
+@media (max-width: 1060px) {
+  body.page-financement main .financement-monter .financement-monter-container .h4-colonne {
+    display: none;
+  }
+  body.page-financement main .financement-monter .financement-monter-container .financement-monter-tableau {
+    display: flex;
+    flex-wrap: wrap;
+    border: 0;
+    box-shadow: none;
+    overflow: visible;
+    background: transparent;
+  }
+  body.page-financement main .financement-monter .financement-monter-container .financement-monter-tableau .colonne,
+  body.page-financement main .financement-monter .financement-monter-container .financement-monter-tableau .colonne > .col-list {
+    display: contents;
+  }
+  body.page-financement main .financement-monter .financement-monter-container .financement-monter-tableau .col-list li {
+    flex: 1 1 100%;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: start;
+    gap: 0.6rem;
+    text-align: left;
+    padding: 0.8rem 1rem;
+    background: #ffffff;
+    border-bottom: 0;
+    border-left: 4px solid rgb(0, 71, 30);
+    border-right: 0;
+  }
+  body.page-financement main .financement-monter .financement-monter-container #source .col-list li {
+    background: rgba(91, 184, 135, 0.1);
+    border-top: 2px solid rgba(0, 71, 30, 0.63);
+    border-radius: 0.6rem 0.6rem 0 0;
+    border-right: 1px solid rgba(3, 24, 55, 0.5);
+  }
+  body.page-financement main .financement-monter .financement-monter-container #montant .col-list li {
+    background: rgba(246, 171, 120, 0.1);
+    border-right: 1px solid rgba(3, 24, 55, 0.5);
+  }
+  body.page-financement main .financement-monter .financement-monter-container #pourcentage .col-list li {
+    background: rgba(3, 24, 55, 0.12);
+    border-right: 1px solid rgba(3, 24, 55, 0.5);
+    border-bottom: 2px solid rgb(56.7, 153.9, 47.7);
+    border-radius: 0 0 0.6rem 0.6rem;
+    margin-bottom: 0.8rem;
+  }
+  body.page-financement main .financement-monter .financement-monter-container #source .col-list li::before {
+    content: "Source de financement : ";
+    font-weight: 700;
+    color: rgb(74.7765957447, 172.7234042553, 121.1170212766);
+  }
+  body.page-financement main .financement-monter .financement-monter-container #montant .col-list li::before {
+    content: "Montant : ";
+    font-weight: 700;
+    color: rgb(243.7125, 149.65, 85.6875);
+  }
+  body.page-financement main .financement-monter .financement-monter-container #pourcentage .col-list li::before {
+    content: "Pourcentage : ";
+    font-weight: 700;
+    color: rgb(2.4, 19.2, 44);
+  }
+  body.page-financement main .financement-monter .financement-monter-container #source .col-list li:nth-child(1) {
+    order: 1;
+  }
+  body.page-financement main .financement-monter .financement-monter-container #montant .col-list li:nth-child(1) {
+    order: 2;
+  }
+  body.page-financement main .financement-monter .financement-monter-container #pourcentage .col-list li:nth-child(1) {
+    order: 3;
+  }
+  body.page-financement main .financement-monter .financement-monter-container #source .col-list li:nth-child(2) {
+    order: 4;
+  }
+  body.page-financement main .financement-monter .financement-monter-container #montant .col-list li:nth-child(2) {
+    order: 5;
+  }
+  body.page-financement main .financement-monter .financement-monter-container #pourcentage .col-list li:nth-child(2) {
+    order: 6;
+  }
+  body.page-financement main .financement-monter .financement-monter-container #source .col-list li:nth-child(3) {
+    order: 7;
+  }
+  body.page-financement main .financement-monter .financement-monter-container #montant .col-list li:nth-child(3) {
+    order: 8;
+  }
+  body.page-financement main .financement-monter .financement-monter-container #pourcentage .col-list li:nth-child(3) {
+    order: 9;
+  }
+  body.page-financement main .financement-monter .financement-monter-container #source .col-list li:nth-child(4) {
+    order: 10;
+  }
+  body.page-financement main .financement-monter .financement-monter-container #montant .col-list li:nth-child(4) {
+    order: 11;
+  }
+  body.page-financement main .financement-monter .financement-monter-container #pourcentage .col-list li:nth-child(4) {
+    order: 12;
+  }
+  body.page-financement main .financement-monter .financement-monter-container #source .col-list li:nth-child(5) {
+    order: 13;
+  }
+  body.page-financement main .financement-monter .financement-monter-container #montant .col-list li:nth-child(5) {
+    order: 14;
+  }
+  body.page-financement main .financement-monter .financement-monter-container #pourcentage .col-list li:nth-child(5) {
+    order: 15;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  body.page-financement main .financement-monter .financement-monter-container .col-list li {
+    transition: none !important;
+  }
+}
+body.page-financement main .financement-conclusion {
+  padding: clamp(1rem, 0.286rem + 1.905vw, 2rem) 1rem clamp(2rem, 1.78rem + 1.356vw, 3rem);
+  color: #031837;
+}
+body.page-financement main .financement-conclusion .financement-conclusion-container {
+  width: min(1100px, 92vw);
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: clamp(1rem, 0.286rem + 1.905vw, 2rem);
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+@media (max-width: 768px) {
+  body.page-financement main .financement-conclusion .financement-conclusion-container {
+    grid-template-columns: 1fr;
+  }
+}
+body.page-financement main .financement-conclusion .financement-conclusion-container .financement-conclusion-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  height: 100%;
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+body.page-financement main .financement-conclusion .financement-conclusion-container .financement-conclusion-text .financement-conclusion-p {
+  max-width: 600px;
+  margin-bottom: clamp(0.5rem, 0.143rem + 0.952vw, 1rem);
+  margin-top: clamp(0.5rem, 0.143rem + 0.952vw, 1rem);
+}
+body.page-financement main .financement-conclusion .financement-conclusion-container .financement-conclusion-text .financement-conclusion-ul {
+  margin-left: clamp(0.5rem, -0.929rem + 3.81vw, 2.5rem);
+}
+body.page-financement main .financement-conclusion .financement-conclusion-container .financement-conclusion-text .financement-conclusion-ul li {
+  margin-bottom: clamp(0.5rem, 0.143rem + 0.952vw, 1rem);
+}
+body.page-financement main .financement-conclusion .financement-conclusion-container .financement-conclusion-text .financement-conclusion-ul li:hover {
+  color: #00a250;
+}
+body.page-financement main .financement-conclusion .financement-conclusion-container .financement-conclusion-text .cta-buttons {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: clamp(0.8rem, 1.6vw, 1.2rem);
-  margin: clamp(1rem, 0.78rem + 1.356vw, 2rem) 0 1rem;
+  margin: clamp(1rem, 0.78rem + 1.356vw, 2rem) 0 0;
+}
+body.page-financement main .financement-conclusion .financement-conclusion-container .financement-conclusion-image {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: inherit;
+  /* Pause au survol optionnelle */
+  /* Réécriture des frames avec les valeurs passées au mixin (portée locale via nesting) */
+  border-radius: 0.4rem;
+  border-top-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  width: clamp(17.5rem, 14.375rem + 8.333vw, 21.875rem);
+}
+body.page-financement main .financement-conclusion .financement-conclusion-container .financement-conclusion-image > img, body.page-financement main .financement-conclusion .financement-conclusion-container .financement-conclusion-image > picture > img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transform-origin: center;
+  will-change: transform;
+  /* on utilise animation + @property pour animer vers des valeurs custom via variables */
+  /* Fallback simple : on “fige” les frames avec une animation dédiée inline via shorthand */
+  animation-name: cpe-kb-zoom-pan;
+}
+@supports (transform: scale(1)) {
+  body.page-financement main .financement-conclusion .financement-conclusion-container .financement-conclusion-image > img, body.page-financement main .financement-conclusion .financement-conclusion-container .financement-conclusion-image > picture > img {
+    /* on injecte les valeurs finales via CSS vars et une transition calc */
+    --kb-scale-to: 1.05;
+    --kb-pan-x: -2%;
+    --kb-pan-y: -2%;
+    /* on sur-déclare les frames avec les valeurs */
+    /* (truc simple : on met une animation-name dédiée pour ne pas multiplier les keyframes) */
+    /* on utilise la propriété animation-timeline implicite (fallback simple ci-dessous) */
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    body.page-financement main .financement-conclusion .financement-conclusion-container .financement-conclusion-image > img, body.page-financement main .financement-conclusion .financement-conclusion-container .financement-conclusion-image > picture > img {
+      animation: cpe-kb-zoom-pan 8s ease-in-out infinite alternate;
+    }
+  }
+}
+@media (hover: hover) {
+  body.page-financement main .financement-conclusion .financement-conclusion-container .financement-conclusion-image:hover > img, body.page-financement main .financement-conclusion .financement-conclusion-container .financement-conclusion-image:hover > picture > img {
+    animation-play-state: paused;
+  }
+}
+@keyframes cpe-kb-zoom-pan {
+  from {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+  to {
+    transform: scale(1.05) translate3d(-2%, -2%, 0);
+  }
+}
+body.page-financement main .financement-conclusion .financement-conclusion-container .financement-conclusion-image img {
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: block;
+}
+@media (max-width: 933px) {
+  body.page-financement main .financement-conclusion .financement-conclusion-container .financement-conclusion-image {
+    justify-self: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
 }
 
 /* Scope page */

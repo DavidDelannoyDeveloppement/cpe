@@ -21,23 +21,26 @@ $background-bleu-vert1 : linear-gradient(135deg, $bleu, $vert1);
 $background-bleu-bleu : linear-gradient(135deg, $bleu, #08316e);
 $background-bleu-bleu-transparence : linear-gradient(135deg, #031837e7, #08316ee7);
 $background-saumon-blanc : linear-gradient(165deg, rgba($saumon, 0.164), rgba($saumon, 0.062));
+$background-violet-blanc : linear-gradient(165deg, rgba($violet, 0.164), rgba($violet, 0.062));
 $background-saumon-blanc-hover: linear-gradient(165deg, rgba($saumon, 0.24), rgba($saumon, 0.295));
-
+$background-violet-blanc-hover: linear-gradient(165deg, rgba($violet, 0.24), rgba($violet, 0.295));
 
 $bleu-fond: rgba(26, 46, 77);
 
 
-// Vert foncé (prestataire)
+// Bordures 
 $vert-gradient:linear-gradient(165deg, rgba(46, 204, 113, 0.24), rgba(135, 211, 167, 0.295));
 $vert-border:rgb(0, 71, 30);
 $saumon-border:#96420a;
+$violet-border:rgb(124, 0, 114);
 $vert-border-top: rgba(0, 71, 30, 0.63);
 $saumon-border-top: #96420aa8;
- 
+$violet-border-top:rgb(124, 0, 114,0.63);
 
-// ========================
-// ====== TYPOGRAPHIE =====
-// ========================
+
+// ===============================
+// ====== TYPOGRAPHIE ============
+// ===============================
 $raleway : 'Raleway', sans-serif;
 
 $h1-size: clamp(2.2rem, 1.414rem + 2.095vw, 3.3rem);
@@ -52,30 +55,35 @@ $font-titles: $raleway; // Titres/menus
 $font-body: $raleway; // Paragraphes/labels 
 $font-ui: $raleway; // Boutons, badges, formulaires
 
+
 // /largeur image par défaut
 $witdh-img-500: clamp(17.5rem, 8.571rem + 23.81vw, 30rem);
 $witdh-img-400: clamp(17.5rem, 12.143rem + 14.286vw, 25rem);
 $witdh-img-defaut: clamp(17.5rem, 14.375rem + 8.333vw, 21.875rem);
 
-// ========================
-// ===== DESIGN TOKENS ====
-// ========================
+// ===============================
+// ===== DESIGN TOKENS ===========
+// ===============================
 $border-left-vert : 4px solid $vert-border;
 $border-left-saumon : 4px solid $saumon-border;
+$border-left-violet : 4px solid $violet-border;
 $border-top-vert: 1px solid $vert-border-top;
 $border-top-saumon: 1px solid $saumon-border-top;
+$border-top-violet: 1px solid $violet-border-top;
 $border-top-vert-2px: 2px solid $vert-border-top;
 $border-top-saumon-2px: 2px solid $saumon-border-top;
+$border-top-violet-2px: 2px solid $violet-border-top;
 $border-top-vert-3px: 3px solid $vert-border-top;
 $border-top-saumon-3px: 3px solid $saumon-border-top;
+$border-top-violet-3px: 3px solid $violet-border-top;
 $shadow-defaut: 4px 4px 5px #0318370e;
 $shadow-hover: 0 14px 30px rgba(26, 46, 77, 0.178);
 $shadow-photo :0 4px 12px rgba(0, 0, 0, 0.2);
 
 
-// ========================
-// ===  DESIGN BTN/IMG  ===
-// ========================
+// ===============================
+// ===  DESIGN BTN/IMG  ==========
+// ===============================
 $padding-marge-section : clamp(1rem, 0.286rem + 1.905vw, 2rem) 1rem clamp(2rem, 1.78rem + 1.356vw, 3rem);
 $padding-btn: clamp(0.45rem, 1.25vw, 0.70rem) clamp(0.60rem, 1.90vw, 1.20rem);
 
@@ -91,9 +99,9 @@ $padding-btn: clamp(0.45rem, 1.25vw, 0.70rem) clamp(0.60rem, 1.90vw, 1.20rem);
 
 
 
-// =====================
-// =====   DIVERS   ====
-// =====================
+// ===========================
+// =====   DIVERS   ==========
+// ===========================
 $transition-fast: 120ms ease;
 $transition-base: 220ms ease;
 
