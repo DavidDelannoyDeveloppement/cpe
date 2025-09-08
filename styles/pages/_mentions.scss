@@ -18,6 +18,7 @@ body.page-mentions {
 
     img { max-width: 100%; height: auto; display: block; }
     a { text-decoration: none; color: inherit; }
+    a:hover {color: $vert1;}
     
     h1 {
     color: $bleu;
@@ -49,73 +50,41 @@ body.page-mentions {
     main {
 
 
-        //==========================================================//
-        //==========================================================//
-        //==========================================================//
-        //  GRID, Justify-items et Include Zoom Image Pas en place  // 
-        //==========================================================//
-        //==========================================================//
-        //==========================================================//
+        .muted { opacity: .9; }
 
-
-        
-        .intro {
-            // background-color: $creme;
+        /* Sections (sans décor, juste padding + container) */
+        .mentions {
             padding: $padding-marge-section;
             color: $bleu;
-        
-            .intro-container {
+
+            .mentions-container {
                 width: min(1100px, 92vw);
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                align-items: center;
-                max-width: 1100px;
                 margin: 0 auto;
 
-                @media (max-width: 768px) {
-                grid-template-columns: 1fr;
-                }
-                
-                .intro-text {
-                    display: flex;
-                    flex-direction: column;
-                    // justify-content: space-between;
-                    height: 100%;
-                    font-size: $p-size;
-                    line-height: 1.5;
-                }
-        
-                .intro-image {
-                    display: flex;
-                    justify-self: flex-end;
-
-                    img {
-                    width: clamp(17.5rem, 8.571rem + 23.81vw, 30rem);                    
-                    border-radius: 0.4rem; 
-                    border-bottom-right-radius: 1rem;
-                    border-top-left-radius: 1rem;
-                    box-shadow: $shadow-photo;
-                    display: block;
-                    margin: 0 auto;
-                    }
-                }
-                @media (max-width:933px){
-                    .intro-image {
-                        padding-top: 1rem;
-                        justify-self: center;
-                    }
+                /* listes simples */
+                .list-bullets {
+                    padding-left: clamp(1rem, .2rem + 2vw, 1.5rem);
+                    margin: .6rem 0 1rem;
+                    li { margin-bottom: .6rem; }
                 }
 
-                .cta-buttons {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: clamp(0.8rem, 1.6vw, 1.2rem);
-                margin: clamp(1rem, 0.78rem + 1.356vw, 2rem) 0 1rem;
+                /* grille 2 colonnes responsive (pour RGPD) */
+                .grid-two {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    gap: clamp(1rem, .5rem + 1vw, 1.6rem);
+
+                    @media (max-width: 992px) {
+                    grid-template-columns: 1fr;
+                    }
+                }
+                .ddd {
+                    color: rgb(255, 72, 0);
+                    font-weight: bolder;
+                    font-family: 'Monotype Corsiva';
                 }
             }
         }
-
     }
 }
 

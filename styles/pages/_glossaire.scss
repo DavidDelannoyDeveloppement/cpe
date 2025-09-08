@@ -4,23 +4,30 @@
 @use "../components/separation-section" as *;
 @use "../components/boutons" as *;
 
-
 /* Scope page */
 body.page-glossaire {
-    font-family: $font-body;
-    color: #031837;
-    background-color: $creme;
-    line-height: 1.6;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    overflow-x: hidden;
+  font-family: $font-body;
+  color: #031837;
+  background-color: $creme;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow-x: hidden;
 
-    img { max-width: 100%; height: auto; display: block; }
-    a { text-decoration: none; color: inherit; }
-    
-    h1 {
-    width: min(1100px, 92vw); 
+  img { max-width: 100%; height: auto; display: block; }
+  a { text-decoration: none; color: inherit; }
+
+  /* utilitaire accessibilité pour titres masqués visuellement */
+  .sr-only {
+    position: absolute !important;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+  }
+
+  h1 {
+    width: min(1100px, 92vw);
     margin: 0 auto;
     color: $bleu;
     font-family: $font-titles;
@@ -29,96 +36,116 @@ body.page-glossaire {
     text-align: center;
     line-height: 1.18;
     padding: clamp(0.5rem, 0.143rem + 0.952vw, 1rem);
-    }
+  }
 
-    h2 {
-        font-family: $font-titles;
-        font-size: $h2-size;
-        color: $vert1;
-        margin-bottom: 1.5rem;
-        line-height: clamp(2.2rem,5vw,3rem);
-    }
+  h2 {
+    font-family: $font-titles;
+    font-size: $h2-size;
+    color: $vert1;
+    margin-top: 1rem;
+    line-height: clamp(2.2rem, 5vw, 3rem);
+  }
 
-    p { 
-        font-size: $p-size;
-        text-align: justify;
-        line-height: 1.8; 
-        margin-bottom: 1.2rem; 
-    }
+  h4 {
+    font-size: $h4-size;
+  }
+  h4:hover { color: $violet; }
 
+  p {
+    font-size: $p-size;
+    text-align: justify;
+    line-height: 1.8;
+    margin-bottom: 1.2rem;
+  }
 
+  main {
+    .glossaire {
+      padding: $padding-marge-section;
+      color: $bleu;
 
-    main {
-        
+      .glossaire-container {
+        width: min(1100px, 92vw);
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        max-width: 1100px;
+        margin: 0 auto;
 
-        //==========================================================//
-        //==========================================================//
-        //==========================================================//
-        //  GRID, Justify-items et Include Zoom Image Pas en place  // 
-        //==========================================================//
-        //==========================================================//
-        //==========================================================//
-
-
-
-        .intro {
-            // background-color: $creme;
-            padding: $padding-marge-section;
-            color: $bleu;
-        
-            .intro-container {
-                width: min(1100px, 92vw);
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                align-items: center;
-                max-width: 1100px;
-                margin: 0 auto;
-
-                @media (max-width: 768px) {
-                grid-template-columns: 1fr;
-                }
-                
-                .intro-text {
-                    display: flex;
-                    flex-direction: column;
-                    // justify-content: space-between;
-                    height: 100%;
-                    font-size: $p-size;
-                    line-height: 1.5;
-                }
-        
-                .intro-image {
-                    display: flex;
-                    justify-self: flex-end;
-
-                    img {
-                    width: clamp(17.5rem, 8.571rem + 23.81vw, 30rem);                    
-                    border-radius: 0.4rem; 
-                    border-bottom-right-radius: 1rem;
-                    border-top-left-radius: 1rem;
-                    box-shadow: $shadow-photo;
-                    display: block;
-                    margin: 0 auto;
-                    }
-                }
-                @media (max-width:933px){
-                    .intro-image {
-                        padding-top: 1rem;
-                        justify-self: center;
-                    }
-                }
-
-                .cta-buttons {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: clamp(0.8rem, 1.6vw, 1.2rem);
-                margin: clamp(1rem, 0.78rem + 1.356vw, 2rem) 0 1rem;
-                }
-            }
+        @media (max-width: 768px) {
+          grid-template-columns: 1fr;
         }
 
+        /* bloc d’introduction (texte libre si besoin) */
+        .intro-text {
+          display: flex;
+          flex-direction: column;
+          height: 100%;
+          font-size: $p-size;
+          line-height: 1.5;
+        }
+
+        /* INDEX ALPHABÉTIQUE – en introduction, items côte à côte */
+        .glossaire-index {
+          grid-column: 1 / -1; /* l’index s’étire sur toute la largeur en tête */
+          margin: 0 0 clamp(0.8rem, 0.3rem + 1vw, 1.2rem);
+
+          ul {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .5rem .75rem;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+          }
+
+          li { margin: 0; }
+
+          a {
+            display: inline-block;
+            min-width: 2.25rem;
+            text-align: center;
+            padding: .35rem .6rem;
+            border-radius: .6rem;
+            border: 1px solid $bleu;
+            background: color.scale($creme, $lightness: -3%);
+            box-shadow: 0 1px 0 rgba(0,0,0,.04);
+            transition: transform .08s ease, box-shadow .08s ease, background .12s ease;
+          }
+
+          a:hover,
+          a:focus {
+            background: color.scale($vert2, $lightness: 35%);
+            outline: none;
+            text-decoration: underline;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 6px rgba(0,0,0,.08);
+          }
+
+          /* état actif optionnel si tu veux marquer la lettre courante */
+          a.is-active {
+            background: color.scale($vert2, $lightness: 20%);
+            border-color: $vert2;
+            text-decoration: none;
+          }
+        }
+
+        /* CONTENU DU GLOSSAIRE */
+        .glossaire-text {
+          grid-column: 1 / -1; /* le contenu prend toute la largeur sous l’index */
+
+          /* confort d’ancrage sous header sticky */
+          h2[id] {
+            scroll-margin-top: clamp(70px, 8vw, 120px);
+            /* style de repère visuel par lettre */
+            border-top: 2px solid color.scale($vert1, $lightness: -10%);
+            padding-top: .75rem;
+            margin-top: clamp(1.2rem, .6rem + 1.5vw, 2rem);
+          }
+
+          h4 { margin-top: clamp(.4rem, .2rem + .6vw, .8rem); }
+          p  { margin-bottom: clamp(.6rem, .3rem + .8vw, 1rem); }
+        }
+      }
     }
+  }
 }
-
-
