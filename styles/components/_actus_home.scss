@@ -7,7 +7,6 @@
 // ==========================
 .actus-section {
   display: flex;
-  // align-items: center;
   flex-direction: column;
   padding: clamp(1rem, 3vw, 1.2rem) 0 clamp(2rem, 3vw, 3rem);
   text-align: left;
@@ -33,17 +32,15 @@
     padding-left: calc(var(--label-w) + 1rem);
 
     /* Bandeau type TV info */
-    // background: linear-gradient(90deg,$bleu 0%,color.adjust($bleu, $lightness: 6%) 100%);
     background: $background-bleu-bleu;
     border-radius: .4rem;
     border-bottom-right-radius: 1rem;
     border-top-left-radius: 1rem;
     box-shadow: $shadow-photo;
 
-    /* Pause au survol (comportement existant conservé) */
     &:hover .marquee-track { animation-play-state: paused; }
 
-    /* Cartouche "ACTUS" à gauche (aucun HTML à changer) */
+    /* Cartouche "ACTUS" à gauche */
     &::before {
       content: "NEWS";
       position: absolute;
@@ -92,7 +89,7 @@
     padding: .35rem 0;
     width: fit-content;
     will-change: transform;
-    animation: scroll-left 20s linear infinite;
+    animation: scroll-left 60s linear infinite;
   }
 
   .actu-item {
@@ -169,16 +166,11 @@
 /* === PATCH BFM++ : plus haut, cartouche décalé, masque anti-défilement === */
 .actus-section {
   .actus-marquee {
-    /* largeur du cartouche + décalage vers le centre (~1cm) */
     --label-w: clamp(70px, 18vw, 100px);
     --label-shift: 1cm;
-
-    /* +50% environ de hauteur */
     padding: 1.8rem 2rem;
-    /* réserve plus large à gauche (cartouche + décalage + marge) */
     padding-left: calc(var(--label-w) + var(--label-shift) + 1rem);
 
-    /* Masque fixe à gauche (rien ne défile derrière le cartouche) */
     position: relative;
     &::after {
       content: "";
@@ -187,9 +179,8 @@
       top: 0;
       width: calc(var(--label-w) + var(--label-shift) + .8rem);
       height: 100%;
-      /* même fond que le bandeau pour masquer la piste */
       background: linear-gradient(90deg, $bleu 0%, color.adjust($bleu, $lightness: 6%) 100%);
-      z-index: 2;            /* au-dessus de la piste, sous le cartouche */
+      z-index: 2;           
       pointer-events: none;
     }
 
@@ -198,7 +189,6 @@
       left: 1.5rem;
       width: var(--label-w);
       color: $rouge-vif;
-      // background: linear-gradient(180deg, color.adjust($rouge, $lightness: 6%), $rouge);
       background: $creme;
       border: 2px solid $rouge-vif;
       border-left: 4px solid $rouge-vif-border;
@@ -215,8 +205,8 @@
   /* piste + typo un peu plus grandes pour la nouvelle hauteur */
   .marquee-track {
     position: relative;
-    z-index: 1;            /* sous le masque et le cartouche */
-    padding: .9rem 0;      /* + air vertical */
+    z-index: 1;           
+    padding: .9rem 0;   
   }
   .actu-item {
     font-size: $h4-size;

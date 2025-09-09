@@ -1,22 +1,25 @@
+@use "sass:color";
 @use '../utils/variables' as *;
 @use '../utils/mixins' as *;
-
+@use "../components/separation-section" as *;
+@use "../components/boutons" as *;
 
 /* Scope page */
 body.page-actus {
-    font-family: $font-body;
-    color: #031837;
-    background-color: $creme;
-    line-height: 1.6;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    overflow-x: hidden;
+  font-family: $font-body;
+  color: #031837;
+  background-color: $creme;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow-x: hidden;
 
-    img { max-width: 100%; height: auto; display: block; }
-    a { text-decoration: none; color: inherit; }
-    h1 {
-    width: min(1100px, 92vw); 
+  img { max-width: 100%; height: auto; display: block; }
+  a { text-decoration: none; color: inherit; }
+
+  h1 {
+    width: min(1100px, 92vw);
     margin: 0 auto;
     color: $bleu;
     font-family: $font-titles;
@@ -25,176 +28,126 @@ body.page-actus {
     text-align: center;
     line-height: 1.18;
     padding: clamp(0.5rem, 0.143rem + 0.952vw, 1rem);
-    }
+  }
 
-    h2 {
-        font-family: $font-titles;
-        font-size: $h2-size;
-        color: $vert1;
-        margin-bottom: 1.5rem;
-        line-height: clamp(2.2rem,5vw,3rem);
-    }
+  h2 {
+    font-family: $font-titles;
+    font-size: $h2-size;
+    color: $vert1;
+    margin-bottom: 1.5rem;
+    line-height: clamp(2.2rem, 5vw, 3rem);
+  }
 
-    p { 
-        font-size: $p-size;
-        text-align: justify;
-        line-height: 1.8; 
-        margin-bottom: 1.2rem; 
-    }
+  p {
+    font-size: $p-size;
+    text-align: justify;
+    line-height: 1.8;
+    margin-bottom: 1.2rem;
+  }
 
-    
-    main {
+  main {
+    .actualites-section {
+      padding: 2.5rem 1rem;
+      background: $creme;
 
-              //==========================================================//
-        //==========================================================//
-        //==========================================================//
-        //  GRID, Justify-items et Include Zoom Image Pas en place  // 
-        //==========================================================//
-        //==========================================================//
-        //==========================================================//
+      /* ====== Grille des actus ====== */
+      .actu-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 1rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
 
-      .intro {
-        // background-color: $creme;
-        padding: $padding-marge-section;
+      .actu-card {
+        background: #fff;
+        border-radius: .6rem;
+        box-shadow: $shadow-photo;
+        overflow: hidden;
+        display: grid;
+        grid-template-rows: auto 1fr;
+        transition: transform .15s ease, box-shadow .15s ease;
+
+        &:hover {
+          transform: translateY(-2px);
+          box-shadow: $shadow-hover;
+        }
+      }
+
+      .actu-media {
+        background: rgba($vert3, .3);
+
+        img {
+          display: block;
+          width: 100%;
+          height: auto;
+          aspect-ratio: 16 / 9;
+          object-fit: cover;
+        }
+      }
+
+      .actu-body {
+        padding: 1rem 1rem 1.1rem;
+      }
+
+      .actu-title {
+        margin: 0 0 .35rem;
         color: $bleu;
-    
-        .intro-container {
-          width: min(1100px, 92vw);
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          align-items: center;
-          max-width: 1100px;
-          margin: 0 auto;
+        font-size: $h4-size;
+        line-height: 1.25;
+      }
 
-          @media (max-width: 768px) {
-          grid-template-columns: 1fr;
-          }
-            
-          .intro-text {
-            display: flex;
-            flex-direction: column;
-            // justify-content: space-between;
-            height: 100%;
-            font-size: $p-size;
-            line-height: 1.5;
-          }
-    
-          .intro-image {
-              display: flex;
-              justify-self: flex-end;
+      .actu-meta {
+        margin: 0 0 .6rem;
+        color: $gris-600;
+        font-size: $p-size;
+        opacity: .9;
 
-              img {
-              width: clamp(17.5rem, 8.571rem + 23.81vw, 30rem);                    
-              border-radius: 0.4rem; 
-              border-bottom-right-radius: 1rem;
-              border-top-left-radius: 1rem;
-              box-shadow: $shadow-photo;
-              display: block;
-              margin: 0 auto;
-              }
-          }
-          @media (max-width:933px){
-            .intro-image {
-              padding-top: 1rem;
-              justify-self: center;
-            }
-          }
-
-          .cta-buttons {
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: center;
-          gap: clamp(0.8rem, 1.6vw, 1.2rem);
-          margin: clamp(1rem, 0.78rem + 1.356vw, 2rem) 0 1rem;
-          }
+        .tag {
+          display: inline-block;
+          margin-left: .5rem;
+          padding: .12rem .45rem;
+          border-radius: .4rem;
+          background: rgba($orange-cta, .14);
+          color: $orange-cta;
+          font-size: $p-size;
+          line-height: 1;
+          vertical-align: baseline;
         }
       }
-    
 
+      .actu-summary {
+        margin: 0;
+        color: $bleu;
+        opacity: .9;
+        font-size: $p-size;
+        line-height: 1.45;
+      }
 
-      .actualites-section {
-        padding: 2.5rem 1rem;
-        background: $creme;
+      /* Fallback si pas d'image */
+      .thumb-fallback {
+        aspect-ratio: 16 / 9;
+        background: linear-gradient(135deg, rgba($bleu,.08), rgba($vert1,.10));
+      }
 
-        .actu-list {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-          gap: 1rem;
-          max-width: 1200px;
-          margin: 0 auto;
-        }
+      /* Message d’erreur doux */
+      .actu-error {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 1rem;
+        color: $bleu;
+        background: #fff3cd;
+        border: 1px solid #ffeeba;
+        border-radius: .6rem;
+      }
 
-        .actu-card {
-          background: #fff;
-          border-radius: .6rem;
-          box-shadow: 0 6px 16px rgba(0,0,0,.08);
-          overflow: hidden;
-          display: grid;
-          grid-template-rows: auto 1fr;
-          transition: transform .15s ease, box-shadow .15s ease;
-
-          &:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 22px rgba(0,0,0,.12);
-          }
-        }
-
-        .actu-media {
-          background: #f7f7f7;
-
-          img {
-            display: block;
-            width: 100%;
-            height: auto;
-            aspect-ratio: 16 / 9;
-            object-fit: cover;
-          }
-        }
-
-        .actu-body {
-          padding: 1rem 1rem 1.1rem;
-        }
-
-        .actu-title {
-          margin: 0 0 .35rem;
-          color: $bleu;
-          font-size: $h4-size;
-          line-height: 1.25;
-        }
-
-        .actu-meta {
-          margin: 0 0 .6rem;
-          color: $gris-600;
-          font-size: $p-size;
-          opacity: .9;
-
-          .tag {
-            display: inline-block;
-            margin-left: .5rem;
-            padding: .12rem .45rem;
-            border-radius: .4rem;
-            background: rgba($orange-cta, .14);
-            color: $orange-cta;
-            font-size: $p-size;
-            line-height: 1;
-            vertical-align: baseline;
-          }
-        }
-
-        .actu-summary {
-          margin: 0;
-          color: $bleu;
-          opacity: .9;
-          font-size: $p-size;
-          line-height: 1.45;
-        }
-
-        /* ====== Responsive (≤ 768px) ====== */
-        @media (max-width: 768px) {
-          padding: 1.6rem .8rem;
-
-          .actu-list { gap: .8rem; }
-        }
+      /* ====== Responsive (≤ 768px) ====== */
+      @media (max-width: 768px) {
+        padding: 1.6rem .8rem;
+        .actu-list { gap: .8rem; }
       }
     }
+    .actualites-section .actu-controls { display: none !important; }
+    .actualites-section .actu-meta .tag { display: none !important; }
+  }
 }

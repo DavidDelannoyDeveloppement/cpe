@@ -488,11 +488,33 @@ body {
   text-align: left;
   line-height: clamp(2.2rem, 5vw, 3rem);
 }
+.simulateur-section .simulateur-container h4 {
+  font-size: clamp(1.3rem, 1.193rem + 0.286vw, 1.45rem);
+  color: #be097f;
+  margin-top: clamp(1rem, -0.429rem + 3.81vw, 3rem);
+}
+.simulateur-section .simulateur-container .simulateur-text {
+  margin-bottom: clamp(0.5rem, 0.143rem + 0.952vw, 1rem);
+  margin-top: clamp(0.5rem, 0.143rem + 0.952vw, 1rem);
+}
+.simulateur-section .simulateur-container .simulateur-list {
+  margin-left: clamp(0.5rem, -0.929rem + 3.81vw, 2.5rem);
+}
+.simulateur-section .simulateur-container .simulateur-list li {
+  margin-bottom: clamp(0.5rem, 0.143rem + 0.952vw, 1rem);
+}
+.simulateur-section .simulateur-container .simulateur-list li::marker {
+  color: #00a250;
+  font-size: 1.2em;
+}
+.simulateur-section .simulateur-container .simulateur-list li:hover {
+  color: #00a250;
+}
 .simulateur-section .simulateur-container .cta-buttons {
   display: flex;
   justify-content: center;
   gap: clamp(0.8rem, 1.6vw, 1.2rem);
-  margin-top: clamp(1.2rem, 2.4vw, 2rem);
+  margin-top: clamp(1rem, 2.4vw, 2rem);
 }
 
 .expert-section {
@@ -643,8 +665,7 @@ body {
   border-bottom-right-radius: 1rem;
   border-top-left-radius: 1rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  /* Pause au survol (comportement existant conservé) */
-  /* Cartouche "ACTUS" à gauche (aucun HTML à changer) */
+  /* Cartouche "ACTUS" à gauche */
   /* Point "live" à côté du cartouche (pulsant) */
 }
 .actus-section .actus-marquee:hover .marquee-track {
@@ -693,7 +714,7 @@ body {
   width: -moz-fit-content;
   width: fit-content;
   will-change: transform;
-  animation: scroll-left 20s linear infinite;
+  animation: scroll-left 60s linear infinite;
 }
 .actus-section .actu-item {
   position: relative;
@@ -767,14 +788,10 @@ body {
   /* Responsive : on garde l’effet sans sur-gonfler sur mobile */
 }
 .actus-section .actus-marquee {
-  /* largeur du cartouche + décalage vers le centre (~1cm) */
   --label-w: clamp(70px, 18vw, 100px);
   --label-shift: 1cm;
-  /* +50% environ de hauteur */
   padding: 1.8rem 2rem;
-  /* réserve plus large à gauche (cartouche + décalage + marge) */
   padding-left: calc(var(--label-w) + var(--label-shift) + 1rem);
-  /* Masque fixe à gauche (rien ne défile derrière le cartouche) */
   position: relative;
   /* Cartouche ACTUS — rouge de la charte, déplacé vers le centre */
 }
@@ -785,9 +802,8 @@ body {
   top: 0;
   width: calc(var(--label-w) + var(--label-shift) + 0.8rem);
   height: 100%;
-  /* même fond que le bandeau pour masquer la piste */
   background: linear-gradient(90deg, #031837 0%, rgb(4.5827586207, 36.6620689655, 84.0172413793) 100%);
-  z-index: 2; /* au-dessus de la piste, sous le cartouche */
+  z-index: 2;
   pointer-events: none;
 }
 .actus-section .actus-marquee::before {
@@ -807,8 +823,8 @@ body {
 }
 .actus-section .marquee-track {
   position: relative;
-  z-index: 1; /* sous le masque et le cartouche */
-  padding: 0.9rem 0; /* + air vertical */
+  z-index: 1;
+  padding: 0.9rem 0;
 }
 .actus-section .actu-item {
   font-size: clamp(1.3rem, 1.193rem + 0.286vw, 1.45rem);
@@ -885,7 +901,7 @@ body {
 /* ===========================================
    BOUTON UNIQUE — design WHY (reflets + hover)
    =========================================== */
-.btn {
+.btn, body.page-article main.page-article-main .article-intro .article-intro-container .article-intro-text .cta-buttons .btn {
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -921,11 +937,11 @@ body {
   transition: transform 0.15s ease, box-shadow 0.15s ease;
   /* Icône interne optionnelle */
 }
-.btn, .btn:link, .btn:visited, .btn:hover, .btn:active, .btn:focus-visible {
+.btn, body.page-article main.page-article-main .article-intro .article-intro-container .article-intro-text .cta-buttons .btn, .btn:link, .btn:visited, .btn:hover, .btn:active, .btn:focus-visible {
   color: #ffffff;
   text-decoration: none;
 }
-.btn::before, .btn::after {
+.btn::before, body.page-article main.page-article-main .article-intro .article-intro-container .article-intro-text .cta-buttons .btn::before, .btn::after, body.page-article main.page-article-main .article-intro .article-intro-container .article-intro-text .cta-buttons .btn::after {
   content: "";
   position: absolute;
   left: 50%;
@@ -935,33 +951,33 @@ body {
   border-radius: 999px;
   pointer-events: none;
 }
-.btn::before {
+.btn::before, body.page-article main.page-article-main .article-intro .article-intro-container .article-intro-text .cta-buttons .btn::before {
   top: 0.4rem;
   background-image: linear-gradient(270deg, rgba(255, 255, 255, 0) 0%, #fff 20%, #fff 80%, rgba(255, 255, 255, 0) 100%);
   opacity: 0.5;
 }
-.btn::after {
+.btn::after, body.page-article main.page-article-main .article-intro .article-intro-container .article-intro-text .cta-buttons .btn::after {
   bottom: 0.5rem;
   background-image: linear-gradient(270deg, rgba(255, 255, 255, 0) 0%, #fff 20%, #fff 80%, rgba(255, 255, 255, 0) 100%);
   filter: blur(1px);
   opacity: 0.05;
 }
-.btn:hover {
+.btn:hover, body.page-article main.page-article-main .article-intro .article-intro-container .article-intro-text .cta-buttons .btn:hover {
   transform: translateY(3px) scale(0.98);
   box-shadow: none;
 }
-.btn:active {
+.btn:active, body.page-article main.page-article-main .article-intro .article-intro-container .article-intro-text .cta-buttons .btn:active {
   transform: translateY(3px) scale(0.98);
 }
-.btn:focus-visible {
+.btn:focus-visible, body.page-article main.page-article-main .article-intro .article-intro-container .article-intro-text .cta-buttons .btn:focus-visible {
   outline: 2px solid rgba(255, 255, 255, 0.5);
   outline-offset: 2px;
 }
-.btn[disabled], .btn.is-disabled {
+.btn[disabled], body.page-article main.page-article-main .article-intro .article-intro-container .article-intro-text .cta-buttons [disabled].btn, .btn.is-disabled, body.page-article main.page-article-main .article-intro .article-intro-container .article-intro-text .cta-buttons .is-disabled.btn {
   opacity: 0.55;
   pointer-events: none;
 }
-.btn .ico {
+.btn .ico, body.page-article main.page-article-main .article-intro .article-intro-container .article-intro-text .cta-buttons .btn .ico {
   color: currentColor;
   fill: currentColor;
   inline-size: 1.2em;
@@ -972,7 +988,7 @@ body {
    Mobile — version plus compacte (≤ 520px)
    ========================================================= */
 @media (max-width: 520px) {
-  .btn {
+  .btn, body.page-article main.page-article-main .article-intro .article-intro-container .article-intro-text .cta-buttons .btn {
     min-inline-size: min(12rem, 92vw);
   }
 }
@@ -1074,59 +1090,12 @@ body.page-actus p {
   line-height: 1.8;
   margin-bottom: 1.2rem;
 }
-body.page-actus main .intro {
-  padding: clamp(1rem, 0.286rem + 1.905vw, 2rem) 1rem clamp(2rem, 1.78rem + 1.356vw, 3rem);
-  color: #031837;
-}
-body.page-actus main .intro .intro-container {
-  width: min(1100px, 92vw);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-@media (max-width: 768px) {
-  body.page-actus main .intro .intro-container {
-    grid-template-columns: 1fr;
-  }
-}
-body.page-actus main .intro .intro-container .intro-text {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  font-size: 1.1rem;
-  line-height: 1.5;
-}
-body.page-actus main .intro .intro-container .intro-image {
-  display: flex;
-  justify-self: flex-end;
-}
-body.page-actus main .intro .intro-container .intro-image img {
-  width: clamp(17.5rem, 8.571rem + 23.81vw, 30rem);
-  border-radius: 0.4rem;
-  border-bottom-right-radius: 1rem;
-  border-top-left-radius: 1rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  display: block;
-  margin: 0 auto;
-}
-@media (max-width: 933px) {
-  body.page-actus main .intro .intro-container .intro-image {
-    padding-top: 1rem;
-    justify-self: center;
-  }
-}
-body.page-actus main .intro .intro-container .cta-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: clamp(0.8rem, 1.6vw, 1.2rem);
-  margin: clamp(1rem, 0.78rem + 1.356vw, 2rem) 0 1rem;
-}
 body.page-actus main .actualites-section {
   padding: 2.5rem 1rem;
   background: #ffffff;
+  /* ====== Grille des actus ====== */
+  /* Fallback si pas d'image */
+  /* Message d’erreur doux */
   /* ====== Responsive (≤ 768px) ====== */
 }
 body.page-actus main .actualites-section .actu-list {
@@ -1139,7 +1108,7 @@ body.page-actus main .actualites-section .actu-list {
 body.page-actus main .actualites-section .actu-card {
   background: #fff;
   border-radius: 0.6rem;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   overflow: hidden;
   display: grid;
   grid-template-rows: auto 1fr;
@@ -1147,10 +1116,10 @@ body.page-actus main .actualites-section .actu-card {
 }
 body.page-actus main .actualites-section .actu-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 14px 30px rgba(26, 46, 77, 0.178);
 }
 body.page-actus main .actualites-section .actu-media {
-  background: #f7f7f7;
+  background: rgba(91, 184, 135, 0.3);
 }
 body.page-actus main .actualites-section .actu-media img {
   display: block;
@@ -1193,6 +1162,19 @@ body.page-actus main .actualites-section .actu-summary {
   font-size: 1.1rem;
   line-height: 1.45;
 }
+body.page-actus main .actualites-section .thumb-fallback {
+  aspect-ratio: 16/9;
+  background: linear-gradient(135deg, rgba(3, 24, 55, 0.08), rgba(0, 162, 80, 0.1));
+}
+body.page-actus main .actualites-section .actu-error {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+  color: #031837;
+  background: #fff3cd;
+  border: 1px solid #ffeeba;
+  border-radius: 0.6rem;
+}
 @media (max-width: 768px) {
   body.page-actus main .actualites-section {
     padding: 1.6rem 0.8rem;
@@ -1200,6 +1182,12 @@ body.page-actus main .actualites-section .actu-summary {
   body.page-actus main .actualites-section .actu-list {
     gap: 0.8rem;
   }
+}
+body.page-actus main .actualites-section .actu-controls {
+  display: none !important;
+}
+body.page-actus main .actualites-section .actu-meta .tag {
+  display: none !important;
 }
 
 /* Scope page */
@@ -7979,6 +7967,197 @@ body.page-contact main .expert-section .expert-content .cta-buttons {
   justify-content: center;
   gap: clamp(0.8rem, 1.6vw, 1.2rem);
   margin: clamp(1rem, 0.78rem + 1.356vw, 2rem) 0 1rem;
+}
+
+/* Scope page */
+body.page-article {
+  font-family: "Raleway", sans-serif;
+  color: #031837;
+  background-color: #ffffff;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow-x: hidden;
+  /* H1 hors container */
+}
+body.page-article img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+body.page-article a {
+  text-decoration: none;
+  color: inherit;
+}
+body.page-article h1.article-title {
+  width: min(1100px, 92vw);
+  margin: 0 auto;
+  color: #031837;
+  font-family: "Raleway", sans-serif;
+  font-weight: 800;
+  font-size: clamp(2.2rem, 1.414rem + 2.095vw, 3.3rem);
+  text-align: center;
+  line-height: 1.18;
+  padding: clamp(0.5rem, 0.143rem + 0.952vw, 1rem);
+}
+body.page-article main.page-article-main {
+  /* Section type "financement-intro" */
+}
+body.page-article main.page-article-main .article-intro {
+  padding: clamp(1rem, 0.286rem + 1.905vw, 2rem) 1rem clamp(2rem, 1.78rem + 1.356vw, 3rem);
+  color: #031837;
+  /* Variante sans image : 1 colonne */
+}
+body.page-article main.page-article-main .article-intro .article-intro-container {
+  width: min(1100px, 92vw);
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: clamp(1rem, 0.286rem + 1.905vw, 2rem);
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+@media (max-width: 768px) {
+  body.page-article main.page-article-main .article-intro .article-intro-container {
+    grid-template-columns: 1fr;
+  }
+}
+body.page-article main.page-article-main .article-intro .article-intro-container .article-intro-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  height: 100%;
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+body.page-article main.page-article-main .article-intro .article-intro-container .article-intro-text .article-meta {
+  color: #4B5563;
+  font-size: 1.1rem;
+  margin-bottom: clamp(0.4rem, 0.12rem + 0.8vw, 0.9rem);
+}
+body.page-article main.page-article-main .article-intro .article-intro-container .article-intro-text .article-content p {
+  font-size: 1.1rem;
+  text-align: justify;
+  line-height: 1.8;
+  margin-bottom: clamp(0.5rem, 0.143rem + 0.952vw, 1rem);
+  max-width: 700px;
+}
+body.page-article main.page-article-main .article-intro .article-intro-container .article-intro-text .article-content h2 {
+  font-family: "Raleway", sans-serif;
+  font-size: clamp(1.85rem, 1.314rem + 1.429vw, 2.6rem);
+  color: #00a250;
+  margin: clamp(1rem, 0.5rem + 1vw, 2rem) 0 1rem;
+  line-height: clamp(2.2rem, 5vw, 3rem);
+}
+body.page-article main.page-article-main .article-intro .article-intro-container .article-intro-text .article-content h3 {
+  font-family: "Raleway", sans-serif;
+  color: #00a250;
+  margin: 1.2rem 0 0.8rem;
+}
+body.page-article main.page-article-main .article-intro .article-intro-container .article-intro-text .article-content ul, body.page-article main.page-article-main .article-intro .article-intro-container .article-intro-text .article-content ol {
+  margin-left: clamp(0.5rem, -0.929rem + 3.81vw, 2.5rem);
+}
+body.page-article main.page-article-main .article-intro .article-intro-container .article-intro-text .article-content ul li, body.page-article main.page-article-main .article-intro .article-intro-container .article-intro-text .article-content ol li {
+  margin-bottom: clamp(0.4rem, 0.12rem + 0.8vw, 0.9rem);
+}
+body.page-article main.page-article-main .article-intro .article-intro-container .article-intro-text .article-content blockquote {
+  margin: 1rem 0;
+  padding: 0.8rem 1rem;
+  background: linear-gradient(165deg, rgba(46, 204, 112, 0.164), rgba(67, 233, 139, 0.062));
+  border-left: 4px solid rgb(0, 71, 30);
+  border-top: 1px solid rgba(0, 71, 30, 0.63);
+  border-radius: 0.4rem;
+  border-top-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  box-shadow: 4px 4px 5px rgba(3, 24, 55, 0.0549019608);
+}
+body.page-article main.page-article-main .article-intro .article-intro-container .article-intro-text .cta-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(0.8rem, 1.6vw, 1.2rem);
+  margin-top: clamp(1rem, 2.4vw, 2rem);
+}
+@media (max-width: 768px) {
+  body.page-article main.page-article-main .article-intro .article-intro-container .article-intro-text {
+    align-items: center;
+  }
+}
+body.page-article main.page-article-main .article-intro .article-intro-container .article-intro-image {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: inherit;
+  /* Pause au survol optionnelle */
+  /* Réécriture des frames avec les valeurs passées au mixin (portée locale via nesting) */
+  border-radius: 0.4rem;
+  border-top-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  width: clamp(17.5rem, 14.375rem + 8.333vw, 21.875rem);
+}
+body.page-article main.page-article-main .article-intro .article-intro-container .article-intro-image > img, body.page-article main.page-article-main .article-intro .article-intro-container .article-intro-image > picture > img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transform-origin: center;
+  will-change: transform;
+  /* on utilise animation + @property pour animer vers des valeurs custom via variables */
+  /* Fallback simple : on “fige” les frames avec une animation dédiée inline via shorthand */
+  animation-name: cpe-kb-zoom-pan;
+}
+@supports (transform: scale(1)) {
+  body.page-article main.page-article-main .article-intro .article-intro-container .article-intro-image > img, body.page-article main.page-article-main .article-intro .article-intro-container .article-intro-image > picture > img {
+    /* on injecte les valeurs finales via CSS vars et une transition calc */
+    --kb-scale-to: 1.05;
+    --kb-pan-x: -2%;
+    --kb-pan-y: -2%;
+    /* on sur-déclare les frames avec les valeurs */
+    /* (truc simple : on met une animation-name dédiée pour ne pas multiplier les keyframes) */
+    /* on utilise la propriété animation-timeline implicite (fallback simple ci-dessous) */
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    body.page-article main.page-article-main .article-intro .article-intro-container .article-intro-image > img, body.page-article main.page-article-main .article-intro .article-intro-container .article-intro-image > picture > img {
+      animation: cpe-kb-zoom-pan 8s ease-in-out infinite alternate;
+    }
+  }
+}
+@media (hover: hover) {
+  body.page-article main.page-article-main .article-intro .article-intro-container .article-intro-image:hover > img, body.page-article main.page-article-main .article-intro .article-intro-container .article-intro-image:hover > picture > img {
+    animation-play-state: paused;
+  }
+}
+@keyframes cpe-kb-zoom-pan {
+  from {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+  to {
+    transform: scale(1.05) translate3d(-2%, -2%, 0);
+  }
+}
+body.page-article main.page-article-main .article-intro .article-intro-container .article-intro-image img {
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+@media (max-width: 933px) {
+  body.page-article main.page-article-main .article-intro .article-intro-container .article-intro-image {
+    justify-self: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+}
+body.page-article main.page-article-main .article-intro.no-image .article-intro-container {
+  grid-template-columns: 1fr;
+}
+body.page-article main.page-article-main .article-intro.no-image .article-intro-image {
+  display: none;
 }
 
 /* Skip link : totalement caché sauf au focus */

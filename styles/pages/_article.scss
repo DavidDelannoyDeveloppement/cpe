@@ -1,0 +1,147 @@
+@use "sass:color";
+@use '../utils/variables' as *;
+@use '../utils/mixins' as *;
+@use "../components/separation-section" as *;
+@use "../components/boutons" as *;
+
+/* Scope page */
+body.page-article {
+  font-family: $font-body;
+  color: $bleu;
+  background-color: $creme;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow-x: hidden;
+
+  img { max-width: 100%; height: auto; display: block; }
+  a { text-decoration: none; color: inherit; }
+
+  /* H1 hors container */
+  h1.article-title {
+    width: min(1100px, 92vw);
+    margin: 0 auto;
+    color: $bleu;
+    font-family: $font-titles;
+    font-weight: 800;
+    font-size: $h1-size;
+    text-align: center;
+    line-height: 1.18;
+    padding: clamp(0.5rem, 0.143rem + 0.952vw, 1rem);
+  }
+
+  main.page-article-main {
+    /* Section type "financement-intro" */
+    .article-intro {
+      padding: $padding-marge-section;
+      color: $bleu;
+
+      .article-intro-container {
+        width: min(1100px, 92vw);
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: clamp(1rem, 0.286rem + 1.905vw, 2rem);
+        align-items: center;
+        max-width: 1100px;
+        margin: 0 auto;
+
+        @media (max-width: 768px) {
+          grid-template-columns: 1fr;
+        }
+
+        .article-intro-text {
+          display: flex;
+          flex-direction: column;
+          justify-content: start;
+          height: 100%;
+          font-size: $p-size;
+          line-height: 1.5;
+
+          .article-meta {
+            color: $gris-600;
+            font-size: $p-size;
+            margin-bottom: clamp(0.4rem, 0.12rem + 0.8vw, 0.9rem);
+          }
+
+          .article-content {
+            p { 
+              font-size: $p-size;
+              text-align: justify;
+              line-height: 1.8;
+              margin-bottom: clamp(0.5rem, 0.143rem + 0.952vw, 1rem);
+              max-width: 700px;
+            }
+            h2 {
+              font-family: $font-titles;
+              font-size: $h2-size;
+              color: $vert1;
+              margin: clamp(1rem, 0.5rem + 1vw, 2rem) 0 1rem;
+              line-height: clamp(2.2rem,5vw,3rem);
+            }
+            h3 { 
+              font-family: $font-titles; 
+              color: $vert1; 
+              margin: 1.2rem 0 .8rem; 
+            }
+            ul, ol { 
+              margin-left: clamp(0.5rem, -0.929rem + 3.81vw, 2.5rem);
+              li { margin-bottom: clamp(0.4rem, 0.12rem + 0.8vw, 0.9rem); }
+            }
+            blockquote {
+              margin: 1rem 0;
+              padding: .8rem 1rem;
+              background: $background-vert-blanc;
+              border-left: $border-left-vert;
+              border-top: $border-top-vert;
+              @include radius-cpe;
+              box-shadow: $shadow-defaut;
+            }
+          }
+
+          .cta-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: clamp(0.8rem, 1.6vw, 1.2rem);
+            margin-top: clamp(1rem, 2.4vw, 2rem);
+
+            .btn { @extend .btn; }
+          }
+
+          @media (max-width: 768px) { align-items: center; }
+        }
+
+        .article-intro-image {
+          @include cpe-zoom-frame(8s, ease-in-out, true, 1.05, -2%, -2%);
+          @include radius-cpe;
+          overflow: hidden;
+          box-shadow: $shadow-photo;
+          width: $witdh-img-defaut;
+
+          img {
+            width: 100%;
+            display: block;
+            margin: 0 auto;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+
+        @media (max-width: 933px) {
+          .article-intro-image {
+            justify-self: center;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+          }
+        }
+      }
+
+      /* Variante sans image : 1 colonne */
+      &.no-image {
+        .article-intro-container { grid-template-columns: 1fr; }
+        .article-intro-image { display: none; }
+      }
+    }
+  }
+}
