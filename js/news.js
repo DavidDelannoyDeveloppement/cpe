@@ -1,94 +1,84 @@
-/* news.js — injecte les actus sur la page liste (#actu-list)
-   et le bandeau d’accueil (#actu-strip) à partir de ./data/news.json */
-
+/* js/news.js — version minimaliste (sans recherche, sans tags visibles) + kill anciens contrôles */
 (function () {
-  "use strict";
+  const LIST_SELECTOR = '#actu-list';
+  const DATA_URL = './data/news.json';
 
-  // Résout correctement l’URL du JSON depuis n’importe quelle page
-  const newsUrl = new URL("./data/news.json", document.baseURI);
-  // Anti-cache (CDN Pages / navigateur)
-  newsUrl.searchParams.set("v", Date.now().toString());
+  const $list = document.querySelector(LIST_SELECTOR);
+  if (!$list) return;
 
-  // Points d’injection (optionnels)
-  const $list = document.getElementById("actu-list");   // page Actualités
-  const $strip = document.getElementById("actu-strip"); // bandeau d’accueil
+  // Supprime tout vieux bloc de contrôles (si un ancien JS en a injecté)
+  document.querySelectorAll('.actu-controls').forEach(n => n.remove());
 
-  if (!$list && !$strip) return; // rien à faire sur cette page
+  const escapeHTML = (s) =>
+    String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 
-  fetch(newsUrl.toString(), { cache: "no-store" })
-    .then(r => {
-      if (!r.ok) throw new Error("HTTP " + r.status);
-      return r.json();
-    })
-    .then(items => {
-      const arr = Array.isArray(items) ? items : [];
-      const sorted = arr.sort((a, b) => new Date(b.date) - new Date(a.date));
+  const formatDate = (iso) => {
+    try { return new Intl.DateTimeFormat('fr-FR',{ dateStyle:'long' }).format(new Date(iso)); }
+    catch { return iso || ''; }
+  };
 
-      if ($list) renderList($list, sorted);
-      if ($strip) renderStrip($strip, sorted.slice(0, 6)); // 6 dernières actus
-    })
-    .catch(err => {
-      console.error("Chargement des actus impossible :", err);
-      if ($list) $list.innerHTML = `<p>Impossible de charger les actualités.</p>`;
-      // Le bandeau peut rester vide en cas d’erreur
-    });
+  // ⬇️ VERSION SANS TAG (mots-clés)
+  const cardTemplate = (item) => {
+    const url = item.url || (item.id ? `./article.html?id=${item.id}` : '#');
+    const title = escapeHTML(item.title);
+    const summary = escapeHTML(item.summary || '');
+    const dateStr = formatDate(item.date);
+    const alt = escapeHTML(item.image_alt || item.title || 'Actualité CPE');
 
-  // ---- RENDERERS ----
-  function renderList(root, items) {
-    root.innerHTML = items.map(renderCard).join("");
-  }
+    const media = item.image
+      ? `<img loading="lazy" src="${item.image}" alt="${alt}" width="800" height="450">`
+      : `<div class="thumb-fallback" aria-hidden="true"></div>`;
 
-  function renderStrip(root, items) {
-    root.innerHTML = items.map(renderSlide).join("");
-    // ⚠️ Le défilement auto est déjà géré par ton js/script.js (réf. projet),
-    // ici on ne fait qu’injecter les éléments .actu-slide.
-  }
-
-  // ---- TEMPLATES ----
-  function renderCard(a) {
-    const date = fmtDateFR(a.date);
-    const img = a.image ? `<img src="${escapeAttr(a.image)}" alt="${escapeAttr(a.title || "")}" loading="lazy">` : "";
-    const tags = (a.tags || []).map(t => `<span class="tag">${escapeHtml(t)}</span>`).join("");
     return `
-      <article class="actu-card" id="${escapeAttr(a.id || "")}">
-        <div class="actu-media">${img}</div>
+      <article class="actu-card">
+        <a class="actu-media" href="${url}">
+          ${media}
+        </a>
         <div class="actu-body">
-          <h3 class="actu-title">${escapeHtml(a.title || "")}</h3>
-          <p class="actu-meta">${date}${tags ? " · " + tags : ""}</p>
-          <p class="actu-summary">${escapeHtml(a.summary || "")}</p>
+          <h3 class="actu-title"><a href="${url}">${title}</a></h3>
+          <p class="actu-meta">
+            <span class="date">${dateStr}</span>
+            ${source ? ` · <span class="source">${source}</span>` : ''}
+          </p>
+          <p class="actu-summary">${summary}</p>
         </div>
       </article>
     `;
-  }
+  };
 
-  function renderSlide(a) {
-    const date = fmtDateFRshort(a.date);
-    const id = a.id ? `#${encodeURIComponent(a.id)}` : "";
-    // Lien vers la page des actus (à créer ensuite) + ancre de l’article
-    return `
-      <a class="actu-slide" href="./actualites.html${id}" title="${escapeAttr(a.title || "")}">
-        <span class="actu-date">${escapeHtml(date)}</span>
-        <span class="actu-title">${escapeHtml(a.title || "")}</span>
-      </a>
-    `;
-  }
-
-  // ---- UTILS ----
-  function fmtDateFR(iso) {
+  async function init() {
     try {
-      return new Intl.DateTimeFormat("fr-FR", { day: "2-digit", month: "long", year: "numeric" })
-        .format(new Date(iso));
-    } catch { return iso || ""; }
-  }
-  function fmtDateFRshort(iso) {
-    try {
-      return new Intl.DateTimeFormat("fr-FR", { day: "2-digit", month: "short" })
-        .format(new Date(iso));
-    } catch { return iso || ""; }
-  }
-  function escapeHtml(s) {
-    return String(s).replace(/[&<>"']/g, m => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;", "'": "&#39;" }[m]));
-  }
-  function escapeAttr(s) { return escapeHtml(s).replace(/"/g, "&quot;"); }
+      const res = await fetch(DATA_URL, { cache: 'no-store' });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const data = await res.json();
 
+      const items = (Array.isArray(data) ? data : [])
+        .map(it => ({
+          id: it.id,
+          title: it.title || '',
+          date: it.date || '1970-01-01',
+          source: it.source || '',
+          url: it.url || (it.id ? `./article.html?id=${it.id}` : '#'),
+          // tag: it.tag || '',  // <-- on n’utilise plus le tag pour l’affichage
+          summary: it.summary || '',
+          image: it.image || '',
+          image_alt: it.image_alt || ''
+        }))
+        .sort((a, b) => new Date(b.date) - new Date(a.date));
+
+      $list.innerHTML = items.map(cardTemplate).join('');
+    } catch (err) {
+      console.error('[Actus] Échec chargement :', err);
+      $list.innerHTML = `
+        <div class="actu-error">
+          <p>Impossible de charger les actualités pour le moment.</p>
+        </div>`;
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
 })();

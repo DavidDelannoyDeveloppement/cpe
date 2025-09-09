@@ -1,22 +1,50 @@
+/* ================================
+   Bandeau Actus (depuis data/news.json)
+   Remplit .actus-marquee .marquee-track
+   et duplique la liste pour un défilement continu
+================================== */
 document.addEventListener("DOMContentLoaded", () => {
-  /* ===========================
-     = Carousel Actus (auto 5s) =
-     =========================== */
-  (function initCarousel() {
-    const slides = document.querySelectorAll(".actu-slide");
-    if (!slides.length) return;
+  (async function initActusMarquee() {
+    const TRACK_SELECTOR = ".actus-marquee .marquee-track";
+    const DATA_URL = "./data/news.json";          // adapte si besoin
+    const ALL_NEWS_URL = "./actualites.html";     // lien "Voir toutes les actus"
+    const MAX_ITEMS = 6;                          // nb d’actus à afficher dans le bandeau
+    const DUPLICATION = 2;                        // répéter la séquence pour un scroll fluide
 
-    let current = 0;
-    slides[0].classList.add("active");
+    const track = document.querySelector(TRACK_SELECTOR);
+    if (!track) return;
 
-    function showNextSlide() {
-      slides[current].classList.remove("active");
-      current = (current + 1) % slides.length;
-      slides[current].classList.add("active");
+    const escapeHTML = (s) =>
+      String(s || "").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+
+    try {
+      const res = await fetch(DATA_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const all = await res.json();
+
+      const items = (Array.isArray(all) ? all : [])
+        .slice()
+        .sort((a, b) => new Date(b.date) - new Date(a.date))
+        .slice(0, MAX_ITEMS)
+        .map((it) => {
+          const href = it.url || `./article.html?id=${it.id || ""}`;
+          const title = escapeHTML(it.title || "");
+          return `<a href="${href}" class="actu-item">${title}</a>`;
+        });
+
+      items.push(`<a href="${ALL_NEWS_URL}" class="actu-item">Voir toutes les actus</a>`);
+
+      track.innerHTML = Array.from({ length: Math.max(1, DUPLICATION) })
+        .map(() => items.join(""))
+        .join("");
+
+    } catch (e) {
+      console.error("[Actus] Échec chargement news.json :", e);
+      track.innerHTML = `<a href="${ALL_NEWS_URL}" class="actu-item">Voir toutes les actus</a>`;
     }
-
-    setInterval(showNextSlide, 5000);
   })();
+});
+
 
 
   /* ===========================
@@ -143,7 +171,6 @@ document.addEventListener("DOMContentLoaded", () => {
       main.setAttribute("tabindex", "-1");
     }
   })();
-});
 
 
 
@@ -774,3 +801,163 @@ document.addEventListener('DOMContentLoaded', () => {
   setActiveSector(sectors[0]);
 })();
 
+
+
+// ================================
+// Page actualités
+/* js/news.js
+   Affiche les actus de ./data/news.json
+   - Tri par date desc
+   - Filtre par tag
+   - Recherche
+   - Pagination (12/cartes)
+*/
+(function () {
+  const LIST_SELECTOR = '#actu-list';
+  const DATA_URL = './data/news.json';
+  const PAGE_SIZE = 12;
+
+  const state = { all: [], filtered: [], page: 1, q: '', tag: 'Tous' };
+  const $list = document.querySelector(LIST_SELECTOR);
+  if (!$list) return;
+
+  function injectControls() {
+    const section = $list.closest('.actualites-section');
+    const controls = document.createElement('div');
+    controls.className = 'actu-controls';
+    controls.innerHTML = `
+      <input id="actu-search" type="search" placeholder="Rechercher une actu…" />
+      <div class="tags"></div>
+      <div class="count"></div>
+      <button class="btn btn-more" type="button">Charger plus</button>
+    `;
+    section.prepend(controls);
+
+    controls.querySelector('#actu-search').addEventListener('input', (e) => {
+      state.q = (e.target.value || '').trim();
+      state.page = 1;
+      applyFilters(); render();
+    });
+    controls.querySelector('.btn-more').addEventListener('click', () => {
+      state.page += 1; render();
+    });
+  }
+
+  function uniqueTags(items) {
+    const tags = new Set(['Tous']);
+    items.forEach(i => { if (i.tag) tags.add(i.tag); });
+    return Array.from(tags);
+  }
+
+  function renderTags() {
+    const wrap = document.querySelector('.actu-controls .tags');
+    wrap.innerHTML = '';
+    uniqueTags(state.all).forEach(t => {
+      const b = document.createElement('button');
+      b.textContent = t; b.type = 'button';
+      if (t === state.tag) b.classList.add('is-active');
+      b.addEventListener('click', () => {
+        state.tag = t; state.page = 1;
+        applyFilters(); renderTags(); render();
+      });
+      wrap.appendChild(b);
+    });
+  }
+
+  function applyFilters() {
+    const q = state.q.toLowerCase(), tag = state.tag;
+    state.filtered = state.all.filter(item => {
+      const matchesTag = tag === 'Tous' || item.tag === tag;
+      const hay = `${item.title} ${item.summary} ${item.source}`.toLowerCase();
+      const matchesQuery = !q || hay.includes(q);
+      return matchesTag && matchesQuery;
+    });
+  }
+
+  function formatDate(iso) {
+    try { return new Intl.DateTimeFormat('fr-FR',{dateStyle:'long'}).format(new Date(iso)); }
+    catch { return iso; }
+  }
+
+  function cardTemplate(item) {
+    return `
+      <article class="actu-card">
+        <a class="actu-media" href="${item.url}" target="_blank" rel="noopener noreferrer">
+          ${item.image ? `<img loading="lazy" src="${item.image}" alt="${item.image_alt||item.title}" />` : ''}
+        </a>
+        <div class="actu-body">
+          <h3 class="actu-title"><a href="${item.url}" target="_blank">${item.title}</a></h3>
+          <p class="actu-meta">
+            <span>${formatDate(item.date)}</span>
+            ${item.source ? `· ${item.source}` : ''}
+            ${item.tag ? `<span class="tag">${item.tag}</span>` : ''}
+          </p>
+          <p class="actu-summary">${item.summary}</p>
+        </div>
+      </article>`;
+  }
+
+  function render() {
+    const intro = document.querySelector('.intro');
+    if (intro) intro.style.display = state.filtered.length ? 'none' : '';
+    const slice = state.filtered.slice(0, state.page * PAGE_SIZE);
+    $list.innerHTML = slice.map(cardTemplate).join('');
+    document.querySelector('.actu-controls .count').textContent =
+      `${slice.length} / ${state.filtered.length} actus`;
+    document.querySelector('.btn-more').style.display =
+      slice.length < state.filtered.length ? 'inline-block' : 'none';
+  }
+
+  async function init() {
+    injectControls();
+    try {
+      const res = await fetch(DATA_URL, { cache: 'no-store' });
+      state.all = (await res.json())
+        .sort((a,b)=>new Date(b.date)-new Date(a.date));
+      applyFilters(); renderTags(); render();
+    } catch(e) {
+      $list.innerHTML = `<p>⚠️ Impossible de charger les actus.</p>`;
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', init);
+})();
+
+// js/article.js
+(async function () {
+  const params = new URLSearchParams(window.location.search);
+  const id = parseInt(params.get("id"), 10);
+
+  const container = document.querySelector(".article-container");
+  if (!id || !container) {
+    container.innerHTML = "<p>Article introuvable.</p>";
+    return;
+  }
+
+  try {
+    const res = await fetch("./data/news.json");
+    const data = await res.json();
+    const article = data[id - 1]; // simple: index = id-1
+
+    if (!article) {
+      container.innerHTML = "<p>Article introuvable.</p>";
+      return;
+    }
+
+    document.title = article.title + " — Actualités CPE";
+
+    container.innerHTML = `
+      <article class="article-full">
+        <h1>${article.title}</h1>
+        <p class="meta">${new Intl.DateTimeFormat("fr-FR",{dateStyle:"long"}).format(new Date(article.date))} — ${article.author || ""}</p>
+        <figure>
+          <img src="${article.image}" alt="${article.image_alt || ""}">
+        </figure>
+        <div class="content">${article.content}</div>
+        <p><a href="./actualites.html" class="btn">← Retour aux actualités</a></p>
+      </article>
+    `;
+  } catch (err) {
+    container.innerHTML = "<p>Erreur de chargement de l’article.</p>";
+  }
+})();

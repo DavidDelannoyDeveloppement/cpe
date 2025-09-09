@@ -1,0 +1,36 @@
+[
+  {
+    "id": 1,
+    "title": "Directive européenne 2025 : ce qui change pour les bâtiments publics",
+    "date": "2025-09-05",
+    "url": "./article.html?id=1",
+    "summary": "Objectif renforcé : –30 % de conso d’ici 2030 sur le parc public. Impacts concrets sur les audits, la ligne de base et le suivi.",
+    "image": "./images/actus/directive-europeenne-2025-480.webp",
+    "image_alt": "Drapeaux de l’Union européenne devant un bâtiment institutionnel",
+    "author": "Thibaut",
+    "content": "<p>La nouvelle directive européenne sur l’efficacité énergétique renforce les exigences pour le <strong>secteur public</strong>. L’objectif communiqué est une <strong>réduction d’au moins 30 %</strong> de la consommation d’énergie finale d’ici 2030, avec une montée en puissance du pilotage et de la mesure.</p><h2>Impacts côté CPE</h2><ul><li><strong>Diagnostic et ligne de base</strong> : la qualité des données historiques devient centrale. Les écarts climatiques et d’usage devront être <em>clairement tracés</em>.</li><li><strong>Indicateurs vérifiables</strong> : référentiels type IPMVP encore plus valorisés, avec <em>protocoles de mesure</em> formalisés.</li><li><strong>Parc multi-sites</strong> : la directive incite à des approches groupées (écoles, gymnases, admin.).</li></ul><h2>Conseils opérationnels</h2><p>Avant de lancer un CPE, cadrez :</p><ol><li>Le périmètre <strong>exact</strong> (bâtiments, usages inclus/exclus).</li><li>La <strong>qualité des données</strong> (factures, sous-comptages, météo normalisée).</li><li>La <strong>gouvernance</strong> (MOA, AMO, prestataire, rôles).</li></ol><p>En pratique, on recommande un <strong>pré-diagnostic rapide</strong> pour sécuriser le lot d’actions et le plan de mesure.</p><p><em>À retenir :</em> plus de transparence, plus de traçabilité, et un pilotage continu tout au long du contrat.</p>"
+  },
+  {
+    "id": 2,
+    "title": "REX multi-sites : –25 % en 24 mois dans une chaîne de supermarchés",
+    "date": "2025-09-01",
+    "url": "./article.html?id=2",
+    "summary": "Relamping, régulation du froid et maintenance active : un trio gagnant. Focus sur la ligne de base, la saisonnalité et la vérification.",
+    "image": "./images/actus/rex-supermarche-480.webp",
+    "image_alt": "Allée de supermarché moderne avec éclairage LED",
+    "author": "Thibaut",
+    "content": "<p>Sur un périmètre de <strong>42 magasins</strong>, un CPE ‘multi-sites’ a permis d’atteindre <strong>–25 %</strong> en 24 mois. Les gains proviennent de trois leviers principaux :</p><ul><li><strong>Relamping LED</strong> + scénarisation (zones horaires, intensité).</li><li><strong>Régulation du froid</strong> (consignes, dégivrages, courbes d’eau).</li><li><strong>Maintenance active</strong> (corriger vite les dérives, alerter, vérifier).</li></ul><h2>Ligne de base & vérification</h2><p>Le calcul a intégré la <strong>saisonnalité</strong>, les ouvertures/fermetures et quelques rénovations de rayon. Le protocole s’inspire de l’<strong>IPMVP</strong> (Option C), avec regroupement par typologie de magasin.</p><h2>Clés de succès</h2><ol><li>Un <strong>tableau de bord</strong> compréhensible par les équipes locales.</li><li>Un <strong>cadencement</strong> de points d’étape (M+1, M+3, M+6…).</li><li>Une <strong>liste courte</strong> d’indicateurs contractuels (et non 30 KPIs).</li></ol><blockquote>“<em>Ce qui a fait la différence : traiter les petites dérives vite, plutôt que d’attendre la revue trimestrielle.</em>”</blockquote><p>À la clé : des économies stables et des irritants terrain en baisse (confort visuel, températures).</p>"
+  },
+  {
+    "id": 3,
+    "title": "Tendances 2025 : le CPE gagne du terrain à l’hôpital",
+    "date": "2025-08-28",
+    "url": "./article.html?id=3",
+    "tag": "Marché",
+    "summary": "GTB allégée, relamping ciblé et récupération de chaleur : des actions compatibles soins 24/7. Focus pilotage et continuité de service.",
+    "image": "./images/actus/cpe-hopital-480.webp",
+    "image_alt": "Couloir d’hôpital lumineux avec équipements médicaux",
+    "author": "Thibaut",
+    "content": "<p>Le secteur hospitalier adopte de plus en plus les CPE pour <strong>moderniser sans interrompre</strong> l’activité. Les actions plébiscitées : GTB ‘light’ sur postes majeurs, <strong>relamping</strong> des circulations et <strong>récupération de chaleur</strong> sur la production de froid.</p><h2>Contraintes spécifiques</h2><ul><li>Impossibilité d’arrêt long : travaux par <strong>fenêtres d’intervention</strong>.</li><li><strong>Qualité d’air</strong> & températures : exigences strictes.</li><li>Rôles et astreintes clairement formalisés.</li></ul><h2>Bonnes pratiques</h2><p>Monter une gouvernance resserrée (Direction, Biomédical, Exploitation), arbitrer un <strong>panier d’actions</strong> compatible 24/7, et cadrer un protocole de mesure qui isole les changements d’usage (services ouverts/fermés).</p><p>À moyen terme, le levier se situe dans la <strong>data</strong> (supervision, détection de dérives) plus que dans la ‘grosse’ rénovation.</p>"
+  }
+]
